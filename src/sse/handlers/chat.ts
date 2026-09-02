@@ -183,6 +183,7 @@ import {
 } from "@omniroute/open-sse/services/moonshotQuotaFetcher.ts";
 import { registerOpenrouterQuotaFetcher } from "@omniroute/open-sse/services/openrouterQuotaFetcher.ts";
 import { registerOpencodeQuotaFetcher } from "@omniroute/open-sse/services/opencodeQuotaFetcher.ts";
+import { registerLlmgatewayQuotaFetcher } from "@omniroute/open-sse/services/llmgatewayQuotaFetcher.ts";
 import { registerGrokWebQuotaFetcher } from "@omniroute/open-sse/services/grokQuotaFetcher.ts";
 import { registerGenericQuotaFetchers } from "@omniroute/open-sse/services/genericQuotaFetcher.ts";
 import "@omniroute/open-sse/services/quotaTrackersBatch.ts";
@@ -249,6 +250,12 @@ registerOpenrouterQuotaFetcher();
 // Surfaces the $12/5h, $30/wk, $60/mo windows in the limits page and enables
 // quota-aware preflight switching between connections. (#2852)
 registerOpencodeQuotaFetcher();
+
+// Register LLM Gateway DevPass quota fetcher (API key → GET /v1/key).
+// Surfaces the monthly plan-credit + weekly premium-model windows in the limits
+// page and enables quota-aware preflight switching. Runs before
+// registerGenericQuotaFetchers so the bespoke fetcher wins.
+registerLlmgatewayQuotaFetcher();
 
 // Register Grok Web quota fetcher.
 // Reads account-level OIDC tokens from ~/.grok/auth.json (the local Grok CLI
