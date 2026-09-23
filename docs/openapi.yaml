@@ -13033,6 +13033,24 @@ paths:
         System One models (TypeSafe Jev) through OpenRouter's System One API.
         TypeSafe-compatible body `{ model, state, questions }`; returns typed
         `answers` plus `usage`. Uses the dashboard `openrouter` credentials.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [model, state, questions]
+              properties:
+                model:
+                  type: string
+                  example: jev-latest
+                state:
+                  description: String, JSON object or array to evaluate.
+                questions:
+                  type: object
+                  additionalProperties: true
       responses:
         "200":
           description: OK

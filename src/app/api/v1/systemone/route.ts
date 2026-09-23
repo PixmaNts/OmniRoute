@@ -1,4 +1,5 @@
 import {
+  canonicalSystemOneModel,
   handleSystemOneProxy,
   SYSTEMONE_PROVIDER_ID,
 } from "@omniroute/open-sse/handlers/systemOne.ts";
@@ -50,10 +51,19 @@ async function postHandler(request: Request) {
   }
   const body = validation.data;
 
-  const policy = await enforceApiKeyPolicy(request, `${SYSTEMONE_PROVIDER_ID}/${body.model}`);
+  const canonicalModel = canonicalSystemOneModel(body.model);
+  const policy = await enforceApiKeyPolicy(request, `${SYSTEMONE_PROVIDER_ID}/${canonicalModel}`);
   if (policy.rejection) return policy.rejection;
 
-  const credentials = await getProviderCredentialsWithQuotaPreflight(SYSTEMONE_PROVIDER_ID);
+  const allowedConnections = policy.apiKeyInfo?.allowedConnections?.length
+    ? policy.apiKeyInfo.allowedConnections
+    : null;
+  const credentials = await getProviderCredentialsWithQuotaPreflight(
+    SYSTEMONE_PROVIDER_ID,
+    null,
+    allowedConnections,
+    canonicalModel
+  );
   if (!credentials) {
     return errorResponse(
       HTTP_STATUS.BAD_REQUEST,
@@ -64,7 +74,12 @@ async function postHandler(request: Request) {
     return rateLimitedProviderResponse(SYSTEMONE_PROVIDER_ID, credentials);
   }
 
-  const response = await handleSystemOneProxy({ body, credentials });
+  const response = await handleSystemOneProxy({
+    body,
+    credentials,
+    canonicalModel,
+    apiKeyInfo: policy.apiKeyInfo,
+  });
   if (response?.ok) {
     await clearRecoveredProviderState(credentials);
   }

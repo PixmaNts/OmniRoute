@@ -1006,8 +1006,8 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     description: "System One models (TypeSafe Jev) through OpenRouter's System One API. TypeSafe-compatible body `{ model, state, questions }`; returns typed `answers` plus `usage`. Uses the dashboard `openrouter` credentials.",
     tag: "V1 SystemOne",
     tags: ["V1 SystemOne"],
-    requiresAuth: false,
-    hasRequestBody: false,
+    requiresAuth: true,
+    hasRequestBody: true,
   },
   {
     path: "/api/v1/text-to-speech/{voiceId}",

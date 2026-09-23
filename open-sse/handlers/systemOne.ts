@@ -13,7 +13,9 @@ import { CORS_HEADERS } from "../utils/cors.ts";
 import { errorResponse } from "../utils/error.ts";
 import { attachOmniRouteMetaHeaders } from "@/domain/omnirouteResponseMeta";
 import { generateRequestId } from "@/shared/utils/requestId";
-import { saveCallLog } from "@/lib/usageDb";
+import { saveCallLog, saveRequestUsage } from "@/lib/usageDb";
+import { recordCost } from "@/domain/costRules";
+import { markAccountUnavailable } from "../../src/sse/services/auth.ts";
 
 export const SYSTEMONE_PROVIDER_ID = "openrouter";
 export const SYSTEMONE_UPSTREAM_URL = "https://openrouter.ai/api/v1/systemone";
@@ -27,6 +29,24 @@ export interface SystemOneCredentials {
 export interface SystemOneProxyOptions {
   body: Record<string, unknown>;
   credentials: SystemOneCredentials | null;
+  /** `typesafe/<id>` form used for API-key policy, cooldown and cost attribution. */
+  canonicalModel?: string | null;
+  apiKeyInfo?: { id?: string | null; name?: string | null } | null;
+}
+
+/**
+ * Bare TypeSafe ids (`jev-latest`) and OpenRouter's alias spelling
+ * (`~typesafe/jev-latest`) name the same model upstream; normalize both to
+ * `typesafe/<id>` so one allow/deny rule covers every spelling.
+ */
+export function canonicalSystemOneModel(model: string): string {
+  const trimmed = model.trim().replace(/^~/, "");
+  return trimmed.includes("/") ? trimmed : `typesafe/${trimmed}`;
+}
+
+// 422 is a request-shape error from the caller, not a fault of the connection.
+function shouldCoolDownConnection(status: number): boolean {
+  return status === 401 || status === 403 || status === 429 || status >= 500;
 }
 
 type SystemOneUpstreamBody = {
@@ -41,6 +61,9 @@ export async function handleSystemOneProxy(options: SystemOneProxyOptions): Prom
   const token = options.credentials?.apiKey || options.credentials?.accessToken;
   const connectionId = options.credentials?.connectionId || null;
   const requestedModel = typeof options.body.model === "string" ? options.body.model : null;
+  const canonicalModel =
+    options.canonicalModel || (requestedModel ? canonicalSystemOneModel(requestedModel) : null);
+  const apiKeyId = options.apiKeyInfo?.id || null;
 
   if (!token) {
     return errorResponse(401, `No credentials for provider: ${SYSTEMONE_PROVIDER_ID}`);
@@ -65,6 +88,10 @@ export async function handleSystemOneProxy(options: SystemOneProxyOptions): Prom
       parsed = null;
     }
 
+    if (res.ok && (!parsed || typeof parsed !== "object" || Array.isArray(parsed))) {
+      return errorResponse(502, "System One upstream returned an invalid response body");
+    }
+
     const model = parsed?.model || requestedModel || "systemone";
     const inputTokens = Number(parsed?.usage?.input_tokens) || 0;
     const outputTokens = Number(parsed?.usage?.output_tokens) || 0;
@@ -86,14 +113,53 @@ export async function handleSystemOneProxy(options: SystemOneProxyOptions): Prom
       tokens: { prompt_tokens: inputTokens, completion_tokens: outputTokens },
       connectionId,
       requestType: "systemone",
+      apiKeyId: apiKeyId || undefined,
+      apiKeyName: options.apiKeyInfo?.name || undefined,
       ...(errorMessage ? { error: errorMessage } : {}),
     }).catch(() => {});
 
     if (!res.ok) {
+      if (connectionId && shouldCoolDownConnection(res.status)) {
+        try {
+          await markAccountUnavailable(
+            connectionId,
+            res.status,
+            errorMessage,
+            SYSTEMONE_PROVIDER_ID,
+            canonicalModel,
+            null,
+            { headers: res.headers }
+          );
+        } catch {
+          // The upstream response has priority over a best-effort cooldown write.
+        }
+      }
       const response = errorResponse(res.status, errorMessage);
       const retryAfter = res.headers.get("retry-after");
       if (retryAfter) response.headers.set("retry-after", retryAfter);
       return response;
+    }
+
+    saveRequestUsage({
+      provider: SYSTEMONE_PROVIDER_ID,
+      model,
+      tokens: { prompt_tokens: inputTokens, completion_tokens: outputTokens },
+      status: "200",
+      success: true,
+      latencyMs: Date.now() - startTime,
+      connectionId: connectionId || undefined,
+      apiKeyId: apiKeyId || undefined,
+      apiKeyName: options.apiKeyInfo?.name || undefined,
+      endpoint: "/v1/systemone",
+    }).catch(() => {});
+
+    if (apiKeyId && costUsd > 0) {
+      recordCost(apiKeyId, costUsd, {
+        provider: SYSTEMONE_PROVIDER_ID,
+        model,
+        tokens: { input: inputTokens, output: outputTokens },
+        success: true,
+      });
     }
 
     const headers = new Headers({ ...CORS_HEADERS, "Content-Type": "application/json" });
