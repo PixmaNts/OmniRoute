@@ -56,18 +56,147 @@ type SystemOneUpstreamBody = {
   error?: { message?: string } | string;
 };
 
-export async function handleSystemOneProxy(options: SystemOneProxyOptions): Promise<Response> {
-  const startTime = Date.now();
-  const token = options.credentials?.apiKey || options.credentials?.accessToken;
-  const connectionId = options.credentials?.connectionId || null;
-  const requestedModel = typeof options.body.model === "string" ? options.body.model : null;
-  const canonicalModel =
-    options.canonicalModel || (requestedModel ? canonicalSystemOneModel(requestedModel) : null);
-  const apiKeyId = options.apiKeyInfo?.id || null;
+type SystemOneCall = {
+  startTime: number;
+  connectionId: string | null;
+  requestedModel: string | null;
+  canonicalModel: string | null;
+  apiKeyInfo: SystemOneProxyOptions["apiKeyInfo"];
+};
 
+type SystemOneUsage = { model: string; inputTokens: number; outputTokens: number };
+
+function parseUpstreamBody(text: string): SystemOneUpstreamBody | null {
+  try {
+    const parsed: unknown = text ? JSON.parse(text) : null;
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? (parsed as SystemOneUpstreamBody)
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function readUsage(parsed: SystemOneUpstreamBody | null, call: SystemOneCall): SystemOneUsage {
+  return {
+    model: parsed?.model || call.requestedModel || "systemone",
+    inputTokens: Number(parsed?.usage?.input_tokens) || 0,
+    outputTokens: Number(parsed?.usage?.output_tokens) || 0,
+  };
+}
+
+function upstreamErrorMessage(parsed: SystemOneUpstreamBody | null, status: number): string {
+  const nested = typeof parsed?.error === "string" ? parsed.error : parsed?.error?.message;
+  return parsed?.message || nested || `Provider returned HTTP ${status}`;
+}
+
+function logCall(call: SystemOneCall, status: number, usage: SystemOneUsage, error?: string) {
+  saveCallLog({
+    method: "POST",
+    path: "/v1/systemone",
+    status,
+    model: usage.model,
+    requestedModel: call.requestedModel,
+    provider: SYSTEMONE_PROVIDER_ID,
+    duration: Date.now() - call.startTime,
+    tokens: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
+    connectionId: call.connectionId,
+    requestType: "systemone",
+    apiKeyId: call.apiKeyInfo?.id || undefined,
+    apiKeyName: call.apiKeyInfo?.name || undefined,
+    ...(error ? { error } : {}),
+  }).catch(() => {});
+}
+
+async function upstreamFailure(
+  call: SystemOneCall,
+  res: Response,
+  parsed: SystemOneUpstreamBody | null
+): Promise<Response> {
+  const message = upstreamErrorMessage(parsed, res.status);
+  logCall(call, res.status, readUsage(parsed, call), message);
+  if (call.connectionId && shouldCoolDownConnection(res.status)) {
+    try {
+      await markAccountUnavailable(
+        call.connectionId,
+        res.status,
+        message,
+        SYSTEMONE_PROVIDER_ID,
+        call.canonicalModel,
+        null,
+        { headers: res.headers }
+      );
+    } catch {
+      // The upstream response has priority over a best-effort cooldown write.
+    }
+  }
+  const response = errorResponse(res.status, message);
+  const retryAfter = res.headers.get("retry-after");
+  if (retryAfter) response.headers.set("retry-after", retryAfter);
+  return response;
+}
+
+function recordSuccess(call: SystemOneCall, usage: SystemOneUsage, costUsd: number) {
+  logCall(call, 200, usage);
+  const apiKeyId = call.apiKeyInfo?.id || undefined;
+  saveRequestUsage({
+    provider: SYSTEMONE_PROVIDER_ID,
+    model: usage.model,
+    tokens: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
+    status: "200",
+    success: true,
+    latencyMs: Date.now() - call.startTime,
+    connectionId: call.connectionId || undefined,
+    apiKeyId,
+    apiKeyName: call.apiKeyInfo?.name || undefined,
+    endpoint: "/v1/systemone",
+  }).catch(() => {});
+  if (apiKeyId && costUsd > 0) {
+    recordCost(apiKeyId, costUsd, {
+      provider: SYSTEMONE_PROVIDER_ID,
+      model: usage.model,
+      tokens: { input: usage.inputTokens, output: usage.outputTokens },
+      success: true,
+    });
+  }
+}
+
+function successResponse(
+  text: string,
+  call: SystemOneCall,
+  usage: SystemOneUsage,
+  costUsd: number
+) {
+  const headers = new Headers({ ...CORS_HEADERS, "Content-Type": "application/json" });
+  attachOmniRouteMetaHeaders(headers, {
+    provider: SYSTEMONE_PROVIDER_ID,
+    model: usage.model,
+    costUsd,
+    latencyMs: Date.now() - call.startTime,
+    requestId: generateRequestId(),
+    usage: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
+  });
+  return new Response(text, { status: 200, headers });
+}
+
+function describeCall(options: SystemOneProxyOptions): SystemOneCall {
+  const requestedModel = typeof options.body.model === "string" ? options.body.model : null;
+  return {
+    startTime: Date.now(),
+    connectionId: options.credentials?.connectionId || null,
+    requestedModel,
+    canonicalModel:
+      options.canonicalModel || (requestedModel ? canonicalSystemOneModel(requestedModel) : null),
+    apiKeyInfo: options.apiKeyInfo,
+  };
+}
+
+export async function handleSystemOneProxy(options: SystemOneProxyOptions): Promise<Response> {
+  const token = options.credentials?.apiKey || options.credentials?.accessToken;
   if (!token) {
     return errorResponse(401, `No credentials for provider: ${SYSTEMONE_PROVIDER_ID}`);
   }
+  const call = describeCall(options);
 
   try {
     const res = await fetch(SYSTEMONE_UPSTREAM_URL, {
@@ -79,99 +208,18 @@ export async function handleSystemOneProxy(options: SystemOneProxyOptions): Prom
       },
       body: JSON.stringify(options.body),
     });
-
     const text = await res.text();
-    let parsed: SystemOneUpstreamBody | null = null;
-    try {
-      parsed = text ? (JSON.parse(text) as SystemOneUpstreamBody) : null;
-    } catch {
-      parsed = null;
-    }
+    const parsed = parseUpstreamBody(text);
 
-    if (res.ok && (!parsed || typeof parsed !== "object" || Array.isArray(parsed))) {
+    if (!res.ok) return upstreamFailure(call, res, parsed);
+    if (!parsed) {
       return errorResponse(502, "System One upstream returned an invalid response body");
     }
 
-    const model = parsed?.model || requestedModel || "systemone";
-    const inputTokens = Number(parsed?.usage?.input_tokens) || 0;
-    const outputTokens = Number(parsed?.usage?.output_tokens) || 0;
-    const costUsd = res.ok ? Number(parsed?.usage?.cost) || 0 : 0;
-    const errorMessage = res.ok
-      ? null
-      : parsed?.message ||
-        (typeof parsed?.error === "string" ? parsed.error : parsed?.error?.message) ||
-        `Provider returned HTTP ${res.status}`;
-
-    saveCallLog({
-      method: "POST",
-      path: "/v1/systemone",
-      status: res.status,
-      model,
-      requestedModel,
-      provider: SYSTEMONE_PROVIDER_ID,
-      duration: Date.now() - startTime,
-      tokens: { prompt_tokens: inputTokens, completion_tokens: outputTokens },
-      connectionId,
-      requestType: "systemone",
-      apiKeyId: apiKeyId || undefined,
-      apiKeyName: options.apiKeyInfo?.name || undefined,
-      ...(errorMessage ? { error: errorMessage } : {}),
-    }).catch(() => {});
-
-    if (!res.ok) {
-      if (connectionId && shouldCoolDownConnection(res.status)) {
-        try {
-          await markAccountUnavailable(
-            connectionId,
-            res.status,
-            errorMessage,
-            SYSTEMONE_PROVIDER_ID,
-            canonicalModel,
-            null,
-            { headers: res.headers }
-          );
-        } catch {
-          // The upstream response has priority over a best-effort cooldown write.
-        }
-      }
-      const response = errorResponse(res.status, errorMessage);
-      const retryAfter = res.headers.get("retry-after");
-      if (retryAfter) response.headers.set("retry-after", retryAfter);
-      return response;
-    }
-
-    saveRequestUsage({
-      provider: SYSTEMONE_PROVIDER_ID,
-      model,
-      tokens: { prompt_tokens: inputTokens, completion_tokens: outputTokens },
-      status: "200",
-      success: true,
-      latencyMs: Date.now() - startTime,
-      connectionId: connectionId || undefined,
-      apiKeyId: apiKeyId || undefined,
-      apiKeyName: options.apiKeyInfo?.name || undefined,
-      endpoint: "/v1/systemone",
-    }).catch(() => {});
-
-    if (apiKeyId && costUsd > 0) {
-      recordCost(apiKeyId, costUsd, {
-        provider: SYSTEMONE_PROVIDER_ID,
-        model,
-        tokens: { input: inputTokens, output: outputTokens },
-        success: true,
-      });
-    }
-
-    const headers = new Headers({ ...CORS_HEADERS, "Content-Type": "application/json" });
-    attachOmniRouteMetaHeaders(headers, {
-      provider: SYSTEMONE_PROVIDER_ID,
-      model,
-      costUsd,
-      latencyMs: Date.now() - startTime,
-      requestId: generateRequestId(),
-      usage: { prompt_tokens: inputTokens, completion_tokens: outputTokens },
-    });
-    return new Response(text, { status: 200, headers });
+    const usage = readUsage(parsed, call);
+    const costUsd = Number(parsed.usage?.cost) || 0;
+    recordSuccess(call, usage, costUsd);
+    return successResponse(text, call, usage, costUsd);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     return errorResponse(500, `System One request failed: ${message}`);
