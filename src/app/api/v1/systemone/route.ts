@@ -2,6 +2,7 @@ import {
   canonicalSystemOneModel,
   handleSystemOneProxy,
   SYSTEMONE_PROVIDER_ID,
+  type SystemOneCredentials,
 } from "@omniroute/open-sse/handlers/systemOne.ts";
 import {
   getProviderCredentialsWithQuotaPreflight,
@@ -74,9 +75,11 @@ async function postHandler(request: Request) {
     return rateLimitedProviderResponse(SYSTEMONE_PROVIDER_ID, credentials);
   }
 
+  // The selector's union also carries all-expired / lease markers; those carry no key,
+  // so the handler rejects them with 401 — same narrowing as the rerank route.
   const response = await handleSystemOneProxy({
     body,
-    credentials,
+    credentials: credentials as SystemOneCredentials,
     canonicalModel,
     apiKeyInfo: policy.apiKeyInfo,
   });
