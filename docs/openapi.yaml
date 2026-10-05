@@ -13281,6 +13281,22 @@ paths:
       responses:
         "200":
           description: OK
+  /api/v1/systemone/models:
+    get:
+      tags:
+        - V1 SystemOne
+      summary: "GET systemone models"
+      description: >-
+        Live list of System One (decisions) models from OpenRouter's public
+        models API (`output_modalities=decisions`). No upstream credential is
+        used. Returns `{ object: "list", data }` with upstream ids, names,
+        architecture and pricing preserved. API-key endpoint category
+        `systemone`, budget, rate limits and model allow/deny rules apply.
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: OK
   /api/v1/video-bridge/drilldown:
     delete:
       tags:

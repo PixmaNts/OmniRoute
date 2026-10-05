@@ -484,6 +484,7 @@ Use this endpoint when a sidecar runs out-of-process and cannot import
 | POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)      |
 | POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`) |
 | POST   | `/v1/systemone`                           | System One (Jev) via OpenRouter    |
+| GET    | `/v1/systemone/models`                    | System One (decisions) model list  |
 | POST   | `/v1/moderations`                         | OpenAI Moderations                 |
 | GET    | `/v1/models`                              | OpenAI                             |
 | POST   | `/v1/messages/count_tokens`               | Anthropic                          |
@@ -513,6 +514,7 @@ POST /v1/segment     { "content": "...", "return_chunks": true }
 
 # System One (TypeSafe Jev) via OpenRouter; TypeSafe SDKs work with baseURL = OmniRoute
 POST /v1/systemone   { "model": "jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # live OpenRouter decisions models: { object: "list", data: [{ id, name, architecture, pricing, ... }] }
 
 # Jina search (s.jina.ai; provider aliases: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
