@@ -128,6 +128,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
   // Endpoints / models state
   const [allModels, setAllModels] = useState([]);
   const [modelsLoading, setModelsLoading] = useState(true);
+  const [systemOneModels, setSystemOneModels] = useState<EndpointModelSummary[] | null>(null);
+  const [systemOneModelsLoading, setSystemOneModelsLoading] = useState(true);
 
   // Cloud sync state
   const [cloudEnabled, setCloudEnabled] = useState(false);
@@ -308,6 +310,20 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
     }
   };
 
+  const fetchSystemOneModels = async () => {
+    try {
+      const res = await fetch("/v1/systemone/models");
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data.data)) setSystemOneModels(data.data);
+      }
+    } catch (error) {
+      console.log("Error fetching System One models:", error);
+    } finally {
+      setSystemOneModelsLoading(false);
+    }
+  };
+
   const fetchProtocolStatus = async () => {
     try {
       const [mcpRes, a2aRes] = await Promise.allSettled([
@@ -465,6 +481,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
       setLoading(false);
 
       runEndpointBackgroundTask("models", fetchModels);
+      runEndpointBackgroundTask("systemone-models", fetchSystemOneModels);
       runEndpointBackgroundTask("protocol-status", fetchProtocolStatus);
       runEndpointBackgroundTask("search-providers", fetchSearchProviders);
       runEndpointBackgroundTask("network-info", async () => {
@@ -2026,7 +2043,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
               iconBg="bg-pink-500/10"
               title={t("systemOneDecide")}
               path="/v1/systemone"
-              models={null}
+              models={systemOneModels}
+              modelsLoading={systemOneModelsLoading}
               copy={copy}
               copied={copied}
               baseUrl={currentEndpoint}
@@ -2037,7 +2055,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
               iconBg="bg-teal-500/10"
               title={t("systemOneModels")}
               path="/v1/systemone/models"
-              models={null}
+              models={systemOneModels}
+              modelsLoading={systemOneModelsLoading}
               copy={copy}
               copied={copied}
               baseUrl={currentEndpoint}
