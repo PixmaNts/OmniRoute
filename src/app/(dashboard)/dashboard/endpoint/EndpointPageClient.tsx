@@ -11,7 +11,6 @@ import A2ADashboardPage from "./components/A2ADashboard";
 import McpDashboardPage from "./components/MCPDashboard";
 import NotionSourceCard from "./components/NotionSourceCard";
 import ObsidianSourceCard from "./components/ObsidianSourceCard";
-import SystemOneEndpointsSection from "./components/SystemOneEndpointsSection";
 import VscodeTokenAliasCard from "./VscodeTokenAliasCard";
 
 const BUILD_TIME_CLOUD_URL = process.env.NEXT_PUBLIC_CLOUD_URL || null;
@@ -2007,7 +2006,44 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           </div>
         )}
 
-        <SystemOneEndpointsSection baseUrl={currentEndpoint} />
+        <section className="mb-5" aria-labelledby="systemone-endpoints-heading">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="material-symbols-outlined text-sm text-pink-400" aria-hidden="true">
+              fact_check
+            </span>
+            <h3
+              id="systemone-endpoints-heading"
+              className="text-xs font-semibold text-text-muted uppercase tracking-wider"
+            >
+              {t("categorySystemOne")}
+            </h3>
+            <div className="flex-1 h-px bg-border/50" />
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+            <EndpointCard
+              icon="fact_check"
+              iconColor="text-pink-500"
+              iconBg="bg-pink-500/10"
+              title={t("systemOneDecide")}
+              path="/v1/systemone"
+              models={null}
+              copy={copy}
+              copied={copied}
+              baseUrl={currentEndpoint}
+            />
+            <EndpointCard
+              icon="list"
+              iconColor="text-teal-500"
+              iconBg="bg-teal-500/10"
+              title={t("systemOneModels")}
+              path="/v1/systemone/models"
+              models={null}
+              copy={copy}
+              copied={copied}
+              baseUrl={currentEndpoint}
+            />
+          </div>
+        </section>
 
         {/* Utility & Management */}
         <div>
