@@ -1,7 +1,3 @@
-import {
-  canonicalSystemOneModel,
-  SYSTEMONE_PROVIDER_ID,
-} from "@omniroute/open-sse/handlers/systemOne.ts";
 import { handleSystemOneModels } from "@omniroute/open-sse/handlers/systemOneModels.ts";
 import { enforceApiKeyPolicy, validateApiKeyRoutingTarget } from "@/shared/utils/apiKeyPolicy";
 
@@ -18,12 +14,12 @@ export async function OPTIONS() {
 }
 
 /**
- * GET /v1/systemone/models — live catalog of System One (decisions) models.
+ * GET /v1/systemone/models — live catalog of System One (decision) models.
  *
- * Fetched from OpenRouter's public models API (no credential). The API key's
- * endpoint category, budget and rate limits apply as for POST /v1/systemone,
- * and its model allow/deny rules narrow the list with the same canonical
- * `openrouter/<id>` target the POST route enforces.
+ * Read from each configured TypeSafe, OpenRouter and Ollama connection. The API key's
+ * endpoint category, budget and rate limits apply as for POST /v1/systemone, and its
+ * connection and model rules narrow the list with the same gateway-qualified ids
+ * (`typesafe/…`, `openrouter/…`, `ollama-local/…`) the POST route enforces.
  */
 export async function GET(request: Request) {
   const policy = await enforceApiKeyPolicy(request, null);
@@ -31,12 +27,9 @@ export async function GET(request: Request) {
 
   const { apiKey, apiKeyInfo } = policy;
   return handleSystemOneModels({
+    signal: request.signal,
+    allowedConnections: apiKeyInfo?.allowedConnections,
     isModelAllowed: async (modelId) =>
-      (await validateApiKeyRoutingTarget(
-        request,
-        apiKey,
-        apiKeyInfo,
-        `${SYSTEMONE_PROVIDER_ID}/${canonicalSystemOneModel(modelId)}`
-      )) === null,
+      (await validateApiKeyRoutingTarget(request, apiKey, apiKeyInfo, modelId)) === null,
   });
 }

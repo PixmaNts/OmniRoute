@@ -46,7 +46,8 @@ import assert from "node:assert/strict";
 
 const P = await import("../../src/shared/constants/providers.ts");
 
-const APIKEY_PROVIDER_COUNT = 241;
+// Native TypeSafe decision credentials add one provider (measured 2026-10-05).
+const APIKEY_PROVIDER_COUNT = 242;
 
 test("barrel still exports every catalog + key helpers", () => {
   for (const name of [

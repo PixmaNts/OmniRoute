@@ -75,7 +75,7 @@ export const ENDPOINT_CATEGORIES: readonly EndpointCategory[] = [
   {
     id: "systemone",
     label: "System One",
-    description: "Decision models via OpenRouter: typed answers and model list",
+    description: "Decision inference: typed answers and configured model list",
     prefixes: ["/v1/systemone"],
   },
   {

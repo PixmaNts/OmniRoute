@@ -1,13 +1,4 @@
-/**
- * System One proxy (TypeSafe Jev and future System One models).
- *
- * System One models do not generate text: the client sends `state` plus typed
- * `questions` (noul / choice / score) and gets typed answers with
- * probabilities. OpenRouter serves them at `/api/v1/systemone` with the
- * TypeSafe request/response shape, maps bare ids (`jev-latest`) onto its
- * `typesafe/` namespace, and reports the exact USD cost in `usage.cost`.
- * See https://openrouter.ai/docs/guides/community/typesafe-sdk.
- */
+/** Generic System One decision transport, sharing normal credentials and accounting. */
 
 import { CORS_HEADERS } from "../utils/cors.ts";
 import { errorResponse } from "../utils/error.ts";
@@ -16,32 +7,35 @@ import { generateRequestId } from "@/shared/utils/requestId";
 import { saveCallLog, saveRequestUsage } from "@/lib/usageDb";
 import { recordCost } from "@/domain/costRules";
 import { markAccountUnavailable } from "../../src/sse/services/auth.ts";
+import { isCredentialDiagnosticSentinel } from "../../src/sse/services/credentialSentinel.ts";
+import { sanitizeErrorMessage } from "../utils/error.ts";
+import {
+  SYSTEMONE_BACKENDS,
+  nativeSystemOnePricing,
+  type SystemOneProvider,
+} from "../config/systemOneRegistry.ts";
+import {
+  fetchSystemOne,
+  systemOneHeaders,
+  systemOneUrl,
+  type SystemOneCredentials,
+} from "./systemOneTransport.ts";
+import { calculateCostDetailed } from "@/lib/usage/costCalculator";
+export type { SystemOneCredentials } from "./systemOneTransport.ts";
 
-export const SYSTEMONE_PROVIDER_ID = "openrouter";
-export const SYSTEMONE_UPSTREAM_URL = "https://openrouter.ai/api/v1/systemone";
-
-export interface SystemOneCredentials {
-  apiKey?: string | null;
-  accessToken?: string | null;
-  connectionId?: string | null;
-}
+/** Backend for callers that pass no provider; the route always resolves one explicitly. */
+const DEFAULT_SYSTEMONE_PROVIDER: SystemOneProvider = "openrouter";
 
 export interface SystemOneProxyOptions {
   body: Record<string, unknown>;
   credentials: SystemOneCredentials | null;
-  /** `typesafe/<id>` form used for API-key policy, cooldown and cost attribution. */
+  /** Upstream model identity used for per-connection/model cooldown. */
   canonicalModel?: string | null;
+  requestedModel?: string;
   apiKeyInfo?: { id?: string | null; name?: string | null } | null;
-}
-
-/**
- * Bare TypeSafe ids (`jev-latest`) and OpenRouter's alias spelling
- * (`~typesafe/jev-latest`) name the same model upstream; normalize both to
- * `typesafe/<id>` so one allow/deny rule covers every spelling.
- */
-export function canonicalSystemOneModel(model: string): string {
-  const trimmed = model.trim().replace(/^~/, "");
-  return trimmed.includes("/") ? trimmed : `typesafe/${trimmed}`;
+  provider?: SystemOneProvider;
+  signal?: AbortSignal;
+  timeoutMs?: number;
 }
 
 // 422 is a request-shape error from the caller, not a fault of the connection.
@@ -53,6 +47,7 @@ type SystemOneUpstreamBody = {
   model?: string;
   usage?: { input_tokens?: number; output_tokens?: number; cost?: number };
   message?: string;
+  detail?: { message?: string };
   error?: { message?: string } | string;
 };
 
@@ -60,8 +55,11 @@ type SystemOneCall = {
   startTime: number;
   connectionId: string | null;
   requestedModel: string | null;
+  /** Model id sent upstream; names the call when the response omits `model`. */
+  upstreamModel: string | null;
   canonicalModel: string | null;
   apiKeyInfo: SystemOneProxyOptions["apiKeyInfo"];
+  provider: SystemOneProvider;
 };
 
 type SystemOneUsage = { model: string; inputTokens: number; outputTokens: number };
@@ -79,25 +77,25 @@ function parseUpstreamBody(text: string): SystemOneUpstreamBody | null {
 
 function readUsage(parsed: SystemOneUpstreamBody | null, call: SystemOneCall): SystemOneUsage {
   return {
-    model: parsed?.model || call.requestedModel || "systemone",
-    inputTokens: Number(parsed?.usage?.input_tokens) || 0,
-    outputTokens: Number(parsed?.usage?.output_tokens) || 0,
+    model: parsed?.model || call.upstreamModel || call.requestedModel || "systemone",
+    inputTokens: nonNegativeCount(parsed?.usage?.input_tokens),
+    outputTokens: nonNegativeCount(parsed?.usage?.output_tokens),
   };
 }
 
 function upstreamErrorMessage(parsed: SystemOneUpstreamBody | null, status: number): string {
   const nested = typeof parsed?.error === "string" ? parsed.error : parsed?.error?.message;
-  return parsed?.message || nested || `Provider returned HTTP ${status}`;
+  return parsed?.message || parsed?.detail?.message || nested || `Provider returned HTTP ${status}`;
 }
 
-function logCall(call: SystemOneCall, status: number, usage: SystemOneUsage, error?: string) {
-  saveCallLog({
+async function logCall(call: SystemOneCall, status: number, usage: SystemOneUsage, error?: string) {
+  await saveCallLog({
     method: "POST",
     path: "/v1/systemone",
     status,
     model: usage.model,
     requestedModel: call.requestedModel,
-    provider: SYSTEMONE_PROVIDER_ID,
+    provider: call.provider,
     duration: Date.now() - call.startTime,
     tokens: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
     connectionId: call.connectionId,
@@ -113,15 +111,18 @@ async function upstreamFailure(
   res: Response,
   parsed: SystemOneUpstreamBody | null
 ): Promise<Response> {
-  const message = upstreamErrorMessage(parsed, res.status);
-  logCall(call, res.status, readUsage(parsed, call), message);
-  if (call.connectionId && shouldCoolDownConnection(res.status)) {
+  const message = sanitizeErrorMessage(upstreamErrorMessage(parsed, res.status));
+  await logCall(call, res.status, readUsage(parsed, call), message);
+  if (
+    call.connectionId &&
+    (shouldCoolDownConnection(res.status) || res.status === 402 || res.status === 404)
+  ) {
     try {
       await markAccountUnavailable(
         call.connectionId,
         res.status,
         message,
-        SYSTEMONE_PROVIDER_ID,
+        call.provider,
         call.canonicalModel,
         null,
         { headers: res.headers }
@@ -136,11 +137,11 @@ async function upstreamFailure(
   return response;
 }
 
-function recordSuccess(call: SystemOneCall, usage: SystemOneUsage, costUsd: number) {
-  logCall(call, 200, usage);
+async function recordSuccess(call: SystemOneCall, usage: SystemOneUsage, costUsd: number | null) {
+  await logCall(call, 200, usage);
   const apiKeyId = call.apiKeyInfo?.id || undefined;
-  saveRequestUsage({
-    provider: SYSTEMONE_PROVIDER_ID,
+  await saveRequestUsage({
+    provider: call.provider,
     model: usage.model,
     tokens: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
     status: "200",
@@ -151,9 +152,9 @@ function recordSuccess(call: SystemOneCall, usage: SystemOneUsage, costUsd: numb
     apiKeyName: call.apiKeyInfo?.name || undefined,
     endpoint: "/v1/systemone",
   }).catch(() => {});
-  if (apiKeyId && costUsd > 0) {
+  if (apiKeyId && costUsd !== null) {
     recordCost(apiKeyId, costUsd, {
-      provider: SYSTEMONE_PROVIDER_ID,
+      provider: call.provider,
       model: usage.model,
       tokens: { input: usage.inputTokens, output: usage.outputTokens },
       success: true,
@@ -165,63 +166,156 @@ function successResponse(
   text: string,
   call: SystemOneCall,
   usage: SystemOneUsage,
-  costUsd: number
+  costUsd: number | null
 ) {
   const headers = new Headers({ ...CORS_HEADERS, "Content-Type": "application/json" });
   attachOmniRouteMetaHeaders(headers, {
-    provider: SYSTEMONE_PROVIDER_ID,
+    provider: call.provider,
     model: usage.model,
     costUsd,
     latencyMs: Date.now() - call.startTime,
     requestId: generateRequestId(),
     usage: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
   });
+  if (costUsd === null) headers.delete("X-OmniRoute-Response-Cost");
+  headers.set("X-OmniRoute-Cost-Status", costUsd === null ? "unknown" : "known");
   return new Response(text, { status: 200, headers });
 }
 
 function describeCall(options: SystemOneProxyOptions): SystemOneCall {
-  const requestedModel = typeof options.body.model === "string" ? options.body.model : null;
+  const upstreamModel = typeof options.body.model === "string" ? options.body.model : null;
   return {
     startTime: Date.now(),
     connectionId: options.credentials?.connectionId || null,
-    requestedModel,
+    requestedModel: options.requestedModel || upstreamModel,
+    upstreamModel,
     canonicalModel:
-      options.canonicalModel || (requestedModel ? canonicalSystemOneModel(requestedModel) : null),
+      options.canonicalModel || (upstreamModel ? upstreamModel.replace(/^~/, "") : null),
     apiKeyInfo: options.apiKeyInfo,
+    provider: options.provider || DEFAULT_SYSTEMONE_PROVIDER,
   };
 }
 
+/** A decision response must answer at least one question with a keyed object. */
+function isInvalidSuccessBody(parsed: SystemOneUpstreamBody | null): boolean {
+  const answers = (parsed as Record<string, unknown> | null)?.answers;
+  return (
+    !answers ||
+    typeof answers !== "object" ||
+    Array.isArray(answers) ||
+    Object.keys(answers).length === 0
+  );
+}
+
+async function failTransport(
+  err: unknown,
+  call: SystemOneCall,
+  options: SystemOneProxyOptions,
+  timedOut: boolean
+): Promise<Response> {
+  if (options.signal?.aborted) return errorResponse(499, "System One request aborted by caller");
+  const status = timedOut ? 504 : 502;
+  const message = timedOut ? "System One request timed out" : sanitizeErrorMessage(err);
+  // URL-guard rejections are configuration errors, not evidence the account is unhealthy.
+  if (call.connectionId && !(err as { code?: string })?.code?.includes("URL")) {
+    await markAccountUnavailable(
+      call.connectionId,
+      status,
+      message,
+      call.provider,
+      call.canonicalModel
+    ).catch(() => {});
+  }
+  return errorResponse(status, message);
+}
+
+/**
+ * Real credentials name the selected connection; selector markers (allExpired,
+ * leaseFenceStale, ...) do not. A keyless local backend has no other proof, so without
+ * a connection id it would otherwise dispatch to the default host.
+ */
+function hasDispatchableCredentials(provider: SystemOneProvider, credentials: unknown): boolean {
+  if (
+    !credentials ||
+    typeof credentials !== "object" ||
+    isCredentialDiagnosticSentinel(credentials)
+  ) {
+    return false;
+  }
+  const record = credentials as SystemOneCredentials & Record<string, unknown>;
+  if (record.leaseFenceStale || record.leaseRequired || record.waitingForCapacity) return false;
+  if (!SYSTEMONE_BACKENDS[provider].requiresKey) return typeof record.connectionId === "string";
+  return Boolean(record.apiKey || record.accessToken);
+}
+
 export async function handleSystemOneProxy(options: SystemOneProxyOptions): Promise<Response> {
-  const token = options.credentials?.apiKey || options.credentials?.accessToken;
-  if (!token) {
-    return errorResponse(401, `No credentials for provider: ${SYSTEMONE_PROVIDER_ID}`);
+  const provider = options.provider || DEFAULT_SYSTEMONE_PROVIDER;
+  if (!hasDispatchableCredentials(provider, options.credentials)) {
+    return errorResponse(401, `No credentials for provider: ${provider}`);
   }
   const call = describeCall(options);
+  const timeoutSignal = AbortSignal.timeout(
+    options.timeoutMs ?? SYSTEMONE_BACKENDS[provider].timeoutMs
+  );
+  const signal = options.signal ? AbortSignal.any([options.signal, timeoutSignal]) : timeoutSignal;
 
   try {
-    const res = await fetch(SYSTEMONE_UPSTREAM_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(options.body),
-    });
+    const res = await fetchSystemOne(
+      systemOneUrl(provider, options.credentials),
+      options.credentials,
+      {
+        method: "POST",
+        headers: systemOneHeaders(options.credentials),
+        body: JSON.stringify(options.body),
+        signal,
+      }
+    );
     const text = await res.text();
     const parsed = parseUpstreamBody(text);
 
     if (!res.ok) return upstreamFailure(call, res, parsed);
-    if (!parsed) {
-      return errorResponse(502, "System One upstream returned an invalid response body");
+    if (isInvalidSuccessBody(parsed)) {
+      const message = "System One upstream returned an invalid response body";
+      await logCall(call, 502, readUsage(parsed, call), message);
+      return errorResponse(502, message);
     }
 
     const usage = readUsage(parsed, call);
-    const costUsd = Number(parsed.usage?.cost) || 0;
-    recordSuccess(call, usage, costUsd);
+    const costUsd = await systemOneCost(provider, usage.model, parsed?.usage);
+    await recordSuccess(call, usage, costUsd);
     return successResponse(text, call, usage, costUsd);
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    return errorResponse(500, `System One request failed: ${message}`);
+    return failTransport(err, call, options, timeoutSignal.aborted);
   }
+}
+
+function isNonNegative(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0;
+}
+
+/**
+ * `null` means unknown; a reported or local zero is a known cost. Token estimates use
+ * the operator's pricing table first, then a backend's published rate (native Jev).
+ */
+export async function systemOneCost(
+  provider: SystemOneProvider,
+  model: string,
+  usage?: SystemOneUpstreamBody["usage"]
+): Promise<number | null> {
+  if (provider === "ollama-local") return 0;
+  if (provider !== "typesafe" && isNonNegative(usage?.cost)) return usage.cost;
+  if (!isNonNegative(usage?.input_tokens)) return null;
+  const outputTokens = nonNegativeCount(usage.output_tokens);
+  const result = await calculateCostDetailed(provider, model, {
+    input_tokens: usage.input_tokens,
+    output_tokens: outputTokens,
+  });
+  if (result.priced) return result.costUsd;
+  const published = nativeSystemOnePricing(provider, model);
+  if (!published) return null;
+  return (usage.input_tokens * published.input + outputTokens * published.output) / 1_000_000;
+}
+
+function nonNegativeCount(value: unknown): number {
+  return isNonNegative(value) ? value : 0;
 }

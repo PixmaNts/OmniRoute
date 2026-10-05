@@ -25,7 +25,7 @@ export interface OpenApiEndpoint {
   hasRequestBody: boolean;
 }
 
-export const OPENAPI_VERSION = "3.8.51";
+export const OPENAPI_VERSION = "3.8.52";
 export const OPENAPI_TITLE = "OmniRoute API";
 
 export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
@@ -1018,7 +1018,7 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     method: "POST",
     summary: "POST systemone",
     description:
-      "System One models (TypeSafe Jev) through OpenRouter's System One API. TypeSafe-compatible body `{ model, state, questions }`; returns typed `answers` plus `usage`. Uses the dashboard `openrouter` credentials.",
+      "Typed decision models (`noul` / `choice` / `score` questions about a `state`). The first `model` prefix selects the connection that serves the request: `typesafe/jev-latest` calls TypeSafe directly, `openrouter/typesafe/jev-1.13` goes through OpenRouter, and `ollama-local/<model>` uses a configured local Ollama (0.35 or later). An unqualified id such as `jev-latest` keeps using OpenRouter. There is no fallback from a missing direct connection to a gateway.",
     tag: "V1 SystemOne",
     tags: ["V1 SystemOne"],
     requiresAuth: true,
@@ -1029,7 +1029,7 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     method: "GET",
     summary: "GET systemone models",
     description:
-      'Live list of System One (decisions) models from OpenRouter\'s public models API (`output_modalities=decisions`). No upstream credential is used. Returns `{ object: "list", data }` with upstream ids, names, architecture and pricing preserved. API-key endpoint category `systemone`, budget, rate limits and model allow/deny rules apply.',
+      'Decision models offered by the configured TypeSafe, OpenRouter and local Ollama connections, as `{ object: "list", data }`. Each `id` is the gateway-qualified model accepted by `POST /v1/systemone`. The `X-OmniRoute-Catalog-Status` header reports `complete`, `partial` or `unconfigured`. API-key endpoint category `systemone`, connection, budget, rate-limit and model rules apply.',
     tag: "V1 SystemOne",
     tags: ["V1 SystemOne"],
     requiresAuth: true,

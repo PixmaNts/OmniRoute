@@ -9,7 +9,7 @@ export type LocalSyncedEndpointRoute = {
 
 export async function resolveLocalSyncedEndpointRoute(
   modelStr: string,
-  endpoint: "embeddings" | "images"
+  endpoint: "embeddings" | "images" | "systemone"
 ): Promise<LocalSyncedEndpointRoute | null> {
   const slashIndex = modelStr.indexOf("/");
   if (slashIndex <= 0 || slashIndex === modelStr.length - 1) return null;
@@ -42,10 +42,9 @@ export async function resolveLocalSyncedEndpointRoute(
 
   for (const model of modelCandidates) {
     const overrideEndpoints = Array.isArray(customModelsForProvider)
-      ? (
-          customModelsForProvider as Array<{ id?: unknown; supportedEndpoints?: unknown }>
-        ).find((entry) => entry.id === modelStr || entry.id === `${providerPrefix}/${model}`)
-          ?.supportedEndpoints
+      ? (customModelsForProvider as Array<{ id?: unknown; supportedEndpoints?: unknown }>).find(
+          (entry) => entry.id === modelStr || entry.id === `${providerPrefix}/${model}`
+        )?.supportedEndpoints
       : undefined;
     const hasOverride = Array.isArray(overrideEndpoints) && overrideEndpoints.includes(endpoint);
 
@@ -53,7 +52,8 @@ export async function resolveLocalSyncedEndpointRoute(
       .filter(([, models]) =>
         models.some(
           (candidate) =>
-            candidate.id === model && (hasOverride || candidate.supportedEndpoints?.includes(endpoint))
+            candidate.id === model &&
+            (hasOverride || candidate.supportedEndpoints?.includes(endpoint))
         )
       )
       .map(([connectionId]) => connectionId);

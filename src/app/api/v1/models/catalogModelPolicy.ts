@@ -12,6 +12,7 @@ export function isUnifiedChatSourceModelSelectable(
 ): boolean {
   return (
     isModelSelectable(provider, model.id) &&
+    getModelEndpointDecision(provider, model.id, model.supportedEndpoints).kind !== "decision" &&
     getModelEndpointDecision(provider, model.id, model.supportedEndpoints).reason !==
       "provider-policy"
   );

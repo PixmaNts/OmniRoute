@@ -275,7 +275,10 @@ import { tabitokenProvider } from "./registry/tabitoken/index.ts";
 import { logfareProvider } from "./registry/logfare/index.ts";
 import { seekaiProvider } from "./registry/seekai/index.ts";
 
+import { typesafeProvider } from "./registry/typesafe/index.ts";
+
 export const REGISTRY: Record<string, RegistryEntry> = {
+  typesafe: typesafeProvider,
   aimlapi: aimlapiProvider,
   "mlx-gemma": mlxGemmaProvider,
   "mlx-qwen": mlxQwenProvider,

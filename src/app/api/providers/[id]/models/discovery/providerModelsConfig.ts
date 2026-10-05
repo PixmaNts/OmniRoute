@@ -28,6 +28,7 @@ import { isDashscopeTextModelId } from "@omniroute/open-sse/services/dashscopeTe
 import { extractZaiToken } from "@omniroute/open-sse/services/zaiWebCredentials.ts";
 import { isFeatureFlagEnabled } from "@/shared/utils/featureFlags";
 import { normalizeOpenAiLikeModelsResponse } from "./normalizers";
+import { applyDecisionModelCapabilities } from "@omniroute/open-sse/handlers/systemOneCatalog.ts";
 
 const QWEN_CLOUD_TEXT_MODEL_IDS = new Set(QWEN_CLOUD_TEXT_MODELS.map((model) => model.id));
 const ALIBABA_MODEL_STUDIO_MODEL_IDS = new Set(
@@ -544,7 +545,7 @@ export const PROVIDER_MODELS_CONFIG: Record<string, ProviderModelsConfigEntry> =
     headers: { "Content-Type": "application/json" },
     authHeader: "Authorization",
     authPrefix: "Bearer ",
-    parseResponse: (data) => data.data || [],
+    parseResponse: (data) => (data.data || []).map(applyDecisionModelCapabilities),
   },
   aimlapi: {
     // #5570: AI/ML API's live catalog (400+ models) lives at the public,

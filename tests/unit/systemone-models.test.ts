@@ -10,11 +10,12 @@ process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "systemone-models-tes
 
 const core = await import("../../src/lib/db/core.ts");
 const apiKeysDb = await import("../../src/lib/db/apiKeys.ts");
+const providersDb = await import("../../src/lib/db/providers.ts");
 const costRules = await import("../../src/domain/costRules.ts");
 const rateLimiter = await import("../../src/shared/utils/rateLimiter.ts");
 const route = await import("../../src/app/api/v1/systemone/models/route.ts");
-const { handleSystemOneModels, SYSTEMONE_MODELS_URL } =
-  await import("../../open-sse/handlers/systemOneModels.ts");
+const { SYSTEMONE_BACKENDS } = await import("../../open-sse/config/systemOneRegistry.ts");
+const { handleSystemOneModels } = await import("../../open-sse/handlers/systemOneModels.ts");
 
 rateLimiter.setRateLimiterTestMode(true);
 const originalFetch = globalThis.fetch;
@@ -86,8 +87,14 @@ function listRequest(headers: Record<string, string> = {}, urlPath = "/v1/system
   return new Request(`http://localhost${urlPath}`, { headers });
 }
 
-test.beforeEach(async () => {
+test.before(async () => {
   await core.ensureDbInitialized();
+  await providersDb.createProviderConnection({
+    provider: "openrouter",
+    apiKey: "sk-or-test",
+    name: "Decision catalog",
+    isActive: true,
+  });
 });
 
 test.afterEach(() => {
@@ -112,7 +119,12 @@ test("GET /v1/systemone/models lists decisions models with upstream ids, names a
   assert.equal(body.object, "list");
   assert.deepEqual(
     body.data.map((m) => m.id),
-    ["typesafe/jev-1.13", "~typesafe/jev-latest", "inception/mercury-decide:free", "liquid/d1"]
+    [
+      "openrouter/typesafe/jev-1.13",
+      "openrouter/~typesafe/jev-latest",
+      "openrouter/inception/mercury-decide:free",
+      "openrouter/liquid/d1",
+    ]
   );
   const jev = body.data[0];
   assert.equal(jev.object, "model");
@@ -125,7 +137,7 @@ test("GET /v1/systemone/models lists decisions models with upstream ids, names a
 
   assert.equal(calls.length, 1);
   assert.equal(calls[0].url, "https://openrouter.ai/api/v1/models?output_modalities=decisions");
-  assert.equal(calls[0].url, SYSTEMONE_MODELS_URL);
+  assert.equal(calls[0].url, SYSTEMONE_BACKENDS.openrouter.modelsUrl);
   // Public endpoint: no OpenRouter credential is attached.
   assert.equal(
     JSON.stringify(calls[0].init?.headers ?? {})
@@ -153,7 +165,7 @@ test("only decisions models are returned; chat and embedding models are dropped"
   const body = (await response.json()) as { data: Array<{ id: string }> };
   assert.deepEqual(
     body.data.map((m) => m.id),
-    ["typesafe/jev-1.13", "liquid/d1"]
+    ["openrouter/typesafe/jev-1.13", "openrouter/liquid/d1"]
   );
 });
 
@@ -229,12 +241,12 @@ test("the list reflects live upstream changes (no cache between calls)", async (
 test("handleSystemOneModels applies the supplied model filter", async () => {
   stubUpstream({ data: UPSTREAM_MODELS });
   const response = await handleSystemOneModels({
-    isModelAllowed: async (id) => id.replace(/^~/, "").startsWith("typesafe/"),
+    isModelAllowed: async (id) => id.startsWith("openrouter/typesafe/"),
   });
   const body = (await response.json()) as { data: Array<{ id: string }> };
   assert.deepEqual(
     body.data.map((m) => m.id),
-    ["typesafe/jev-1.13", "~typesafe/jev-latest"]
+    ["openrouter/typesafe/jev-1.13", "openrouter/~typesafe/jev-latest"]
   );
 });
 
@@ -291,7 +303,7 @@ test("model allow/deny rules narrow the list with the same canonical ids as POST
   ).json()) as { data: Array<{ id: string }> };
   assert.deepEqual(
     allowed.data.map((m) => m.id),
-    ["typesafe/jev-1.13"]
+    ["openrouter/typesafe/jev-1.13"]
   );
 
   const denyKey = await apiKeysDb.createApiKey("SO Deny Models", "machine-so-models-deny");
@@ -305,7 +317,11 @@ test("model allow/deny rules narrow the list with the same canonical ids as POST
   // `~typesafe/jev-latest` canonicalizes to typesafe/jev-latest, so the deny rule hides it too.
   assert.deepEqual(
     denied.data.map((m) => m.id),
-    ["typesafe/jev-1.13", "inception/mercury-decide:free", "liquid/d1"]
+    [
+      "openrouter/typesafe/jev-1.13",
+      "openrouter/inception/mercury-decide:free",
+      "openrouter/liquid/d1",
+    ]
   );
 });
 

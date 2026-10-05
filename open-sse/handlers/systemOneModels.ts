@@ -1,12 +1,11 @@
 /**
  * System One model catalog (`GET /v1/systemone/models`).
  *
- * OpenRouter publishes its decision (System One) models on the public models
- * API filtered by `output_modalities=decisions`; no upstream credential is
- * needed. The list is fetched live on every call so it follows provider
- * changes, validated at the trust boundary, and re-emitted as an OpenAI-style
- * `{ object: "list", data }` with the upstream ids, names, architecture and
- * pricing untouched.
+ * Each configured decision backend contributes its own live list: TypeSafe's native
+ * catalog (authenticated), OpenRouter's public models API filtered by
+ * `output_modalities=decisions`, and a local Ollama connection's synced `/api/show`
+ * capabilities. Lists are validated at the trust boundary, re-emitted as an OpenAI-style
+ * `{ object: "list", data }` under gateway-qualified ids, and never cached.
  */
 
 import { z } from "zod";
@@ -14,12 +13,31 @@ import { CORS_HEADERS } from "../utils/cors.ts";
 import { errorResponse } from "../utils/error.ts";
 import { sanitizeErrorMessage } from "../utils/errorSanitization.ts";
 import * as log from "@/sse/utils/logger";
+import { isSystemOneProvider, type SystemOneProvider } from "../config/systemOneRegistry.ts";
+import {
+  fetchSystemOne,
+  systemOneHeaders,
+  systemOneUrl,
+  type SystemOneCredentials,
+} from "./systemOneTransport.ts";
+import {
+  applyDecisionModelCapabilities,
+  parseTypeSafeModels,
+  perTokenPrice,
+  qualifyDecisionModel,
+} from "./systemOneCatalog.ts";
+import { getProviderConnections } from "@/lib/db/providers";
+import { getSyncedAvailableModelsForConnection } from "@/lib/db/models";
+import { getPricingForModel } from "@/lib/db/settings";
+import { isModelExcludedByConnection } from "@/domain/connectionModelRules";
+import { isFreeModel } from "@/shared/utils/freeModels";
+import { isAccountUnavailable, isModelLocked } from "../services/accountFallback.ts";
 
-export const SYSTEMONE_MODELS_URL =
-  "https://openrouter.ai/api/v1/models?output_modalities=decisions";
 export const SYSTEMONE_MODELS_TIMEOUT_MS = 10_000;
 // The real decisions list is a few tens of KB; anything this large is not it.
 const MAX_BODY_CHARS = 2_000_000;
+// Real backends list a handful of decision models; bound the per-model policy work.
+const MAX_MODELS_PER_BACKEND = 1000;
 const DECISIONS_MODALITY = "decisions";
 
 const upstreamModelSchema = z.object({
@@ -36,7 +54,7 @@ const upstreamModelSchema = z.object({
     tokenizer: z.string().optional(),
     instruct_type: z.string().nullable().optional(),
   }),
-  pricing: z.record(z.string(), z.string()),
+  pricing: z.record(z.string(), z.string()).optional(),
   top_provider: z
     .object({
       context_length: z.number().nullable().optional(),
@@ -55,8 +73,10 @@ export type SystemOneModel = z.infer<typeof upstreamModelSchema> & {
 };
 
 export interface SystemOneModelsOptions {
-  /** Per-model API-key policy filter; receives the upstream model id. */
+  /** Policy receives the canonical, gateway-qualified target POST accepts. */
   isModelAllowed?: (modelId: string) => Promise<boolean>;
+  allowedConnections?: string[] | null;
+  signal?: AbortSignal;
 }
 
 function toDecisionModel(raw: unknown): SystemOneModel | null {
@@ -73,34 +93,44 @@ function upstreamFailure(reason: string, status = 502): Response {
   return errorResponse(status, "System One models are temporarily unavailable");
 }
 
-export async function handleSystemOneModels(
-  options: SystemOneModelsOptions = {}
-): Promise<Response> {
-  let text: string;
-  try {
-    const res = await fetch(SYSTEMONE_MODELS_URL, {
-      method: "GET",
-      headers: { Accept: "application/json" },
-      signal: AbortSignal.timeout(SYSTEMONE_MODELS_TIMEOUT_MS),
-    });
-    if (!res.ok) return upstreamFailure(`HTTP ${res.status}`);
-    text = await res.text();
-  } catch (err) {
-    if (err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError")) {
-      return upstreamFailure("timeout", 504);
-    }
-    return upstreamFailure(sanitizeErrorMessage(err instanceof Error ? err.message : String(err)));
+async function fetchDecisionCatalog(
+  provider: SystemOneProvider,
+  credentials: SystemOneCredentials,
+  signal?: AbortSignal
+): Promise<Record<string, unknown>[]> {
+  if (provider === "ollama-local") {
+    // The connection's live-synced /api/show capabilities are authoritative; never
+    // synthesize a static local catalog or union another host's pulled models.
+    const rows = await getSyncedAvailableModelsForConnection(provider, credentials.connectionId!);
+    return rows
+      .filter((row) => row.supportedEndpoints?.includes("systemone"))
+      .map((row) => ({
+        ...row,
+        pricing: { prompt: "0", completion: "0" },
+        pricing_source: "local-upstream",
+      }));
   }
-  if (text.length > MAX_BODY_CHARS) return upstreamFailure("body too large");
+  let text: string;
+  const timeout = AbortSignal.timeout(SYSTEMONE_MODELS_TIMEOUT_MS);
+  const res = await fetchSystemOne(systemOneUrl(provider, credentials, true), credentials, {
+    method: "GET",
+    headers:
+      provider === "openrouter" ? { Accept: "application/json" } : systemOneHeaders(credentials),
+    signal: signal ? AbortSignal.any([signal, timeout]) : timeout,
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  text = await res.text();
+  if (text.length > MAX_BODY_CHARS) throw new Error("body too large");
 
   let json: unknown;
   try {
     json = JSON.parse(text);
   } catch {
-    return upstreamFailure("invalid JSON");
+    throw new Error("invalid JSON");
   }
+  if (provider === "typesafe") return withOperatorPricing(provider, parseTypeSafeModels(json));
   const list = upstreamListSchema.safeParse(json);
-  if (!list.success) return upstreamFailure("unexpected list shape");
+  if (!list.success) throw new Error("unexpected list shape");
 
   const models = list.data.data
     .map(toDecisionModel)
@@ -108,20 +138,200 @@ export async function handleSystemOneModels(
   // A non-empty upstream list with no valid decisions model means the filter or
   // the schema drifted; fail closed rather than present an empty catalog.
   if (list.data.data.length > 0 && models.length === 0) {
-    return upstreamFailure("no valid decisions models");
+    throw new Error("no valid decisions models");
   }
+  return models.map(applyDecisionModelCapabilities);
+}
 
-  const allowed: SystemOneModel[] = [];
-  for (const model of models) {
-    if (!options.isModelAllowed || (await options.isModelAllowed(model.id))) allowed.push(model);
+function isTimeout(error: unknown): boolean {
+  const cause = (error as { cause?: Error })?.cause;
+  return (
+    error instanceof Error &&
+    (error.name === "TimeoutError" ||
+      cause?.name === "TimeoutError" ||
+      (error as { code?: string }).code === "TIMEOUT")
+  );
+}
+
+type CatalogConnection = {
+  id: string;
+  provider: SystemOneProvider;
+  testStatus?: string | null;
+  rateLimitedUntil?: string | null;
+  apiKey?: string | null;
+  accessToken?: string | null;
+  providerSpecificData?: Record<string, unknown> | null;
+};
+
+/** An operator pricing row replaces the published native rate on the listed model. */
+async function withOperatorPricing(
+  provider: SystemOneProvider,
+  models: Record<string, unknown>[]
+): Promise<Record<string, unknown>[]> {
+  return Promise.all(
+    models.map(async (model) => {
+      const override = await getPricingForModel(provider, String(model.id));
+      if (!override || typeof override.input !== "number") return model;
+      const output = typeof override.output === "number" ? override.output : 0;
+      const { pricing_status: _unknown, ...rest } = model;
+      return {
+        ...rest,
+        pricing: {
+          prompt: perTokenPrice(override.input),
+          completion: perTokenPrice(output),
+        },
+        pricing_source: "operator",
+      };
+    })
+  );
+}
+
+async function listConfiguredConnections(
+  options: SystemOneModelsOptions
+): Promise<CatalogConnection[]> {
+  const allowedIds = options.allowedConnections?.length ? options.allowedConnections : null;
+  const rows = (await getProviderConnections({ isActive: true })) as unknown as Array<
+    CatalogConnection & { provider?: unknown }
+  >;
+  return rows.filter(
+    (row) =>
+      typeof row.provider === "string" &&
+      isSystemOneProvider(row.provider) &&
+      (!allowedIds || allowedIds.includes(String(row.id)))
+  );
+}
+
+function isTerminal(connection: CatalogConnection, model: string | null): boolean {
+  const status = (connection.testStatus || "").trim().toLowerCase();
+  if (status === "banned" || status === "expired") return true;
+  if (status !== "credits_exhausted") return false;
+  // OpenRouter bills `:free` models apart from the exhausted paid balance.
+  return !(
+    connection.provider === "openrouter" &&
+    model &&
+    isFreeModel("openrouter", { id: model })
+  );
+}
+
+/** Read-only routing eligibility: no selection, lease, usage or cooldown writes. */
+function canServe(connection: CatalogConnection, model: string | null): boolean {
+  if (isTerminal(connection, model) || isAccountUnavailable(connection.rateLimitedUntil)) {
+    return false;
   }
+  if (!model) return true;
+  return (
+    !isModelExcludedByConnection(model, connection.providerSpecificData) &&
+    !isModelLocked(connection.provider, connection.id, model)
+  );
+}
 
-  return new Response(JSON.stringify({ object: "list", data: allowed }), {
+function toCredentials(connection: CatalogConnection): SystemOneCredentials {
+  return {
+    connectionId: connection.id,
+    apiKey: connection.apiKey ?? null,
+    accessToken: connection.accessToken ?? null,
+    providerSpecificData: connection.providerSpecificData ?? null,
+  };
+}
+
+/** A model is listed only if some connection of the group could serve it and the key may use it. */
+async function isListable(
+  provider: SystemOneProvider,
+  group: CatalogConnection[],
+  model: Record<string, unknown>,
+  options: SystemOneModelsOptions
+): Promise<boolean> {
+  const upstreamId = String(model.id).replace(/^~/, "");
+  if (!group.some((connection) => canServe(connection, upstreamId))) return false;
+  return !options.isModelAllowed || options.isModelAllowed(`${provider}/${upstreamId}`);
+}
+
+/** Remote catalogs are read once per provider (first healthy connection); local ones per host. */
+async function collectGroup(
+  provider: SystemOneProvider,
+  group: CatalogConnection[],
+  options: SystemOneModelsOptions,
+  into: Map<string, Record<string, unknown>>
+): Promise<void> {
+  const eligible = group.filter((connection) => canServe(connection, null));
+  if (!eligible.length) throw new Error(`no eligible ${provider} connection`);
+  let lastError: unknown = null;
+  // OpenRouter's decision list is public, so another key cannot fix a failed read.
+  for (const connection of provider === "openrouter" ? eligible.slice(0, 1) : eligible) {
+    try {
+      const models = await fetchDecisionCatalog(
+        provider,
+        toCredentials(connection),
+        options.signal
+      );
+      for (const model of models.slice(0, MAX_MODELS_PER_BACKEND)) {
+        const canonical = `${provider}/${String(model.id).replace(/^~/, "")}`;
+        if (into.has(canonical)) continue;
+        if (
+          await isListable(
+            provider,
+            provider === "ollama-local" ? [connection] : eligible,
+            model,
+            options
+          )
+        ) {
+          into.set(canonical, qualifyDecisionModel(provider, model));
+        }
+      }
+      return;
+    } catch (error) {
+      if (options.signal?.aborted) throw error;
+      lastError = error;
+    }
+  }
+  throw lastError;
+}
+
+function groupConnections(connections: CatalogConnection[]): CatalogConnection[][] {
+  const groups = new Map<string, CatalogConnection[]>();
+  for (const connection of connections) {
+    // Each local host has its own inventory; a remote provider has one catalog.
+    const key =
+      connection.provider === "ollama-local" ? `local:${connection.id}` : connection.provider;
+    groups.set(key, [...(groups.get(key) ?? []), connection]);
+  }
+  return [...groups.values()];
+}
+
+function catalogStatus(configured: number, failed: number): string {
+  if (!configured) return "unconfigured";
+  return failed ? "partial" : "complete";
+}
+
+export async function handleSystemOneModels(
+  options: SystemOneModelsOptions = {}
+): Promise<Response> {
+  const groups = groupConnections(await listConfiguredConnections(options));
+  const listed = new Map<string, Record<string, unknown>>();
+  let fetched = 0;
+  let failed = 0;
+  let timedOut = false;
+  for (const group of groups) {
+    try {
+      await collectGroup(group[0].provider, group, options, listed);
+      fetched++;
+    } catch (error) {
+      failed++;
+      timedOut ||= isTimeout(error);
+      log.warn("SYSTEMONE", `models backend failed: ${sanitizeErrorMessage(error)}`);
+    }
+  }
+  if (options.signal?.aborted) return errorResponse(499, "Request aborted by caller");
+  if (groups.length && !fetched) {
+    return upstreamFailure("all configured decision backends unavailable", timedOut ? 504 : 502);
+  }
+  return new Response(JSON.stringify({ object: "list", data: [...listed.values()] }), {
     status: 200,
     headers: {
       ...CORS_HEADERS,
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
+      "X-OmniRoute-Catalog-Status": catalogStatus(groups.length, failed),
     },
   });
 }

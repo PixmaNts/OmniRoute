@@ -3,6 +3,17 @@
  * Pure data; merged by apikey/index.ts via spread (god-file decomposition; semantic split).
  */
 export const APIKEY_PROVIDERS_SPECIALTY = {
+  typesafe: {
+    id: "typesafe",
+    serviceKinds: ["decision"],
+    alias: "typesafe",
+    name: "TypeSafe AI",
+    icon: "fact_check",
+    color: "#0F766E",
+    textIcon: "TS",
+    website: "https://typesafe.ai",
+    authHint: "Bearer API key for api.typesafe.ai. Decision inference through /v1/systemone.",
+  },
   nlpcloud: {
     id: "nlpcloud",
     serviceKinds: ["llm"],

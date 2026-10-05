@@ -6,6 +6,7 @@ import type { ServiceKind } from "@/shared/constants/providers";
 
 const KIND_ICON: Record<ServiceKind, string> = {
   llm: "chat",
+  decision: "fact_check",
   embedding: "data_object",
   image: "image",
   imageToText: "image_search",
@@ -32,6 +33,7 @@ interface ServiceKindTabsProps {
  */
 export function ServiceKindTabs({ kinds, activeKind, onSelect, className }: ServiceKindTabsProps) {
   const t = useTranslations("media");
+  const tEndpoint = useTranslations("endpoint");
 
   if (kinds.length <= 1) return null;
 
@@ -39,7 +41,8 @@ export function ServiceKindTabs({ kinds, activeKind, onSelect, className }: Serv
     <div className={cn("flex flex-wrap gap-2", className)}>
       {kinds.map((kind) => {
         const isActive = kind === activeKind;
-        const label = t(`kinds.${kind}`);
+        // Decision models have no media.kinds entry; reuse the translated System One title.
+        const label = kind === "decision" ? tEndpoint("categorySystemOne") : t(`kinds.${kind}`);
         const icon = KIND_ICON[kind] ?? "category";
         return (
           <button

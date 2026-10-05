@@ -1,7 +1,18 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 
-import { handleSystemOneProxy } from "../../open-sse/handlers/systemOne.ts";
+const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-systemone-proxy-"));
+process.env.DATA_DIR = dataDir;
+const { handleSystemOneProxy } = await import("../../open-sse/handlers/systemOne.ts");
+const { resetDbInstance } = await import("../../src/lib/db/core.ts");
+test.after(async () => {
+  await new Promise<void>((resolve) => setImmediate(resolve));
+  resetDbInstance();
+  fs.rmSync(dataDir, { recursive: true, force: true });
+});
 import { v1SystemOneSchema } from "../../src/shared/validation/schemas.ts";
 
 const BODY = {
@@ -93,11 +104,11 @@ test("systemone proxy 401s without an OpenRouter key", async () => {
   assert.equal(response.status, 401);
 });
 
-test("systemone model ids canonicalize to one policy namespace", async () => {
-  const { canonicalSystemOneModel } = await import("../../open-sse/handlers/systemOne.ts");
-  assert.equal(canonicalSystemOneModel("jev-latest"), "typesafe/jev-latest");
-  assert.equal(canonicalSystemOneModel("~typesafe/jev-latest"), "typesafe/jev-latest");
-  assert.equal(canonicalSystemOneModel("typesafe/jev-1.13"), "typesafe/jev-1.13");
+test("OpenRouter spellings of one model canonicalize to one policy namespace", async () => {
+  const { resolveSystemOneTarget } = await import("../../open-sse/config/systemOneRegistry.ts");
+  for (const id of ["jev-latest", "~typesafe/jev-latest", "openrouter/typesafe/jev-latest"]) {
+    assert.equal(resolveSystemOneTarget(id).canonicalModel, "openrouter/typesafe/jev-latest");
+  }
 });
 
 test("/v1/systemone is its own API-key endpoint category", async () => {
@@ -146,7 +157,7 @@ test("systemone proxy sanitizes thrown fetch errors", async () => {
         body: BODY,
         credentials: { apiKey: "sk-or-test" },
       });
-      assert.equal(response.status, 500);
+      assert.equal(response.status, 502);
       const json = (await response.json()) as { error: { message: string } };
       assert.ok(!json.error.message.includes("at /"));
       assert.ok(!json.error.message.includes("sk-or-leaked"));

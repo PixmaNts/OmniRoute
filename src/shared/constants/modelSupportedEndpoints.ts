@@ -1,5 +1,6 @@
 export const MODEL_SUPPORTED_ENDPOINT_VALUES = [
   "chat",
+  "systemone",
   "embeddings",
   "rerank",
   "images",
@@ -34,9 +35,15 @@ export function normalizeModelSupportedEndpoints(endpoints: readonly string[]): 
 }
 
 export function classifyModelSupportedEndpoints(endpoints: readonly string[]): {
-  type?: "embedding" | "rerank" | "image" | "video" | "audio";
+  type?: "embedding" | "rerank" | "image" | "video" | "audio" | "decision";
   subtype?: "speech" | "transcription";
 } {
+  if (
+    endpoints.includes("systemone") &&
+    !endpoints.includes("chat") &&
+    !endpoints.includes("responses")
+  )
+    return { type: "decision" };
   if (endpoints.includes("embeddings")) return { type: "embedding" };
   if (endpoints.includes("rerank")) return { type: "rerank" };
   if (endpoints.includes("images")) return { type: "image" };
@@ -67,6 +74,8 @@ export function defaultEndpointsForProviderNodeApiType(
   apiType: string | null | undefined
 ): ModelSupportedEndpoint[] {
   switch ((apiType || "").trim().toLowerCase()) {
+    case "systemone":
+      return ["systemone"];
     case "embeddings":
       return ["embeddings"];
     case "rerank":
