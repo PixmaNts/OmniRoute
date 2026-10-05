@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — 무료 AI 게이트웨이
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — 코딩을 멈추지 마세요. 모든 AI 도구 → 358개 공급자 — 150개 이상 무료 — 단일 엔드포인트를 통해. Claude Code, Codex, Cursor, Cline, Copilot 및 Antigravity를 자동 대체 기능으로 무료 Claude / GPT / Gemini로. RTK + Caveman 스택 압축으로 15–95% 토큰 절약 (평균 ~89%) — 한도에 도달할 일이 없습니다. 358개 AI 공급자 · 150개 이상 무료 티어 · 월 ~16.2억 무료 토큰 · 19가지 라우팅 전략 · 시작 비용 $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — 코딩을 멈추지 마세요. 모든 AI 도구를 하나의 엔드포인트를 통해 359개 제공업체(무료 제공업체 150개 이상)에 연결합니다. Claude Code, Codex, Cursor, Cline, Copilot 및 Antigravity를 자동 대체 기능으로 무료 Claude / GPT / Gemini에 연결합니다. RTK + Caveman 조합 압축으로 토큰을 15–95% 절약합니다(평균 약 89%). 한도에 도달하지 않습니다. AI 제공업체 359개 · 무료 티어 150개 이상 · 월 무료 토큰 약 1.62B개 · 라우팅 전략 19개 · 시작 비용 $0."/>
 
 </div>
 
@@ -214,22 +214,22 @@
 
 <div align="center">
 
-## 🆓 설치하는 즉시 작동 — 키도, 설정도 필요 없습니다
+## 🆓 설치하는 즉시 작동 — 키도 설정도 필요 없음
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="설치하는 즉시 작동 — 제로 설정. 세 단계: 1. 설치 — npm i -g omniroute, 서버가 localhost:20128에서 부팅됩니다. 2. 도구를 http://localhost:20128/v1로 연결 — 모든 OpenAI 호환 도구(Claude Code, Cursor, Cline). 3. 응답 — API 키, 가입, 설정 없이 즉시 응답을 위해 모델 auto를 호출합니다. 키리스 제공업체 OpenCode Free는 auto 콤보에 미리 연결되어 있어, 새로 설치하면 바로 작동합니다."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="설치하는 즉시 작동 — 설정이 필요 없습니다. 세 단계: 1. 설치 — npm i -g omniroute, 서버가 localhost:20128에서 시작됩니다. 2. 도구에서 http://localhost:20128/v1을 지정 — OpenAI 호환 도구(Claude Code, Cursor, Cline)라면 무엇이든 사용할 수 있습니다. 3. 응답 확인 — 모델 auto를 호출해 API 키, 가입, 설정 없이 바로 응답을 받으세요. 키가 필요 없는 제공업체 OpenCode Free가 auto 조합에 미리 연결되어 있어, 새로 설치해도 바로 응답합니다."/>
 
 ```bash
-# 새로 설치, 자격 증명 없음 — `auto`는 이미 작동합니다:
+# 새로 설치하고 인증 정보 없이도 `auto`가 바로 작동합니다:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>특정 무료 백엔드를 선호하시나요? `oc/…` (OpenCode Free)를 직접 호출하세요. 그런 다음 `auto`로 전환하여 OmniRoute가 선택하도록 하세요.</sub>
+<sub>특정 무료 백엔드를 사용하고 싶으신가요? `oc/…`(OpenCode Free)를 직접 호출하세요. 그런 다음 `auto`로 전환하면 OmniRoute가 선택합니다.</sub>
 
-<sub>📦 **Python, Node.js, PHP, cURL**용 빠른 시작 스크립트 복사-붙여넣기 → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 **Python, Node.js, PHP, cURL**용 빠른 시작 스크립트 복사 및 붙여넣기 → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="약속 — 하나의 엔드포인트와 358개의 제공업체. 자동 대체 기능은 다른 정상적인 대상이 사용 가능한 동안 라우팅을 유지합니다. 여섯 가지 핵심 요소: 358개 제공업체에 걸친 탄력적인 대체 기능 · 적격 워크로드에서 최대 95% 토큰 절약 · 150개 이상의 무료 티어와 54개의 반복/키리스 영구 무료 제공업체로 $0부터 시작 · 하나의 설정을 통해 36개의 CLI/에이전트 통합 · /v1에서 OpenAI, Claude, Gemini 및 Responses API 호환성 · 회로 차단기, TLS 스텔스, MCP 110 도구, A2A, 메모리, 가드레일, 평가 및 5,100개 이상의 추적된 테스트 파일에 걸친 39,000개 이상의 정적 테스트 선언을 포함한 프로덕션 제어."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute의 약속 — 하나의 엔드포인트와 359개 제공업체. 정상적으로 사용할 수 있는 대상이 있으면 자동 대체 기능으로 라우팅을 계속합니다. 여섯 가지 핵심 가치: 359개 제공업체 전반에서 복원력 있는 대체 처리 · 적합한 워크로드에서 최대 95% 토큰 절감 · 150개 이상의 무료 티어와 54개의 정기 제공/키 불필요 무료 영구 제공업체로 $0부터 시작 · 하나의 설정으로 36개의 CLI/에이전트 통합 · /v1에서 OpenAI, Claude, Gemini 및 Responses API 호환 · 서킷 브레이커, TLS 스텔스, 110개 MCP 도구, A2A, 메모리, 가드레일, 평가, 5,100개 이상의 추적 테스트 파일에 걸친 39,000개 이상의 정적 테스트 선언을 포함한 프로덕션 제어 기능."/>
 
 <br/>
 <br/>
@@ -250,11 +250,11 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="왜 OmniRoute인가 — 10개의 대시보드, 만료된 API 키, 예상치 못한 요금 청구에 시달리지 마세요. 10가지 일상적인 문제점 vs 해결책: 할당량 미사용 만료 → 구독 최대화; 코딩 중 속도 제한 → 4단계 자동 대체 (구독 → API → 저렴 → 무료); 도구 출력이 토큰 소모 → RTK + Caveman 압축 (15–95%); 비싼 API → 비용 최적화 라우팅; 모든 도구에 자체 설정 → 하나의 엔드포인트, 하나의 대시보드; AI 차단 → 3단계 프록시 + TLS 스텔스; 만료된 키 → 3단계 탄력성 (회로 차단기, 키 쿨다운, 모델 잠금); 팀이 하나의 구독 공유 → 공정한 할당량의 키 풀; 누군가의 클라우드를 통한 프롬프트 → AES-256-GCM 암호화 키를 사용한 로컬 우선; 지출 가시성 없음 → 실시간 분석 (사용량, 할당량, 절약, p95 지연 시간)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="왜 OmniRoute인가요 — 10개의 대시보드, 만료된 API 키, 예상치 못한 요금에 더는 시달리지 마세요. 일상적인 문제와 해결 방법 10가지: 사용하지 않고 만료되는 할당량 → 구독 최대한 활용; 코딩 도중 발생하는 속도 제한 → 4단계 자동 대체(구독 → API → 저비용 → 무료); 토큰을 소모하는 도구 출력 → RTK + Caveman 압축(15–95%); 비싼 API → 비용 최적화 라우팅; 도구마다 다른 설정 → 하나의 엔드포인트, 하나의 대시보드; AI 차단 → 3단계 프록시 + TLS 스텔스; 만료된 키 → 3단계 복원력(서킷 브레이커, 키 쿨다운, 모델 차단); 팀이 하나의 구독을 공유 → 공정 할당량이 적용되는 키 풀; 다른 사람의 클라우드를 거치는 프롬프트 → AES-256-GCM 암호화 키를 사용하는 로컬 우선 방식; 지출 내역을 확인할 수 없음 → 실시간 분석(사용량, 할당량, 절감액, p95 지연 시간)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute 요청 흐름: IDE 또는 CLI (Claude Code, Cursor, Cline…)가 하나의 로컬 엔드포인트 (http://localhost:20128/v1)를 호출합니다; OmniRoute 스마트 라우터 (RTK + Caveman 압축, 19가지 라우팅 전략, 회로 차단기, TLS 스텔스, MCP, A2A, 가드레일)는 적격하고 정상적인 대상이 남아있는 동안 4단계 제공업체 티어 (티어 1 구독, 티어 2 API 키, 티어 3 저렴, 티어 4 무료)를 통해 대체할 수 있습니다."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute 요청 흐름: IDE 또는 CLI(Claude Code, Cursor, Cline…)가 하나의 로컬 엔드포인트(http://localhost:20128/v1)를 호출합니다. OmniRoute Smart Router(RTK + Caveman 압축, 19개 라우팅 전략, 서킷 브레이커, TLS 스텔스, MCP, A2A, 가드레일)는 정상적으로 사용할 수 있는 적합한 대상이 있는 동안 4개 제공업체 티어를 거쳐 대체 처리할 수 있습니다 — 티어 1 구독, 티어 2 API 키, 티어 3 저비용, 티어 4 무료."/>
 
 </div>
 
@@ -488,13 +488,13 @@ curl http://localhost:20128/v1/chat/completions \
 
 <div align="center">
 
-## 🏆 OmniRoute가 차별화되는 점
+## 🏆 OmniRoute의 차별점
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute가 차별화되는 점 — 9router, OpenRouter, CLIProxyAPI 및 LiteLLM과 비교한 13가지 기능에 대한 최신 기능 스냅샷. OmniRoute: 358개 공급자, 150개 이상의 무료 티어 내장, 19가지 라우팅 전략, 12개 엔진 토큰 압축, 110개 도구가 포함된 내장 MCP 서버, A2A 에이전트 프로토콜, 영구 메모리, 가드레일, 클라우드 에이전트, TLS 지문 스텔스, Desktop/Termux/PWA 및 42개 i18n UI 로케일. OmniRoute는 MIT 라이선스이며 자체 호스팅 가능합니다. 경쟁사 기능 및 개수는 변경될 수 있습니다. 연결된 방법론을 참조하십시오."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute의 차별점 — 13개 기능에서 9router, OpenRouter, CLIProxyAPI, LiteLLM과 비교한 날짜 기준 기능 스냅샷. OmniRoute: 359개 제공자, 기본 제공 무료 티어 150개 이상, 19가지 라우팅 전략, 12개 엔진 토큰 압축, 110개 도구를 갖춘 기본 제공 MCP 서버, A2A 에이전트 프로토콜, 영구 메모리, 가드레일, 클라우드 에이전트, TLS 지문 위장, Desktop/Termux/PWA, 42개 UI 현지화 언어. OmniRoute는 MIT 라이선스로 제공되며 자체 호스팅이 가능합니다. 경쟁 제품의 기능과 수치는 변경될 수 있습니다. 링크된 방법론을 참조하세요."/>
 
-<sub>📊 9router, OpenRouter, CLIProxyAPI 및 LiteLLM과 비교한 전체 방법론 및 기능별 세부 정보 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 9router, OpenRouter, CLIProxyAPI, LiteLLM과 비교한 전체 방법론 및 기능별 세부 정보 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

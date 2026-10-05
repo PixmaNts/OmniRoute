@@ -11,9 +11,9 @@
 <br/>
 <br/>
 
-# 🚀 OmniRoute — ነጻው የኤአይይ መግቢያ በር
+# 🚀 OmniRoute — ነፃ AI ጌትዌይ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ኮድ መስራት አታቁም:: እያንዳንዱ የኤአይይ መሳሪያ → 358 አቅራቢዎች — 150+ ነጻ — በአንድ የመጨረሻ ነጥብ በኩል:: Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ወደ ነጻ Claude / GPT / Gemini በራስ-ሰር ምትኬ:: RTK + Caveman የተደራረበ መጭመቂያ 15–95% ቶከኖችን ይቆጥባል (~89% በአማካይ) — ገደቦችን በጭራሽ አይመታም:: 358 የኤአይይ አቅራቢዎች · 150+ ነጻ ደረጃዎች · ~1.62B ነጻ ቶከኖች/በወር · 19 የማዞሪያ ስልቶች · ለመጀመር $0::"/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ኮድ መጻፍን ፈጽሞ አታቁም። እያንዳንዱ AI መሣሪያ → 359 አቅራቢዎች — 150+ ነፃ — በአንድ ኤንድፖይንት በኩል። Claude Code፣ Codex፣ Cursor፣ Cline፣ Copilot እና Antigravity ወደ ነፃ Claude / GPT / Gemini በራስ-ሰር መቀያየር። RTK + Caveman በአንድ ላይ የተደረደረ ጭመቃ 15–95% ቶከኖችን (~89% በአማካይ) ይቆጥባል — ገደቦችን ፈጽሞ አይደርሱም። 359 AI አቅራቢዎች · 150+ ነፃ እቅዶች · ~1.62B ነፃ ቶከኖች/ወር · 19 የማዞሪያ ስልቶች · ለመጀመር $0."/>
 
 </div>
 
@@ -214,22 +214,22 @@
 
 <div align="center">
 
-## 🆓 እንደጫኑት ወዲያውኑ ይሰራል — ምንም ቁልፎች የሉም፣ ምንም ቅንብር የለም
+## 🆓 እንደጫኑት ወዲያውኑ ይሰራል — ቁልፍም ሆነ ውቅር አያስፈልግም
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="እንደጫኑት ወዲያውኑ ይሰራል — ምንም ቅንብር የለም። ሶስት ደረጃዎች: 1. ይጫኑ — npm i -g omniroute፣ ሰርቨሩ በ localhost:20128 ላይ ይጀምራል። 2. መሳሪያዎን ወደ http://localhost:20128/v1 ያመልክቱ — ማንኛውም ከ OpenAI ጋር ተኳሃኝ የሆነ መሳሪያ (Claude Code, Cursor, Cline)። 3. ይመልሳል — ፈጣን ምላሽ ለማግኘት auto ሞዴሉን ይጠቀሙ፣ ያለ API ቁልፍ፣ ያለ ምዝገባ፣ ያለ ቅንብር። ቁልፍ የሌለው አቅራቢ OpenCode Free በ auto ጥምር ውስጥ አስቀድሞ የተገጠመ ነው፣ ስለዚህ አዲስ ጭነት ወዲያውኑ ምላሽ ይሰጣል።"/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="እንደጫኑት ወዲያውኑ ይሰራል — ዜሮ ውቅር። ሦስት ደረጃዎች፦ 1. ይጫኑ — npm i -g omniroute፣ አገልጋዩ በlocalhost:20128 ላይ ይነሳል። 2. መሣሪያዎን ወደ http://localhost:20128/v1 ያመልክቱ — ከOpenAI ጋር ተስማሚ የሆነ ማንኛውም መሣሪያ (Claude Code፣ Cursor፣ Cline)። 3. ምላሽ ይሰጣል — ፈጣን ምላሽ ለማግኘት model auto ይጥሩ፤ API ቁልፍ፣ ምዝገባ ወይም ውቅር አያስፈልግም። ቁልፍ የማይፈልገው OpenCode Free አቅራቢ በauto ጥምረት ውስጥ አስቀድሞ ተዋቅሯል፤ ስለዚህ አዲስ ጭነት ከጀማሪው ጀምሮ ምላሽ ይሰጣል።"/>
 
 ```bash
-# አዲስ ጭነት፣ ዜሮ ምስክርነቶች — auto አስቀድሞ ይሰራል።
+# አዲስ ጭነት፣ ዜሮ ምስክርነቶች — `auto` አስቀድሞ ይሰራል፦
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>የተለየ ነፃ የኋላ-መጨረሻ ይመርጣሉ? `oc/…` (OpenCode Free)ን በቀጥታ ይደውሉ። ከዚያ ወደ `auto` ያሻሽሉ እና OmniRoute እንዲመርጥ ያድርጉ።</sub>
+<sub>የተወሰነ ነፃ የኋላ አገልግሎት ይመርጣሉ? `oc/…` (OpenCode Free) በቀጥታ ይጥሩ። ከዚያ ወደ `auto` ይሸጋገሩና OmniRoute እንዲመርጥ ይተዉት።</sub>
 
-<sub>📦 ለ**Python, Node.js, PHP, እና cURL** ፈጣን ማስጀመሪያ ስክሪፕቶችን ይቅዱ-ይለጥፉ → [`examples/quickstart/`] (examples/quickstart/)</sub>
+<sub>📦 ለ**Python፣ Node.js፣ PHP እና cURL** የተዘጋጁ ፈጣን መጀመሪያ ስክሪፕቶችን ቅዳ-ለጥፍ → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
@@ -239,22 +239,22 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ቃል ኪዳኑ — አንድ የመጨረሻ ነጥብ እና 358 አቅራቢዎች። ሌላ ጤናማ ኢላማ እስካለ ድረስ አውቶማቲክ ምትኬ መስመሩን ይቀጥላል። ስድስት ምሰሶዎች: በ358 አቅራቢዎች ላይ ጠንካራ ምትኬ · ብቁ በሆኑ የስራ ጫናዎች ላይ እስከ 95% የቶከን ቁጠባ · ከ150+ ነፃ ደረጃዎች እና 54 ተደጋጋሚ/ቁልፍ የሌላቸው ለዘላለም ነፃ አቅራቢዎች ጋር ለመጀመር $0 · በአንድ ቅንብር በኩል 36 CLI/ወኪል ውህደቶች · OpenAI, Claude, Gemini እና Responses API ተኳሃኝነት በ /v1 · የምርት መቆጣጠሪያዎች እንደ ሰርክዩት ብሬከሮች፣ TLS ስቴልዝ፣ MCP 110 መሳሪያዎች፣ A2A፣ ሜሞሪ፣ ጋርድሬሎች፣ ኢቫልስ እና ከ5,100+ በላይ ክትትል የሚደረግባቸው የሙከራ ፋይሎች ላይ 39,000+ የማይንቀሳቀሱ የሙከራ መግለጫዎችን ጨምሮ።"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ቃል ኪዳኑ — አንድ መድረሻ እና 359 አቅራቢዎች። ሌላ ጤናማ መድረሻ እስካለ ድረስ ራስ-ሰር የመመለሻ መንገድ ማዘዋወርን ይቀጥላል። ስድስት መሠረታዊ አቅሞች፦ በ359 አቅራቢዎች ላይ ጽኑ የመመለሻ መንገድ · ብቁ በሆኑ የሥራ ጫናዎች ላይ እስከ 95% የቶከን ቁጠባ · ከ150+ ነፃ እቅዶች እና 54 በተደጋጋሚ የሚቀርቡ/ቁልፍ የማይፈልጉ ለዘላለም ነፃ አቅራቢዎች ጋር በ$0 መጀመር · በአንድ ውቅር 36 የCLI/ኤጀንት ውህደቶች · በ/v1 ላይ ከOpenAI፣ Claude፣ Gemini እና Responses API ጋር ተስማሚነት · የምርት አካባቢ ቁጥጥሮች፤ circuit breaker-ዎች፣ TLS stealth፣ MCP 110 መሣሪያዎች፣ A2A፣ ማህደረ ትውስታ፣ የጥበቃ ሕጎች፣ ግምገማዎች እና በ5,100+ በተከታተሉ የሙከራ ፋይሎች ውስጥ 39,000+ የማይለወጡ የሙከራ መግለጫዎች።"/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 ለምን OmniRoute?
+# 🤔 OmniRoute ለምን?
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="ለምን OmniRoute — 10 ዳሽቦርዶችን፣ የሞቱ የኤፒአይ ቁልፎችን እና ያልተጠበቁ ሂሳቦችን ማስተናገድ ያቁሙ። አስር የዕለት ተዕለት ችግሮች ከ መፍትሄዎቻቸው ጋር: ያልተጠቀመ ኮታ ጊዜው እያለፈ → የደንበኝነት ምዝገባዎችን ከፍ ማድረግ፤ ኮድ በሚጽፉበት ጊዜ የፍጥነት ገደቦች → 4-ደረጃ አውቶማቲክ ምትኬ (ደንበኝነት ምዝገባ → API → ርካሽ → ነፃ)፤ የመሳሪያ ውጤቶች ቶከኖችን ማቃጠል → RTK + Caveman መጭመቂያ (15–95%)፤ ውድ ኤፒአይዎች → ወጪ-የተመቻቸ መስመር፤ እያንዳንዱ መሳሪያ የራሱ ቅንብር → አንድ የመጨረሻ ነጥብ፣ አንድ ዳሽቦርድ፤ AI ታግዷል → 3-ደረጃ ፕሮክሲ + TLS ስቴልዝ፤ የሞቱ ቁልፎች → 3-ንብርብር የመቋቋም ችሎታ (ሰርክዩት ብሬከሮች፣ ቁልፍ ማቀዝቀዝ፣ ሞዴል መቆለፍ)፤ ቡድን አንድ የደንበኝነት ምዝገባን መጋራት → ቁልፍ ገንዳዎች ከፍትሃዊ ድርሻ ኮታዎች ጋር፤ ጥያቄዎች በሌላ ሰው ክላውድ በኩል → በአካባቢ-መጀመሪያ በ AES-256-GCM የተመሰጠሩ ቁልፎች፤ የወጪ ታይነት የለም → የቀጥታ ትንታኔዎች (አጠቃቀም፣ ኮታ፣ ቁጠባ፣ p95 መዘግየት)።"/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="OmniRoute ለምን — 10 ዳሽቦርዶችን፣ የሞቱ የAPI ቁልፎችን እና ያልተጠበቁ ሂሳቦችን ማዞር ያቁሙ። አሥር ዕለታዊ ችግሮች እና መፍትሄዎቻቸው፦ ሳይጠቀሙበት የሚያልቅ ኮታ → የደንበኝነት ምዝገባዎችን ከፍተኛ ጥቅም ላይ ማዋል፤ በኮድ መጻፍ መካከል የደረጃ ገደቦች → በ4 ደረጃዎች ራስ-ሰር መመለሻ (Subscription → API → Cheap → Free)፤ የመሣሪያ ውጤቶች ቶከኖችን ማባከን → RTK + Caveman መጭመቅ (15–95%)፤ ውድ APIs → ወጪን የሚያሻሽል ማዘዋወር፤ እያንዳንዱ መሣሪያ የራሱ ማዋቀር ይፈልጋል → አንድ መድረሻ፣ አንድ ዳሽቦርድ፤ AI ታግዷል → ባለ3 ደረጃ ፕሮክሲ + TLS stealth፤ የማይሰሩ ቁልፎች → ባለ3 ንብርብር ጽናት (circuit breaker-ዎች፣ የቁልፍ ማቀዝቀዣ፣ የሞዴል መዝጊያ)፤ ቡድን አንድን የደንበኝነት ምዝገባ መጋራት → ፍትሃዊ የኮታ ድርሻ ያላቸው የቁልፍ ስብስቦች፤ ጥያቄዎች በሌላ ሰው ደመና በኩል ማለፍ → አካባቢያዊ-ቅድሚያ ያለው ከAES-256-GCM ጋር ተመስጥረው የሚቀመጡ ቁልፎች፤ የወጪ ክትትል አለመኖር → ቀጥታ ትንታኔ (አጠቃቀም፣ ኮታ፣ ቁጠባ፣ p95 መዘግየት)።"/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="የOmniRoute ጥያቄ ፍሰት: የእርስዎ IDE ወይም CLI (Claude Code, Cursor, Cline…) አንድ የአካባቢ የመጨረሻ ነጥብ (http://localhost:20128/v1) ይጠራል፤ የOmniRoute ስማርት ራውተር (RTK + Caveman መጭመቂያ፣ 19 የማዞሪያ ስልቶች፣ ሰርክዩት ብሬከሮች፣ TLS ስቴልዝ፣ MCP፣ A2A፣ ጋርድሬሎች) ብቁ ጤናማ ኢላማ እስካለ ድረስ በ4 የአቅራቢ ደረጃዎች ላይ ምትኬ ሊጠቀም ይችላል — ደረጃ 1 የደንበኝነት ምዝገባ፣ ደረጃ 2 API ቁልፍ፣ ደረጃ 3 ርካሽ እና ደረጃ 4 ነፃ።"/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="የOmniRoute ጥያቄ ፍሰት፦ IDE ወይም CLIዎ (Claude Code፣ Cursor፣ Cline…) አንድ አካባቢያዊ መድረሻን (http://localhost:20128/v1) ይጠራል፤ OmniRoute Smart Router (RTK + Caveman መጭመቅ፣ 19 የማዘዋወር ስልቶች፣ circuit breaker-ዎች፣ TLS stealth፣ MCP፣ A2A፣ የጥበቃ ሕጎች) ብቁና ጤናማ መድረሻ እስካለ ድረስ በ4 የአቅራቢ ደረጃዎች መካከል ወደ ሌላ መመለስ ይችላል — ደረጃ 1 ደንበኝነት ምዝገባ፣ ደረጃ 2 API ቁልፍ፣ ደረጃ 3 ርካሽ እና ደረጃ 4 ነፃ።"/>
 
 </div>
 
@@ -488,13 +488,13 @@ curl http://localhost:20128/v1/chat/completions \
 
 <div align="center">
 
-## 🏆 ኦምኒሩት ልዩ የሚያደርገው ምንድን ነው
+## 🏆 OmniRouteን ከሌሎች የሚለየው
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="ኦምኒሩት ልዩ የሚያደርገው ምንድን ነው — 9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLMን በ13 ችሎታዎች ላይ የሚያነፃፅር ጊዜ ያለፈበት የባህሪ ቅጽበታዊ ገጽ እይታ። ኦምኒሩት: 358 አቅራቢዎች፣ 150+ ነፃ ደረጃዎች አብሮ የተሰሩ፣ 19 የማዞሪያ ስልቶች፣ 12-ሞተር ቶከን መጭመቂያ፣ አብሮ የተሰራ የኤምሲፒ አገልጋይ ከ110 መሳሪያዎች ጋር፣ A2A ወኪል ፕሮቶኮል፣ ዘላቂ ማህደረ ትውስታ፣ የጥበቃ መስመሮች፣ የደመና ወኪሎች፣ TLS የጣት አሻራ ስውርነት፣ ዴስክቶፕ/ተርሙክስ/PWA እና 42 i18n UI አካባቢያዊ ቋንቋዎች። ኦምኒሩት በMIT ፍቃድ የተሰጠው እና በራስ የሚስተናገድ ነው። የተወዳዳሪዎች ችሎታዎች እና ብዛት ሊለወጡ ይችላሉ፤ የተገናኘውን ዘዴ ይመልከቱ።"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRouteን የሚለየው — በ13 አቅሞች ላይ ከ9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLM ጋር የተደረገ የቆየ የባህሪያት ንጽጽር። OmniRoute፦ 359 አቅራቢዎች፣ ከ150 በላይ አብረው የተካተቱ ነፃ አገልግሎቶች፣ 19 የማዘዋወር ስልቶች፣ 12-ሞተር የቶከን መጭመቂያ፣ 110 መሣሪያዎች ያሉት አብሮ የተካተተ MCP ሰርቨር፣ የA2A የወኪሎች ፕሮቶኮል፣ ቋሚ ማህደረ ትውስታ፣ የጥበቃ ገደቦች፣ የደመና ወኪሎች፣ የTLS የጣት አሻራ መደበቂያ፣ Desktop/Termux/PWA እና 42 የi18n የበይነገጽ ቋንቋዎች። OmniRoute በMIT ፈቃድ ስር የተለቀቀ ሲሆን በራስዎ ሰርቨር ላይ ማስተናገድ ይቻላል። የተወዳዳሪዎች አቅሞችና ቁጥሮች ሊለወጡ ይችላሉ፤ የተገናኘውን የንጽጽር ዘዴ ይመልከቱ።"/>
 
-<sub>📊 ሙሉ ዘዴ እና የባህሪ ዝርዝር ከ9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLM ጋር ሲነፃፀር → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 ሙሉ የንጽጽር ዘዴ እና ከ9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLM ጋር የባህሪ ዝርዝር → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

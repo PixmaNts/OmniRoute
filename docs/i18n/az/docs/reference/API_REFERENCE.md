@@ -440,94 +440,88 @@ Sidecar prosesdən kənarda işlədikdə və `open-sse/config/providerPluginMani
 
 ---
 
-## Uyğunluq Endpoint-ləri
+## Uyğunluq son nöqtələri
 
-| Metod | Yol                                       | Format                                       |
-| ----- | ----------------------------------------- | -------------------------------------------- |
-| POST  | `/v1/chat/completions`                    | OpenAI                                       |
-| POST  | `/v1/messages`                            | Anthropic                                    |
-| POST  | `/v1/responses`                           | OpenAI Responses                             |
-| POST  | `/v1/embeddings`                          | OpenAI                                       |
-| POST  | `/v1/images/generations`                  | OpenAI Images                                |
-| POST  | `/v1/images/edits`                        | OpenAI Images (redaktə/inpaint)              |
-| POST  | `/v1/videos/generations`                  | OpenAI üslublu video generasiyası            |
-| POST  | `/v1/music/generations`                   | OpenAI üslublu musiqi generasiyası           |
-| POST  | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                           |
-| POST  | `/v1/audio/speech`                        | OpenAI TTS (audio gövdəsi qaytarır)          |
-| POST  | `/v1/rerank`                              | Cohere/Voyage üslublu yenidən sıralama       |
-| POST  | `/v1/classify`                            | Jina təsnifatı (`api.jina.ai`)               |
-| POST  | `/v1/segment`                             | Jina seqmentləşdiricisi (`segment.jina.ai`)  |
-| POST  | `/v1/moderations`                         | OpenAI Moderations                           |
-| GET   | `/v1/models`                              | OpenAI                                       |
-| POST  | `/v1/messages/count_tokens`               | Anthropic                                    |
-| GET   | `/v1beta/models`                          | Gemini                                       |
-| POST  | `/v1beta/models/{...path}`                | Gemini generateContent                       |
-| POST  | `/v1/api/chat`                            | Ollama                                       |
-| GET   | `/api/v1/vscode/{token}/`                 | OpenAI kataloq aliası                        |
-| GET   | `/api/v1/vscode/{token}/models`           | OpenAI model aliası                          |
-| POST  | `/api/v1/vscode/{token}/chat/completions` | OpenAI tokenləşdirilmiş aliası               |
-| POST  | `/api/v1/vscode/{token}/responses`        | OpenAI Responses tokenləşdirilmiş aliası     |
-| POST  | `/api/v1/vscode/{token}/api/chat`         | Ollama tokenləşdirilmiş aliası               |
-| GET   | `/api/v1/vscode/{token}/api/tags`         | Ollama etiketlərinin tokenləşdirilmiş aliası |
+| Metod | Yol                                       | Format                                   |
+| ----- | ----------------------------------------- | ---------------------------------------- |
+| POST  | `/v1/chat/completions`                    | OpenAI                                   |
+| POST  | `/v1/messages`                            | Anthropic                                |
+| POST  | `/v1/responses`                           | OpenAI Responses                         |
+| POST  | `/v1/embeddings`                          | OpenAI                                   |
+| POST  | `/v1/images/generations`                  | OpenAI Images                            |
+| POST  | `/v1/images/edits`                        | OpenAI Images (redaktə/inpaint)          |
+| POST  | `/v1/videos/generations`                  | OpenAI üslubunda video yaradılması       |
+| POST  | `/v1/music/generations`                   | OpenAI üslubunda musiqi yaradılması      |
+| POST  | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                       |
+| POST  | `/v1/audio/speech`                        | OpenAI TTS (audio body qaytarır)         |
+| POST  | `/v1/rerank`                              | Cohere/Voyage üslubunda rerank           |
+| POST  | `/v1/classify`                            | Jina classify (`api.jina.ai`)            |
+| POST  | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)       |
+| POST  | `/v1/systemone`                           | Qərar modelləri (System One)             |
+| GET   | `/v1/systemone/models`                    | Qərar modellərinin siyahısı              |
+| POST  | `/v1/moderations`                         | OpenAI Moderations                       |
+| GET   | `/v1/models`                              | OpenAI                                   |
+| POST  | `/v1/messages/count_tokens`               | Anthropic                                |
+| GET   | `/v1beta/models`                          | Gemini                                   |
+| POST  | `/v1beta/models/{...path}`                | Gemini generateContent                   |
+| POST  | `/v1/api/chat`                            | Ollama                                   |
+| GET   | `/api/v1/vscode/{token}/`                 | OpenAI kataloq aliası                    |
+| GET   | `/api/v1/vscode/{token}/models`           | OpenAI modelləri aliası                  |
+| POST  | `/api/v1/vscode/{token}/chat/completions` | OpenAI tokenləşdirilmiş aliası           |
+| POST  | `/api/v1/vscode/{token}/responses`        | OpenAI Responses tokenləşdirilmiş aliası |
+| POST  | `/api/v1/vscode/{token}/api/chat`         | Ollama tokenləşdirilmiş aliası           |
+| GET   | `/api/v1/vscode/{token}/api/tags`         | Ollama teqləri tokenləşdirilmiş aliası   |
 
-Bütün POST marşrutları eyni formaya uyğundur: `Bearer your-api-key` + Zod ilə doğrulanan JSON gövdəsi (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` və s.; baxın: `src/shared/validation/schemas.ts`). Sxem doğrulaması uğursuz olduqda 4xx qaytarılır.
+Bütün POST marşrutları eyni quruluşa malikdir: `Bearer your-api-key` + Zod ilə yoxlanılan JSON body (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` və s.; `src/shared/validation/schemas.ts` faylına baxın). Sxem yoxlaması uğursuz olduqda 4xx qaytarılır.
 
-`Authorization: Bearer ...` əlavə edə bilməyən klientlər üçün OmniRoute həmçinin sorğu sətri uyğunluğu (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) və ya aşağıda sənədləşdirilmiş xüsusi `/api/v1/vscode/{token}/...` endpoint-ləri vasitəsilə URL-də API açarlarını qəbul edir.
+`Authorization: Bearer ...` başlığını əlavə edə bilməyən müştərilər üçün OmniRoute URL-дэх API түлхүүрүүдийг мөн query string-ээр (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) və ya aşağıda sənədləşdirilən xüsusi `/api/v1/vscode/{token}/...` son nöqtələri vasitəsilə qəbul edir.
 
 ```bash
-# Yenidən sıralama (bulud reyestri provayderi və ya "<prefix>/<model>" kimi OpenAI-uyğun provayder nodu)
+# Rerank (bulud reyestri provayderi və ya "<prefix>/<model>" formatında OpenAI ilə uyğun provayder qovşağı)
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Jina təsnifatı (Foundation API etimadnamələri)
+# Jina classify (Foundation API etimadnamələri)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Jina seqmentləşdiricisi
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
+
+# Qərar modelləri (System One). İlk model prefiksi bağlantını seçir:
+#   typesafe/jev-latest              -> birbaşa TypeSafe
+#   openrouter/typesafe/jev-1.13     -> OpenRouter vasitəsilə
+#   ollama-local/<model>             -> yerli Ollama >= 0.35
+# jev-latest kimi prefikssiz identifikator OpenRouter-dan istifadə etməyə davam edir. TypeSafe SDK-ları baseURL = OmniRoute ilə işləyir.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # konfiqurasiya edilmiş backend-lərin modelləri: { object: "list", data: [{ id, name, pricing, ... }] }
 
 # Jina axtarışı (s.jina.ai; provayder aliasları: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# Moderasiya
+# Moderations
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — audio/mpeg (və ya tələb olunan formatda) gövdə qaytarır
+# TTS — audio/mpeg (və ya tələb olunan formatda) body qaytarır
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS dil və səs tələb edir: `language` üçün standart dəyər "en"-dir; çatışmayan
-# səs və ya OpenAI-nin standart səs adı (alloy, nova, …) "Adrian" olur
+# Soniox TTS üçün dil və səs tələb olunur: `language` standart olaraq "en" olur; `voice` verilmədikdə
+# və ya OpenAI-nin standart səs adlarından biri olduqda (alloy, nova, …), "Adrian" istifadə edilir
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
-# Şəklin redaktəsi (multipart)
+# Şəkil redaktəsi (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Video / musiqi generasiyası (provayder prefiksli model ID-si)
+# Video / musiqi yaradılması (provayder prefiksli model identifikatoru)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Yenidən sıralama provayder nodları:** `POST /v1/rerank` həmçinin `<node-prefix>/<model>` kimi ünvanlanan OpenAI-uyğun provayder nodlarına
-> (oMLX, vLLM, Infinity, şlüz arxasındakı TEI, …) yönləndirir. Loopback
-> nodları (`localhost`, `127.0.0.1`, `172.16.0.0/12`) həmişə uyğundur. İstənilən digər
-> hostdakı nodlar — LAN qurğusu və ya Tailscale qoşulma nöqtəsi — yalnız operator
-> `RERANK_REMOTE_PROVIDER_NODES` funksiya bayrağını aktivləşdirdikdə **və** nodun baza URL-i provayderin
-> xarici URL siyasətindən (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) keçdikdə uyğundur;
-> bulud metadata hostlarına heç vaxt yönləndirmə edilmir. Yaddaş mühərrikinin yenidən sıralama addımı bu marşrutu
-> loopback üzərindən çağırır, buna görə də eyni qayda Yaddaş ayarlarındakı `rerankProviderModel` üçün keçərlidir.
+> **Rerank provayder qovşaqları:** `POST /v1/rerank` həmçinin `<node-prefix>/<model>` ünvanı ilə göstərilən OpenAI ilə uyğun provayder qovşaqlarına (oMLX, vLLM, Infinity, gateway arxasında TEI və s.) yönləndirilir. Loopback qovşaqları (`localhost`, `127.0.0.1`, `172.16.0.0/12`) həmişə uyğun hesab olunur. Digər istənilən hostdakı qovşaqlar — LAN kompüteri və ya Tailscale peer-i — yalnız operator `RERANK_REMOTE_PROVIDER_NODES` funksiya bayrağını aktivləşdirdikdə **və** qovşağın baza URL-i provayderin çıxış URL siyasətindən (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) keçdikdə uyğun hesab olunur; bulud metadata hostlarına heç vaxt sorğu yönləndirilmir. Yaddaş mühərrikinin rerank mərhələsi bu marşruta loopback vasitəsilə sorğu göndərir, buna görə də eyni qayda Yaddaş parametrlərindəki `rerankProviderModel` üçün də keçərlidir.
 >
-> **Lokal server formaları:** nod `<base>/v1/rerank` ünvanında, 404 halında isə `<base>/rerank`
-> ünvanında çağırılır (Infinity, TEI). Yuxarı axın gövdəsi həm Cohere/OpenAI yazılışını (`documents`,
-> `return_documents`), həm də TEI yazılışını (`texts`, `return_text`) daşıyır və yuxarı axın cavabı
-> Cohere zərfinə normallaşdırılır: TEI-nin açıq `[{index, score, text}]` formatı, sadə şlüzlərdən gələn
-> `{results: [{index, score}]}` və Voyage üslublu `{data: [...]}` formatlarının hamısı klientə
-> `{results: [{index, relevance_score, document?}]}` şəklində, bala görə sıralanmış və `top_n` ilə məhdudlaşdırılmış formada qaytarılır.
+> **Yerli server formaları:** qovşağa `<base>/v1/rerank` ünvanı ilə sorğu göndərilir və 404 cavabı gəldikdə `<base>/rerank` ünvanı yoxlanılır (Infinity, TEI). Yuxarı axına göndərilən sorğu gövdəsində həm Cohere/OpenAI yazılışı (`documents`, `return_documents`), həm də TEI yazılışı (`texts`, `return_text`) yer alır. Yuxarı axından gələn cavab Cohere formatına normallaşdırılır: TEI-nin birbaşa `[{index, score, text}]` cavabı, nazik gateway-lərdən gələn `{results: [{index, score}]}` və Voyage üslublu `{data: [...]}` cavablarının hamısı müştəriyə `{results: [{index, relevance_score, document?}]}` formatında, score-a görə sıralanmış və `top_n` ilə məhdudlaşdırılmış şəkildə qaytarılır.
+>
+> **Provayder qovşaqlarının aşkarlanması:** OpenAI ilə uyğun provayder qovşağındakı modellər `GET /v1/models` cavabında qovşaq prefiksi altında görünür. Endpoint metadata-sı olmayan sətirlər (yerli `/v1/models` siyahılarında bu, tipik haldır) qovşağın `apiType` dəyərini mənimsəyir. Beləliklə, `embeddings` qovşağının modelləri defolt olaraq chat növünə deyil, `type: "embedding"`; `rerank` qovşağının modelləri isə `type: "rerank"` növünə aid olur. Sinxronlaşdırılmış və ya əl ilə əlavə edilmiş sətirdə açıq şəkildə göstərilən `supportedEndpoints` yenə də üstün tutulur.
 
-> **Provayder qovşağının aşkarlanması:** OpenAI ilə uyğun provayder qovşağındakı modellər `GET /v1/models`
-> cavabında qovşaq prefiksi altında görünür. Son nöqtə metadatası olmayan sətirlər (yerli `/v1/models` siyahıları üçün səciyyəvidir)
-> qovşağın `apiType` dəyərini miras alır; beləliklə, standart olaraq çat tipinə təyin edilmək əvəzinə, `embeddings` qovşağının modelləri `type: "embedding"`,
-> `rerank` qovşağının modelləri isə `type: "rerank"` olur; sinxronlaşdırılmış və ya əl ilə əlavə edilmiş sətirdə açıq şəkildə göstərilən
-> `supportedEndpoints` yenə də üstünlüyə malikdir.
-
-### Xüsusi Provayder Marşrutları
+### Xüsusi provayder marşrutları
 
 ```bash
 POST /v1/providers/{provider}/chat/completions

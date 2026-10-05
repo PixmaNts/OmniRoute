@@ -446,7 +446,7 @@ přímo importovat `open-sse/config/providerPluginManifestRegistry.ts`.
 
 ---
 
-## Kompatibilní koncové body
+## Koncové body kompatibility
 
 | Metoda | Cesta                                     | Formát                               |
 | ------ | ----------------------------------------- | ------------------------------------ |
@@ -455,14 +455,16 @@ přímo importovat `open-sse/config/providerPluginManifestRegistry.ts`.
 | POST   | `/v1/responses`                           | OpenAI Responses                     |
 | POST   | `/v1/embeddings`                          | OpenAI                               |
 | POST   | `/v1/images/generations`                  | OpenAI Images                        |
-| POST   | `/v1/images/edits`                        | OpenAI Images (úpravy/inpainting)    |
+| POST   | `/v1/images/edits`                        | OpenAI Images (úpravy/vyplňování)    |
 | POST   | `/v1/videos/generations`                  | Generování videa ve stylu OpenAI     |
 | POST   | `/v1/music/generations`                   | Generování hudby ve stylu OpenAI     |
 | POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                   |
-| POST   | `/v1/audio/speech`                        | OpenAI TTS (vrací zvukové tělo)      |
-| POST   | `/v1/rerank`                              | Přeřazení ve stylu Cohere/Voyage     |
+| POST   | `/v1/audio/speech`                        | OpenAI TTS (vrací tělo s audiem)     |
+| POST   | `/v1/rerank`                              | Přeřazování ve stylu Cohere/Voyage   |
 | POST   | `/v1/classify`                            | Klasifikace Jina (`api.jina.ai`)     |
 | POST   | `/v1/segment`                             | Segmentátor Jina (`segment.jina.ai`) |
+| POST   | `/v1/systemone`                           | Rozhodovací modely (System One)      |
+| GET    | `/v1/systemone/models`                    | Seznam rozhodovacích modelů          |
 | POST   | `/v1/moderations`                         | OpenAI Moderations                   |
 | GET    | `/v1/models`                              | OpenAI                               |
 | POST   | `/v1/messages/count_tokens`               | Anthropic                            |
@@ -471,17 +473,17 @@ přímo importovat `open-sse/config/providerPluginManifestRegistry.ts`.
 | POST   | `/v1/api/chat`                            | Ollama                               |
 | GET    | `/api/v1/vscode/{token}/`                 | Alias katalogu OpenAI                |
 | GET    | `/api/v1/vscode/{token}/models`           | Alias modelů OpenAI                  |
-| POST   | `/api/v1/vscode/{token}/chat/completions` | Tokenizovaný alias OpenAI            |
-| POST   | `/api/v1/vscode/{token}/responses`        | Tokenizovaný alias OpenAI Responses  |
-| POST   | `/api/v1/vscode/{token}/api/chat`         | Tokenizovaný alias Ollama            |
-| GET    | `/api/v1/vscode/{token}/api/tags`         | Tokenizovaný alias značek Ollama     |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | Alias OpenAI s tokenem               |
+| POST   | `/api/v1/vscode/{token}/responses`        | Alias OpenAI Responses s tokenem     |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Alias Ollama s tokenem               |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Alias značek Ollama s tokenem        |
 
-Všechny trasy POST mají stejnou strukturu: `Bearer your-api-key` + tělo JSON ověřené pomocí Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` atd., viz `src/shared/validation/schemas.ts`). Při selhání validace schématu se vrací 4xx.
+Všechny trasy POST mají stejný tvar: `Bearer your-api-key` + tělo JSON ověřené pomocí Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` atd.; viz `src/shared/validation/schemas.ts`). Při chybě ověření schématu se vrací stav 4xx.
 
-Pro klienty, kteří nemohou připojit `Authorization: Bearer ...`, přijímá OmniRoute klíče API také v adrese URL, a to buď prostřednictvím kompatibilních parametrů dotazu (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`), nebo pomocí vyhrazených koncových bodů `/api/v1/vscode/{token}/...` zdokumentovaných níže.
+Pro klienty, kteří nemohou připojit `Authorization: Bearer ...`, OmniRoute přijímá klíče API také v URL, a to buď prostřednictvím kompatibilních parametrů query stringu (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`), nebo pomocí vyhrazených koncových bodů `/api/v1/vscode/{token}/...`, které jsou popsány níže.
 
 ```bash
-# Přeřazení (poskytovatel z cloudového registru nebo uzel poskytovatele kompatibilní s OpenAI jako "<prefix>/<model>")
+# Přeřazování (poskytovatel z cloudového registru nebo uzel poskytovatele kompatibilního s OpenAI ve formátu "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # Klasifikace Jina (přihlašovací údaje Foundation API)
@@ -490,48 +492,55 @@ POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."
 # Segmentátor Jina
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
+# Rozhodovací modely (System One). Prefix prvního modelu určuje připojení:
+#   typesafe/jev-latest              -> přímo přes TypeSafe
+#   openrouter/typesafe/jev-1.13     -> přes OpenRouter
+#   ollama-local/<model>             -> lokální Ollama >= 0.35
+# Nekvalifikované ID, například jev-latest, nadále používá OpenRouter. SDK TypeSafe fungují s baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # modely nakonfigurovaných backendů: { object: "list", data: [{ id, name, pricing, ... }] }
+
 # Vyhledávání Jina (s.jina.ai; aliasy poskytovatele: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# Moderování
+# Moderace
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — vrací tělo audio/mpeg (nebo požadovaný formát)
+# TTS — vrací tělo ve formátu audio/mpeg (nebo v požadovaném formátu)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS vyžaduje jazyk a hlas: výchozí hodnota `language` je "en"; chybějící
-# hlas nebo standardní název hlasu OpenAI (alloy, nova, …) se změní na "Adrian"
+# Soniox TTS vyžaduje jazyk a hlas: `language` má výchozí hodnotu "en"; pokud hlas chybí
+# nebo je uveden název standardního hlasu OpenAI (alloy, nova, …), použije se "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # Úprava obrázku (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Generování videa / hudby (ID modelu s předponou poskytovatele)
+# Generování videa / hudby (ID modelu s prefixem poskytovatele)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Uzly poskytovatelů pro přeřazení:** `POST /v1/rerank` směruje požadavky také na uzly poskytovatelů kompatibilní s OpenAI
-> (oMLX, vLLM, Infinity, TEI za bránou, …), adresované jako `<node-prefix>/<model>`. Uzly zpětné smyčky
+> **Přeroutování na uzly poskytovatelů rerank:** `POST /v1/rerank` směruje požadavky také na uzly poskytovatelů kompatibilní s OpenAI
+> (oMLX, vLLM, Infinity, TEI za gatewayí, …), na které se odkazuje jako na `<node-prefix>/<model>`. Uzly na loopbacku
 > (`localhost`, `127.0.0.1`, `172.16.0.0/12`) jsou vždy způsobilé. Uzly na jakémkoli jiném
-> hostiteli — zařízení v síti LAN nebo protějšek Tailscale — jsou způsobilé pouze tehdy, když provozovatel povolí
-> příznak funkce `RERANK_REMOTE_PROVIDER_NODES` **a zároveň** základní adresa URL uzlu vyhovuje zásadám poskytovatele
-> pro odchozí adresy URL (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> na hostitele cloudových metadat se požadavky nikdy nesměrují. Krok přeřazení paměťového enginu volá tuto trasu přes
-> zpětnou smyčku, takže stejné pravidlo se v nastavení paměti vztahuje i na `rerankProviderModel`.
+> hostiteli — ať už jde o počítač v LAN nebo protějšek Tailscale — jsou způsobilé pouze v případě, že správce povolí příznak
+> funkce `RERANK_REMOTE_PROVIDER_NODES` **a zároveň** základní URL uzlu vyhovuje zásadám pro odchozí URL poskytovatelů
+> (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); na hostitele cloudových metadat se požadavky nikdy nesměrují.
+> Krok rerank v paměťovém enginu volá tuto trasu přes loopback, takže stejné pravidlo platí pro
+> `rerankProviderModel` v nastavení Memory.
 >
-> **Formáty lokálních serverů:** uzel je volán na `<base>/v1/rerank` a v případě odpovědi 404 na `<base>/rerank`
-> (Infinity, TEI). Tělo odesílané nadřazenému serveru obsahuje jak pojmenování Cohere/OpenAI (`documents`,
-> `return_documents`), tak pojmenování TEI (`texts`, `return_text`), a odpověď nadřazeného serveru je
-> normalizována do obálky Cohere: holé pole TEI `[{index, score, text}]`, `{results: [{index, score}]}`
-> z jednoduchých bran i formát Voyage `{data: [...]}` jsou klientovi vráceny jako
+> **Varianty lokálních serverů:** volání uzlu se provádí na `<base>/v1/rerank` a při odpovědi 404 na `<base>/rerank`
+> (Infinity, TEI). Tělo požadavku odesílané upstream obsahuje zápis používaný jak v Cohere/OpenAI (`documents`,
+> `return_documents`), tak v TEI (`texts`, `return_text`) a odpověď upstream se normalizuje do obálky Cohere: holé pole TEI
+> `[{index, score, text}]`, `{results: [{index, score}]}` z jednoduchých gatewayí i odpovědi ve stylu Voyage `{data: [...]}` se klientovi vracejí jako
 > `{results: [{index, relevance_score, document?}]}`, seřazené podle skóre a omezené na `top_n`.
 
-> **Zjišťování uzlů poskytovatelů:** modely na uzlu kompatibilním s OpenAI se zobrazují v `GET /v1/models`
-> pod prefixem uzlu. Záznamy, které neobsahují metadata koncového bodu (typické pro místní výpisy `/v1/models`),
-> dědí `apiType` uzlu, takže modely uzlu `embeddings` mají `type: "embedding"` a modely
-> uzlu `rerank` mají `type: "rerank"` namísto výchozího typu chatu; explicitní
-> `supportedEndpoints` u synchronizovaného nebo ručně přidaného záznamu má nadále přednost.
+> **Zjišťování uzlů poskytovatelů:** modely na uzlu poskytovatele kompatibilním s OpenAI se v `GET /v1/models`
+> zobrazují pod prefixem uzlu. Položky bez metadat o koncových bodech (typické pro lokální výpisy `/v1/models`)
+> dědí `apiType` uzlu, takže modely uzlu `embeddings` mají `type: "embedding"` a modely uzlu
+> `rerank` mají `type: "rerank"` namísto výchozího typu chat; explicitní
+> `supportedEndpoints` v synchronizované nebo ručně přidané položce má i nadále přednost.
 
 ### Vyhrazené trasy poskytovatelů
 
@@ -541,7 +550,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-Pokud prefix poskytovatele chybí, přidá se automaticky. Neshodující se modely vracejí `400`.
+Prefix poskytovatele se automaticky doplní, pokud chybí. Neshodující se modely vracejí `400`.
 
 ---
 

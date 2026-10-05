@@ -417,92 +417,86 @@ Sidecar တစ်ခုသည် out-of-process အနေဖြင့် လည�
 
 ---
 
-## ကိုက်ညီမှုရှိသော Endpoint များ
+## လိုက်ဖက်ညီသော Endpoint များ
 
-| နည်းလမ်း | လမ်းကြောင်း                               | ဖော်မတ်                                     |
-| -------- | ----------------------------------------- | ------------------------------------------- |
-| POST     | `/v1/chat/completions`                    | OpenAI                                      |
-| POST     | `/v1/messages`                            | Anthropic                                   |
-| POST     | `/v1/responses`                           | OpenAI Responses                            |
-| POST     | `/v1/embeddings`                          | OpenAI                                      |
-| POST     | `/v1/images/generations`                  | OpenAI Images                               |
-| POST     | `/v1/images/edits`                        | OpenAI Images (တည်းဖြတ်ခြင်း/inpaint)       |
-| POST     | `/v1/videos/generations`                  | OpenAI ပုံစံ ဗီဒီယိုဖန်တီးခြင်း             |
-| POST     | `/v1/music/generations`                   | OpenAI ပုံစံ တေးဂီတဖန်တီးခြင်း              |
-| POST     | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                          |
-| POST     | `/v1/audio/speech`                        | OpenAI TTS (အသံ body ကို ပြန်ပေးသည်)        |
-| POST     | `/v1/rerank`                              | Cohere/Voyage ပုံစံ အဆင့်ပြန်စီခြင်း        |
-| POST     | `/v1/classify`                            | Jina အမျိုးအစားခွဲခြားခြင်း (`api.jina.ai`) |
-| POST     | `/v1/segment`                             | Jina အပိုင်းခွဲစနစ် (`segment.jina.ai`)     |
-| POST     | `/v1/moderations`                         | OpenAI Moderations                          |
-| GET      | `/v1/models`                              | OpenAI                                      |
-| POST     | `/v1/messages/count_tokens`               | Anthropic                                   |
-| GET      | `/v1beta/models`                          | Gemini                                      |
-| POST     | `/v1beta/models/{...path}`                | Gemini generateContent                      |
-| POST     | `/v1/api/chat`                            | Ollama                                      |
-| GET      | `/api/v1/vscode/{token}/`                 | OpenAI catalog alias                        |
-| GET      | `/api/v1/vscode/{token}/models`           | OpenAI models alias                         |
-| POST     | `/api/v1/vscode/{token}/chat/completions` | OpenAI token ပါသော alias                    |
-| POST     | `/api/v1/vscode/{token}/responses`        | OpenAI Responses token ပါသော alias          |
-| POST     | `/api/v1/vscode/{token}/api/chat`         | Ollama token ပါသော alias                    |
-| GET      | `/api/v1/vscode/{token}/api/tags`         | Ollama tags token ပါသော alias               |
+| Method | Path                                      | Format                                      |
+| ------ | ----------------------------------------- | ------------------------------------------- |
+| POST   | `/v1/chat/completions`                    | OpenAI                                      |
+| POST   | `/v1/messages`                            | Anthropic                                   |
+| POST   | `/v1/responses`                           | OpenAI Responses                            |
+| POST   | `/v1/embeddings`                          | OpenAI                                      |
+| POST   | `/v1/images/generations`                  | OpenAI Images                               |
+| POST   | `/v1/images/edits`                        | OpenAI Images (တည်းဖြတ်ခြင်း/inpaint)       |
+| POST   | `/v1/videos/generations`                  | OpenAI ပုံစံ ဗီဒီယိုထုတ်လုပ်ခြင်း           |
+| POST   | `/v1/music/generations`                   | OpenAI ပုံစံ တေးဂီတထုတ်လုပ်ခြင်း            |
+| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                          |
+| POST   | `/v1/audio/speech`                        | OpenAI TTS (audio body ကို ပြန်ပေးသည်)      |
+| POST   | `/v1/rerank`                              | Cohere/Voyage ပုံစံ rerank                  |
+| POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)               |
+| POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)          |
+| POST   | `/v1/systemone`                           | ဆုံးဖြတ်ချက်ချသည့် မော်ဒယ်များ (System One) |
+| GET    | `/v1/systemone/models`                    | ဆုံးဖြတ်ချက်ချသည့် မော်ဒယ်စာရင်း            |
+| POST   | `/v1/moderations`                         | OpenAI Moderations                          |
+| GET    | `/v1/models`                              | OpenAI                                      |
+| POST   | `/v1/messages/count_tokens`               | Anthropic                                   |
+| GET    | `/v1beta/models`                          | Gemini                                      |
+| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                      |
+| POST   | `/v1/api/chat`                            | Ollama                                      |
+| GET    | `/api/v1/vscode/{token}/`                 | OpenAI catalog alias                        |
+| GET    | `/api/v1/vscode/{token}/models`           | OpenAI models alias                         |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | OpenAI tokenized alias                      |
+| POST   | `/api/v1/vscode/{token}/responses`        | OpenAI Responses tokenized alias            |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Ollama tokenized alias                      |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Ollama tags tokenized alias                 |
 
-POST route အားလုံးသည် တူညီသောပုံစံကို လိုက်နာသည်- `Bearer your-api-key` + Zod ဖြင့် အတည်ပြုထားသော JSON body (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` စသည်တို့၊ `src/shared/validation/schemas.ts` ကိုကြည့်ပါ)။ Schema အတည်ပြုမှု မအောင်မြင်ပါက 4xx ကို ပြန်ပေးသည်။
+POST route အားလုံးသည် ပုံစံတူဖြစ်သည် — `Bearer your-api-key` နှင့် Zod ဖြင့် အတည်ပြုထားသော JSON body (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` စသည်၊ `src/shared/validation/schemas.ts` တွင် ကြည့်ပါ)။ Schema အတည်ပြုမှု မအောင်မြင်ပါက 4xx ကို ပြန်ပေးသည်။
 
-`Authorization: Bearer ...` ကို ထည့်သွင်း၍မရသော client များအတွက် OmniRoute သည် query-string ကိုက်ညီမှုပုံစံ (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) သို့မဟုတ် အောက်တွင် မှတ်တမ်းတင်ထားသော သီးသန့် `/api/v1/vscode/{token}/...` endpoint များမှတစ်ဆင့် URL ထဲရှိ API key များကိုလည်း လက်ခံသည်။
+`Authorization: Bearer ...` ကို ထည့်ပေး၍မရသော client များအတွက် OmniRoute သည် URL မှတစ်ဆင့် API key များကိုလည်း လက်ခံသည်။ အောက်တွင်ဖော်ပြထားသော query-string compatibility (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) သို့မဟုတ် သီးသန့် `/api/v1/vscode/{token}/...` endpoint များကို အသုံးပြုနိုင်သည်။
 
 ```bash
-# အဆင့်ပြန်စီခြင်း (cloud registry provider သို့မဟုတ် "<prefix>/<model>" ပုံစံဖြင့် OpenAI-compatible provider node)
+# Rerank (cloud registry provider သို့မဟုတ် "<prefix>/<model>" ပုံစံ OpenAI-compatible provider node)
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Jina အမျိုးအစားခွဲခြားခြင်း (Foundation API အထောက်အထားများ)
+# Jina classify (Foundation API အထောက်အထားများ)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Jina အပိုင်းခွဲစနစ်
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# Jina ရှာဖွေမှု (s.jina.ai; provider alias များ- jina-search, jina-ai, jina)
+# ဆုံးဖြတ်ချက်ချသည့် မော်ဒယ်များ (System One)။ ပထမဆုံး မော်ဒယ် prefix က ချိတ်ဆက်မှုကို ရွေးချယ်သည်။
+#   typesafe/jev-latest              -> TypeSafe တိုက်ရိုက်
+#   openrouter/typesafe/jev-1.13     -> OpenRouter မှတစ်ဆင့်
+#   ollama-local/<model>             -> local Ollama >= 0.35
+# jev-latest ကဲ့သို့ prefix မပါသော ID သည် OpenRouter ကို ဆက်လက်အသုံးပြုသည်။ TypeSafe SDK များကို baseURL = OmniRoute ဖြင့် အသုံးပြုနိုင်သည်။
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # သတ်မှတ်ထားသော backend များ၏ မော်ဒယ်များ: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Jina search (s.jina.ai; provider alias များ: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# အကြောင်းအရာစိစစ်ခြင်း
+# Moderations
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — audio/mpeg (သို့မဟုတ် တောင်းဆိုထားသော ဖော်မတ်) body ကို ပြန်ပေးသည်
+# TTS — audio/mpeg (သို့မဟုတ် တောင်းဆိုထားသော format) body ကို ပြန်ပေးသည်
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS အတွက် ဘာသာစကားနှင့် အသံတစ်ခု လိုအပ်သည်- `language` သည် မူလအတိုင်း "en" ဖြစ်သည်။ အသံမပါရှိပါက
-# သို့မဟုတ် OpenAI ၏ ပုံသေ အသံအမည် (alloy, nova, …) ဖြစ်ပါက "Adrian" အဖြစ် ပြောင်းလဲသတ်မှတ်သည်
+# Soniox TTS အတွက် ဘာသာစကားနှင့် voice လိုအပ်သည်: `language` ၏ မူလတန်ဖိုးမှာ "en" ဖြစ်သည်။ voice မရှိပါက
+# သို့မဟုတ် OpenAI ၏ ပုံမှန် voice အမည် (alloy, nova, …) ဖြစ်ပါက "Adrian" ကို အသုံးပြုသည်။
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # ပုံတည်းဖြတ်ခြင်း (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# ဗီဒီယို / တေးဂီတ ဖန်တီးခြင်း (provider prefix ပါသော model id)
+# ဗီဒီယို/တေးဂီတထုတ်လုပ်ခြင်း (provider-prefix ပါသော model ID)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **အဆင့်ပြန်စီသည့် provider node များ:** `POST /v1/rerank` သည် `<node-prefix>/<model>` ဖြင့် လိပ်စာသတ်မှတ်ထားသော
-> OpenAI-compatible provider node များ (oMLX, vLLM, Infinity၊ gateway နောက်ကွယ်ရှိ TEI၊ …) သို့လည်း route လုပ်ပေးသည်။ Loopback
-> node များ (`localhost`, `127.0.0.1`, `172.16.0.0/12`) ကို အမြဲတမ်း အသုံးပြုနိုင်သည်။ အခြား
-> host တစ်ခုခုရှိ node များ — LAN စက်တစ်လုံး သို့မဟုတ် Tailscale peer — ကို operator က
-> `RERANK_REMOTE_PROVIDER_NODES` feature flag ကို ဖွင့်ထားပြီး node ၏ base URL သည် provider
-> outbound URL policy (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) ကို ဖြတ်သန်းနိုင်မှသာ အသုံးပြုနိုင်သည်။
-> cloud-metadata host များသို့ မည်သည့်အခါမျှ route မလုပ်ပါ။ Memory engine ၏ အဆင့်ပြန်စီသည့်အဆင့်သည် ဤ route ကို
-> loopback မှတစ်ဆင့် ခေါ်ဆိုသောကြောင့် Memory ဆက်တင်များရှိ `rerankProviderModel` ကိုလည်း အလားတူစည်းမျဉ်းဖြင့် ထိန်းချုပ်သည်။
+> **Rerank provider nodes:** `POST /v1/rerank` သည် `<node-prefix>/<model>` လိပ်စာဖြင့် သတ်မှတ်ထားသော OpenAI-compatible provider node များ (oMLX, vLLM, Infinity, gateway နောက်ကွယ်ရှိ TEI၊ …) သို့လည်း လမ်းကြောင်းပြောင်းပေးသည်။ Loopback node များ (`localhost`, `127.0.0.1`, `172.16.0.0/12`) သည် အမြဲအသုံးပြုခွင့်ရှိသည်။ အခြား host များရှိ node များ — LAN box သို့မဟုတ် Tailscale peer — ကို operator က `RERANK_REMOTE_PROVIDER_NODES` feature flag ကို ဖွင့်ထားပြီး **ထို့အပြင်** node ၏ base URL သည် provider outbound URL policy (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) ကို အောင်မြင်မှသာ အသုံးပြုခွင့်ရှိသည်။ cloud-metadata host များသို့ မည်သည့်အခါမျှ လမ်းကြောင်းပြောင်းမပေးပါ။ memory engine ၏ rerank အဆင့်သည် loopback မှတစ်ဆင့် ဤ route ကို ခေါ်ယူသောကြောင့် Memory settings ရှိ `rerankProviderModel` ကိုလည်း တူညီသောစည်းမျဉ်းက သက်ရောက်သည်။
 >
-> **Local server ပုံစံများ:** node ကို `<base>/v1/rerank` တွင် ခေါ်ဆိုပြီး 404 ရရှိပါက `<base>/rerank`
-> (Infinity, TEI) တွင် ခေါ်ဆိုသည်။ Upstream body တွင် Cohere/OpenAI စာလုံးပေါင်းပုံစံ (`documents`,
-> `return_documents`) နှင့် TEI စာလုံးပေါင်းပုံစံ (`texts`, `return_text`) နှစ်မျိုးစလုံး ပါဝင်ပြီး upstream response ကို
-> Cohere envelope အဖြစ် စံပြုသည်- TEI ၏ ရိုးရိုး `[{index, score, text}]`၊ ပေါ့ပါးသော gateway များမှ `{results: [{index, score}]}`
-> နှင့် Voyage ပုံစံ `{data: [...]}` အားလုံးကို client ထံ
-> `{results: [{index, relevance_score, document?}]}` ပုံစံဖြင့် ပြန်ပေးပြီး score အလိုက် စီကာ `top_n` ဖြင့် အရေအတွက်ကန့်သတ်သည်။
+> **Local server shapes:** node ကို `<base>/v1/rerank` တွင် ခေါ်ယူပြီး၊ 404 ဖြစ်ပါက `<base>/rerank` (Infinity, TEI) တွင် ခေါ်ယူသည်။ upstream body တွင် Cohere/OpenAI ရေးသားပုံ (`documents`, `return_documents`) နှင့် TEI ရေးသားပုံ (`texts`, `return_text`) နှစ်မျိုးလုံး ပါဝင်သည်။ upstream response ကို Cohere envelope အဖြစ် ပြောင်းလဲပေးသည်။ TEI ၏ `[{index, score, text}]`၊ `{results: [{index, score}]}` (thin gateway များမှ) နှင့် Voyage ပုံစံ `{data: [...]}` တို့အားလုံးကို score အလိုက် စီပြီး `top_n` ဖြင့် ကန့်သတ်ထားသော `{results: [{index, relevance_score, document?}]}` အဖြစ် client ထံ ပြန်ပေးသည်။
 
-> **Provider-node ရှာဖွေခြင်း:** OpenAI နှင့် တွဲဖက်အသုံးပြုနိုင်သော provider node တစ်ခုပေါ်ရှိ model များသည် `GET /v1/models`
-> တွင် node prefix အောက်၌ ပေါ်လာသည်။ Endpoint metadata မပါရှိသော row များ (local `/v1/models` စာရင်းများတွင် အများအားဖြင့် တွေ့ရသည်)
-> သည် node ၏ `apiType` ကို ဆက်ခံသဖြင့် `embeddings` node ၏ model များသည် မူလသတ်မှတ်ချက်အရ chat ဖြစ်သွားမည့်အစား `type: "embedding"` ဖြစ်ပြီး
-> `rerank` node ၏ model များသည် `type: "rerank"` ဖြစ်သည်။ Sync လုပ်ထားသော သို့မဟုတ် ကိုယ်တိုင်ထည့်သွင်းထားသော row တစ်ခုရှိ အတိအလင်းသတ်မှတ်ထားသည့်
-> `supportedEndpoints` သည် ဦးစားပေးအဖြစ် ဆက်လက်သက်ရောက်သည်။
+> **Provider-node discovery:** OpenAI-compatible provider node ပေါ်ရှိ model များသည် `GET /v1/models` တွင် node prefix အောက်၌ ပေါ်လာသည်။ endpoint metadata မပါသော row များ (ပုံမှန်အားဖြင့် local `/v1/models` စာရင်းများ) သည် node ၏ `apiType` ကို အမွေဆက်ခံသည်။ ထို့ကြောင့် `embeddings` node ၏ model များသည် chat အဖြစ် default မသတ်မှတ်ဘဲ `type: "embedding"` ဖြစ်ပြီး `rerank` node ၏ model များသည် `type: "rerank"` ဖြစ်သည်။ sync လုပ်ထားသော သို့မဟုတ် ကိုယ်တိုင်ထည့်ထားသော row တစ်ခုတွင် `supportedEndpoints` ကို တိတိကျကျ သတ်မှတ်ထားပါက ၎င်းက ဦးစားပေးသက်ရောက်နေဆဲဖြစ်သည်။
 
 ### သီးသန့် Provider Route များ
 
@@ -512,7 +506,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-Provider prefix မပါရှိပါက အလိုအလျောက် ထည့်သွင်းပေးသည်။ ကိုက်ညီမှုမရှိသော model များသည် `400` ကို ပြန်ပေးသည်။
+provider prefix မပါလျှင် အလိုအလျောက် ထည့်ပေးသည်။ ကိုက်ညီမှုမရှိသော model များအတွက် `400` ပြန်ပေးသည်။
 
 ---
 

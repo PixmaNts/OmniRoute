@@ -382,90 +382,84 @@ GET /api/v1/provider-plugin-manifest
 
 ## अनुकूलता एन्डपोइन्टहरू
 
-| विधि | पथ                                        | ढाँचा                              |
-| ---- | ----------------------------------------- | ---------------------------------- |
-| POST | `/v1/chat/completions`                    | OpenAI                             |
-| POST | `/v1/messages`                            | Anthropic                          |
-| POST | `/v1/responses`                           | OpenAI Responses                   |
-| POST | `/v1/embeddings`                          | OpenAI                             |
-| POST | `/v1/images/generations`                  | OpenAI Images                      |
-| POST | `/v1/images/edits`                        | OpenAI Images (सम्पादन/इनपेन्ट)    |
-| POST | `/v1/videos/generations`                  | OpenAI-शैलीको भिडियो उत्पादन       |
-| POST | `/v1/music/generations`                   | OpenAI-शैलीको सङ्गीत उत्पादन       |
-| POST | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                 |
-| POST | `/v1/audio/speech`                        | OpenAI TTS (अडियो बडी फर्काउँछ)    |
-| POST | `/v1/rerank`                              | Cohere/Voyage-शैलीको पुनःक्रमाङ्कन |
-| POST | `/v1/classify`                            | Jina वर्गीकरण (`api.jina.ai`)      |
-| POST | `/v1/segment`                             | Jina खण्डक (`segment.jina.ai`)     |
-| POST | `/v1/moderations`                         | OpenAI Moderations                 |
-| GET  | `/v1/models`                              | OpenAI                             |
-| POST | `/v1/messages/count_tokens`               | Anthropic                          |
-| GET  | `/v1beta/models`                          | Gemini                             |
-| POST | `/v1beta/models/{...path}`                | Gemini generateContent             |
-| POST | `/v1/api/chat`                            | Ollama                             |
-| GET  | `/api/v1/vscode/{token}/`                 | OpenAI क्याटलग उपनाम               |
-| GET  | `/api/v1/vscode/{token}/models`           | OpenAI मोडेल उपनाम                 |
-| POST | `/api/v1/vscode/{token}/chat/completions` | OpenAI टोकनयुक्त उपनाम             |
-| POST | `/api/v1/vscode/{token}/responses`        | OpenAI Responses टोकनयुक्त उपनाम   |
-| POST | `/api/v1/vscode/{token}/api/chat`         | Ollama टोकनयुक्त उपनाम             |
-| GET  | `/api/v1/vscode/{token}/api/tags`         | Ollama tags टोकनयुक्त उपनाम        |
+| विधि | पथ                                        | ढाँचा                               |
+| ---- | ----------------------------------------- | ----------------------------------- |
+| POST | `/v1/chat/completions`                    | OpenAI                              |
+| POST | `/v1/messages`                            | Anthropic                           |
+| POST | `/v1/responses`                           | OpenAI Responses                    |
+| POST | `/v1/embeddings`                          | OpenAI                              |
+| POST | `/v1/images/generations`                  | OpenAI Images                       |
+| POST | `/v1/images/edits`                        | OpenAI Images (सम्पादन/इनपेन्ट)     |
+| POST | `/v1/videos/generations`                  | OpenAI-शैलीको भिडियो सिर्जना        |
+| POST | `/v1/music/generations`                   | OpenAI-शैलीको संगीत सिर्जना         |
+| POST | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                  |
+| POST | `/v1/audio/speech`                        | OpenAI TTS (अडियो बडी फर्काउँछ)     |
+| POST | `/v1/rerank`                              | Cohere/Voyage-शैलीको रिर्‍याङ्क     |
+| POST | `/v1/classify`                            | Jina वर्गीकरण (`api.jina.ai`)       |
+| POST | `/v1/segment`                             | Jina सेग्मेन्टर (`segment.jina.ai`) |
+| POST | `/v1/systemone`                           | निर्णय मोडेलहरू (System One)        |
+| GET  | `/v1/systemone/models`                    | निर्णय मोडेलहरूको सूची              |
+| POST | `/v1/moderations`                         | OpenAI Moderations                  |
+| GET  | `/v1/models`                              | OpenAI                              |
+| POST | `/v1/messages/count_tokens`               | Anthropic                           |
+| GET  | `/v1beta/models`                          | Gemini                              |
+| POST | `/v1beta/models/{...path}`                | Gemini generateContent              |
+| POST | `/v1/api/chat`                            | Ollama                              |
+| GET  | `/api/v1/vscode/{token}/`                 | OpenAI क्याटलग उपनाम                |
+| GET  | `/api/v1/vscode/{token}/models`           | OpenAI मोडेल उपनाम                  |
+| POST | `/api/v1/vscode/{token}/chat/completions` | OpenAI टोकनयुक्त उपनाम              |
+| POST | `/api/v1/vscode/{token}/responses`        | OpenAI Responses टोकनयुक्त उपनाम    |
+| POST | `/api/v1/vscode/{token}/api/chat`         | Ollama टोकनयुक्त उपनाम              |
+| GET  | `/api/v1/vscode/{token}/api/tags`         | Ollama ट्याग टोकनयुक्त उपनाम        |
 
-सबै POST रुटहरूले एउटै संरचना पालना गर्छन्: `Bearer your-api-key` + Zod-द्वारा प्रमाणीकरण गरिएको JSON बडी (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, आदि, `src/shared/validation/schemas.ts` हेर्नुहोस्)। स्किमा असफल हुँदा 4xx फर्काइन्छ।
+सबै POST रुटहरूमा एउटै ढाँचा हुन्छ: `Bearer your-api-key` + Zod-बाट प्रमाणित JSON बडी (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` आदि; `src/shared/validation/schemas.ts` हेर्नुहोस्)। स्किमा प्रमाणीकरण असफल भएमा 4xx फर्काइन्छ।
 
-`Authorization: Bearer ...` संलग्न गर्न नसक्ने क्लाइन्टहरूका लागि, OmniRoute ले क्वेरी-स्ट्रिङ अनुकूलता (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) वा तल अभिलेखीकृत समर्पित `/api/v1/vscode/{token}/...` एन्डपोइन्टहरू मार्फत URL मा API कुञ्जीहरू पनि स्वीकार गर्छ।
+`Authorization: Bearer ...` हेडर पठाउन नसक्ने क्लाइन्टहरूका लागि, OmniRoute ले तल दस्तावेजीकृत क्वेरी-स्ट्रिङ अनुकूलता (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) वा समर्पित `/api/v1/vscode/{token}/...` एन्डपोइन्टहरूबाट URL मा API key स्वीकार गर्छ।
 
 ```bash
-# पुनःक्रमाङ्कन (क्लाउड रजिस्ट्री प्रदायक, वा "<prefix>/<model>" का रूपमा OpenAI-सङ्गत प्रदायक नोड)
+# रिर्‍याङ्क (क्लाउड रजिस्ट्री प्रदायक, वा "<prefix>/<model>" ढाँचाको OpenAI-compatible प्रदायक नोड)
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # Jina वर्गीकरण (Foundation API प्रमाणहरू)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Jina खण्डक
+# Jina सेग्मेन्टर
 POST /v1/segment     { "content": "...", "return_chunks": true }
+
+# निर्णय मोडेलहरू (System One)। पहिलो मोडेल प्रिफिक्सले जडान छान्छ:
+#   typesafe/jev-latest              -> TypeSafe प्रत्यक्ष
+#   openrouter/typesafe/jev-1.13     -> OpenRouter मार्फत
+#   ollama-local/<model>             -> स्थानीय Ollama >= 0.35
+# jev-latest जस्तो प्रिफिक्स नभएको ID ले OpenRouter नै प्रयोग गर्छ। TypeSafe SDK हरू baseURL = OmniRoute राखेर काम गर्छन्।
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # कन्फिगर गरिएका ब्याकएन्डका मोडेलहरू: { object: "list", data: [{ id, name, pricing, ... }] }
 
 # Jina खोज (s.jina.ai; प्रदायक उपनामहरू: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# मोडरेसनहरू
+# मोडरेसन
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — audio/mpeg (वा अनुरोध गरिएको ढाँचा) बडी फर्काउँछ
+# TTS — audio/mpeg (वा अनुरोध गरिएको ढाँचाको) बडी फर्काउँछ
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS लाई भाषा र आवाज आवश्यक पर्छ: `language` पूर्वनिर्धारित रूपमा "en" हुन्छ; नभएको
-# आवाज वा OpenAI को मानक आवाज नाम (alloy, nova, …) "Adrian" बन्छ
+# Soniox TTS का लागि भाषा र आवाज आवश्यक हुन्छ: `language` को पूर्वनिर्धारित मान "en" हो; आवाज नदिइएमा
+# वा OpenAI को स्टक आवाजको नाम (alloy, nova, …) दिइएमा "Adrian" प्रयोग हुन्छ
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # छवि सम्पादन (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# भिडियो / सङ्गीत उत्पादन (प्रदायक-प्रिफिक्सयुक्त मोडेल ID)
+# भिडियो / संगीत सिर्जना (प्रदायक-प्रिफिक्सयुक्त मोडेल ID)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **पुनःक्रमाङ्कन प्रदायक नोडहरू:** `POST /v1/rerank` ले `<node-prefix>/<model>` का रूपमा सम्बोधन गरिएका OpenAI-सङ्गत प्रदायक नोडहरू
-> (oMLX, vLLM, Infinity, गेटवे पछाडिको TEI, …) तर्फ पनि रुट गर्छ। लुपब्याक
-> नोडहरू (`localhost`, `127.0.0.1`, `172.16.0.0/12`) सधैँ योग्य हुन्छन्। अन्य कुनै
-> होस्टमा रहेका नोडहरू — LAN बक्स वा Tailscale पियर — अपरेटरले
-> `RERANK_REMOTE_PROVIDER_NODES` सुविधा फ्ल्याग सक्षम गरेको **र** नोडको आधार URL ले प्रदायकको
-> आउटबाउन्ड URL नीति (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) पार गरेको अवस्थामा मात्र योग्य हुन्छन्;
-> क्लाउड-मेटाडेटा होस्टहरूतर्फ कहिल्यै रुट गरिँदैन। मेमोरी इन्जिनको पुनःक्रमाङ्कन चरणले यस रुटलाई
-> लुपब्याकमार्फत कल गर्छ, त्यसैले यही नियमले Memory सेटिङहरूमा `rerankProviderModel` लाई पनि नियन्त्रित गर्छ।
+> **Rerank प्रदायक नोडहरू:** `POST /v1/rerank` ले `<node-prefix>/<model>` ठेगानामा रहेका OpenAI-सँग मिल्दो प्रदायक नोडहरू (oMLX, vLLM, Infinity, गेटवे पछाडिको TEI, …) मा पनि रुट गर्छ। लुपब्याक नोडहरू (`localhost`, `127.0.0.1`, `172.16.0.0/12`) सधैँ योग्य हुन्छन्। अन्य कुनै पनि होस्टका नोडहरू — चाहे LAN बक्स होस् वा Tailscale पियर — सञ्चालकले `RERANK_REMOTE_PROVIDER_NODES` फिचर फ्ल्याग सक्षम गरेको **र** नोडको आधार URL ले प्रदायकको आउटबाउन्ड URL नीति (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) पास गरेको अवस्थामा मात्र योग्य हुन्छन्; क्लाउड-मेटाडेटा होस्टहरूमा कहिल्यै रुट गरिँदैन। मेमोरी इन्जिनको rerank चरणले यो रुटलाई लुपब्याकमार्फत कल गर्छ, त्यसैले Memory सेटिङहरूमा रहेको `rerankProviderModel` मा पनि यही नियम लागू हुन्छ।
 >
-> **स्थानीय सर्भर संरचनाहरू:** नोडलाई `<base>/v1/rerank` मा र, 404 आएमा, `<base>/rerank`
-> (Infinity, TEI) मा कल गरिन्छ। अपस्ट्रिम बडीले Cohere/OpenAI हिज्जे (`documents`,
-> `return_documents`) र TEI हिज्जे (`texts`, `return_text`) दुवै बोक्छ, र अपस्ट्रिम प्रतिक्रियालाई
-> Cohere इनभेलपमा सामान्यीकृत गरिन्छ: TEI को सादा `[{index, score, text}]`, पातला गेटवेहरूबाट आएको
-> `{results: [{index, score}]}`, र Voyage-शैलीको `{data: [...]}` सबै क्लाइन्टमा
-> `{results: [{index, relevance_score, document?}]}` का रूपमा फर्कन्छन्, स्कोरअनुसार क्रमबद्ध हुन्छन् र `top_n` मा सीमित हुन्छन्।
+> **स्थानीय सर्भरका स्वरूपहरू:** नोडलाई `<base>/v1/rerank` मा कल गरिन्छ र, 404 आएमा, `<base>/rerank` मा कल गरिन्छ (Infinity, TEI)। अपस्ट्रिम बडीमा Cohere/OpenAI को हिज्जे (`documents`, `return_documents`) र TEI को हिज्जे (`texts`, `return_text`) दुवै हुन्छन्। अपस्ट्रिम प्रतिक्रिया Cohere को इनभलपमा सामान्यीकृत गरिन्छ: TEI को bare `[{index, score, text}]`, पातला गेटवेबाट आउने `{results: [{index, score}]}`, र Voyage शैलीको `{data: [...]}` — यी सबै क्लाइन्टमा `{results: [{index, relevance_score, document?}]}` का रूपमा फर्किन्छन्, स्कोरअनुसार क्रमबद्ध गरिन्छन् र `top_n` मा सीमित हुन्छन्।
 
-> **प्रदायक-नोड खोज:** OpenAI-सङ्गत प्रदायक नोडका मोडेलहरू `GET /v1/models`
-> मा नोड उपसर्गअन्तर्गत देखा पर्छन्। एन्डपोइन्ट मेटाडेटा नभएका पङ्क्तिहरूले (स्थानीय `/v1/models` सूचीहरूमा सामान्य)
-> नोडको `apiType` उत्तराधिकारमा प्राप्त गर्छन्, त्यसैले `embeddings` नोडका मोडेलहरू पूर्वनिर्धारित रूपमा च्याटमा सेट हुनुको सट्टा `type: "embedding"` हुन्छन् र
-> `rerank` नोडका मोडेलहरू `type: "rerank"` हुन्छन्; सिङ्क गरिएको वा म्यानुअल रूपमा थपिएको पङ्क्तिमा स्पष्ट रूपमा दिइएको
-> `supportedEndpoints` ले अझै पनि प्राथमिकता पाउँछ।
+> **प्रदायक-नोडको खोज:** OpenAI-सँग मिल्दो प्रदायक नोडका मोडेलहरू `GET /v1/models` मा नोड प्रिफिक्सअन्तर्गत देखिन्छन्। कुनै endpoint मेटाडेटा नभएका पङ्क्तिहरू (स्थानीय `/v1/models` सूचीहरूमा सामान्य) ले नोडको `apiType` अपनाउँछन्। त्यसैले `embeddings` नोडका मोडेलहरू `type: "embedding"` हुन्छन् र `rerank` नोडका मोडेलहरू `type: "rerank"` हुन्छन्, च्याटमा पूर्वनिर्धारित हुँदैनन्; सिङ्क गरिएको वा म्यानुअल रूपमा थपिएको पङ्क्तिमा स्पष्ट रूपमा दिइएको `supportedEndpoints` भने प्राथमिक हुन्छ।
 
 ### समर्पित प्रदायक रुटहरू
 
@@ -475,7 +469,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-प्रदायक उपसर्ग छुटेको भए स्वचालित रूपमा थपिन्छ। नमिल्ने मोडेलहरूले `400` फर्काउँछन्।
+नभएको अवस्थामा प्रदायक प्रिफिक्स स्वतः थपिन्छ। नमिल्ने मोडेलहरूले `400` फर्काउँछन्।
 
 ---
 

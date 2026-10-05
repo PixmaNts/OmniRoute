@@ -417,21 +417,23 @@ Bifrost, CLIProxyAPI மற்றும் எதிர்கால sidecar rout
 
 ## இணக்கத்தன்மை முனைப்புள்ளிகள்
 
-| முறை | பாதை                                      | வடிவமைப்பு                                       |
+| முறை | பாதை                                      | வடிவம்                                           |
 | ---- | ----------------------------------------- | ------------------------------------------------ |
 | POST | `/v1/chat/completions`                    | OpenAI                                           |
 | POST | `/v1/messages`                            | Anthropic                                        |
 | POST | `/v1/responses`                           | OpenAI Responses                                 |
 | POST | `/v1/embeddings`                          | OpenAI                                           |
 | POST | `/v1/images/generations`                  | OpenAI Images                                    |
-| POST | `/v1/images/edits`                        | OpenAI Images (திருத்தம்/உள்நிரப்பல்)            |
+| POST | `/v1/images/edits`                        | OpenAI Images (திருத்தம்/inpaint)                |
 | POST | `/v1/videos/generations`                  | OpenAI-பாணி காணொளி உருவாக்கம்                    |
 | POST | `/v1/music/generations`                   | OpenAI-பாணி இசை உருவாக்கம்                       |
-| POST | `/v1/audio/transcriptions`                | OpenAI Audio (பேச்சிலிருந்து உரை)                |
-| POST | `/v1/audio/speech`                        | OpenAI TTS (ஒலி உடற்பகுதியை வழங்கும்)            |
-| POST | `/v1/rerank`                              | Cohere/Voyage-பாணி மறுதரவரிசையாக்கம்             |
+| POST | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                               |
+| POST | `/v1/audio/speech`                        | OpenAI TTS (ஒலித் தரவை வழங்கும்)                 |
+| POST | `/v1/rerank`                              | Cohere/Voyage-பாணி மறுவரிசைப்படுத்தல்            |
 | POST | `/v1/classify`                            | Jina வகைப்படுத்தல் (`api.jina.ai`)               |
-| POST | `/v1/segment`                             | Jina பிரிப்பான் (`segment.jina.ai`)              |
+| POST | `/v1/segment`                             | Jina பிரிப்பி (`segment.jina.ai`)                |
+| POST | `/v1/systemone`                           | முடிவு மாதிரிகள் (System One)                    |
+| GET  | `/v1/systemone/models`                    | முடிவு மாதிரிப் பட்டியல்                         |
 | POST | `/v1/moderations`                         | OpenAI Moderations                               |
 | GET  | `/v1/models`                              | OpenAI                                           |
 | POST | `/v1/messages/count_tokens`               | Anthropic                                        |
@@ -445,19 +447,27 @@ Bifrost, CLIProxyAPI மற்றும் எதிர்கால sidecar rout
 | POST | `/api/v1/vscode/{token}/api/chat`         | Ollama டோக்கன் கொண்ட மாற்றுப்பெயர்               |
 | GET  | `/api/v1/vscode/{token}/api/tags`         | Ollama குறிச்சொற்கள் டோக்கன் கொண்ட மாற்றுப்பெயர் |
 
-அனைத்து POST வழித்தடங்களும் ஒரே வடிவமைப்பைப் பின்பற்றுகின்றன: `Bearer your-api-key` + Zod-ஆல் சரிபார்க்கப்பட்ட JSON உடற்பகுதி (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` போன்றவை; `src/shared/validation/schemas.ts`-ஐப் பார்க்கவும்). திட்டவடிவச் சரிபார்ப்பு தோல்வியடைந்தால் 4xx வழங்கப்படும்.
+அனைத்து POST வழிகளும் ஒரே வடிவத்தைப் பின்பற்றுகின்றன: `Bearer your-api-key` + Zod-ஆல் சரிபார்க்கப்படும் JSON உடல் (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` போன்றவை; `src/shared/validation/schemas.ts`-ஐப் பார்க்கவும்). ஸ்கீமா சரிபார்ப்பில் தோல்வி ஏற்பட்டால் 4xx பதில் வழங்கப்படும்.
 
-`Authorization: Bearer ...`-ஐ இணைக்க முடியாத கிளையன்ட்களுக்கு, வினவல்-சர இணக்கத்தன்மை (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) அல்லது கீழே ஆவணப்படுத்தப்பட்டுள்ள பிரத்யேக `/api/v1/vscode/{token}/...` முனைப்புள்ளிகள் வழியாக URL-இல் API விசைகளை OmniRoute ஏற்றுக்கொள்கிறது.
+`Authorization: Bearer ...` சேர்க்க முடியாத கிளையண்டுகளுக்கு, கீழே ஆவணப்படுத்தப்பட்டுள்ள வினவல்-சரம் வழி (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) அல்லது பிரத்யேகமான `/api/v1/vscode/{token}/...` முனைப்புள்ளிகள் வழியாகவும் OmniRoute API விசைகளை ஏற்கிறது.
 
 ```bash
-# மறுதரவரிசையாக்கம் (கிளவுட் பதிவக வழங்குநர் அல்லது "<prefix>/<model>" எனும் OpenAI-இணக்கமான வழங்குநர் முனை)
+# மறுவரிசைப்படுத்தல் (கிளவுட் பதிவேட்டுச் சேவை வழங்குநர் அல்லது "<prefix>/<model>" வடிவிலான OpenAI-இணக்கமான வழங்குநர் முனை)
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # Jina வகைப்படுத்தல் (Foundation API நற்சான்றுகள்)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Jina பிரிப்பான்
+# Jina பிரிப்பி
 POST /v1/segment     { "content": "...", "return_chunks": true }
+
+# முடிவு மாதிரிகள் (System One). முதல் மாதிரிப் முன்னொட்டு இணைப்பைத் தேர்ந்தெடுக்கிறது:
+#   typesafe/jev-latest              -> TypeSafe நேரடி இணைப்பு
+#   openrouter/typesafe/jev-1.13     -> OpenRouter வழியாக
+#   ollama-local/<model>             -> உள்ளூர் Ollama >= 0.35
+# jev-latest போன்ற தகுதிப்படுத்தப்படாத ID, OpenRouter-ஐத் தொடர்ந்து பயன்படுத்தும். TypeSafe SDK-கள் baseURL = OmniRoute என அமைத்துப் பயன்படுத்தலாம்.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # அமைக்கப்பட்ட பின்புலச் சேவைகளின் மாதிரிகள்: { object: "list", data: [{ id, name, pricing, ... }] }
 
 # Jina தேடல் (s.jina.ai; வழங்குநர் மாற்றுப்பெயர்கள்: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
@@ -465,46 +475,28 @@ POST /v1/search      { "query": "...", "provider": "jina-search" }
 # உள்ளடக்கக் கட்டுப்பாடுகள்
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — audio/mpeg (அல்லது கோரப்பட்ட வடிவமைப்பு) உடற்பகுதியை வழங்கும்
+# TTS — audio/mpeg (அல்லது கோரிய வடிவம்) தரவை வழங்கும்
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS-க்கு ஒரு மொழியும் குரலும் தேவை: `language` இயல்பாக "en" ஆகும்; விடுபட்ட
-# குரல் அல்லது OpenAI-இன் இயல்புநிலை குரல் பெயர் (alloy, nova, …) "Adrian" ஆக மாற்றப்படும்
+# Soniox TTS-க்கு மொழியும் குரலும் தேவை: `language` இயல்பாக "en" ஆக இருக்கும்; குரல் இல்லாவிட்டால்
+# அல்லது OpenAI இயல்புநிலை குரல் பெயர் (alloy, nova, …) கொடுக்கப்பட்டால் "Adrian" பயன்படுத்தப்படும்
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # படத் திருத்தம் (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# காணொளி / இசை உருவாக்கம் (வழங்குநர் முன்னொட்டு கொண்ட மாதிரி ID)
+# காணொளி / இசை உருவாக்கம் (வழங்குநர் முன்னொட்டுடன் கூடிய மாதிரி ID)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **மறுதரவரிசையாக்க வழங்குநர் முனைகள்:** `POST /v1/rerank`, `<node-prefix>/<model>` எனக் குறிப்பிடப்படும்
-> OpenAI-இணக்கமான வழங்குநர் முனைகளுக்கும் (நுழைவாயிலுக்குப் பின்னால் உள்ள oMLX, vLLM, Infinity, TEI, …)
-> வழிப்படுத்துகிறது. லூப்பேக் முனைகள் (`localhost`, `127.0.0.1`, `172.16.0.0/12`) எப்போதும்
-> தகுதியுடையவை. LAN பெட்டி அல்லது Tailscale பியர் போன்ற வேறு எந்த ஹோஸ்ட்டிலும் உள்ள முனைகள்,
-> இயக்குநர் `RERANK_REMOTE_PROVIDER_NODES` அம்சக் கொடியை இயக்கியிருப்பதுடன், முனையின் அடிப்படை URL
-> வழங்குநரின் வெளிச்செல்லும் URL கொள்கையை (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` /
-> `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) நிறைவேற்றினால் மட்டுமே தகுதியுடையவை; கிளவுட்-மெட்டாடேட்டா
-> ஹோஸ்ட்களுக்கு ஒருபோதும் வழிப்படுத்தப்படாது. நினைவக இயந்திரத்தின் மறுதரவரிசையாக்கப் படி இந்த வழித்தடத்தை
-> லூப்பேக் வழியாக அழைக்கிறது; எனவே Memory அமைப்புகளில் உள்ள `rerankProviderModel`-ஐயும் இதே விதி நிர்வகிக்கிறது.
+> **Rerank வழங்குநர் முனைகள்:** `POST /v1/rerank` கோரிக்கைகள், `<node-prefix>/<model>` என்ற முகவரியில் அணுகப்படும் OpenAI-உடன் இணக்கமான வழங்குநர் முனைகளுக்கும் (oMLX, vLLM, Infinity, கேட்வேக்குப் பின்னால் உள்ள TEI, …) வழிமாற்றப்படுகின்றன. Loopback முனைகள் (`localhost`, `127.0.0.1`, `172.16.0.0/12`) எப்போதும் தகுதியுடையவை. வேறு எந்த host-இலுள்ள முனைகளும் — LAN கணினி அல்லது Tailscale peer — இயக்குநர் `RERANK_REMOTE_PROVIDER_NODES` அம்சக் கொடியை இயக்கி, மேலும் அந்த முனையின் base URL வழங்குநரின் வெளிச்செல்லும் URL கொள்கையை (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) பூர்த்தி செய்தால் மட்டுமே தகுதியுடையவை; cloud-metadata host-களுக்கு ஒருபோதும் வழிமாற்றப்படாது. மெமரி எஞ்சினின் rerank படி இந்த வழியை loopback வழியாக அழைக்கிறது; எனவே Memory அமைப்புகளில் உள்ள `rerankProviderModel`-க்கும் இதே விதி பொருந்தும்.
 >
-> **உள்ளூர் சேவையக வடிவங்கள்:** முனை `<base>/v1/rerank`-இல் அழைக்கப்படுகிறது; 404 ஏற்பட்டால்,
-> `<base>/rerank`-இல் (Infinity, TEI) அழைக்கப்படுகிறது. மேல்நிலை உடற்பகுதி Cohere/OpenAI எழுத்துமுறையையும்
-> (`documents`, `return_documents`) TEI எழுத்துமுறையையும் (`texts`, `return_text`) கொண்டுள்ளது; மேலும் மேல்நிலை
-> பதில் Cohere உறைக்கு இயல்பாக்கப்படுகிறது: TEI-இன் வெறும் `[{index, score, text}]`, மெலிந்த நுழைவாயில்களிலிருந்து
-> வரும் `{results: [{index, score}]}`, மற்றும் Voyage-பாணி `{data: [...]}` ஆகிய அனைத்தும் கிளையன்ட்டிற்கு
-> `{results: [{index, relevance_score, document?}]}` ஆகத் திரும்புகின்றன; மதிப்பெண் அடிப்படையில் வரிசைப்படுத்தப்பட்டு
-> `top_n` அளவில் வரம்பிடப்படுகின்றன.
+> **உள்ளூர் சேவையக வடிவங்கள்:** முனை `<base>/v1/rerank`-இல் அழைக்கப்படுகிறது; 404 கிடைத்தால் `<base>/rerank`-இல் அழைக்கப்படுகிறது (Infinity, TEI). upstream body-யில் Cohere/OpenAI வடிவ (`documents`, `return_documents`) மற்றும் TEI வடிவ (`texts`, `return_text`) இரண்டும் இடம்பெறும். upstream பதில் Cohere உறை வடிவமாகச் சீராக்கப்படுகிறது: TEI-யின் நேரடி `[{index, score, text}]`, மெல்லிய கேட்வேகளிலிருந்து வரும் `{results: [{index, score}]}`, மற்றும் Voyage-பாணி `{data: [...]}` ஆகிய அனைத்தும், மதிப்பெண் அடிப்படையில் வரிசைப்படுத்தப்பட்டு `top_n`-ஆல் வரம்பிடப்பட்ட `{results: [{index, relevance_score, document?}]}` வடிவில் கிளையண்டுக்குத் திரும்பும்.
 
-> **வழங்குநர்-முனை கண்டறிதல்:** OpenAI-இணக்கமான வழங்குநர் முனையிலுள்ள மாதிரிகள், முனையின் முன்னொட்டின் கீழ் `GET /v1/models`-இல் தோன்றும்.
-> முனைப்புள்ளி மெட்டாடேட்டா இல்லாத வரிசைகள் (உள்ளக `/v1/models` பட்டியல்களுக்கு இது வழக்கமானது)
-> முனையின் `apiType`-ஐப் பெறுகின்றன; எனவே இயல்பாக அரட்டைக்கு அமைக்கப்படுவதற்குப் பதிலாக, `embeddings` முனையின் மாதிரிகள் `type: "embedding"` ஆகவும்,
-> `rerank` முனையின் மாதிரிகள் `type: "rerank"` ஆகவும் இருக்கும்; ஒத்திசைக்கப்பட்ட அல்லது கைமுறையாகச் சேர்க்கப்பட்ட வரிசையில் வெளிப்படையாகக் குறிப்பிடப்பட்ட
-> `supportedEndpoints` தொடர்ந்து முன்னுரிமை பெறும்.
+> **வழங்குநர் முனை கண்டறிதல்:** OpenAI-உடன் இணக்கமான வழங்குநர் முனையில் உள்ள மாதிரிகள், முனை முன்னொட்டின் கீழ் `GET /v1/models`-இல் தோன்றும். endpoint metadata இல்லாத வரிசைகள் (உள்ளூர் `/v1/models` பட்டியல்களில் பொதுவாகக் காணப்படுபவை) முனையின் `apiType`-ஐப் பெறும்; இதனால் `embeddings` முனையின் மாதிரிகள் `type: "embedding"` என்றும், `rerank` முனையின் மாதிரிகள் `type: "rerank"` என்றும் இருக்கும்; அவை இயல்பாக chat வகைக்கு அமைவதில்லை. ஒத்திசைக்கப்பட்ட அல்லது கைமுறையாகச் சேர்க்கப்பட்ட வரிசையில் உள்ள வெளிப்படையான `supportedEndpoints` இதற்கு முன்னுரிமை பெறும்.
 
-### பிரத்யேக வழங்குநர் வழித்தடங்கள்
+### தனிப்பட்ட வழங்குநர் வழிகள்
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -512,7 +504,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-வழங்குநர் முன்னொட்டு இல்லாவிட்டால் அது தானாகச் சேர்க்கப்படும். பொருந்தாத மாதிரிகள் `400`-ஐத் திருப்பியளிக்கும்.
+வழங்குநர் முன்னொட்டு விடுபட்டிருந்தால் தானாகச் சேர்க்கப்படும். பொருந்தாத மாதிரிகளுக்கு `400` திருப்பப்படும்.
 
 ---
 

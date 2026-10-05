@@ -405,96 +405,88 @@ Uża dan l-endpoint meta sidecar jaħdem barra mill-proċess u ma jkunx jista’
 
 ---
 
-## Punti tat-Tmiem tal-Kompatibbiltà
+## Endpoints ta' Kompatibbiltà
 
-| Metodu | Mogħdija                                  | Format                                   |
-| ------ | ----------------------------------------- | ---------------------------------------- |
-| POST   | `/v1/chat/completions`                    | OpenAI                                   |
-| POST   | `/v1/messages`                            | Anthropic                                |
-| POST   | `/v1/responses`                           | OpenAI Responses                         |
-| POST   | `/v1/embeddings`                          | OpenAI                                   |
-| POST   | `/v1/images/generations`                  | OpenAI Images                            |
-| POST   | `/v1/images/edits`                        | OpenAI Images (editjar/inpainting)       |
-| POST   | `/v1/videos/generations`                  | Ġenerazzjoni ta’ vidjow stil OpenAI      |
-| POST   | `/v1/music/generations`                   | Ġenerazzjoni ta’ mużika stil OpenAI      |
-| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                       |
-| POST   | `/v1/audio/speech`                        | OpenAI TTS (jirritorna l-korp tal-awdjo) |
-| POST   | `/v1/rerank`                              | Riklassifikazzjoni stil Cohere/Voyage    |
-| POST   | `/v1/classify`                            | Klassifikazzjoni Jina (`api.jina.ai`)    |
-| POST   | `/v1/segment`                             | Segmentatur Jina (`segment.jina.ai`)     |
-| POST   | `/v1/moderations`                         | OpenAI Moderations                       |
-| GET    | `/v1/models`                              | OpenAI                                   |
-| POST   | `/v1/messages/count_tokens`               | Anthropic                                |
-| GET    | `/v1beta/models`                          | Gemini                                   |
-| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                   |
-| POST   | `/v1/api/chat`                            | Ollama                                   |
-| GET    | `/api/v1/vscode/{token}/`                 | Alias tal-katalgu OpenAI                 |
-| GET    | `/api/v1/vscode/{token}/models`           | Alias tal-mudelli OpenAI                 |
-| POST   | `/api/v1/vscode/{token}/chat/completions` | Alias OpenAI b’token                     |
-| POST   | `/api/v1/vscode/{token}/responses`        | Alias OpenAI Responses b’token           |
-| POST   | `/api/v1/vscode/{token}/api/chat`         | Alias Ollama b’token                     |
-| GET    | `/api/v1/vscode/{token}/api/tags`         | Alias tat-tags Ollama b’token            |
+| Metodu | Mogħdija                                  | Format                                       |
+| ------ | ----------------------------------------- | -------------------------------------------- |
+| POST   | `/v1/chat/completions`                    | OpenAI                                       |
+| POST   | `/v1/messages`                            | Anthropic                                    |
+| POST   | `/v1/responses`                           | OpenAI Responses                             |
+| POST   | `/v1/embeddings`                          | OpenAI                                       |
+| POST   | `/v1/images/generations`                  | OpenAI Images                                |
+| POST   | `/v1/images/edits`                        | OpenAI Images (edit/inpaint)                 |
+| POST   | `/v1/videos/generations`                  | Ġenerazzjoni ta' vidjows stil OpenAI         |
+| POST   | `/v1/music/generations`                   | Ġenerazzjoni ta' mużika stil OpenAI          |
+| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                           |
+| POST   | `/v1/audio/speech`                        | OpenAI TTS (jirritorna l-kontenut tal-awdjo) |
+| POST   | `/v1/rerank`                              | Rerank stil Cohere/Voyage                    |
+| POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)                |
+| POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)           |
+| POST   | `/v1/systemone`                           | Mudelli ta' deċiżjoni (System One)           |
+| GET    | `/v1/systemone/models`                    | Lista ta' mudelli ta' deċiżjoni              |
+| POST   | `/v1/moderations`                         | OpenAI Moderations                           |
+| GET    | `/v1/models`                              | OpenAI                                       |
+| POST   | `/v1/messages/count_tokens`               | Anthropic                                    |
+| GET    | `/v1beta/models`                          | Gemini                                       |
+| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                       |
+| POST   | `/v1/api/chat`                            | Ollama                                       |
+| GET    | `/api/v1/vscode/{token}/`                 | Alias tal-katalgu OpenAI                     |
+| GET    | `/api/v1/vscode/{token}/models`           | Alias tal-mudelli OpenAI                     |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | Alias tokenizzat OpenAI                      |
+| POST   | `/api/v1/vscode/{token}/responses`        | Alias tokenizzat OpenAI Responses            |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Alias tokenizzat Ollama                      |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Alias tokenizzat tat-tikketti Ollama         |
 
-Ir-rotot POST kollha jsegwu l-istess struttura: `Bearer your-api-key` + korp JSON ivvalidat b’Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, eċċ., ara `src/shared/validation/schemas.ts`). Jiġi rritornat 4xx meta l-iskema ma tgħaddix mill-validazzjoni.
+Ir-rotot kollha POST isegwu l-istess struttura: `Bearer your-api-key` + korp JSON ivvalidat minn Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, eċċ.; ara `src/shared/validation/schemas.ts`). Jekk l-iskema ma tkunx valida, tintbagħat tweġiba 4xx.
 
-Għall-klijenti li ma jistgħux jehmżu `Authorization: Bearer ...`, OmniRoute jaċċetta wkoll ċwievet tal-API fil-URL, jew permezz tal-kompatibbiltà tas-sekwenza tal-mistoqsija (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) jew permezz tal-punti tat-tmiem dedikati `/api/v1/vscode/{token}/...` dokumentati hawn taħt.
+Għal klijenti li ma jistgħux iżidu `Authorization: Bearer ...`, OmniRoute jaċċetta wkoll ċwievet API fil-URL, permezz jew tal-kompatibbiltà tal-parametri tal-query string (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) jew tal-endpoints iddedikati `/api/v1/vscode/{token}/...` dokumentati hawn taħt.
 
 ```bash
-# Riklassifikazzjoni (fornitur mir-reġistru tal-cloud, jew nodu ta’ fornitur kompatibbli ma’ OpenAI bħala "<prefix>/<model>")
+# Rerank (fornitur tar-reġistru tas-sħab, jew nodu ta' fornitur kompatibbli ma' OpenAI bħala "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Klassifikazzjoni Jina (kredenzjali tal-Foundation API)
+# Jina classify (kredenzjali tal-Foundation API)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Segmentatur Jina
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# Tiftix Jina (s.jina.ai; aliases tal-fornitur: jina-search, jina-ai, jina)
+# Mudelli ta' deċiżjoni (System One). Il-prefiss tal-ewwel mudell jagħżel il-konnessjoni:
+#   typesafe/jev-latest              -> direttament ma' TypeSafe
+#   openrouter/typesafe/jev-1.13     -> permezz ta' OpenRouter
+#   ollama-local/<model>             -> Ollama lokali >= 0.35
+# Identifikatur mingħajr prefiss, bħal jev-latest, jibqa' juża OpenRouter. L-SDKs ta' TypeSafe jaħdmu b'baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # mudelli tal-backends ikkonfigurati: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Jina search (s.jina.ai; aliases tal-fornitur: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# Moderazzjonijiet
+# Moderations
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — jirritorna korp audio/mpeg (jew il-format mitlub)
+# TTS — jirritorna l-kontenut audio/mpeg (jew tal-format mitlub)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS jeħtieġ lingwa u vuċi: `language` għandha l-valur awtomatiku "en"; vuċi nieqsa
-# jew isem ta’ vuċi standard ta’ OpenAI (alloy, nova, …) jinbidel għal "Adrian"
+# Soniox TTS jeħtieġ lingwa u vuċi: `language` għandu "en" bħala valur awtomatiku; jekk il-vuċi tkun nieqsa
+# jew ikun hemm isem ta' vuċi standard ta' OpenAI (alloy, nova, …), tintuża "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
-# Editjar ta’ immaġni (multipart)
+# Editjar ta' immaġni (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Ġenerazzjoni ta’ vidjow / mużika (ID tal-mudell bi prefiss tal-fornitur)
+# Ġenerazzjoni ta' vidjows / mużika (ID tal-mudell bil-prefiss tal-fornitur)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Nodi tal-fornituri tar-riklassifikazzjoni:** `POST /v1/rerank` jidderieġi wkoll lejn nodi ta’ fornituri
-> kompatibbli ma’ OpenAI (oMLX, vLLM, Infinity, TEI wara gateway, …) indirizzati bħala `<node-prefix>/<model>`.
-> In-nodi loopback (`localhost`, `127.0.0.1`, `172.16.0.0/12`) huma dejjem eliġibbli. Nodi fuq kwalunkwe host
-> ieħor — kompjuter fuq LAN jew peer ta’ Tailscale — huma eliġibbli biss meta l-operatur jattiva l-feature flag
-> `RERANK_REMOTE_PROVIDER_NODES` **u** l-URL bażi tan-nodu jgħaddi mill-politika tal-URLs ħerġin tal-fornitur
-> (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> hosts tal-metadata tal-cloud qatt ma jiġu diretti lejhom. Il-pass tar-riklassifikazzjoni tal-magna tal-memorja
-> jikkonsma din ir-rotta permezz tal-loopback, għalhekk l-istess regola tirregola `rerankProviderModel`
-> fis-settings tal-Memorja.
+> **Nodi tal-provider għar-rerank:** `POST /v1/rerank` jgħaddi wkoll it-talbiet lin-nodi tal-provider kompatibbli ma’ OpenAI (oMLX, vLLM, Infinity, TEI wara gateway, …) indirizzati bħala `<node-prefix>/<model>`. In-nodi loopback (`localhost`, `127.0.0.1`, `172.16.0.0/12`) huma dejjem eliġibbli. Nodi fuq kwalunkwe host ieħor — kompjuter fuq il-LAN jew peer ta’ Tailscale — huma eliġibbli biss meta l-operatur jattiva l-feature flag `RERANK_REMOTE_PROVIDER_NODES` **u** l-URL bażi tan-node jgħaddi mill-politika tal-URLs ħerġin tal-provider (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); it-talbiet qatt ma jintbagħtu lil hosts tal-metadata tal-cloud. Il-pass tar-rerank tal-magna tal-memorja jsejjaħ din ir-rotta permezz ta’ loopback, għalhekk l-istess regola tapplika għal `rerankProviderModel` fis-settings tal-Memory.
 >
-> **Strutturi tas-server lokali:** in-nodu jissejjaħ f’`<base>/v1/rerank` u, f’każ ta’ 404, f’`<base>/rerank`
-> (Infinity, TEI). Il-korp upstream jinkludi kemm it-terminoloġija ta’ Cohere/OpenAI (`documents`,
-> `return_documents`) kif ukoll dik ta’ TEI (`texts`, `return_text`), u r-rispons upstream jiġi
-> normalizzat għall-envelope ta’ Cohere: l-array dirett ta’ TEI `[{index, score, text}]`,
-> `{results: [{index, score}]}` minn gateways ħfief, u `{data: [...]}` stil Voyage kollha jintbagħtu lura
-> lill-klijent bħala `{results: [{index, relevance_score, document?}]}`, magħżula skont il-punteġġ u
-> limitati għal `top_n`.
+> **Formati ta’ servers lokali:** in-node jiġi kkuntattjat f’`<base>/v1/rerank` u, jekk jirritorna 404, f’`<base>/rerank` (Infinity, TEI). Il-body li jintbagħat upstream jinkludi kemm il-kitba ta’ Cohere/OpenAI (`documents`, `return_documents`) kif ukoll dik ta’ TEI (`texts`, `return_text`), u t-tweġiba upstream tiġi normalizzata għall-format ta’ Cohere: il-lista TEI mingħajr envelope `[{index, score, text}]`, `{results: [{index, score}]}` minn gateways sempliċi, u `{data: [...]}` tal-istil ta’ Voyage kollha jaslu għand il-klijent bħala `{results: [{index, relevance_score, document?}]}`, magħżulin skont il-punteġġ u limitati għal `top_n`.
 
-> **Skoperta tan-nodi tal-fornitur:** il-mudelli fuq nodu ta’ fornitur kompatibbli ma’ OpenAI jidhru f’`GET /v1/models`
-> taħt il-prefiss tan-nodu. Ir-ringieli li ma jkollhomx metadata tal-endpoint (kif jiġri tipikament fil-listi lokali ta’ `/v1/models`)
-> jirtu l-`apiType` tan-nodu, għalhekk il-mudelli ta’ nodu `embeddings` ikunu `type: "embedding"` u l-mudelli ta’
-> nodu `rerank` ikunu `type: "rerank"` minflok ma jużaw iċ-chat bħala valur awtomatiku; `supportedEndpoints` espliċitu
-> fuq ringiela sinkronizzata jew miżjuda manwalment xorta jieħu preċedenza.
+> **Skoperta tan-nodi tal-provider:** il-mudelli fuq node tal-provider kompatibbli ma’ OpenAI jidhru f’`GET /v1/models` taħt il-prefiss tan-node. Ringieli mingħajr metadata tal-endpoint (kif inhu tipiku fil-listi lokali ta’ `/v1/models`) jirtu l-`apiType` tan-node, għalhekk il-mudelli ta’ node `embeddings` ikollhom `type: "embedding"` u dawk ta’ node `rerank` ikollhom `type: "rerank"` minflok ma jitqiesu bħala chat; `supportedEndpoints` espliċitu fuq ringiela sinkronizzata jew miżjuda manwalment xorta jieħu preċedenza.
 
-### Rotot Dedikati tal-Fornitur
+### Rotot Dedikati tal-Provider
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -502,7 +494,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-Il-prefiss tal-fornitur jiżdied awtomatikament jekk ikun nieqes. Mudelli li ma jaqblux jirritornaw `400`.
+Il-prefiss tal-provider jiżdied awtomatikament jekk ikun nieqes. Mudelli li ma jaqblux jirritornaw `400`.
 
 ---
 

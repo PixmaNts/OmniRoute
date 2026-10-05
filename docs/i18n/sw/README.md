@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Lango Huru la AI
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Usiache kuandika msimbo kamwe. Kila zana ya AI → watoa huduma 358 — 150+ bila malipo — kupitia sehemu moja ya mwisho. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity kuingia Claude / GPT / Gemini BURE na kurudi nyuma kiotomatiki. Mbinu ya RTK + Caveman ya kubana data huokoa tokeni 15–95% (wastani ~89%) — usiwahi kufikia vikomo. Watoa huduma 358 wa AI · Viwango 150+ vya bure · ~1.62B tokeni za bure/mwezi · Mikakati 19 ya uelekezaji · Kuanza kwa $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Usiache kamwe kuandika msimbo. Kila zana ya AI → watoa huduma 359 — 150+ bila malipo — kupitia endpoint moja. Claude Code, Codex, Cursor, Cline, Copilot na Antigravity kwenda kwa Claude / GPT / Gemini BILA MALIPO, kwa kutumia ubadilishaji wa kiotomatiki iwapo huduma itashindwa. Mfinyazo uliounganishwa wa RTK + Caveman huokoa 15–95% ya tokeni (wastani wa ~89%) — usifikie vikomo kamwe. Watoa huduma 359 wa AI · viwango 150+ vya bure · ~tokeni bilioni 1.62 za bure kwa mwezi · mikakati 19 ya uelekezaji · anza kwa $0."/>
 
 </div>
 
@@ -214,47 +214,47 @@
 
 <div align="center">
 
-## 🆓 Hufanya kazi mara tu unapoipakia — hakuna funguo, hakuna usanidi
+## 🆓 Hufanya kazi mara tu unapoisakinisha — hakuna funguo, hakuna usanidi
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Hufanya kazi mara tu unapoipakia — usanidi sifuri. Hatua tatu: 1. Sakinisha — npm i -g omniroute, seva inaanza kwenye localhost:20128. 2. Elekeza zana yako kwenye http://localhost:20128/v1 — zana yoyote inayooana na OpenAI (Claude Code, Cursor, Cline). 3. Inajibu — piga model auto kwa jibu la papo hapo, bila ufunguo wa API, bila kujisajili, bila usanidi. Mtoa huduma asiye na ufunguo OpenCode Free tayari amewekwa kwenye mchanganyiko wa auto, kwa hivyo usakinishaji mpya unajibu mara moja."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Hufanya kazi mara tu unapoisakinisha — hakuna usanidi. Hatua tatu: 1. Sakinisha — npm i -g omniroute, seva inaanza kwenye localhost:20128. 2. Elekeza zana yako kwenye http://localhost:20128/v1 — zana yoyote inayooana na OpenAI (Claude Code, Cursor, Cline). 3. Inajibu — tumia modeli auto kupata jibu papo hapo, bila ufunguo wa API, kujisajili au usanidi. Mtoa huduma asiyehitaji ufunguo, OpenCode Free, ameunganishwa awali kwenye mchanganyiko wa auto, kwa hivyo usakinishaji mpya hujibu bila usanidi wowote."/>
 
 ```bash
-# Usakinishaji mpya, sifa sifuri — `auto` tayari inafanya kazi:
+# Usakinishaji mpya, hakuna vitambulisho — `auto` tayari inafanya kazi:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Unapendelea backend maalum isiyolipishwa? Piga `oc/…` (OpenCode Free) moja kwa moja. Kisha panda hadi `auto` na umruhusu OmniRoute achague.</sub>
+<sub>Unapendelea huduma mahususi ya nyuma isiyolipishwa? Tumia `oc/…` (OpenCode Free) moja kwa moja. Kisha hamia kwenye `auto` na uruhusu OmniRoute ichague.</sub>
 
-<sub>📦 Nakili-bandika hati za kuanza haraka kwa **Python, Node.js, PHP, na cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 Hati za kuanza haraka za kunakili na kubandika kwa **Python, Node.js, PHP, na cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 Ahadi
+# 💥 Ahadi Yetu
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ahadi — Sehemu moja ya mwisho na watoa huduma 358. Hifadhi rudufu ya kiotomatiki huendelea kuelekeza wakati lengo lingine lenye afya linapatikana. Nguzo sita: hifadhi rudufu thabiti kwa watoa huduma 358 · hadi 95% ya akiba ya tokeni kwenye mizigo inayostahiki · $0 kuanza na viwango 150+ vya bure na watoa huduma 54 wa bure wa kudumu/bila ufunguo · miunganisho 36 ya CLI/wakala kupitia usanidi mmoja · utangamano wa OpenAI, Claude, Gemini na Responses API kwenye /v1 · vidhibiti vya uzalishaji ikiwemo vivunja mzunguko, usiri wa TLS, zana za MCP 110, A2A, kumbukumbu, vizuizi, tathmini na matamko 39,000+ ya majaribio tuli kwenye faili 5,100+ za majaribio zilizofuatiliwa."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ahadi Yetu — Kiendeshaji kimoja na watoa huduma 359. Mfumo wa kurejea kiotomatiki huendeleza uelekezaji mradi tu kuna lengwa jingine linalopatikana na lenye afya. Nguzo sita: kurejea kwa uthabiti katika watoa huduma 359 · kuokoa hadi 95% ya tokeni katika kazi zinazostahiki · kuanza kwa $0 ukiwa na mipango 150+ ya bure na watoa huduma 54 wa bure kabisa wanaopatikana mara kwa mara/bila ufunguo · miunganisho 36 ya CLI/agent kupitia usanidi mmoja · uoanifu na API za OpenAI, Claude, Gemini na Responses kwenye /v1 · vidhibiti vya uzalishaji vinavyojumuisha vizuia mzunguko, ufichaji wa TLS, zana 110 za MCP, A2A, kumbukumbu, vizuizi vya usalama, tathmini, na matamko 39,000+ ya majaribio tuli katika faili 5,100+ za majaribio zinazofuatiliwa."/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 Kwa nini OmniRoute?
+# 🤔 Kwa Nini OmniRoute?
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Kwa nini OmniRoute — acha kuhangaika na dashibodi 10, funguo za API zilizokufa na bili za kushangaza. Maumivu kumi ya kila siku dhidi ya masuluhisho: kiasi kinachoisha bila kutumika → ongeza usajili; vikomo vya viwango katikati ya kuandika msimbo → hifadhi rudufu ya kiotomatiki ya viwango 4 (Usajili → API → Nafuu → Bure); matokeo ya zana yanayotumia tokeni nyingi → RTK + Caveman compression (15–95%); API za gharama kubwa → uelekezaji uliopangwa kwa gharama; kila zana usanidi wake → sehemu moja ya mwisho, dashibodi moja; AI imezuiwa → proksi ya viwango 3 + usiri wa TLS; funguo zilizokufa → uthabiti wa tabaka 3 (vivunja mzunguko, kupunguza matumizi ya funguo, kuzuia modeli); timu inayoshiriki usajili mmoja → hifadhi za funguo zenye kiasi cha usawa; prompts kupitia wingu la mtu → kwanza ndani ya nchi na funguo zilizosimbwa kwa AES-256-GCM; hakuna mwonekano wa matumizi → uchanganuzi wa moja kwa moja (matumizi, kiasi, akiba, p95 latency)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Kwa nini OmniRoute — acha kuhangaika na dashibodi 10, funguo za API zilizokufa na bili zisizotarajiwa. Matatizo kumi ya kila siku dhidi ya suluhisho: kiwango cha matumizi kuisha bila kutumika → tumia usajili kikamilifu; vikomo vya kasi katikati ya kuandika msimbo → kurejea kiotomatiki kwa viwango 4 (Usajili → Ufunguo wa API → Nafuu → Bure); matokeo ya zana kutumia tokeni nyingi → mgandamizo wa RTK + Caveman (15–95%); API ghali → uelekezaji unaoboresha gharama; kila zana kuwa na usanidi wake → kiendeshaji kimoja, dashibodi moja; AI kuzuiwa → proksi ya viwango 3 + ufichaji wa TLS; funguo zilizokufa → ustahimilivu wa tabaka 3 (vizuia mzunguko, muda wa kusubiri wa funguo, kufungiwa kwa modeli); timu kushiriki usajili mmoja → makundi ya funguo yenye viwango vya matumizi vinavyogawiwa kwa haki; vidokezo kupitia wingu la mtu mwingine → kipaumbele cha matumizi ya ndani chenye funguo zilizosimbwa kwa AES-256-GCM; kutokuona matumizi ya fedha → uchanganuzi wa moja kwa moja (matumizi, kiwango cha matumizi, akiba, ucheleweshaji wa p95)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Mchakato wa ombi la OmniRoute: IDE au CLI yako (Claude Code, Cursor, Cline…) inapiga sehemu moja ya mwisho ya ndani (http://localhost:20128/v1); OmniRoute Smart Router (RTK + Caveman compression, mikakati 19 ya uelekezaji, vivunja mzunguko, usiri wa TLS, MCP, A2A, vizuizi) inaweza kurudi nyuma kwenye viwango 4 vya watoa huduma wakati lengo linalostahiki na lenye afya linabaki — Kiwango cha 1 Usajili, Kiwango cha 2 Ufunguo wa API, Kiwango cha 3 Nafuu na Kiwango cha 4 Bure."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Mtiririko wa ombi la OmniRoute: IDE au CLI yako (Claude Code, Cursor, Cline…) hupiga simu kwenye kiendeshaji kimoja cha ndani (http://localhost:20128/v1); Kielekezaji Mahiri cha OmniRoute (mgandamizo wa RTK + Caveman, mikakati 19 ya uelekezaji, vizuia mzunguko, ufichaji wa TLS, MCP, A2A, vizuizi vya usalama) kinaweza kurejea katika viwango 4 vya watoa huduma mradi tu lengwa linalostahiki, linalopatikana na lenye afya bado lipo — Kiwango cha 1 Usajili, Kiwango cha 2 Ufunguo wa API, Kiwango cha 3 Nafuu na Kiwango cha 4 Bure."/>
 
 </div>
 
@@ -421,13 +421,13 @@ Mikakati yote **19** — changanya na kuoanisha kwa kila hatua ya combo:
 
 <div align="center">
 
-## 🏆 Kinachotofautisha OmniRoute
+## 🏆 Kinachoitofautisha OmniRoute
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kinachotofautisha OmniRoute — picha ya vipengele vya zamani dhidi ya 9router, OpenRouter, CLIProxyAPI na LiteLLM katika uwezo 13. OmniRoute: watoa huduma 358, viwango vya bure 150+ vilivyojengwa ndani, mikakati 19 ya uelekezaji, mbano wa tokeni wa injini 12, seva ya MCP iliyojengwa ndani yenye zana 110, itifaki ya wakala ya A2A, kumbukumbu endelevu, vizuizi, mawakala wa wingu, ufichaji wa alama za vidole za TLS, Desktop/Termux/PWA na lugha 42 za UI za i18n. OmniRoute ina leseni ya MIT na inaweza kujihost. Uwezo na idadi ya washindani vinaweza kubadilika; angalia mbinu iliyounganishwa."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kinachoitofautisha OmniRoute — muhtasari wa vipengele wa wakati fulani ukilinganisha na 9router, OpenRouter, CLIProxyAPI na LiteLLM katika uwezo 13. OmniRoute: watoa huduma 359, zaidi ya mipango 150 ya bila malipo iliyojumuishwa, mikakati 19 ya uelekezaji, mbano wa tokeni unaotumia injini 12, seva ya MCP iliyojumuishwa yenye zana 110, itifaki ya wakala ya A2A, kumbukumbu endelevu, vizuizi vya usalama, mawakala wa wingu, ufichaji wa alama za vidole za TLS, Desktop/Termux/PWA na lugha 42 za kiolesura cha i18n. OmniRoute ina leseni ya MIT na inaweza kupangishwa kwenye seva yako mwenyewe. Uwezo na idadi za washindani zinaweza kubadilika; tazama mbinu iliyounganishwa."/>
 
-<sub>📊 Mbinu kamili &amp; maelezo ya kila kipengele dhidi ya 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Mbinu kamili na maelezo ya kila kipengele ukilinganisha na 9router, OpenRouter, CLIProxyAPI na LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

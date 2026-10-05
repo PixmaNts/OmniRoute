@@ -11,9 +11,9 @@
 <br/>
 <br/>
 
-# 🚀 OmniRoute — Bezmaksas AI vārteja
+# 🚀 OmniRoute — bezmaksas AI vārteja
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nekad nepārtrauciet kodēšanu. Katrs AI rīks → 358 pakalpojumu sniedzēji — 150+ bezmaksas — caur vienu galapunktu. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity uz BEZMAKSAS Claude / GPT / Gemini ar automātisku atgriešanos. RTK + Caveman sakrautā kompresija ietaupa 15–95% žetonu (~89% vidēji) — nekad nesasniedziet ierobežojumus. 358 AI pakalpojumu sniedzēji · 150+ bezmaksas līmeņi · ~1.62B bezmaksas žetonu/mēn. · 19 maršrutēšanas stratēģijas · $0, lai sāktu."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nekad nepārtrauciet programmēt. Ikviens AI rīks → 359 pakalpojumu sniedzēji — no tiem 150+ bezmaksas — izmantojot vienu galapunktu. Claude Code, Codex, Cursor, Cline, Copilot un Antigravity ar automātisku rezerves pārslēgšanos uz bezmaksas Claude / GPT / Gemini. RTK un Caveman kombinētā saspiešana ietaupa 15–95% tokenu (vidēji ~89%) — nekad nepārsniedziet limitus. 359 AI pakalpojumu sniedzēji · 150+ bezmaksas plāni · ~1,62 miljardi bezmaksas tokenu mēnesī · 19 maršrutēšanas stratēģijas · Sāciet par 0 $."/>
 
 </div>
 
@@ -214,22 +214,22 @@
 
 <div align="center">
 
-## 🆓 Darbojas uzreiz pēc instalēšanas — bez atslēgām, bez konfigurācijas
+## 🆓 Darbojas uzreiz pēc instalēšanas — bez atslēgām un konfigurācijas
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Darbojas uzreiz pēc instalēšanas — bez konfigurācijas. Trīs soļi: 1. Instalēt — npm i -g omniroute, serveris startējas uz localhost:20128. 2. Novirziet savu rīku uz http://localhost:20128/v1 — jebkurš ar OpenAI saderīgs rīks (Claude Code, Cursor, Cline). 3. Tas atbild — izsauciet modeli auto, lai saņemtu tūlītēju atbildi, bez API atslēgas, bez reģistrācijas, bez konfigurācijas. Bezatlēgu nodrošinātājs OpenCode Free ir iepriekš konfigurēts auto kombinācijā, tāpēc svaiga instalācija darbojas uzreiz."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Darbojas uzreiz pēc instalēšanas — bez konfigurācijas. Trīs darbības: 1. Instalējiet — npm i -g omniroute, serveris startējas vietnē localhost:20128. 2. Norādiet savam rīkam http://localhost:20128/v1 — jebkuram ar OpenAI saderīgam rīkam (Claude Code, Cursor, Cline). 3. Saņemiet atbildi — izsauciet modeli auto, lai uzreiz saņemtu atbildi, bez API atslēgas, reģistrēšanās vai konfigurācijas. Bezatlēgas pakalpojumu sniedzējs OpenCode Free jau ir iekļauts auto kombinācijā, tāpēc jauna instalācija darbojas uzreiz."/>
 
 ```bash
-# Svaiga instalācija, nulles akreditācijas dati — `auto` jau darbojas:
+# Svaiga instalācija, bez piekļuves datiem — `auto` jau darbojas:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Dodat priekšroku konkrētam bezmaksas aizmugursistēmas risinājumam? Izsauciet `oc/…` (OpenCode Free) tieši. Pēc tam pārejiet uz `auto` un ļaujiet OmniRoute izvēlēties.</sub>
+<sub>Vai dodat priekšroku konkrētai bezmaksas aizmugursistēmai? Izsauciet `oc/…` (OpenCode Free) tieši. Pēc tam pārejiet pie `auto` un ļaujiet OmniRoute izvēlēties.</sub>
 
-<sub>📦 Kopēt-ielīmēt ātrās palaišanas skripti priekš **Python, Node.js, PHP un cURL** → [`examples/quickstart/`] (examples/quickstart/)</sub>
+<sub>📦 Kopēšanai gatavi ātrās sākšanas skripti **Python, Node.js, PHP un cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Solījums — Viens galapunkts un 358 nodrošinātāji. Automātiska atgriešanās nodrošina maršrutēšanu, kamēr ir pieejams cits vesels mērķis. Seši pīlāri: elastīga atgriešanās starp 358 nodrošinātājiem · līdz pat 95% marķieru ietaupījums piemērotām darba slodzēm · 0 $ sākšanai ar 150+ bezmaksas līmeņiem un 54 atkārtotiem/bezatslēgu mūžīgi bezmaksas nodrošinātājiem · 36 CLI/aģentu integrācijas caur vienu konfigurāciju · OpenAI, Claude, Gemini un Responses API saderība pie /v1 · ražošanas kontroles, tostarp circuit breakers, TLS stealth, MCP 110 rīki, A2A, atmiņa, guardrails, evals un 39 000+ statisku testu deklarācijas vairāk nekā 5 100+ izsekotos testa failos."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Solījums — viens galapunkts un 359 pakalpojumu sniedzēji. Automātiskā rezerves maršrutēšana turpina novirzīt pieprasījumus, kamēr ir pieejams cits darbspējīgs mērķis. Seši pamatprincipi: noturīga rezerves maršrutēšana starp 359 pakalpojumu sniedzējiem · līdz pat 95% mazāks tokenu patēriņš piemērotām slodzēm · sāciet par 0 $ ar vairāk nekā 150 bezmaksas plāniem un 54 bezmaksas pakalpojumu sniedzējiem, kas pieejami vienmēr un bez atslēgām · 36 CLI/aģentu integrācijas, izmantojot vienu konfigurāciju · saderība ar OpenAI, Claude, Gemini un Responses API vietnē /v1 · ražošanas vides vadīklas, tostarp ķēdes pārtraucēji, TLS slepenais režīms, MCP 110 rīki, A2A, atmiņa, aizsargmehānismi, novērtējumi un vairāk nekā 39 000 statisku testu deklarāciju vairāk nekā 5 100 izsekojamos testu failos."/>
 
 <br/>
 <br/>
@@ -250,11 +250,11 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Kāpēc OmniRoute — pārtrauciet žonglēt ar 10 informācijas paneļiem, nederīgām API atslēgām un negaidītiem rēķiniem. Desmit ikdienas problēmas pret risinājumiem: kvota beidzas neizmantota → maksimāli izmantot abonementus; ātruma ierobežojumi kodēšanas laikā → 4 līmeņu automātiska atgriešanās (Abonements → API → Lēts → Bezmaksas); rīku izvades patērē marķierus → RTK + Caveman kompresija (15–95%); dārgas API → izmaksu optimizēta maršrutēšana; katram rīkam sava iestatīšana → viens galapunkts, viens informācijas panelis; AI bloķēts → 3 līmeņu starpniekserveris (proxy) + TLS slepenība (stealth); nederīgas atslēgas → 3 slāņu noturība (circuit breakers, atslēgu atdzišana, modeļa bloķēšana); komanda dala vienu abonementu → atslēgu kopas ar godīgas daļas kvotām; uzvednes caur kāda mākoņpakalpojumu → lokāli pirmkārt ar AES-256-GCM šifrētām atslēgām; nav izdevumu pārskatāmības → reāllaika analīze (lietojums, kvota, ietaupījumi, p95 latentums)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Kāpēc OmniRoute — vairs nav jāpārslēdzas starp 10 vadības paneļiem, nederīgām API atslēgām un negaidītiem rēķiniem. Desmit ikdienas problēmas un risinājumi: neizmantots kvotas atlikums, kam beidzas derīguma termiņš → maksimāli izmantojiet abonementus; ātruma ierobežojumi programmēšanas vidū → 4 līmeņu automātiskā rezerves maršrutēšana (Abonements → API → Lēts → Bezmaksas); rīku izvades patērē tokenus → RTK + Caveman saspiešana (15–95%); dārgas API → izmaksu ziņā optimizēta maršrutēšana; katram rīkam sava iestatīšana → viens galapunkts, viens vadības panelis; AI piekļuve bloķēta → 3 līmeņu starpniekserveris + TLS slepenais režīms; nederīgas atslēgas → 3 slāņu noturība (ķēdes pārtraucēji, atslēgas gaidstāve, modeļa bloķēšana); komanda koplieto vienu abonementu → atslēgu pūli ar godīgi sadalītām kvotām; uzvednes tiek sūtītas caur kāda cita mākoņpakalpojumu → lokāla pieeja ar AES-256-GCM šifrētām atslēgām; nav pārskata par izdevumiem → reāllaika analītika (lietojums, kvota, ietaupījums, p95 latentums)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute pieprasījumu plūsma: jūsu IDE vai CLI (Claude Code, Cursor, Cline…) izsauc vienu lokālo galapunktu (http://localhost:20128/v1); OmniRoute viedais maršrutētājs (RTK + Caveman kompresija, 19 maršrutēšanas stratēģijas, circuit breakers, TLS stealth, MCP, A2A, guardrails) var atgriezties pie 4 nodrošinātāju līmeņiem, kamēr ir pieejams piemērots vesels mērķis — 1. līmenis Abonements, 2. līmenis API atslēga, 3. līmenis Lēts un 4. līmenis Bezmaksas."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute pieprasījumu plūsma: jūsu IDE vai CLI (Claude Code, Cursor, Cline…) izsauc vienu lokālu galapunktu (http://localhost:20128/v1); OmniRoute viedais maršrutētājs (RTK + Caveman saspiešana, 19 maršrutēšanas stratēģijas, ķēdes pārtraucēji, TLS slepenais režīms, MCP, A2A, aizsargmehānismi) var pārslēgties starp 4 pakalpojumu sniedzēju līmeņiem, kamēr ir pieejams piemērots un darbspējīgs mērķis — 1. līmenis: Abonements, 2. līmenis: API atslēga, 3. līmenis: Lēts un 4. līmenis: Bezmaksas."/>
 
 </div>
 
@@ -488,13 +488,13 @@ Visas **19** stratēģijas — brīvi kombinējiet tās katrā kombinācijas sol
 
 <div align="center">
 
-## 🏆 Ar ko OmniRoute atšķiras
+## 🏆 Kas OmniRoute atšķir no citiem
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ar ko OmniRoute atšķiras — novecojis funkciju momentuzņēmums salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM 13 iespējās. OmniRoute: 358 pakalpojumu sniedzēji, 150+ iebūvēti bezmaksas līmeņi, 19 maršrutēšanas stratēģijas, 12 dzinēju marķieru kompresija, iebūvēts MCP serveris ar 110 rīkiem, A2A aģentu protokols, pastāvīga atmiņa, aizsargmehānismi, mākoņa aģenti, TLS pirkstu nospiedumu slēpšana, Desktop/Termux/PWA un 42 i18n UI lokalizācijas. OmniRoute ir licencēts ar MIT licenci un ir pašmitināms. Konkurentu iespējas un skaits var mainīties; skatiet saistīto metodoloģiju."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kas OmniRoute atšķir no citiem — datēts funkciju pārskats salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM, aptverot 13 iespējas. OmniRoute: 359 pakalpojumu sniedzēji, 150+ bezmaksas plāni, 19 maršrutēšanas stratēģijas, tokenu saspiešana ar 12 dzinējiem, iebūvēts MCP serveris ar 110 rīkiem, A2A aģentu protokols, pastāvīgā atmiņa, aizsargmehānismi, mākoņa aģenti, TLS pirkstu nospiedumu slēpšana, Desktop/Termux/PWA un 42 i18n lietotāja saskarnes lokalizācijas. OmniRoute ir licencēts saskaņā ar MIT licenci, un to var mitināt savā serverī. Konkurentu iespējas un skaits var mainīties; skatiet saiti uz metodoloģiju."/>
 
-<sub>📊 Pilna metodoloģija un detalizēta informācija par funkcijām salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Pilna metodoloģija un detalizēta informācija par katru funkciju salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

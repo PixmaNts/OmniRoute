@@ -423,42 +423,44 @@ Gamitin ang endpoint na ito kapag tumatakbo ang isang sidecar nang out-of-proces
 
 ---
 
-## Mga Endpoint ng Compatibility
+## Mga Compatibility Endpoint
 
-| Pamamaraan | Landas                                    | Format                                  |
-| ---------- | ----------------------------------------- | --------------------------------------- |
-| POST       | `/v1/chat/completions`                    | OpenAI                                  |
-| POST       | `/v1/messages`                            | Anthropic                               |
-| POST       | `/v1/responses`                           | OpenAI Responses                        |
-| POST       | `/v1/embeddings`                          | OpenAI                                  |
-| POST       | `/v1/images/generations`                  | OpenAI Images                           |
-| POST       | `/v1/images/edits`                        | OpenAI Images (pag-edit/inpaint)        |
-| POST       | `/v1/videos/generations`                  | Pagbuo ng video na istilong OpenAI      |
-| POST       | `/v1/music/generations`                   | Pagbuo ng musika na istilong OpenAI     |
-| POST       | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                      |
-| POST       | `/v1/audio/speech`                        | OpenAI TTS (nagbabalik ng audio body)   |
-| POST       | `/v1/rerank`                              | Rerank na istilong Cohere/Voyage        |
-| POST       | `/v1/classify`                            | Jina classify (`api.jina.ai`)           |
-| POST       | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)      |
-| POST       | `/v1/moderations`                         | OpenAI Moderations                      |
-| GET        | `/v1/models`                              | OpenAI                                  |
-| POST       | `/v1/messages/count_tokens`               | Anthropic                               |
-| GET        | `/v1beta/models`                          | Gemini                                  |
-| POST       | `/v1beta/models/{...path}`                | Gemini generateContent                  |
-| POST       | `/v1/api/chat`                            | Ollama                                  |
-| GET        | `/api/v1/vscode/{token}/`                 | Alias ng catalog ng OpenAI              |
-| GET        | `/api/v1/vscode/{token}/models`           | Alias ng mga modelo ng OpenAI           |
-| POST       | `/api/v1/vscode/{token}/chat/completions` | Tokenized na alias ng OpenAI            |
-| POST       | `/api/v1/vscode/{token}/responses`        | Tokenized na alias ng OpenAI Responses  |
-| POST       | `/api/v1/vscode/{token}/api/chat`         | Tokenized na alias ng Ollama            |
-| GET        | `/api/v1/vscode/{token}/api/tags`         | Tokenized na alias ng mga tag ng Ollama |
+| Paraan | Path                                      | Format                                       |
+| ------ | ----------------------------------------- | -------------------------------------------- |
+| POST   | `/v1/chat/completions`                    | OpenAI                                       |
+| POST   | `/v1/messages`                            | Anthropic                                    |
+| POST   | `/v1/responses`                           | OpenAI Responses                             |
+| POST   | `/v1/embeddings`                          | OpenAI                                       |
+| POST   | `/v1/images/generations`                  | OpenAI Images                                |
+| POST   | `/v1/images/edits`                        | OpenAI Images (pag-edit/inpainting)          |
+| POST   | `/v1/videos/generations`                  | Pagbuo ng video na istilong OpenAI           |
+| POST   | `/v1/music/generations`                   | Pagbuo ng musika na istilong OpenAI          |
+| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                           |
+| POST   | `/v1/audio/speech`                        | OpenAI TTS (nagbabalik ng audio body)        |
+| POST   | `/v1/rerank`                              | Muling pagraranggo na istilong Cohere/Voyage |
+| POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)                |
+| POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)           |
+| POST   | `/v1/systemone`                           | Mga decision model (System One)              |
+| GET    | `/v1/systemone/models`                    | Listahan ng mga decision model               |
+| POST   | `/v1/moderations`                         | OpenAI Moderations                           |
+| GET    | `/v1/models`                              | OpenAI                                       |
+| POST   | `/v1/messages/count_tokens`               | Anthropic                                    |
+| GET    | `/v1beta/models`                          | Gemini                                       |
+| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                       |
+| POST   | `/v1/api/chat`                            | Ollama                                       |
+| GET    | `/api/v1/vscode/{token}/`                 | Alyas ng OpenAI catalog                      |
+| GET    | `/api/v1/vscode/{token}/models`           | Alyas ng mga OpenAI model                    |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | Alyas ng OpenAI na may token                 |
+| POST   | `/api/v1/vscode/{token}/responses`        | Alyas ng OpenAI Responses na may token       |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Alyas ng Ollama na may token                 |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Alyas ng mga Ollama tag na may token         |
 
-Iisa ang anyo ng lahat ng rutang POST: `Bearer your-api-key` + JSON body na bine-validate ng Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, atbp., tingnan ang `src/shared/validation/schemas.ts`). Nagbabalik ng 4xx kapag nabigo ang schema validation.
+Magkakapareho ang istruktura ng lahat ng POST route: `Bearer your-api-key` + JSON body na napatunayan gamit ang Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, atbp.; tingnan ang `src/shared/validation/schemas.ts`). Ibabalik ang 4xx kapag pumalya ang pagpapatunay ng schema.
 
-Para sa mga client na hindi makapaglakip ng `Authorization: Bearer ...`, tumatanggap din ang OmniRoute ng mga API key sa URL sa pamamagitan ng query-string compatibility (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) o ng mga nakalaang endpoint na `/api/v1/vscode/{token}/...` na nakadokumento sa ibaba.
+Para sa mga client na hindi makapagdagdag ng `Authorization: Bearer ...`, tumatanggap din ang OmniRoute ng mga API key sa URL sa pamamagitan ng alinman sa query-string compatibility (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) o ng mga nakalaang endpoint na `/api/v1/vscode/{token}/...` na inilalarawan sa ibaba.
 
 ```bash
-# Rerank (provider ng cloud registry, o isang OpenAI-compatible na provider node bilang "<prefix>/<model>")
+# Muling pagraranggo (provider mula sa cloud registry, o node ng provider na compatible sa OpenAI na "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # Jina classify (mga kredensyal ng Foundation API)
@@ -467,50 +469,54 @@ POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."
 # Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
+# Mga decision model (System One). Tinutukoy ng prefix ng unang model ang koneksyon:
+#   typesafe/jev-latest              -> direktang TypeSafe
+#   openrouter/typesafe/jev-1.13     -> sa pamamagitan ng OpenRouter
+#   ollama-local/<model>             -> lokal na Ollama >= 0.35
+# Patuloy na gumagamit ng OpenRouter ang hindi kwalipikadong ID gaya ng jev-latest. Gumagana ang mga TypeSafe SDK gamit ang baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # mga model ng naka-configure na backend: { object: "list", data: [{ id, name, pricing, ... }] }
+
 # Jina search (s.jina.ai; mga alias ng provider: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
 # Mga moderation
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — nagbabalik ng audio/mpeg (o hiniling na format) body
+# TTS — nagbabalik ng audio/mpeg (o ang hiniling na format) bilang body
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Nangangailangan ang Soniox TTS ng wika at boses: ang default ng `language` ay "en"; ang nawawalang
-# boses o pangalan ng stock voice ng OpenAI (alloy, nova, …) ay nagiging "Adrian"
+# Nangangailangan ang Soniox TTS ng wika at boses: naka-default ang `language` sa "en"; nagiging "Adrian" ang nawawalang
+# boses o pangalan ng stock voice ng OpenAI (alloy, nova, …)
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # Pag-edit ng larawan (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Pagbuo ng video / musika (model id na may prefix ng provider)
+# Pagbuo ng video / musika (model ID na may prefix ng provider)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Mga rerank provider node:** Nagruruta rin ang `POST /v1/rerank` sa mga OpenAI-compatible na provider node
-> (oMLX, vLLM, Infinity, TEI sa likod ng gateway, …) na tinutukoy bilang `<node-prefix>/<model>`. Palaging
-> kwalipikado ang mga loopback node (`localhost`, `127.0.0.1`, `172.16.0.0/12`). Ang mga node sa anumang
-> ibang host — isang LAN box o Tailscale peer — ay kwalipikado lamang kapag pinagana ng operator ang
-> feature flag na `RERANK_REMOTE_PROVIDER_NODES` **at** pumasa ang base URL ng node sa patakaran sa
-> outbound URL ng provider (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> hindi kailanman nirurutahan ang mga cloud-metadata host. Tinatawag ng hakbang sa rerank ng memory engine ang rutang ito sa
-> pamamagitan ng loopback, kaya ang parehong panuntunan ang namamahala sa `rerankProviderModel` sa mga setting ng Memory.
+> **Muling pagraranggo ng mga provider node:** Nagruruta rin ang `POST /v1/rerank` sa mga node ng provider na compatible sa OpenAI
+> (oMLX, vLLM, Infinity, TEI sa likod ng gateway, …) na tinutukoy bilang `<node-prefix>/<model>`. Palaging kwalipikado ang mga loopback
+> node (`localhost`, `127.0.0.1`, `172.16.0.0/12`). Kwalipikado lamang ang mga node sa ibang host — isang LAN box o Tailscale peer — kapag pinagana ng operator ang feature flag na
+> `RERANK_REMOTE_PROVIDER_NODES` **at** pasado sa patakaran ng provider para sa mga outbound URL ang base URL ng node (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); hindi kailanman niruruta ang mga host na cloud-metadata. Tinatawag ng hakbang na rerank ng memory engine ang rutang ito sa pamamagitan ng
+> loopback, kaya ang parehong tuntunin ang nalalapat sa `rerankProviderModel` sa mga setting ng Memory.
 >
-> **Mga anyo ng lokal na server:** Tinatawag ang node sa `<base>/v1/rerank` at, kapag 404, sa `<base>/rerank`
-> (Infinity, TEI). Dala ng upstream body ang parehong baybay na Cohere/OpenAI (`documents`,
-> `return_documents`) at baybay na TEI (`texts`, `return_text`), at ginagawang normal ang upstream response
-> sa Cohere envelope: ang payak na `[{index, score, text}]` ng TEI, `{results: [{index, score}]}`
-> mula sa mga manipis na gateway, at ang istilong Voyage na `{data: [...]}` ay ibinabalik lahat sa client bilang
-> `{results: [{index, relevance_score, document?}]}`, inayos ayon sa score at nilimitahan sa `top_n`.
+> **Mga anyo ng local server:** tinatawag ang node sa `<base>/v1/rerank` at, kapag 404, sa `<base>/rerank`
+> (Infinity, TEI). Kasama sa upstream body ang mga baybay para sa Cohere/OpenAI (`documents`,
+> `return_documents`) at TEI (`texts`, `return_text`), at nino-normalize ang upstream response sa Cohere envelope: ang bare na `[{index, score, text}]` ng TEI, `{results: [{index, score}]}`
+> mula sa mga thin gateway, at `{data: [...]}` na estilo ng Voyage ay ibinabalik sa client bilang
+> `{results: [{index, relevance_score, document?}]}`, nakaayos ayon sa score at nililimitahan sa `top_n`.
 
-> **Pagtuklas ng provider node:** lumilitaw sa `GET /v1/models` ang mga model sa isang provider node na compatible sa OpenAI
-> sa ilalim ng prefix ng node. Ang mga row na walang metadata ng endpoint (karaniwan sa mga lokal na listing ng `/v1/models`)
-> ay nagmamana ng `apiType` ng node, kaya ang mga model ng isang `embeddings` node ay `type: "embedding"` at ang mga
-> model ng isang `rerank` node ay `type: "rerank"` sa halip na gawing chat bilang default; nangunguna pa rin ang isang tahasang
+> **Pagtuklas ng mga provider node:** lumalabas ang mga model sa isang OpenAI-compatible na provider node sa `GET /v1/models`
+> sa ilalim ng prefix ng node. Ang mga row na walang endpoint metadata (karaniwan sa mga lokal na listahan ng `/v1/models`)
+> ay nagmamana ng `apiType` ng node, kaya ang mga model ng node na `embeddings` ay nagiging `type: "embedding"` at ang mga model ng
+> node na `rerank` ay nagiging `type: "rerank"` sa halip na maging chat bilang default; mananaig pa rin ang tahasang
 > `supportedEndpoints` sa isang naka-sync o manu-manong idinagdag na row.
 
-### Mga Nakalaang Route ng Provider
+### Mga Nakalaang Ruta ng Provider
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -518,7 +524,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-Awtomatikong idinaragdag ang prefix ng provider kung nawawala ito. Nagbabalik ng `400` ang mga model na hindi tugma.
+Awtomatikong idinadagdag ang prefix ng provider kung wala ito. Nagbabalik ng `400` ang mga model na hindi tugma.
 
 ---
 

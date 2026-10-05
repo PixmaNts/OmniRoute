@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="Panel OmniRoute" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="Ovládací panel OmniRoute" width="820"/>
 
 <br/>
 <br/>
 
 # 🚀 OmniRoute — Bezplatná AI brána
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikdy neprestávajte kódovať. Každý nástroj AI → 358 poskytovateľov — 150+ bezplatných — cez jeden koncový bod. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity do BEZPLATNÉHO Claude / GPT / Gemini s automatickým zálohovaním. RTK + Caveman vrstvená kompresia šetrí 15–95% tokenov (~89% priemer) — nikdy nenarazíte na limity. 358 poskytovateľov AI · 150+ bezplatných úrovní · ~1.62B bezplatných tokenov/mesiac · 19 stratégií smerovania · $0 na začiatok."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikdy neprestaňte programovať. Každý AI nástroj → 359 poskytovateľov — z toho 150+ bezplatných — cez jeden koncový bod. Claude Code, Codex, Cursor, Cline, Copilot a Antigravity s automatickým záložným prepnutím na bezplatné Claude / GPT / Gemini. Kombinovaná kompresia RTK + Caveman šetrí 15–95 % tokenov (v priemere ~89 %) — nikdy nenarazíte na limity. 359 poskytovateľov AI · 150+ bezplatných programov · ~1,62 mld. bezplatných tokenov mesačne · 19 stratégií smerovania · Začnite za $0."/>
 
 </div>
 
@@ -214,22 +214,22 @@
 
 <div align="center">
 
-## 🆓 Funguje hneď po inštalácii — bez kľúčov, bez konfigurácie
+## 🆓 Funguje hneď po inštalácii — bez kľúčov a konfigurácie
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Funguje hneď po inštalácii — nulová konfigurácia. Tri kroky: 1. Inštalácia — npm i -g omniroute, server sa spustí na localhost:20128. 2. Nasmerujte svoj nástroj na http://localhost:20128/v1 — akýkoľvek nástroj kompatibilný s OpenAI (Claude Code, Cursor, Cline). 3. Odpovie — zavolajte model auto pre okamžitú odpoveď, bez API kľúča, bez registrácie, bez konfigurácie. Bezklúčový poskytovateľ OpenCode Free je prednastavený v kombinácii auto, takže čerstvá inštalácia reaguje hneď po vybalení."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Funguje hneď po inštalácii — bez konfigurácie. Tri kroky: 1. Inštalácia — npm i -g omniroute, server sa spustí na localhost:20128. 2. Nasmerujte svoj nástroj na http://localhost:20128/v1 — akýkoľvek nástroj kompatibilný s OpenAI (Claude Code, Cursor, Cline). 3. Dostanete odpoveď — zavolajte model auto a okamžite získate odpoveď bez kľúča API, registrácie či konfigurácie. Bezplatný poskytovateľ OpenCode Free bez kľúča je už prednastavený v kombinácii auto, takže nová inštalácia odpovedá hneď po spustení."/>
 
 ```bash
-# Čerstvá inštalácia, nulové poverenia — `auto` už funguje:
+# Nová inštalácia, bez prihlasovacích údajov — `auto` už funguje:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Preferujete špecifický bezplatný backend? Zavolajte `oc/…` (OpenCode Free) priamo. Potom prejdite na `auto` a nechajte OmniRoute vybrať.</sub>
+<sub>Uprednostňujete konkrétnu bezplatnú službu? Volajte priamo `oc/…` (OpenCode Free). Potom prejdite na `auto` a nechajte výber na OmniRoute.</sub>
 
-<sub>📦 Skripty pre rýchly štart na kopírovanie a vkladanie pre **Python, Node.js, PHP a cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 Skripty na rýchly štart na skopírovanie a vloženie pre **Python, Node.js, PHP a cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Prísľub — Jeden koncový bod a 358 poskytovateľov. Automatický fallback udržuje smerovanie, kým je k dispozícii ďalší zdravý cieľ. Šesť pilierov: odolný fallback naprieč 358 poskytovateľmi · až 95% úspora tokenov pri oprávnených úlohách · 0 $ na začiatok so 150+ bezplatnými úrovňami a 54 opakujúcimi sa/bezklúčovými poskytovateľmi navždy zadarmo · 36 integrácií CLI/agenta prostredníctvom jednej konfigurácie · kompatibilita s OpenAI, Claude, Gemini a Responses API na /v1 · produkčné ovládacie prvky vrátane ističov, TLS stealth, nástrojov MCP 110, A2A, pamäte, ochranných zábradlí, hodnotení a 39 000+ statických testovacích deklarácií naprieč 5 100+ sledovanými testovacími súbormi."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Prísľub — jeden koncový bod a 359 poskytovateľov. Automatické záložné smerovanie zabezpečí pokračovanie smerovania, pokiaľ je k dispozícii iný funkčný cieľ. Šesť pilierov: odolné záložné smerovanie naprieč 359 poskytovateľmi · úspora až 95 % tokenov pri vhodných úlohách · začnite za 0 $ s viac než 150 bezplatnými programami a 54 bezplatnými poskytovateľmi, ktorí sú opakovane dostupní alebo nevyžadujú kľúč · 36 integrácií CLI/agentov prostredníctvom jedinej konfigurácie · kompatibilita s OpenAI, Claude, Gemini a Responses API na /v1 · produkčné ovládacie prvky vrátane ističov, TLS stealth, MCP so 110 nástrojmi, A2A, pamäte, ochranných pravidiel, evaluácií a viac než 39 000 deklarácií statických testov v rámci viac než 5 100 sledovaných testovacích súborov."/>
 
 <br/>
 <br/>
@@ -250,11 +250,11 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Prečo OmniRoute — prestaňte žonglovať s 10 dashboardmi, mŕtvymi API kľúčmi a prekvapivými účtami. Desať každodenných problémov vs. riešenia: kvóta vyprší nevyužitá → maximalizujte predplatné; obmedzenia rýchlosti počas kódovania → 4-úrovňový automatický fallback (Predplatné → API → Lacné → Bezplatné); výstupy nástrojov spaľujúce tokeny → RTK + kompresia Caveman (15–95%); drahé API → nákladovo optimalizované smerovanie; každý nástroj má vlastné nastavenie → jeden koncový bod, jeden dashboard; AI zablokovaná → 3-úrovňový proxy + TLS stealth; mŕtve kľúče → 3-vrstvová odolnosť (ističe, ochladzovanie kľúčov, uzamknutie modelu); tím zdieľajúci jedno predplatné → kľúčové fondy s kvótami spravodlivého zdieľania; výzvy cez niečí cloud → lokálne prvé s AES-256-GCM šifrovanými kľúčmi; žiadna viditeľnosť výdavkov → živá analýza (použitie, kvóta, úspory, p95 latencia)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Prečo OmniRoute — prestaňte prepínať medzi 10 ovládacími panelmi, neplatnými kľúčmi API a nečakanými účtami. Desať každodenných problémov a ich riešenia: nevyužitý končiaci sa limit → maximálne využitie predplatných; limity požiadaviek uprostred programovania → 4-stupňové automatické záložné smerovanie (Predplatné → API → Lacné → Bezplatné); výstupy nástrojov spotrebúvajúce tokeny → kompresia RTK + Caveman (15–95 %); drahé API → smerovanie optimalizované podľa nákladov; každý nástroj sa nastavuje zvlášť → jeden koncový bod, jeden ovládací panel; blokovaný AI prístup → proxy na 3 úrovniach + TLS stealth; neplatné kľúče → odolnosť v 3 vrstvách (ističe, prestávky pre kľúče, blokovanie modelov); tím zdieľa jedno predplatné → skupiny kľúčov s kvótami na spravodlivé zdieľanie; výzvy smerované cez cloud niekoho iného → lokálne riešenie na prvom mieste s kľúčmi šifrovanými pomocou AES-256-GCM; neprehľadné výdavky → analytika v reálnom čase (využitie, kvóta, úspory, latencia p95)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Tok požiadaviek OmniRoute: vaše IDE alebo CLI (Claude Code, Cursor, Cline…) volá jeden lokálny koncový bod (http://localhost:20128/v1); OmniRoute Smart Router (RTK + kompresia Caveman, 19 smerovacích stratégií, ističe, TLS stealth, MCP, A2A, ochranné zábradlia) môže prejsť na 4 úrovne poskytovateľov, kým zostane k dispozícii oprávnený zdravý cieľ — Úroveň 1 Predplatné, Úroveň 2 API kľúč, Úroveň 3 Lacné a Úroveň 4 Bezplatné."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Tok požiadaviek v OmniRoute: vaše IDE alebo CLI (Claude Code, Cursor, Cline…) volá jediný lokálny koncový bod (http://localhost:20128/v1); inteligentný smerovač OmniRoute (kompresia RTK + Caveman, 19 stratégií smerovania, ističe, TLS stealth, MCP, A2A, ochranné pravidlá) môže použiť záložné smerovanie naprieč 4 úrovňami poskytovateľov, pokiaľ zostáva k dispozícii vhodný funkčný cieľ — 1. úroveň Predplatné, 2. úroveň Kľúč API, 3. úroveň Lacné a 4. úroveň Bezplatné."/>
 
 </div>
 
@@ -492,9 +492,9 @@ Všetkých **19** stratégií — ľubovoľne ich kombinujte v jednotlivých kro
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Čím sa OmniRoute odlišuje — aktuálny prehľad funkcií v porovnaní s 9router, OpenRouter, CLIProxyAPI a LiteLLM naprieč 13 schopnosťami. OmniRoute: 358 poskytovateľov, viac ako 150 vstavaných bezplatných úrovní, 19 smerovacích stratégií, kompresia tokenov s 12 enginmi, vstavaný MCP server so 110 nástrojmi, A2A agent protokol, trvalá pamäť, bezpečnostné zábrany, cloudoví agenti, utajenie TLS odtlačku, Desktop/Termux/PWA a 42 lokalizácií používateľského rozhrania. OmniRoute má licenciu MIT a je možné ho hostovať samostatne. Schopnosti a počty konkurentov sa môžu meniť; pozrite si prepojenú metodológiu."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Čím sa OmniRoute odlišuje — časovo označený prehľad funkcií v porovnaní s 9router, OpenRouter, CLIProxyAPI a LiteLLM v 13 oblastiach. OmniRoute: 359 poskytovateľov, viac než 150 vstavaných bezplatných taríf, 19 stratégií smerovania, kompresia tokenov pomocou 12 enginov, vstavaný server MCP so 110 nástrojmi, protokol agentov A2A, trvalá pamäť, ochranné prvky, cloudoví agenti, utajenie pomocou TLS fingerprintingu, Desktop/Termux/PWA a používateľské rozhranie v 42 jazykoch. OmniRoute má licenciu MIT a možno ho hostovať na vlastnej infraštruktúre. Funkcie a počty konkurentov sa môžu meniť; pozrite si odkazovanú metodiku."/>
 
-<sub>📊 Kompletná metodológia &amp; detail funkcií vs 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Kompletná metodika a podrobnosti o jednotlivých funkciách v porovnaní s 9router, OpenRouter, CLIProxyAPI a LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

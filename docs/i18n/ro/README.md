@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="Tabloul de bord OmniRoute" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="Tablou de bord OmniRoute" width="820"/>
 
 <br/>
 <br/>
 
-# 🚀 OmniRoute — Gateway-ul AI Gratuit
+# 🚀 OmniRoute — Poarta AI gratuită
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nu te opri niciodată din codat. Fiecare instrument AI → 358 de furnizori — 150+ gratuit — printr-un singur endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity în Claude / GPT / Gemini GRATUIT cu fallback automat. Compresia stivuită RTK + Caveman economisește 15–95% token-uri (~89% în medie) — nu atinge niciodată limitele. 358 de furnizori AI · 150+ niveluri gratuite · ~1.62B token-uri gratuite/lună · 19 strategii de rutare · 0$ pentru a începe."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nu te opri niciodată din programat. Fiecare instrument AI → 359 de furnizori — peste 150 gratuit — printr-un singur endpoint. Claude Code, Codex, Cursor, Cline, Copilot și Antigravity către Claude / GPT / Gemini GRATUITE, cu comutare automată la o alternativă. Compresia cumulată RTK + Caveman economisește 15–95% din tokenuri (în medie ~89%) — nu mai atinge niciodată limitele. 359 de furnizori AI · peste 150 de niveluri gratuite · ~1,62 mld. de tokenuri gratuite/lună · 19 strategii de rutare · începi cu 0 $."/>
 
 </div>
 
@@ -218,18 +218,18 @@
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Funcționează imediat după instalare — zero configurare. Trei pași: 1. Instalare — npm i -g omniroute, serverul pornește pe localhost:20128. 2. Îndreptați instrumentul dvs. către http://localhost:20128/v1 — orice instrument compatibil OpenAI (Claude Code, Cursor, Cline). 3. Răspunde — apelați modelul auto pentru un răspuns instantaneu, fără cheie API, fără înregistrare, fără configurare. Furnizorul fără cheie OpenCode Free este pre-conectat la combinația auto, astfel încât o instalare proaspătă răspunde imediat."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Funcționează imediat după instalare — fără configurare. Trei pași: 1. Instalează — npm i -g omniroute, serverul pornește pe localhost:20128. 2. Configurează-ți instrumentul să folosească http://localhost:20128/v1 — orice instrument compatibil cu OpenAI (Claude Code, Cursor, Cline). 3. Primești răspuns — apelează modelul auto pentru un răspuns instantaneu, fără cheie API, fără înregistrare, fără configurare. Furnizorul fără cheie OpenCode Free este preconfigurat în combinația auto, astfel că o instalare nouă răspunde imediat."/>
 
 ```bash
-# Instalare proaspătă, zero credențiale — `auto` funcționează deja:
+# Instalare nouă, fără acreditări — `auto` funcționează deja:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Preferi un backend gratuit specific? Apeleză `oc/…` (OpenCode Free) direct. Apoi treci la `auto` și lasă OmniRoute să aleagă.</sub>
+<sub>Preferi un anumit backend gratuit? Apelează direct `oc/…` (OpenCode Free). Apoi treci la `auto` și lasă OmniRoute să aleagă.</sub>
 
-<sub>📦 Scripturi de pornire rapidă copy-paste pentru **Python, Node.js, PHP și cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 Scripturi de pornire rapidă de copiat și lipit pentru **Python, Node.js, PHP și cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Promisiunea — Un singur endpoint și 358 de furnizori. Fallback-ul automat menține rutarea în timp ce o altă țintă sănătoasă este disponibilă. Șase piloni: fallback rezilient pe 358 de furnizori · până la 95% economii de token-uri pe sarcini de lucru eligibile · 0$ pentru a începe cu peste 150 de niveluri gratuite și 54 de furnizori recurenți/fără cheie gratuit-pentru-totdeauna · 36 de integrări CLI/agent printr-o singură configurare · compatibilitate OpenAI, Claude, Gemini și Responses API la /v1 · controale de producție, inclusiv întrerupătoare de circuit, stealth TLS, instrumente MCP 110, A2A, memorie, garduri de siguranță, evaluări și peste 39.000 de declarații de testare statice pe peste 5.100 de fișiere de testare urmărite."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Promisiunea — Un singur endpoint și 359 de furnizori. Fallback-ul automat menține rutarea cât timp este disponibilă o altă destinație funcțională. Șase piloni: fallback rezilient pentru 359 de furnizori · economii de până la 95% la tokenuri pentru sarcinile eligibile · începe cu 0 $, cu peste 150 de niveluri gratuite și 54 de furnizori gratuiți pe viață, fără cheie sau cu acces gratuit recurent · 36 de integrări CLI/agent printr-o singură configurare · compatibilitate cu OpenAI, Claude, Gemini și Responses API la /v1 · controale pentru producție, inclusiv întrerupătoare de circuit, camuflaj TLS, 110 instrumente MCP, A2A, memorie, măsuri de protecție, evaluări și peste 39.000 de declarații statice de testare în peste 5.100 de fișiere de testare urmărite."/>
 
 <br/>
 <br/>
@@ -250,11 +250,11 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="De ce OmniRoute — nu mai jongla cu 10 tablouri de bord, chei API moarte și facturi surpriză. Zece probleme zilnice vs. soluții: cotă expirată neutilizată → maximizează abonamentele; limite de rată în timpul codării → fallback automat pe 4 niveluri (Abonament → API → Ieftin → Gratuit); ieșiri de instrumente care ard token-uri → compresie RTK + Caveman (15–95%); API-uri scumpe → rutare optimizată pentru costuri; fiecare instrument cu propria sa configurare → un singur endpoint, un singur tablou de bord; AI blocat → proxy pe 3 niveluri + stealth TLS; chei moarte → reziliență pe 3 niveluri (întrerupătoare de circuit, răcire cheie, blocare model); echipa care partajează un abonament → pool-uri de chei cu cote echitabile; prompturi prin cloud-ul cuiva → local-first cu chei criptate AES-256-GCM; lipsa vizibilității cheltuielilor → analize live (utilizare, cotă, economii, latență p95)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="De ce OmniRoute — nu mai jongla cu 10 tablouri de bord, chei API expirate și facturi neașteptate. Zece probleme de zi cu zi și soluțiile lor: cota expiră fără să fie folosită → valorifică abonamentele la maximum; limite de rată în timpul programării → fallback automat pe 4 niveluri (Abonament → API → Ieftin → Gratuit); rezultatele instrumentelor consumă tokenuri → compresie RTK + Caveman (15–95%); API-uri scumpe → rutare optimizată pentru costuri; fiecare instrument necesită propria configurare → un singur endpoint, un singur tablou de bord; AI blocat → proxy pe 3 niveluri + camuflaj TLS; chei expirate → reziliență pe 3 niveluri (întrerupătoare de circuit, perioadă de așteptare pentru chei, blocarea modelelor); echipa folosește același abonament → grupuri de chei cu cote distribuite echitabil; solicitările trec prin cloud-ul altcuiva → local cu prioritate, cu chei criptate AES-256-GCM; nu ai vizibilitate asupra cheltuielilor → analize în timp real (utilizare, cotă, economii, latență p95)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Fluxul cererilor OmniRoute: IDE-ul sau CLI-ul dvs. (Claude Code, Cursor, Cline…) apelează un endpoint local (http://localhost:20128/v1); Routerul Inteligent OmniRoute (compresie RTK + Caveman, 19 strategii de rutare, întrerupătoare de circuit, stealth TLS, MCP, A2A, garduri de siguranță) poate reveni la 4 niveluri de furnizori, atâta timp cât o țintă sănătoasă eligibilă rămâne — Nivelul 1 Abonament, Nivelul 2 Cheie API, Nivelul 3 Ieftin și Nivelul 4 Gratuit."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Fluxul solicitărilor OmniRoute: IDE-ul sau CLI-ul tău (Claude Code, Cursor, Cline…) apelează un singur endpoint local (http://localhost:20128/v1); Routerul inteligent OmniRoute (compresie RTK + Caveman, 19 strategii de rutare, întrerupătoare de circuit, camuflaj TLS, MCP, A2A, măsuri de protecție) poate comuta între 4 niveluri de furnizori cât timp rămâne disponibilă o destinație eligibilă și funcțională — Nivelul 1 Abonament, Nivelul 2 Cheie API, Nivelul 3 Ieftin și Nivelul 4 Gratuit."/>
 
 </div>
 
@@ -488,13 +488,13 @@ Toate cele **19** strategii — combinați-le după preferințe pentru fiecare p
 
 <div align="center">
 
-## 🏆 Ce diferențiază OmniRoute
+## 🏆 Prin ce se remarcă OmniRoute
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ce diferențiază OmniRoute — o imagine de ansamblu a caracteristicilor (datată) versus 9router, OpenRouter, CLIProxyAPI și LiteLLM pentru 13 capabilități. OmniRoute: 358 de furnizori, peste 150 de niveluri gratuite încorporate, 19 strategii de rutare, compresie de token-uri cu 12 motoare, server MCP încorporat cu 110 instrumente, protocol de agent A2A, memorie persistentă, mecanisme de siguranță, agenți cloud, ascundere amprentă TLS, Desktop/Termux/PWA și 42 de localizări UI i18n. OmniRoute este licențiat MIT și poate fi auto-găzduit. Capabilitățile și numărul concurenților se pot schimba; vezi metodologia legată."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Prin ce se remarcă OmniRoute — o comparație datată a funcționalităților cu 9router, OpenRouter, CLIProxyAPI și LiteLLM pentru 13 capabilități. OmniRoute: 359 de furnizori, peste 150 de niveluri gratuite incluse, 19 strategii de rutare, comprimarea tokenurilor cu 12 motoare, server MCP integrat cu 110 instrumente, protocolul pentru agenți A2A, memorie persistentă, mecanisme de protecție, agenți cloud, mascarea amprentei TLS, Desktop/Termux/PWA și interfața localizată în 42 de limbi. OmniRoute este licențiat sub MIT și poate fi găzduit autonom. Capabilitățile și numărul acestora pentru concurenți se pot schimba; consultați metodologia asociată."/>
 
-<sub>📊 Metodologie completă &amp; detalii per-caracteristică vs 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Metodologia completă și detalii pentru fiecare funcționalitate, în comparație cu 9router, OpenRouter, CLIProxyAPI și LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

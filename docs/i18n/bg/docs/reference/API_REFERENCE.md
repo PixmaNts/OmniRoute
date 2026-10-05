@@ -408,7 +408,7 @@ GET /api/v1/provider-plugin-manifest
 
 ---
 
-## Крайни точки за съвместимост
+## Съвместими крайни точки
 
 | Метод | Път                                       | Формат                                    |
 | ----- | ----------------------------------------- | ----------------------------------------- |
@@ -417,52 +417,62 @@ GET /api/v1/provider-plugin-manifest
 | POST  | `/v1/responses`                           | OpenAI Responses                          |
 | POST  | `/v1/embeddings`                          | OpenAI                                    |
 | POST  | `/v1/images/generations`                  | OpenAI Images                             |
-| POST  | `/v1/images/edits`                        | OpenAI Images (редактиране/дорисуване)    |
+| POST  | `/v1/images/edits`                        | OpenAI Images (редактиране/попълване)     |
 | POST  | `/v1/videos/generations`                  | Генериране на видео в стил OpenAI         |
 | POST  | `/v1/music/generations`                   | Генериране на музика в стил OpenAI        |
-| POST  | `/v1/audio/transcriptions`                | OpenAI Audio (разпознаване на реч)        |
-| POST  | `/v1/audio/speech`                        | OpenAI TTS (връща аудио в тялото)         |
-| POST  | `/v1/rerank`                              | Пренареждане в стил Cohere/Voyage         |
-| POST  | `/v1/classify`                            | Класифициране с Jina (`api.jina.ai`)      |
-| POST  | `/v1/segment`                             | Сегментиране с Jina (`segment.jina.ai`)   |
+| POST  | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                        |
+| POST  | `/v1/audio/speech`                        | OpenAI TTS (връща аудио тяло)             |
+| POST  | `/v1/rerank`                              | Преоценяване в стил Cohere/Voyage         |
+| POST  | `/v1/classify`                            | Jina classify (`api.jina.ai`)             |
+| POST  | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)        |
+| POST  | `/v1/systemone`                           | Модели за вземане на решения (System One) |
+| GET   | `/v1/systemone/models`                    | Списък с модели за вземане на решения     |
 | POST  | `/v1/moderations`                         | OpenAI Moderations                        |
 | GET   | `/v1/models`                              | OpenAI                                    |
 | POST  | `/v1/messages/count_tokens`               | Anthropic                                 |
 | GET   | `/v1beta/models`                          | Gemini                                    |
 | POST  | `/v1beta/models/{...path}`                | Gemini generateContent                    |
 | POST  | `/v1/api/chat`                            | Ollama                                    |
-| GET   | `/api/v1/vscode/{token}/`                 | Псевдоним на каталог на OpenAI            |
-| GET   | `/api/v1/vscode/{token}/models`           | Псевдоним на модели на OpenAI             |
-| POST  | `/api/v1/vscode/{token}/chat/completions` | Токенизиран псевдоним на OpenAI           |
-| POST  | `/api/v1/vscode/{token}/responses`        | Токенизиран псевдоним на OpenAI Responses |
-| POST  | `/api/v1/vscode/{token}/api/chat`         | Токенизиран псевдоним на Ollama           |
-| GET   | `/api/v1/vscode/{token}/api/tags`         | Токенизиран псевдоним за тагове на Ollama |
+| GET   | `/api/v1/vscode/{token}/`                 | Псевдоним на каталога на OpenAI           |
+| GET   | `/api/v1/vscode/{token}/models`           | Псевдоним на моделите на OpenAI           |
+| POST  | `/api/v1/vscode/{token}/chat/completions` | Псевдоним на OpenAI с токен               |
+| POST  | `/api/v1/vscode/{token}/responses`        | Псевдоним на OpenAI Responses с токен     |
+| POST  | `/api/v1/vscode/{token}/api/chat`         | Псевдоним на Ollama с токен               |
+| GET   | `/api/v1/vscode/{token}/api/tags`         | Псевдоним на таговете на Ollama с токен   |
 
-Всички маршрути POST следват една и съща структура: `Bearer your-api-key` + JSON тяло, валидирано чрез Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` и т.н.; вижте `src/shared/validation/schemas.ts`). При неуспешна проверка по схемата се връща 4xx.
+Всички POST маршрути следват еднакъв формат: `Bearer your-api-key` + JSON тяло, валидирано със Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` и др.; вижте `src/shared/validation/schemas.ts`). При неуспешна проверка на схемата се връща отговор 4xx.
 
-За клиенти, които не могат да добавят `Authorization: Bearer ...`, OmniRoute приема API ключове и в URL чрез съвместими параметри в низа на заявката (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) или чрез специализираните крайни точки `/api/v1/vscode/{token}/...`, документирани по-долу.
+За клиенти, които не могат да зададат `Authorization: Bearer ...`, OmniRoute приема API ключове и в URL адреса — чрез съвместимост с параметри на низ за заявка (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) или чрез специалните крайни точки `/api/v1/vscode/{token}/...`, описани по-долу.
 
 ```bash
-# Пренареждане (доставчик от облачния регистър или съвместим с OpenAI възел на доставчик като "<prefix>/<model>")
+# Преоценяване (доставчик от облачния регистър или възел на доставчик, съвместим с OpenAI, във формат "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Класифициране с Jina (идентификационни данни за Foundation API)
+# Jina classify (идентификационни данни за Foundation API)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Сегментиране с Jina
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
+
+# Модели за вземане на решения (System One). Префиксът на модела определя връзката:
+#   typesafe/jev-latest              -> директно към TypeSafe
+#   openrouter/typesafe/jev-1.13     -> чрез OpenRouter
+#   ollama-local/<model>             -> локален Ollama >= 0.35
+# Идентификатор без квалифициращ префикс, например jev-latest, продължава да използва OpenRouter. TypeSafe SDK работят с baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # модели на конфигурираните бекендове: { object: "list", data: [{ id, name, pricing, ... }] }
 
 # Търсене с Jina (s.jina.ai; псевдоними на доставчика: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# Модериране
+# Модерация
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — връща audio/mpeg (или заявения формат) в тялото
+# TTS — връща тяло с формат audio/mpeg (или заявения формат)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS изисква език и глас: `language` по подразбиране е "en"; липсващ
-# глас или име на стандартен глас на OpenAI (alloy, nova, …) се заменя с "Adrian"
+# За Soniox TTS са необходими език и глас: `language` по подразбиране е "en"; ако гласът липсва
+# или е стандартен глас на OpenAI (alloy, nova, …), се използва "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # Редактиране на изображение (multipart)
@@ -473,27 +483,26 @@ POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Възли на доставчици за пренареждане:** `POST /v1/rerank` също насочва към съвместими с OpenAI възли на доставчици
-> (oMLX, vLLM, Infinity, TEI зад шлюз, …), адресирани като `<node-prefix>/<model>`. Възлите на
-> loopback адреси (`localhost`, `127.0.0.1`, `172.16.0.0/12`) винаги са допустими. Възлите на всеки друг
-> хост — машина в LAN или Tailscale партньор — са допустими само когато операторът активира флага за функционалност
-> `RERANK_REMOTE_PROVIDER_NODES` **и** базовият URL на възела премине правилата за изходящи URL адреси на доставчика
-> (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> заявките никога не се насочват към хостове за облачни метаданни. Стъпката за пренареждане на системата за памет извиква този маршрут през
-> loopback, така че същото правило се прилага за `rerankProviderModel` в настройките на паметта.
+> **Възли на доставчици за rerank:** `POST /v1/rerank` също маршрутизира към съвместими с OpenAI възли на доставчици
+> (oMLX, vLLM, Infinity, TEI зад шлюз и др.), адресирани като `<node-prefix>/<model>`. Loopback
+> възлите (`localhost`, `127.0.0.1`, `172.16.0.0/12`) винаги отговарят на условията. Възлите на всеки друг
+> хост — LAN устройство или Tailscale peer — отговарят на условията само когато операторът активира
+> флага за функции `RERANK_REMOTE_PROVIDER_NODES` **и** базовият URL адрес на възела преминава политиката за изходящи URL адреси на доставчици
+> (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); към хостове с облачни метаданни никога не се маршрутизира. Стъпката за rerank на енджина за памет извиква този маршрут през
+> loopback, така че същото правило важи за `rerankProviderModel` в настройките на Memory.
 >
 > **Формати на локалните сървъри:** възелът се извиква на `<base>/v1/rerank`, а при 404 — на `<base>/rerank`
-> (Infinity, TEI). Тялото към сървъра нагоре по веригата съдържа както изписването на Cohere/OpenAI (`documents`,
-> `return_documents`), така и изписването на TEI (`texts`, `return_text`), а отговорът от сървъра нагоре по веригата се
-> нормализира до обвивката на Cohere: непакетираният отговор на TEI `[{index, score, text}]`, `{results: [{index, score}]}`
-> от олекотени шлюзове и отговорът в стил Voyage `{data: [...]}` се връщат към клиента като
-> `{results: [{index, relevance_score, document?}]}`, сортирани по оценка и ограничени до `top_n`.
+> (Infinity, TEI). Тялото на заявката към upstream включва както изписването Cohere/OpenAI (`documents`,
+> `return_documents`), така и изписването TEI (`texts`, `return_text`), а отговорът от upstream се
+> нормализира до обвивката на Cohere: голият масив на TEI `[{index, score, text}]`, `{results: [{index, score}]}`
+> от опростени шлюзове и `{data: [...]}` в стил Voyage се връщат към клиента като
+> `{results: [{index, relevance_score, document?}]}`, сортирани по score и ограничени до `top_n`.
 
-> **Откриване на възли на доставчици:** моделите във възел на доставчик, съвместим с OpenAI, се показват в `GET /v1/models`
-> под префикса на възела. Редовете без метаданни за крайна точка (типично за локални списъци от `/v1/models`)
-> наследяват `apiType` на възела, така че моделите на възел `embeddings` са с `type: "embedding"`, а
-> моделите на възел `rerank` са с `type: "rerank"`, вместо по подразбиране да бъдат за чат; изрично зададеното
-> `supportedEndpoints` в синхронизиран или ръчно добавен ред продължава да има предимство.
+> **Откриване на възли на доставчици:** моделите на съвместим с OpenAI възел на доставчик се показват в `GET /v1/models`
+> под префикса на възела. Редовете без метаданни за крайни точки (типични за локални списъци от `/v1/models`)
+> наследяват `apiType` на възела, така че моделите на възел `embeddings` имат `type: "embedding"`, а моделите на
+> възел `rerank` — `type: "rerank"`, вместо по подразбиране да са за чат; изрично зададеното
+> `supportedEndpoints` в синхронизиран или добавен ръчно ред все пак има предимство.
 
 ### Специализирани маршрути за доставчици
 

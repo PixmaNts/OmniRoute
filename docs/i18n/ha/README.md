@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute Dashboard" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="Allon kula da OmniRoute" width="820"/>
 
 <br/>
 <br/>
 
 # 🚀 OmniRoute — Ƙofar AI Kyauta
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kada ka daina rubuta code. Kowace kayan aikin AI → masu samarwa 358 — 150+ kyauta — ta hanyar maɓalli ɗaya. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity zuwa KYAUTA Claude / GPT / Gemini tare da koma-baya ta atomatik. RTK + Caveman matsattsen matsi yana adana alamomi 15–95% (~89% a matsakaici) — kada ka taɓa kai iyaka. Masu samar da AI 358 · matakan kyauta 150+ · ~1.62B alamomin kyauta/wata · dabarun hanyoyi 19 · $0 don farawa."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kada ka daina rubuta lamba. Kowane kayan aikin AI → masu samar da AI 359 — sama da 150 kyauta — ta hanyar endpoint guda. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity zuwa Claude / GPT / Gemini KYAUTA tare da sauyawa ta atomatik. Matsi mai matakai na RTK + Caveman yana adana tokens 15–95% (matsakaicin ~89%) — ba za ka taɓa kai wa iyaka ba. Masu samar da AI 359 · matakan kyauta sama da 150 · ~tokens kyauta biliyan 1.62/wata · dabarun tuƙi 19 · farawa da $0."/>
 
 </div>
 
@@ -214,47 +214,47 @@
 
 <div align="center">
 
-## 🆓 Yana aiki da zarar ka shigar da shi — babu makullai, babu saiti
+## 🆓 Yana aiki da zarar ka girka shi — babu buƙatar maɓalli ko saituna
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Yana aiki da zarar ka shigar da shi — babu saiti. Matakai uku: 1. Shigar — npm i -g omniroute, sabar tana tashi a localhost:20128. 2. Nuna kayan aikin ka zuwa http://localhost:20128/v1 — kowane kayan aiki mai dacewa da OpenAI (Claude Code, Cursor, Cline). 3. Yana amsawa — kira model auto don amsa nan take, ba tare da maɓallin API ba, babu rajista, babu saiti. Mai ba da sabis na kyauta na OpenCode Free an riga an haɗa shi cikin haɗin auto, don haka sabon shigarwa yana amsawa nan take."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Yana aiki da zarar ka girka shi — babu saituna. Matakai uku: 1. Girkawa — npm i -g omniroute, sabar tana farawa a localhost:20128. 2. Nuna wa kayan aikinka adireshin http://localhost:20128/v1 — kowane kayan aiki mai jituwa da OpenAI (Claude Code, Cursor, Cline). 3. Yana ba da amsa — kira samfurin auto don samun amsa nan take, ba tare da maɓallin API, rajista ko saituna ba. An riga an haɗa mai samarwa marar maɓalli OpenCode Free cikin haɗin auto, don haka sabuwar girka tana ba da amsa kai tsaye."/>
 
 ```bash
-# Sabon shigarwa, babu takardun shaida — `auto` yana aiki:
+# Sabuwar girka, babu takardun shaidar shiga — `auto` yana aiki tuni:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Ka fi son takamaiman backend na kyauta? Kira `oc/…` (OpenCode Free) kai tsaye. Sannan ka koma `auto` kuma ka bar OmniRoute ya zaɓa.</sub>
+<sub>Ka fi son takamaiman sabis na baya kyauta? Kira `oc/…` (OpenCode Free) kai tsaye. Daga nan ka koma `auto` ka bar OmniRoute ya zaɓa.</sub>
 
-<sub>📦 Kwafi-liƙa rubutun farawa mai sauri don **Python, Node.js, PHP, da cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 Rubutun farawa cikin sauri da za ka iya kwafa ka liƙa don **Python, Node.js, PHP, da cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 Alkawari
+# 💥 Alkawarin
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Alkawari — Wuri guda da masu samarwa 358. Komawa ta atomatik tana ci gaba da kewayawa yayin da wani wuri mai lafiya yake samuwa. Ginshiƙai shida: komawa mai juriya a cikin masu samarwa 358 · har zuwa 95% ajiyar alama akan ayyukan da suka cancanta · $0 don farawa da matakan kyauta 150+ da masu samarwa 54 masu maimaitawa/marasa maɓalli har abada · haɗin CLI/wakili 36 ta hanyar saiti ɗaya · dacewa da OpenAI, Claude, Gemini da Responses API a /v1 · sarrafa samarwa ciki har da masu karya kewaye, ɓoye TLS, kayan aikin MCP 110, A2A, ƙwaƙwalwa, shinge, ƙididdiga da sanarwar gwaji sama da 39,000 a cikin fayilolin gwaji sama da 5,100 da aka bibiya."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Alkawarin — Ƙarshen API guda ɗaya da masu samarwa 359. Komawa ta atomatik tana ci gaba da tura buƙatu muddin akwai wani wurin da ke aiki lafiya. Ginshiƙai shida: komawa mai juriya a tsakanin masu samarwa 359 · tanadin kuɗin token har zuwa 95% kan nauyin aiki da ya cancanta · fara da $0 tare da matakan kyauta 150+ da masu samarwa kyauta har abada 54 da ake samu akai-akai/ba sa buƙatar maɓalli · haɗin CLI/agent 36 ta hanyar saitin guda ɗaya · jituwa da OpenAI, Claude, Gemini da Responses API a /v1 · sarrafawa don yanayin samarwa ciki har da circuit breakers, ɓoyewar TLS, kayan aikin MCP 110, A2A, ƙwaƙwalwa, guardrails, gwaje-gwajen kimantawa, da bayanan gwaji na tsaye 39,000+ a cikin fayilolin gwaji 5,100+ da ake sa ido a kansu."/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 Me yasa OmniRoute?
+# 🤔 Me ya sa OmniRoute?
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Me yasa OmniRoute — daina sarrafa dashboards 10, maɓallan API da suka mutu da kuma lissafin da ba zato ba tsammani. Matsalolin yau da kullun guda goma vs gyare-gyare: ƙayyadaddun adadin da ba a yi amfani da shi ba → haɓaka biyan kuɗi; iyakokin ƙimar a tsakiyar coding → komawa ta atomatik mataki 4 (Biyan kuɗi → API → Mai arha → Kyauta); fitarwar kayan aiki suna cinye alamomi → RTK + Caveman compression (15–95%); APIs masu tsada → kewayawa mai inganci; kowane kayan aiki saitin sa → wuri guda, dashboard guda; AI an toshe → wakili mataki 3 + ɓoye TLS; maɓallan da suka mutu → juriya mataki 3 (masu karya kewaye, sanyaya maɓalli, kulle samfuri); raba biyan kuɗi ɗaya na ƙungiya → wuraren maɓalli tare da ƙayyadaddun adadin rabo; umarni ta hanyar gajimare na wani → farko na gida tare da maɓallan da aka ɓoye na AES-256-GCM; babu ganin kashe kuɗi → nazari kai tsaye (amfani, ƙayyadaddun adadin, ajiyar kuɗi, jinkiri na p95)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Me ya sa OmniRoute — daina ta faman sauya tsakanin dashboards 10, maɓallan API da suka mutu da kuɗaɗen mamaki. Matsaloli 10 na yau da kullum da mafita: ƙa'idar amfani ta ƙare ba tare da an yi amfani da ita ba → amfani da dukkan rajista; iyakar yawan buƙatu ta katse aiki yayin rubuta lamba → komawa ta atomatik mai matakai 4 (Rajista → API → Mai arha → Kyauta); sakamakon kayan aiki yana cin token → matsewa ta RTK + Caveman (15–95%); API masu tsada → tura buƙatu bisa ingancin kuɗi; kowane kayan aiki na buƙatar saitinsa → ƙarshen API guda ɗaya, dashboard guda ɗaya; an toshe AI → wakili mai matakai 3 + ɓoyewar TLS; maɓallan da suka mutu → juriya mai matakai 3 (circuit breakers, lokacin jiran maɓalli, kulle samfurin); ƙungiya tana amfani da rajista guda ɗaya tare → tarin maɓallai masu ƙa'idar rabon adalci; saƙonnin umarni suna bi ta gajimaren wani → fifita na’urar gida tare da maɓallan da aka ɓoye da AES-256-GCM; babu ganin yadda ake kashe kuɗi → nazari kai tsaye (amfani, ƙa'idar amfani, tanadi, jinkirin p95)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Tsarin buƙatun OmniRoute: IDE ko CLI ɗinka (Claude Code, Cursor, Cline…) yana kiran wuri guda na gida (http://localhost:20128/v1); OmniRoute Smart Router (RTK + Caveman compression, dabarun kewayawa 19, masu karya kewaye, ɓoye TLS, MCP, A2A, shinge) na iya komawa a cikin matakan masu samarwa 4 yayin da wani wuri mai lafiya ya rage — Mataki na 1 Biyan kuɗi, Mataki na 2 Maɓallin API, Mataki na 3 Mai arha da Mataki na 4 Kyauta."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Gudanar da buƙatar OmniRoute: IDE ko CLI ɗinka (Claude Code, Cursor, Cline…) yana kira ga ƙarshen adireshi na gida guda ɗaya (http://localhost:20128/v1); Smart Router na OmniRoute (matsewa ta RTK + Caveman, dabarun tura buƙatu 19, circuit breakers, ɓoyewar TLS, MCP, A2A, guardrails) na iya komawa tsakanin matakan masu samarwa 4 muddin akwai wurin da ya cancanta kuma ke aiki lafiya — Mataki na 1 Rajista, Mataki na 2 Maɓallin API, Mataki na 3 Mai arha da Mataki na 4 Kyauta."/>
 
 </div>
 
@@ -488,13 +488,13 @@ Dukkan dabarun **19** — haɗa su yadda kake so a kowane matakin combo:
 
 <div align="center">
 
-## 🏆 Me Ya Bambanta OmniRoute
+## 🏆 Abin da Ya Bambanta OmniRoute
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Me ya bambanta OmniRoute — hoton fasali na baya-bayan nan idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI da LiteLLM a fadin fasaloli 13. OmniRoute: masu samarwa 358, matakan kyauta sama da 150 da aka gina a ciki, dabarun kewayawa 19, matsi na alama mai inji 12, sabar MCP da aka gina a ciki tare da kayan aiki 110, ka'idar wakili ta A2A, ƙwaƙwalwar ajiya mai dorewa, masu tsaro, wakilai na girgije, ɓoyewar sawun yatsa na TLS, Desktop/Termux/PWA da harsunan UI na i18n 42. OmniRoute yana da lasisin MIT kuma ana iya gudanar da shi da kansa. Ƙarfin masu fafatawa da adadi na iya canzawa; duba hanyar da aka haɗa."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Abin da ya bambanta OmniRoute — taƙaitaccen fasaloli na wani lokaci da ya gabata idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI da LiteLLM a kan ƙwarewa 13. OmniRoute: masu samarwa 359, matakan kyauta sama da 150 da aka gina a ciki, dabarun turawa 19, matsewar alamun token ta injuna 12, sabar MCP da aka gina a ciki mai kayan aiki 110, ƙa'idar wakilai ta A2A, ƙwaƙwalwa mai ɗorewa, matakan kariya, wakilan girgije, ɓoyewar sawun TLS, Desktop/Termux/PWA da harsunan UI na i18n 42. Lasisin OmniRoute MIT ne kuma ana iya ɗaukar nauyinsa da kanka. Ƙarfin fasali da ƙididdigar masu fafatawa na iya canzawa; duba hanyar binciken da aka haɗa."/>
 
-<sub>📊 Cikakken tsarin aiki &amp; cikakken bayani kan kowane fasali idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Cikakkiyar hanyar bincike da cikakkun bayanai kan kowane fasali idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI da LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

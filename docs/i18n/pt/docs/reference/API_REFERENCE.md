@@ -425,92 +425,101 @@ Utilize este endpoint quando um sidecar é executado fora do processo e não con
 
 ## Endpoints de compatibilidade
 
-| Método | Caminho                                   | Formato                              |
-| ------ | ----------------------------------------- | ------------------------------------ |
-| POST   | `/v1/chat/completions`                    | OpenAI                               |
-| POST   | `/v1/messages`                            | Anthropic                            |
-| POST   | `/v1/responses`                           | OpenAI Responses                     |
-| POST   | `/v1/embeddings`                          | OpenAI                               |
-| POST   | `/v1/images/generations`                  | OpenAI Images                        |
-| POST   | `/v1/images/edits`                        | OpenAI Images (edição/inpainting)    |
-| POST   | `/v1/videos/generations`                  | Geração de vídeo ao estilo OpenAI    |
-| POST   | `/v1/music/generations`                   | Geração de música ao estilo OpenAI   |
-| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                   |
-| POST   | `/v1/audio/speech`                        | OpenAI TTS (devolve corpo de áudio)  |
-| POST   | `/v1/rerank`                              | Reordenação ao estilo Cohere/Voyage  |
-| POST   | `/v1/classify`                            | Classificação Jina (`api.jina.ai`)   |
-| POST   | `/v1/segment`                             | Segmentador Jina (`segment.jina.ai`) |
-| POST   | `/v1/moderations`                         | OpenAI Moderations                   |
-| GET    | `/v1/models`                              | OpenAI                               |
-| POST   | `/v1/messages/count_tokens`               | Anthropic                            |
-| GET    | `/v1beta/models`                          | Gemini                               |
-| POST   | `/v1beta/models/{...path}`                | Gemini generateContent               |
-| POST   | `/v1/api/chat`                            | Ollama                               |
-| GET    | `/api/v1/vscode/{token}/`                 | Alias do catálogo OpenAI             |
-| GET    | `/api/v1/vscode/{token}/models`           | Alias dos modelos OpenAI             |
-| POST   | `/api/v1/vscode/{token}/chat/completions` | Alias OpenAI com token               |
-| POST   | `/api/v1/vscode/{token}/responses`        | Alias OpenAI Responses com token     |
-| POST   | `/api/v1/vscode/{token}/api/chat`         | Alias Ollama com token               |
-| GET    | `/api/v1/vscode/{token}/api/tags`         | Alias das etiquetas Ollama com token |
+| Método | Caminho                                   | Formato                               |
+| ------ | ----------------------------------------- | ------------------------------------- |
+| POST   | `/v1/chat/completions`                    | OpenAI                                |
+| POST   | `/v1/messages`                            | Anthropic                             |
+| POST   | `/v1/responses`                           | OpenAI Responses                      |
+| POST   | `/v1/embeddings`                          | OpenAI                                |
+| POST   | `/v1/images/generations`                  | OpenAI Images                         |
+| POST   | `/v1/images/edits`                        | OpenAI Images (edição/inpainting)     |
+| POST   | `/v1/videos/generations`                  | Geração de vídeo ao estilo OpenAI     |
+| POST   | `/v1/music/generations`                   | Geração de música ao estilo OpenAI    |
+| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                    |
+| POST   | `/v1/audio/speech`                        | OpenAI TTS (devolve o corpo de áudio) |
+| POST   | `/v1/rerank`                              | Reordenação ao estilo Cohere/Voyage   |
+| POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)         |
+| POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)    |
+| POST   | `/v1/systemone`                           | Modelos de decisão (System One)       |
+| GET    | `/v1/systemone/models`                    | Lista de modelos de decisão           |
+| POST   | `/v1/moderations`                         | OpenAI Moderations                    |
+| GET    | `/v1/models`                              | OpenAI                                |
+| POST   | `/v1/messages/count_tokens`               | Anthropic                             |
+| GET    | `/v1beta/models`                          | Gemini                                |
+| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                |
+| POST   | `/v1/api/chat`                            | Ollama                                |
+| GET    | `/api/v1/vscode/{token}/`                 | Alias do catálogo OpenAI              |
+| GET    | `/api/v1/vscode/{token}/models`           | Alias dos modelos OpenAI              |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | Alias OpenAI com token                |
+| POST   | `/api/v1/vscode/{token}/responses`        | Alias OpenAI Responses com token      |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Alias Ollama com token                |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Alias das etiquetas Ollama com token  |
 
-Todas as rotas POST seguem a mesma estrutura: `Bearer your-api-key` + corpo JSON validado pelo Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, etc.; consulte `src/shared/validation/schemas.ts`). É devolvido um erro 4xx quando a validação do esquema falha.
+Todas as rotas POST seguem o mesmo formato: `Bearer your-api-key` + corpo JSON validado por Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, etc.; consulte `src/shared/validation/schemas.ts`). Em caso de falha na validação do esquema, é devolvido um erro 4xx.
 
-Para clientes que não conseguem anexar `Authorization: Bearer ...`, o OmniRoute também aceita chaves de API no URL, quer através da compatibilidade com parâmetros de consulta (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`), quer através dos endpoints dedicados `/api/v1/vscode/{token}/...` documentados abaixo.
+Para clientes que não conseguem incluir `Authorization: Bearer ...`, o OmniRoute também aceita chaves de API no URL, através de parâmetros de consulta compatíveis (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) ou dos endpoints dedicados `/api/v1/vscode/{token}/...` documentados abaixo.
 
 ```bash
-# Reordenação (fornecedor do registo na nuvem ou nó de fornecedor compatível com OpenAI como "<prefix>/<model>")
+# Reordenação (fornecedor do registo na nuvem ou nó de fornecedor compatível com OpenAI no formato "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Classificação Jina (credenciais da Foundation API)
+# Jina classify (credenciais da API Foundation)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Segmentador Jina
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# Pesquisa Jina (s.jina.ai; aliases de fornecedor: jina-search, jina-ai, jina)
+# Modelos de decisão (System One). O prefixo do primeiro modelo seleciona a ligação:
+#   typesafe/jev-latest              -> TypeSafe direto
+#   openrouter/typesafe/jev-1.13     -> através do OpenRouter
+#   ollama-local/<model>             -> Ollama local >= 0.35
+# Um ID sem prefixo, como jev-latest, continua a usar o OpenRouter. Os SDKs TypeSafe funcionam com baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # modelos dos backends configurados: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Pesquisa Jina (s.jina.ai; aliases do fornecedor: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
 # Moderações
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — devolve um corpo audio/mpeg (ou no formato solicitado)
+# TTS — devolve o corpo audio/mpeg (ou no formato solicitado)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# O TTS da Soniox requer um idioma e uma voz: `language` usa "en" por predefinição; uma
-# voz em falta ou o nome de uma voz padrão da OpenAI (alloy, nova, …) passa a ser "Adrian"
+# O TTS Soniox requer um idioma e uma voz: `language` tem por predefinição "en"; se não for indicada
+# uma voz, ou se for indicado o nome de uma voz OpenAI predefinida (alloy, nova, …), será usada "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # Edição de imagem (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Geração de vídeo/música (ID de modelo com prefixo do fornecedor)
+# Geração de vídeo/música (ID do modelo com prefixo do fornecedor)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Nós de fornecedores de reordenação:** `POST /v1/rerank` também encaminha pedidos para nós de fornecedores compatíveis com OpenAI
-> (oMLX, vLLM, Infinity, TEI por detrás de um gateway, …), endereçados como `<node-prefix>/<model>`. Os nós de
-> loopback (`localhost`, `127.0.0.1`, `172.16.0.0/12`) são sempre elegíveis. Os nós em qualquer outro
-> anfitrião — uma máquina na LAN ou um par Tailscale — só são elegíveis quando o operador ativa a
-> flag de funcionalidade `RERANK_REMOTE_PROVIDER_NODES` **e** o URL base do nó cumpre a política de URLs
-> de saída do fornecedor (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> os anfitriões de metadados da nuvem nunca recebem pedidos encaminhados. O passo de reordenação do motor de memória chama esta rota
-> através de loopback, pelo que a mesma regra rege `rerankProviderModel` nas definições de Memória.
+> **Reordenar nós de fornecedores:** `POST /v1/rerank` também encaminha pedidos para nós de fornecedores compatíveis com OpenAI
+> (oMLX, vLLM, Infinity, TEI atrás de um gateway, …) endereçados como `<node-prefix>/<model>`. Os nós de loopback
+> (`localhost`, `127.0.0.1`, `172.16.0.0/12`) são sempre elegíveis. Os nós em qualquer outro
+> anfitrião — um computador na LAN ou um par Tailscale — só são elegíveis quando o operador ativa o
+> sinalizador de funcionalidade `RERANK_REMOTE_PROVIDER_NODES` **e** o URL base do nó passa a política de
+> URLs de saída dos fornecedores (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
+> nunca são encaminhados pedidos para anfitriões de metadados da cloud. A etapa de reordenação do motor de memória chama esta rota através de
+> loopback, pelo que a mesma regra se aplica a `rerankProviderModel` nas definições de Memory.
 >
-> **Estruturas dos servidores locais:** o nó é chamado em `<base>/v1/rerank` e, em caso de 404, em `<base>/rerank`
-> (Infinity, TEI). O corpo enviado para o serviço a montante inclui tanto a nomenclatura Cohere/OpenAI (`documents`,
-> `return_documents`) como a nomenclatura TEI (`texts`, `return_text`), e a resposta a montante é
-> normalizada para o envelope Cohere: o formato simples do TEI `[{index, score, text}]`, o formato `{results: [{index, score}]}`
-> de gateways ligeiros e o formato do Voyage `{data: [...]}` são todos devolvidos ao cliente como
+> **Formatos dos servidores locais:** o nó é chamado em `<base>/v1/rerank` e, em caso de 404, em `<base>/rerank`
+> (Infinity, TEI). O corpo enviado ao serviço a montante inclui tanto a variante Cohere/OpenAI (`documents`,
+> `return_documents`) como a variante TEI (`texts`, `return_text`), e a resposta do serviço a montante é
+> normalizada para o formato Cohere: a lista simples do TEI `[{index, score, text}]`, `{results: [{index, score}]}`
+> de gateways simplificados e `{data: [...]}` ao estilo Voyage são todos devolvidos ao cliente como
 > `{results: [{index, relevance_score, document?}]}`, ordenados por pontuação e limitados a `top_n`.
 
-> **Descoberta de nós de fornecedor:** os modelos num nó de fornecedor compatível com a OpenAI aparecem em `GET /v1/models`
-> sob o prefixo do nó. As linhas sem metadados de endpoint (típico das listagens locais de `/v1/models`)
-> herdam o `apiType` do nó, pelo que os modelos de um nó `embeddings` têm `type: "embedding"` e os modelos de um
-> nó `rerank` têm `type: "rerank"`, em vez de usarem chat por predefinição; um
-> `supportedEndpoints` explícito numa linha sincronizada ou adicionada manualmente continua a ter precedência.
+> **Descoberta de nós de fornecedores:** os modelos num nó de fornecedor compatível com OpenAI aparecem em `GET /v1/models`
+> com o prefixo do nó. As linhas sem metadados de endpoint (típico das listas locais de `/v1/models`)
+> herdam o `apiType` do nó, pelo que os modelos de um nó `embeddings` têm `type: "embedding"` e os de um
+> nó `rerank` têm `type: "rerank"`, em vez de assumirem o tipo chat; um `supportedEndpoints` explícito numa linha sincronizada ou adicionada manualmente continua a ter precedência.
 
-### Rotas Dedicadas de Fornecedor
+### Rotas dedicadas a fornecedores
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -518,7 +527,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-O prefixo do fornecedor é adicionado automaticamente se estiver em falta. Os modelos não correspondentes devolvem `400`.
+O prefixo do fornecedor é adicionado automaticamente se estiver em falta. Os modelos incompatíveis devolvem `400`.
 
 ---
 

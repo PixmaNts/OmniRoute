@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute Dashboard" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute ဒက်ရှ်ဘုတ်" width="820"/>
 
 <br/>
 <br/>
 
 # 🚀 OmniRoute — အခမဲ့ AI Gateway
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ကုဒ်ရေးခြင်းကို ဘယ်တော့မှ မရပ်ပါနှင့်။ AI ကိရိယာတိုင်း → ပံ့ပိုးသူ ၃၅၈ ဦး — အခမဲ့ ၁၅၀+ — တစ်ခုတည်းသော endpoint မှတစ်ဆင့်။ Claude Code, Codex, Cursor, Cline, Copilot နှင့် Antigravity တို့ကို အခမဲ့ Claude / GPT / Gemini ထဲသို့ အလိုအလျောက် ပြန်လည်ပြောင်းလဲခြင်း (auto-fallback) ဖြင့်။ RTK + Caveman stacked compression သည် 15–95% tokens (~89% ပျမ်းမျှ) ကို ချွေတာသည် — ကန့်သတ်ချက်များကို ဘယ်တော့မှ မကျော်လွန်ပါ။ AI ပံ့ပိုးသူ ၃၅၈ ဦး · အခမဲ့အဆင့် ၁၅၀+ · တစ်လလျှင် အခမဲ့ tokens ~1.62 ဘီလီယံ · routing နည်းဗျူဟာ ၁၉ ခု · စတင်ရန် $0။"/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ကုဒ်ရေးတာကို ဘယ်တော့မှ မရပ်လိုက်ပါနဲ့။ AI ကိရိယာတိုင်း → ပံ့ပိုးပေးသူ 359 ဦး — အခမဲ့ 150+ ဦး — ကို endpoint တစ်ခုတည်းမှတစ်ဆင့် အသုံးပြုနိုင်သည်။ Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ကို အလိုအလျောက် အစားထိုးအသုံးပြုနိုင်သည့် အခမဲ့ Claude / GPT / Gemini သို့ ချိတ်ဆက်ပေးသည်။ RTK + Caveman ပေါင်းစပ်ချုံ့မှုက token 15–95% (~ပျမ်းမျှ 89%) ချွေတာပေးပြီး ကန့်သတ်ချက်များနှင့် မကြုံစေပါ။ AI ပံ့ပိုးပေးသူ 359 ဦး · အခမဲ့အစီအစဉ် 150+ ခု · တစ်လလျှင် အခမဲ့ token ~1.62B · လမ်းကြောင်းရွေးချယ်မှု မဟာဗျူဟာ 19 မျိုး · စတင်ရန် ကုန်ကျစရိတ် $0."/>
 
 </div>
 
@@ -214,47 +214,47 @@
 
 <div align="center">
 
-## 🆓 ထည့်သွင်းပြီးသည်နှင့် ချက်ချင်းအလုပ်လုပ်သည် — သော့မလို၊ စနစ်ထည့်သွင်းမှုမလို
+## 🆓 တပ်ဆင်လိုက်သည်နှင့် ချက်ချင်းအသုံးပြုနိုင်သည် — API key မလို၊ configuration မလို
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="ထည့်သွင်းပြီးသည်နှင့် ချက်ချင်းအလုပ်လုပ်သည် — စနစ်ထည့်သွင်းမှုမလို။ အဆင့်သုံးဆင့်- ၁။ ထည့်သွင်းပါ — npm i -g omniroute၊ ဆာဗာသည် localhost:20128 တွင် စတင်အလုပ်လုပ်ပါမည်။ ၂။ သင်၏ကိရိယာကို http://localhost:20128/v1 သို့ ညွှန်ပြပါ — မည်သည့် OpenAI-နှင့် တွဲဖက်အသုံးပြုနိုင်သော ကိရိယာမဆို (Claude Code, Cursor, Cline)။ ၃။ ၎င်းက ပြန်ဖြေပါမည် — ချက်ချင်းပြန်ကြားရန် model auto ကို ခေါ်ဆိုပါ၊ API သော့မလို၊ စာရင်းသွင်းရန်မလို၊ စနစ်ထည့်သွင်းရန်မလိုပါ။ သော့မလိုသော ပံ့ပိုးပေးသူ OpenCode Free ကို auto ပေါင်းစပ်မှုတွင် ကြိုတင်ထည့်သွင်းထားပြီးဖြစ်သောကြောင့် အသစ်ထည့်သွင်းသည်နှင့် ချက်ချင်းအလုပ်လုပ်ပါသည်။"/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="တပ်ဆင်လိုက်သည်နှင့် ချက်ချင်းအသုံးပြုနိုင်သည် — configuration မလိုပါ။ အဆင့် ၃ ဆင့်ဖြင့် အသုံးပြုနိုင်သည်။ 1. တပ်ဆင်ပါ — npm i -g omniroute၊ server သည် localhost:20128 တွင် စတင်လည်ပတ်မည်။ 2. သင့် tool ကို http://localhost:20128/v1 သို့ ညွှန်ပေးပါ — OpenAI-compatible tool မည်သည့်အမျိုးအစားမဆို (Claude Code, Cursor, Cline)။ 3. တုံ့ပြန်မှုရယူပါ — ချက်ချင်းအဖြေရရန် model auto ကို ခေါ်ပါ။ API key၊ အကောင့်ဖွင့်ခြင်း၊ configuration မလိုပါ။ API key မလိုသော provider OpenCode Free ကို auto အတွဲတွင် ကြိုတင်ထည့်သွင်းထားသောကြောင့် အသစ်တပ်ဆင်ပြီးသည်နှင့် ချက်ချင်းတုံ့ပြန်မှု ရရှိနိုင်သည်။"/>
 
 ```bash
-# အသစ်ထည့်သွင်းမှု၊ အထောက်အထားမလို — `auto` သည် အလုပ်လုပ်ပြီးသားဖြစ်သည်။
+# အသစ်တပ်ဆင်ထားပြီး အထောက်အထားအချက်အလက် မလိုပါ — `auto` က အဆင်သင့်အသုံးပြုနိုင်သည်။
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>သီးခြားအခမဲ့ backend တစ်ခုကို ပိုနှစ်သက်ပါသလား။ `oc/…` (OpenCode Free) ကို တိုက်ရိုက်ခေါ်ဆိုပါ။ ထို့နောက် `auto` သို့ ပြောင်းပြီး OmniRoute ကို ရွေးချယ်ခွင့်ပြုပါ။</sub>
+<sub>အခမဲ့ backend တစ်ခုခုကို သီးသန့်အသုံးပြုလိုပါသလား။ OpenCode Free ကို တိုက်ရိုက်ခေါ်ရန် `oc/…` ကို အသုံးပြုပါ။ ထို့နောက် `auto` သို့ ပြောင်းပြီး OmniRoute ကို ရွေးချယ်ခွင့်ပေးပါ။</sub>
 
-<sub>📦 **Python, Node.js, PHP, နှင့် cURL** တို့အတွက် အမြန်စတင်အသုံးပြုနိုင်သော script များကို ကူးယူကူးထည့်ပါ → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 **Python, Node.js, PHP နှင့် cURL** အတွက် အမြန်စတင်အသုံးပြုနိုင်မည့် script များကို ကူးယူအသုံးပြုပါ → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 ကတိကဝတ်
+# 💥 ကျွန်ုပ်တို့၏ ကတိ
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ကတိကဝတ် — endpoint တစ်ခုနှင့် ပံ့ပိုးပေးသူ ၃၅၈ ဦး။ အခြားကောင်းမွန်သော ပစ်မှတ်တစ်ခု ရနိုင်နေသရွေ့ အလိုအလျောက် ပြန်လည်ပြောင်းလဲမှုက လမ်းကြောင်းပြောင်းလဲမှုကို ဆက်လက်လုပ်ဆောင်ပေးသည်။ အဓိကအချက် ခြောက်ချက်- ပံ့ပိုးပေးသူ ၃၅၈ ဦးအနှံ့ ခံနိုင်ရည်ရှိသော ပြန်လည်ပြောင်းလဲမှု · သတ်မှတ်ထားသော လုပ်ငန်းများတွင် token ၉၅% အထိ သက်သာစေခြင်း · အခမဲ့အဆင့် ၁၅၀ ကျော်နှင့် ထပ်တလဲလဲ/သော့မလိုသော ထာဝရအခမဲ့ ပံ့ပိုးပေးသူ ၅၄ ဦးဖြင့် $0 ဖြင့် စတင်နိုင်ခြင်း · စနစ်ထည့်သွင်းမှုတစ်ခုတည်းဖြင့် CLI/agent ပေါင်းစပ်မှု ၃၆ ခု · /v1 တွင် OpenAI, Claude, Gemini နှင့် Responses API တွဲဖက်အသုံးပြုနိုင်ခြင်း · circuit breakers, TLS stealth, MCP 110 tools, A2A, memory, guardrails, evals နှင့် ခြေရာခံထားသော စမ်းသပ်ဖိုင် ၅,၁၀၀ ကျော်တွင် static test ကြေညာချက် ၃၉,၀၀၀ ကျော် အပါအဝင် ထုတ်လုပ်မှု ထိန်းချုပ်မှုများ။"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ကျွန်ုပ်တို့၏ ကတိ — endpoint တစ်ခုတည်းနှင့် provider 359 ခု။ အသုံးပြုနိုင်သေးသော ကျန်းမာသည့် target တစ်ခု ရှိနေသရွေ့ အလိုအလျောက် fallback က routing ကို ဆက်လက်လုပ်ဆောင်စေသည်။ အဓိကမဏ္ဍိုင် ၆ ခု — provider 359 ခုအကြား ခံနိုင်ရည်ရှိသော fallback · သင့်လျော်သည့် workload များတွင် token 95% အထိ ချွေတာနိုင်ခြင်း · အခမဲ့ tier 150+ ခုနှင့် ထပ်တလဲလဲရရှိနိုင်သော၊ API key မလိုသည့် အခမဲ့အမြဲတမ်း provider 54 ခုဖြင့် $0 မှ စတင်နိုင်ခြင်း · config တစ်ခုတည်းဖြင့် CLI/agent ပေါင်းစည်းမှု 36 ခု · /v1 တွင် OpenAI, Claude, Gemini နှင့် Responses API တို့နှင့် လိုက်ဖက်ညီခြင်း · circuit breaker၊ TLS stealth၊ tool 110 ခုပါ MCP၊ A2A၊ memory၊ guardrails၊ evals နှင့် စောင့်ကြည့်ထားသော test file 5,100+ ခုအနှံ့ static test declaration 39,000+ ခု အပါအဝင် production ထိန်းချုပ်မှုများ။"/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 OmniRoute ကို ဘာကြောင့်လဲ။
+# 🤔 OmniRoute ကို ဘာကြောင့် သုံးသင့်သလဲ။
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="OmniRoute ကို ဘာကြောင့်လဲ — dashboard ၁၀ ခု၊ သုံးမရသော API သော့များနှင့် မမျှော်လင့်သော ဘေလ်များကို ရင်ဆိုင်နေရခြင်းကို ရပ်တန့်ပါ။ နေ့စဉ်ကြုံတွေ့ရသော ပြဿနာ ဆယ်ခုနှင့် ဖြေရှင်းနည်းများ- အသုံးမပြုရသေးဘဲ သက်တမ်းကုန်ဆုံးသော ကန့်သတ်ချက် → စာရင်းသွင်းမှုများကို အများဆုံးအသုံးပြုပါ။ rate limits mid-coding → ၄-အဆင့် အလိုအလျောက် ပြန်လည်ပြောင်းလဲမှု (Subscription → API → Cheap → Free)။ ကိရိယာမှ ထွက်ရှိမှုများက token များကို လောင်ကျွမ်းစေခြင်း → RTK + Caveman compression (၁၅-၉၅%)။ စျေးကြီးသော APIs များ → ကုန်ကျစရိတ်ကို အကောင်းဆုံးဖြစ်အောင် လမ်းကြောင်းပြောင်းလဲခြင်း။ ကိရိယာတိုင်းအတွက် သီးခြားစနစ်ထည့်သွင်းမှု → endpoint တစ်ခု၊ dashboard တစ်ခု။ AI ပိတ်ဆို့ခံရခြင်း → ၃-အဆင့် proxy + TLS stealth။ သုံးမရသော သော့များ → ၃-အဆင့် ခံနိုင်ရည်ရှိမှု (circuit breakers, key cooldown, model lockout)။ အဖွဲ့တစ်ဖွဲ့တည်းက စာရင်းသွင်းမှုတစ်ခုကို မျှဝေသုံးစွဲခြင်း → တရားမျှတစွာ ခွဲဝေသုံးစွဲနိုင်သော သော့အစုအဝေးများ။ အခြားသူ၏ cloud မှတစ်ဆင့် prompts များ → AES-256-GCM ကုဒ်ဝှက်ထားသော သော့များဖြင့် local-first။ သုံးစွဲမှုမြင်နိုင်စွမ်းမရှိခြင်း → live analytics (အသုံးပြုမှု၊ ကန့်သတ်ချက်၊ ချွေတာမှု၊ p95 latency)။"/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="OmniRoute ကို ဘာကြောင့် သုံးသင့်သလဲ — dashboard 10 ခု၊ အလုပ်မလုပ်တော့သော API key များနှင့် မမျှော်လင့်ထားသော ကုန်ကျစရိတ်များကို လိုက်လံဖြေရှင်းနေရခြင်းမှ ရပ်လိုက်ပါ။ နေ့စဉ်ကြုံတွေ့ရသော ပြဿနာ ၁၀ ခုနှင့် ဖြေရှင်းနည်းများ — အသုံးမပြုဘဲ သက်တမ်းကုန်သွားသော quota → subscription များကို အပြည့်အဝအသုံးချခြင်း၊ coding လုပ်နေစဉ် rate limit ပြည့်ခြင်း → အဆင့် ၄ ဆင့်ပါ auto-fallback (Subscription → API → Cheap → Free)၊ tool output များကြောင့် token များကုန်ခြင်း → RTK + Caveman compression (15–95%)၊ ဈေးကြီးသော API များ → ကုန်ကျစရိတ်သက်သာစေသော routing၊ tool တစ်ခုစီအတွက် setup သီးသန့်လုပ်ရခြင်း → endpoint တစ်ခု၊ dashboard တစ်ခု၊ AI အသုံးပြုခွင့် ပိတ်ပင်ခံရခြင်း → proxy အဆင့် ၃ ဆင့် + TLS stealth၊ အလုပ်မလုပ်တော့သော key များ → ခံနိုင်ရည်ရှိမှု အလွှာ ၃ ဆင့် (circuit breaker၊ key cooldown၊ model lockout)၊ အဖွဲ့တစ်ဖွဲ့က subscription တစ်ခုတည်းကို မျှဝေအသုံးပြုခြင်း → မျှတသော quota ပါသည့် key pool များ၊ အခြားသူ၏ cloud မှတစ်ဆင့် prompt များ ဖြတ်သန်းခြင်း → AES-256-GCM ဖြင့် ကုဒ်ဝှက်ထားသော key များကို အရင်ဆုံး local တွင်ထားရှိခြင်း၊ အသုံးစရိတ်ကို မမြင်နိုင်ခြင်း → တိုက်ရိုက် analytics (အသုံးပြုမှု၊ quota၊ ချွေတာမှု၊ p95 latency)။"/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute တောင်းဆိုမှု စီးဆင်းမှု- သင်၏ IDE သို့မဟုတ် CLI (Claude Code, Cursor, Cline...) သည် local endpoint တစ်ခု (http://localhost:20128/v1) ကို ခေါ်ဆိုသည်။ OmniRoute Smart Router (RTK + Caveman compression, routing နည်းဗျူဟာ ၁၉ ခု၊ circuit breakers, TLS stealth, MCP, A2A, guardrails) သည် သတ်မှတ်ထားသော ကောင်းမွန်သည့် ပစ်မှတ်တစ်ခု ကျန်ရှိနေသရွေ့ ပံ့ပိုးပေးသူ အဆင့် ၄ ဆင့် (အဆင့် ၁ စာရင်းသွင်းမှု၊ အဆင့် ၂ API သော့၊ အဆင့် ၃ စျေးသက်သာ၊ အဆင့် ၄ အခမဲ့) အနှံ့ ပြန်လည်ပြောင်းလဲနိုင်သည်။"/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute request စီးဆင်းပုံ — သင့် IDE သို့မဟုတ် CLI (Claude Code, Cursor, Cline…) က local endpoint တစ်ခုတည်း (http://localhost:20128/v1) ကို ခေါ်ဆိုသည်။ OmniRoute Smart Router (RTK + Caveman compression၊ routing strategy 19 မျိုး၊ circuit breaker၊ TLS stealth၊ MCP၊ A2A၊ guardrails) သည် အသုံးပြုနိုင်သေးသော ကျန်းမာသည့် target တစ်ခု ရှိနေသရွေ့ provider tier ၄ ဆင့်အကြား fallback လုပ်နိုင်သည် — Tier 1 Subscription၊ Tier 2 API Key၊ Tier 3 Cheap နှင့် Tier 4 Free။"/>
 
 </div>
 
@@ -488,13 +488,13 @@ combo ဖန်တီးရန် မလိုပါ။ သင့်မော်
 
 <div align="center">
 
-## 🏆 OmniRoute ကို ဘာက ထူးခြားစေသလဲ
+## 🏆 OmniRoute ကို ထူးခြားစေသည့်အချက်များ
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute ကို ဘာက ထူးခြားစေသလဲ — 9router, OpenRouter, CLIProxyAPI နှင့် LiteLLM တို့နှင့် နှိုင်းယှဉ်ထားသော အင်္ဂါရပ်များ၏ ခေတ်နောက်ကျနေသော ဓာတ်ပုံ (၁၃) ခု။ OmniRoute: ပံ့ပိုးသူ ၃၅၈ ဦး၊ အခမဲ့အဆင့် ၁၅၀+ ပါဝင်ပြီး၊ လမ်းကြောင်းပြဗျူဟာ ၁၉ ခု၊ အင်ဂျင် ၁၂ ခုပါ တိုကင်ချုံ့ခြင်း၊ ကိရိယာ ၁၁၀ ပါဝင်သော built-in MCP ဆာဗာ၊ A2A အေးဂျင့် ပရိုတိုကော၊ အမြဲတမ်းမှတ်ဉာဏ်၊ ကာကွယ်မှုများ၊ cloud အေးဂျင့်များ၊ TLS လက်ဗွေ လျှို့ဝှက်ချက်၊ Desktop/Termux/PWA နှင့် နိုင်ငံတကာ UI ဘာသာစကား ၄၂ မျိုး။ OmniRoute သည် MIT လိုင်စင်ရရှိထားပြီး ကိုယ်တိုင် hosting လုပ်နိုင်သည်။ ပြိုင်ဘက်များ၏ စွမ်းဆောင်ရည်နှင့် အရေအတွက်များ ပြောင်းလဲနိုင်သည်၊ ချိတ်ဆက်ထားသော နည်းစနစ်ကို ကြည့်ပါ။"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute ကို ထူးခြားစေသည့်အချက်များ — 9router, OpenRouter, CLIProxyAPI နှင့် LiteLLM တို့နှင့် စွမ်းဆောင်ရည် 13 မျိုးကို နှိုင်းယှဉ်ထားသော ရက်စွဲပါ လုပ်ဆောင်ချက်အကျဉ်းချုပ်။ OmniRoute တွင် ပံ့ပိုးပေးသူ 359 ခု၊ အသင့်ပါဝင်သည့် အခမဲ့အသုံးပြုနိုင်သော အဆင့် 150 ကျော်၊ လမ်းကြောင်းရွေးချယ်မှု နည်းဗျူဟာ 19 မျိုး၊ token ချုံ့သည့် engine 12 ခု၊ tool 110 ခုပါဝင်သည့် အသင့်ပါ MCP server၊ A2A agent protocol၊ ဆက်လက်တည်ရှိသော မှတ်ဉာဏ်၊ ကာကွယ်စည်းမျဉ်းများ၊ cloud agent များ၊ TLS fingerprint ဖုံးကွယ်မှု၊ Desktop/Termux/PWA နှင့် UI ဘာသာစကား 42 မျိုး ပါဝင်သည်။ OmniRoute ကို MIT လိုင်စင်ဖြင့် ဖြန့်ချိထားပြီး ကိုယ်တိုင် host လုပ်နိုင်သည်။ ပြိုင်ဘက်များ၏ စွမ်းဆောင်ရည်များနှင့် အရေအတွက်များ ပြောင်းလဲနိုင်ပါသည်။ ချိတ်ဆက်ထားသော နည်းလမ်းဖော်ပြချက်ကို ကြည့်ပါ။"/>
 
-<sub>📊 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM တို့နှင့် နှိုင်းယှဉ်ထားသော အပြည့်အစုံ နည်းစနစ်နှင့် အင်္ဂါရပ်အလိုက် အသေးစိတ်အချက်အလက်များ → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 9router, OpenRouter, CLIProxyAPI နှင့် LiteLLM တို့နှင့် နှိုင်းယှဉ်ထားသော နည်းလမ်းအပြည့်အစုံနှင့် လုပ်ဆောင်ချက်တစ်ခုချင်းစီ၏ အသေးစိတ် → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

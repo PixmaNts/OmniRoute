@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute İdarəetmə Paneli" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute idarə paneli" width="820"/>
 
 <br/>
 <br/>
 
-# 🚀 OmniRoute — Pulsuz Süni İntellekt Şlüzü (AI Gateway)
+# 🚀 OmniRoute — Pulsuz AI Şlüzü
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Heç vaxt kodlaşdırmağı dayandırmayın. Hər bir süni intellekt aləti → 358 təminatçı — 150+ pulsuz — bir nöqtə vasitəsilə. Claude Code, Codex, Cursor, Cline, Copilot və Antigravity avtomatik ehtiyat keçid (auto-fallback) ilə PULSUZ Claude / GPT / Gemini-yə qoşulur. RTK + Caveman yığılmış sıxılması 15–95% tokenə qənaət edir (təxminən 89% orta) — heç vaxt limitlərə düşməyin. 358 Süni İntellekt Təminatçısı · 150+ pulsuz səviyyə · Ayda təxminən 1.62B pulsuz token · 19 yönləndirmə strategiyası · Başlamaq üçün $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yazmağı heç vaxt dayandırmayın. Hər AI aləti → 359 provayder — 150+-i pulsuz — vahid endpoint vasitəsilə. Claude Code, Codex, Cursor, Cline, Copilot və Antigravity, avtomatik ehtiyat keçidi ilə PULSUZ Claude / GPT / Gemini-yə qoşulur. RTK + Caveman qatlı sıxılma tokenlərə 15–95% qənaət edir (orta hesabla ~89%) — limitlərə heç vaxt çatmayın. 359 AI provayderi · 150+-i pulsuz tarif · ayda ~1.62B pulsuz token · 19 yönləndirmə strategiyası · Başlamaq üçün $0."/>
 
 </div>
 
@@ -214,47 +214,47 @@
 
 <div align="center">
 
-## 🆓 Quraşdırdığınız saniyədə işləyir — açarsız, konfiqurasiyasız
+## 🆓 Quraşdıran kimi işləyir — açar və konfiqurasiya tələb etmir
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Works the second you install it — zero config. Three steps: 1. Install — npm i -g omniroute, server boots on localhost:20128. 2. Point your tool at http://localhost:20128/v1 — any OpenAI-compatible tool (Claude Code, Cursor, Cline). 3. It answers — call model auto for an instant reply, with no API key, no signup, no configuration. Keyless provider OpenCode Free is pre-wired into the auto combo, so a fresh install responds out of the box."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Quraşdıran kimi işləyir — sıfır konfiqurasiya. Üç addım: 1. Quraşdırın — npm i -g omniroute, server localhost:20128 ünvanında işə düşür. 2. Alətinizi http://localhost:20128/v1 ünvanına yönləndirin — OpenAI ilə uyğun istənilən alət (Claude Code, Cursor, Cline). 3. O, cavab verir — heç bir API açarı, qeydiyyat və ya konfiqurasiya olmadan dərhal cavab almaq üçün auto modelini çağırın. Açar tələb etməyən OpenCode Free provayderi auto kombinasiyasına əvvəlcədən qoşulub, buna görə təzə quraşdırma dərhal cavab verir."/>
 
 ```bash
-# Fresh install, zero credentials — `auto` already works:
+# Təzə quraşdırma, heç bir etimadnamə yoxdur — `auto` artıq işləyir:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Müəyyən pulsuz backendə üstünlük verirsiniz? Birbaşa `oc/…` (OpenCode Free) çağırın. Sonra `auto`-ya keçin və OmniRoute-un seçməsinə icazə verin.</sub>
+<sub>Müəyyən bir pulsuz backend-ə üstünlük verirsiniz? Birbaşa `oc/…` (OpenCode Free) çağırın. Sonra `auto`-ya keçin və seçim etməyi OmniRoute-a həvalə edin.</sub>
 
-<sub>📦 **Python, Node.js, PHP və cURL** üçün sürətli start skriptlərini kopyalayıb-yapışdırın → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 **Python, Node.js, PHP və cURL** üçün kopyalayıb yapışdırmağa hazır sürətli başlanğıc skriptləri → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 Vəd
+# 💥 Vədimiz
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="The Promise — One endpoint and 358 providers. Automatic fallback keeps routing while another healthy target is available. Six pillars: resilient fallback across 358 providers · up to 95% token savings on eligible workloads · $0 to start with 150+ free tiers and 54 recurring/keyless free-forever providers · 36 CLI/agent integrations through one config · OpenAI, Claude, Gemini and Responses API compatibility at /v1 · production controls including circuit breakers, TLS stealth, MCP 110 tools, A2A, memory, guardrails, evals and 39,000+ static test declarations across 5,100+ tracked test files."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vədimiz — Bir endpoint və 359 provayder. Avtomatik ehtiyat keçidi başqa sağlam hədəf mövcud olduqda sorğuların yönləndirilməsini davam etdirir. Altı dayaq: 359 provayder arasında dayanıqlı ehtiyat keçidi · uyğun iş yükələrində tokenlərə 95%-dək qənaət · 150-dən çox pulsuz tarif və daim pulsuz olan, təkrarlanan istifadə və ya açar tələb etməyən 54 provayderlə $0-dan başlayın · vahid konfiqurasiya vasitəsilə 36 CLI/agent inteqrasiyası · /v1 ünvanında OpenAI, Claude, Gemini və Responses API uyğunluğu · circuit breaker-lər, TLS gizliliyi, 110 MCP aləti, A2A, yaddaş, mühafizə qaydaları, qiymətləndirmələr, həmçinin 5,100-dən çox izlənən test faylında 39,000-dən çox statik test bəyanatı daxil olmaqla istehsal mühiti üçün idarəetmə vasitələri."/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 Niyə məhz OmniRoute?
+# 🤔 Niyə OmniRoute?
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Why OmniRoute — stop juggling 10 dashboards, dead API keys and surprise bills. Ten daily pains vs fixes: quota expiring unused → maximize subscriptions; rate limits mid-coding → 4-tier auto-fallback (Subscription → API → Cheap → Free); tool outputs burning tokens → RTK + Caveman compression (15–95%); expensive APIs → cost-optimized routing; every tool its own setup → one endpoint, one dashboard; AI blocked → 3-level proxy + TLS stealth; dead keys → 3-layer resilience (circuit breakers, key cooldown, model lockout); team sharing one subscription → key pools with fair-share quotas; prompts through someone's cloud → local-first with AES-256-GCM encrypted keys; no spend visibility → live analytics (usage, quota, savings, p95 latency)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Niyə OmniRoute — 10 idarəetmə paneli, işləməyən API açarları və gözlənilməz hesablarla uğraşmağa son qoyun. Gündəlik on problem və onların həlli: istifadə olunmadan bitən kvota → abunəliklərdən maksimum yararlanın; kod yazarkən sürət hədlərinə çatmaq → 4 səviyyəli avtomatik ehtiyat keçidi (Abunəlik → API → Ucuz → Pulsuz); alət çıxışlarının tokenləri sərf etməsi → RTK + Caveman sıxışdırması (15–95%); bahalı API-lər → xərci optimallaşdıran yönləndirmə; hər alət üçün ayrıca quraşdırma → bir endpoint, bir idarəetmə paneli; AI-yə girişin bloklanması → 3 səviyyəli proksi + TLS gizliliyi; işləməyən açarlar → 3 qatlı dayanıqlılıq (circuit breaker-lər, açarların gözləmə müddəti, modelin bloklanması); komandanın bir abunəliyi paylaşması → ədalətli kvotalı açar hovuzları; promptların kiminsə buludundan keçməsi → AES-256-GCM ilə şifrələnmiş açarlarla yerli işləməyə üstünlük; xərclərə nəzarətin olmaması → canlı analitika (istifadə, kvota, qənaət, p95 gecikmə)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute request flow: your IDE or CLI (Claude Code, Cursor, Cline…) calls one local endpoint (http://localhost:20128/v1); the OmniRoute Smart Router (RTK + Caveman compression, 19 routing strategies, circuit breakers, TLS stealth, MCP, A2A, guardrails) can fall back across 4 provider tiers while an eligible healthy target remains — Tier 1 Subscription, Tier 2 API Key, Tier 3 Cheap and Tier 4 Free."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute sorğu axını: IDE və ya CLI alətiniz (Claude Code, Cursor, Cline…) vahid yerli endpoint-i (http://localhost:20128/v1) çağırır; OmniRoute Smart Router (RTK + Caveman sıxışdırması, 19 yönləndirmə strategiyası, circuit breaker-lər, TLS gizliliyi, MCP, A2A, mühafizə qaydaları) uyğun və sağlam hədəf mövcud olduğu müddətdə 4 provayder səviyyəsi arasında ehtiyat keçidi edə bilər — 1-ci səviyyə Abunəlik, 2-ci səviyyə API açarı, 3-cü səviyyə Ucuz və 4-cü səviyyə Pulsuz."/>
 
 </div>
 
@@ -488,13 +488,13 @@ Bütün **19** strategiya — hər kombo addımında qarışdırıb uyğunlaşd�
 
 <div align="center">
 
-## 🏆 OmniRoute-u fərqləndirən nədir
+## 🏆 OmniRoute-u fərqləndirən cəhətlər
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute-u fərqləndirən nədir — 9router, OpenRouter, CLIProxyAPI və LiteLLM ilə müqayisədə 13 imkan üzrə köhnəlmiş funksiya anlıq görüntüsü. OmniRoute: 358 provayder, daxili 150+ pulsuz səviyyə, 19 marşrutlaşdırma strategiyası, 12 mühərrikli token sıxılması, 110 alətli daxili MCP serveri, A2A agent protokolu, daimi yaddaş, qoruyucu baryerlər, bulud agentləri, TLS barmaq izi gizliliyi, Desktop/Termux/PWA və 42 i18n UI lokalı. OmniRoute MIT lisenziyalıdır və öz-özünə hostlana bilər. Rəqib imkanları və sayları dəyişə bilər; əlaqəli metodologiyaya baxın."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute-u fərqləndirən cəhətlər — 13 imkan üzrə 9router, OpenRouter, CLIProxyAPI və LiteLLM ilə xüsusiyyətlərin tarixli müqayisəsi. OmniRoute: 359 provayder, daxili 150+ pulsuz istifadə səviyyəsi, 19 marşrutlaşdırma strategiyası, 12 mühərrikli token sıxılması, 110 alətə malik daxili MCP serveri, A2A agent protokolu, davamlı yaddaş, təhlükəsizlik məhdudiyyətləri, bulud agentləri, TLS barmaq izi gizlətməsi, Desktop/Termux/PWA və 42 i18n istifadəçi interfeysi dili. OmniRoute MIT lisenziyası ilə yayımlanır və öz serverinizdə yerləşdirilə bilər. Rəqiblərin imkanları və say göstəriciləri dəyişə bilər; metodologiya üçün keçidə baxın."/>
 
-<sub>📊 Tam metodologiya və 9router, OpenRouter, CLIProxyAPI & LiteLLM ilə hər xüsusiyyət üzrə detallar → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 9router, OpenRouter, CLIProxyAPI və LiteLLM ilə tam metodologiya və hər xüsusiyyət üzrə ətraflı müqayisə → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

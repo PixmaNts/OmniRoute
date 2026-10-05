@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute Irányítópult" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute vezérlőpult" width="820"/>
 
 <br/>
 <br/>
 
-# 🚀 OmniRoute — Az Ingyenes AI Átjáró
+# 🚀 OmniRoute — Az ingyenes AI-átjáró
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Soha ne hagyd abba a kódolást. Minden AI eszköz → 358 szolgáltató — 150+ ingyenes — egyetlen végponton keresztül. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity INGYENES Claude / GPT / Gemini-ba automatikus tartalék opcióval. Az RTK + Caveman rétegzett tömörítés 15–95% tokent takarít meg (~89% átlag) — soha ne érd el a korlátokat. 358 AI szolgáltató · 150+ ingyenes szint · ~1,62 milliárd ingyenes token/hó · 19 útválasztási stratégia · 0 dollár a kezdéshez."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Soha ne hagyd abba a kódolást. Minden AI-eszköz → 359 szolgáltató — ebből 150+ ingyenes — egyetlen végponton keresztül. Claude Code, Codex, Cursor, Cline, Copilot és Antigravity ingyenes Claude / GPT / Gemini-modellekhez, automatikus tartalékra váltással. Az RTK + Caveman rétegzett tömörítés 15–95% tokent takarít meg (átlagosan ~89%) — soha nem éred el a limiteket. 359 AI-szolgáltató · 150+ ingyenes csomag · ~1.62B ingyenes token/hó · 19 útválasztási stratégia · 0 $ a kezdéshez."/>
 
 </div>
 
@@ -214,47 +214,47 @@
 
 <div align="center">
 
-## 🆓 Azonnal működik a telepítés után — nincs kulcs, nincs konfiguráció
+## 🆓 Már a telepítés után működik — kulcs és konfiguráció nélkül
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Azonnal működik a telepítés után — nulla konfiguráció. Három lépés: 1. Telepítés — npm i -g omniroute, a szerver elindul a localhost:20128 címen. 2. Irányítsa eszközét a http://localhost:20128/v1 címre — bármely OpenAI-kompatibilis eszköz (Claude Code, Cursor, Cline). 3. Válaszol — hívja meg az auto modellt azonnali válaszért, API kulcs, regisztráció és konfiguráció nélkül. A kulcs nélküli OpenCode Free szolgáltató előre be van kötve az auto kombinációba, így egy friss telepítés azonnal válaszol."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Már a telepítés után működik — konfiguráció nélkül. Három lépés: 1. Telepítés — npm i -g omniroute, a szerver elindul a localhost:20128 címen. 2. Irányítsd az eszközödet a http://localhost:20128/v1 címre — bármely OpenAI-kompatibilis eszköz (Claude Code, Cursor, Cline). 3. Már válaszol is — hívd meg az auto modellt, és azonnal választ kapsz, API-kulcs, regisztráció és konfiguráció nélkül. A kulcs nélküli OpenCode Free szolgáltató előre be van állítva az auto kombinációban, így egy friss telepítés már az első pillanattól válaszol."/>
 
 ```bash
-# Friss telepítés, nulla hitelesítő adat — az `auto` már működik:
+# Friss telepítés, hitelesítő adatok nélkül — az `auto` már működik:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Inkább egy specifikus ingyenes backendet szeretne? Hívja közvetlenül az `oc/…` (OpenCode Free) szolgáltatót. Ezután térjen át az `auto` módra, és hagyja, hogy az OmniRoute válasszon.</sub>
+<sub>Inkább egy konkrét ingyenes háttérszolgáltatót használnál? Hívd meg közvetlenül az `oc/…` végpontot (OpenCode Free). Aztán válts az `auto` használatára, és hagyd, hogy az OmniRoute válasszon.</sub>
 
-<sub>📦 Másolható-beilleszthető gyorsindító szkriptek **Pythonhoz, Node.js-hez, PHP-hoz és cURL-hez** → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 Másold be a gyorsindító szkripteket **Pythonhoz, Node.js-hez, PHP-hoz és cURL-hez** → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 Az Ígéret
+# 💥 Az ígéret
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Az Ígéret — Egy végpont és 358 szolgáltató. Az automatikus visszaváltás fenntartja az útválasztást, amíg egy másik egészséges célpont elérhető. Hat pillér: rugalmas visszaváltás 358 szolgáltató között · akár 95% token megtakarítás a jogosult munkaterheléseken · 0 dolláros indulás 150+ ingyenes szinttel és 54 ismétlődő/kulcs nélküli örökké ingyenes szolgáltatóval · 36 CLI/ügynök integráció egyetlen konfiguráción keresztül · OpenAI, Claude, Gemini és Responses API kompatibilitás a /v1 címen · gyártási vezérlők, beleértve a megszakítókat, TLS lopakodást, MCP 110 eszközöket, A2A-t, memóriát, védőkorlátokat, értékeléseket és 39 000+ statikus tesztdeklarációt 5 100+ nyomon követett tesztfájlban."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Az ígéret — Egy végpont és 359 szolgáltató. Az automatikus tartalék útvonal biztosítja az útválasztást, amíg elérhető egy másik egészséges célpont. Hat pillér: rugalmas tartalék útvonal 359 szolgáltatón keresztül · akár 95% tokenmegtakarítás a jogosult munkaterheléseknél · $0 indulási költség, 150+ ingyenes csomaggal és 54 állandóan ingyenes, rendszeresen elérhető vagy kulcs nélküli szolgáltatóval · 36 CLI-/ügynökintegráció egyetlen konfiguráción keresztül · OpenAI-, Claude-, Gemini- és Responses API-kompatibilitás a /v1 címen · éles környezethez szükséges vezérlők, többek között áramkör-megszakítók, TLS stealth, 110 MCP-eszköz, A2A, memória, védőkorlátok, kiértékelések, valamint 39 000+ statikus tesztdeklaráció több mint 5100 nyomon követett tesztfájlban."/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 Miért OmniRoute?
+# 🤔 Miért az OmniRoute?
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Miért OmniRoute — ne zsonglőrködjön 10 irányítópulttal, halott API kulcsokkal és meglepetésszámlákkal. Tíz napi probléma vs megoldás: fel nem használt kvóta lejár → előfizetések maximalizálása; sebességkorlátok kódolás közben → 4-szintű automatikus visszaváltás (Előfizetés → API → Olcsó → Ingyenes); eszköz kimenetek tokeneket égetnek → RTK + Caveman tömörítés (15–95%); drága API-k → költségoptimalizált útválasztás; minden eszköz saját beállítás → egy végpont, egy irányítópult; AI blokkolva → 3-szintű proxy + TLS lopakodás; halott kulcsok → 3-rétegű rugalmasság (megszakítók, kulcs lehűlés, modell zárolás); csapat egy előfizetést használ → kulcskészletek méltányos kvótákkal; promptok valaki felhőjén keresztül → helyi-első AES-256-GCM titkosított kulcsokkal; nincs költési átláthatóság → élő analitika (használat, kvóta, megtakarítás, p95 késleltetés)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Miért az OmniRoute — ne kelljen 10 irányítópulttal, lejárt API-kulcsokkal és váratlan számlákkal bajlódnod. Tíz mindennapi probléma és megoldásuk: felhasználatlanul lejáró kvóta → hozd ki a legtöbbet az előfizetéseidből; kódolás közbeni sebességkorlátozás → 4 szintű automatikus tartalék útvonal (Előfizetés → API → Olcsó → Ingyenes); tokeneket felemésztő eszközkimenetek → RTK + Caveman-tömörítés (15–95%); drága API-k → költségoptimalizált útválasztás; minden eszköz külön beállítást igényel → egy végpont, egy irányítópult; letiltott AI → 3 szintű proxy + TLS stealth; lejárt kulcsok → 3 rétegű ellenálló képesség (áramkör-megszakítók, kulcsok lehűtése, modellek kizárása); egy előfizetést megosztó csapat → kulcskészletek méltányos kvótákkal; valaki más felhőjén áthaladó promptok → helyi működés elsőként, AES-256-GCM-mel titkosított kulcsokkal; nincs rálátás a költésre → élő elemzések (használat, kvóta, megtakarítás, p95-késleltetés)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute kérésfolyamat: az IDE vagy CLI (Claude Code, Cursor, Cline…) egy helyi végpontot hív (http://localhost:20128/v1); az OmniRoute Smart Router (RTK + Caveman tömörítés, 19 útválasztási stratégia, megszakítók, TLS lopakodás, MCP, A2A, védőkorlátok) 4 szolgáltatói szint között tud visszaváltani, amíg egy jogosult, egészséges célpont elérhető marad — 1. szintű előfizetés, 2. szintű API kulcs, 3. szintű olcsó és 4. szintű ingyenes."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute-kérésfolyam: az IDE vagy CLI (Claude Code, Cursor, Cline…) egyetlen helyi végpontot hív meg (http://localhost:20128/v1); az OmniRoute Smart Router (RTK + Caveman-tömörítés, 19 útválasztási stratégia, áramkör-megszakítók, TLS stealth, MCP, A2A, védőkorlátok) 4 szolgáltatói szinten keresztül tud tartalék útvonalra váltani, amíg van jogosult, egészséges célpont — 1. szint: Előfizetés, 2. szint: API-kulcs, 3. szint: Olcsó és 4. szint: Ingyenes."/>
 
 </div>
 
@@ -488,13 +488,13 @@ Mind a **19** stratégia — szabadon kombinálhatók a kombó egyes lépéseibe
 
 <div align="center">
 
-## 🏆 Mi különbözteti meg az OmniRoute-ot
+## 🏆 Miben különbözik az OmniRoute?
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Mi különbözteti meg az OmniRoute-ot — egy funkcióösszehasonlítás a 9router, OpenRouter, CLIProxyAPI és LiteLLM ellenében, 13 képesség mentén. OmniRoute: 358 szolgáltató, 150+ beépített ingyenes szint, 19 útválasztási stratégia, 12 motoros token tömörítés, beépített MCP szerver 110 eszközzel, A2A ügynök protokoll, tartós memória, védőkorlátok, felhőügynökök, TLS ujjlenyomat lopakodás, Desktop/Termux/PWA és 42 i18n UI nyelvi beállítás. Az OmniRoute MIT-licencelt és saját szerveren üzemeltethető. A versenytársak képességei és számai változhatnak; lásd a hivatkozott módszertant."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Miben különbözik az OmniRoute — pillanatfelvétel az elérhető funkciókról, összehasonlítva a 9routerrel, az OpenRouterrel, a CLIProxyAPI-val és a LiteLLM-mel 13 képesség mentén. OmniRoute: 359 szolgáltató, több mint 150 beépített ingyenes csomag, 19 útválasztási stratégia, 12 motoros tokenkompresszió, beépített MCP-szerver 110 eszközzel, A2A-ügynökprotokoll, perzisztens memória, védelmi korlátok, felhőügynökök, TLS-ujjlenyomat-alapú rejtőzködés, Desktop/Termux/PWA és 42 felületi lokalizáció. Az OmniRoute MIT-licencű, és saját kiszolgálón is üzemeltethető. A versenytársak képességei és számai változhatnak; lásd a hivatkozott módszertant."/>
 
-<sub>📊 Teljes módszertan &amp; funkciónkénti részletek a 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM ellenében → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Teljes módszertan és funkciónkénti részletek a 9routerrel, az OpenRouterrel, a CLIProxyAPI-val és a LiteLLM-mel való összehasonlításról → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

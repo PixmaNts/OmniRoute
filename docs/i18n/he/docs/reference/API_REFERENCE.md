@@ -432,14 +432,16 @@ GET /api/v1/provider-plugin-manifest
 | POST | `/v1/responses`                           | OpenAI Responses                 |
 | POST | `/v1/embeddings`                          | OpenAI                           |
 | POST | `/v1/images/generations`                  | OpenAI Images                    |
-| POST | `/v1/images/edits`                        | OpenAI Images (עריכה/השלמה)      |
+| POST | `/v1/images/edits`                        | OpenAI Images (עריכה/צביעה)      |
 | POST | `/v1/videos/generations`                  | יצירת וידאו בסגנון OpenAI        |
 | POST | `/v1/music/generations`                   | יצירת מוזיקה בסגנון OpenAI       |
-| POST | `/v1/audio/transcriptions`                | OpenAI Audio (המרת דיבור לטקסט)  |
+| POST | `/v1/audio/transcriptions`                | OpenAI Audio (STT)               |
 | POST | `/v1/audio/speech`                        | OpenAI TTS (מחזיר גוף שמע)       |
 | POST | `/v1/rerank`                              | דירוג מחדש בסגנון Cohere/Voyage  |
 | POST | `/v1/classify`                            | סיווג Jina (`api.jina.ai`)       |
 | POST | `/v1/segment`                             | מפלח Jina (`segment.jina.ai`)    |
+| POST | `/v1/systemone`                           | מודלי החלטה (System One)         |
+| GET  | `/v1/systemone/models`                    | רשימת מודלי החלטה                |
 | POST | `/v1/moderations`                         | OpenAI Moderations               |
 | GET  | `/v1/models`                              | OpenAI                           |
 | POST | `/v1/messages/count_tokens`               | Anthropic                        |
@@ -447,37 +449,45 @@ GET /api/v1/provider-plugin-manifest
 | POST | `/v1beta/models/{...path}`                | Gemini generateContent           |
 | POST | `/v1/api/chat`                            | Ollama                           |
 | GET  | `/api/v1/vscode/{token}/`                 | כינוי לקטלוג OpenAI              |
-| GET  | `/api/v1/vscode/{token}/models`           | כינוי למודלים של OpenAI          |
+| GET  | `/api/v1/vscode/{token}/models`           | כינוי למודלי OpenAI              |
 | POST | `/api/v1/vscode/{token}/chat/completions` | כינוי OpenAI עם אסימון           |
 | POST | `/api/v1/vscode/{token}/responses`        | כינוי OpenAI Responses עם אסימון |
 | POST | `/api/v1/vscode/{token}/api/chat`         | כינוי Ollama עם אסימון           |
 | GET  | `/api/v1/vscode/{token}/api/tags`         | כינוי לתגיות Ollama עם אסימון    |
 
-כל נתיבי POST משתמשים באותו מבנה: `Bearer your-api-key` + גוף JSON שעבר אימות באמצעות Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` וכו'; ראו `src/shared/validation/schemas.ts`). במקרה של כשל באימות הסכימה מוחזר 4xx.
+כל נתיבי POST פועלים באותה תבנית: `Bearer your-api-key` + גוף JSON שעבר אימות באמצעות Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` וכו'; ראו `src/shared/validation/schemas.ts`). במקרה של כשל באימות הסכמה מוחזרת שגיאת 4xx.
 
-עבור לקוחות שאינם יכולים לצרף `Authorization: Bearer ...`, OmniRoute מקבל גם מפתחות API בכתובת ה-URL, באמצעות תאימות למחרוזת שאילתה (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) או באמצעות נקודות הקצה הייעודיות `/api/v1/vscode/{token}/...` המתועדות להלן.
+ללקוחות שלא יכולים לצרף `Authorization: Bearer ...`, OmniRoute מקבלת גם מפתחות API בכתובת ה-URL באמצעות תאימות למחרוזת שאילתה (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) או דרך נקודות הקצה הייעודיות `/api/v1/vscode/{token}/...` שמתועדות בהמשך.
 
 ```bash
-# דירוג מחדש (ספק ממרשם הענן, או צומת ספק תואם OpenAI בתור "<prefix>/<model>")
+# דירוג מחדש (ספק מרישום ענן, או צומת ספק תואם OpenAI בפורמט "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # סיווג Jina (פרטי גישה ל-Foundation API)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# מפלח Jina
+# המפלח של Jina
 POST /v1/segment     { "content": "...", "return_chunks": true }
+
+# מודלי החלטה (System One). הקידומת של המודל הראשון בוחרת את החיבור:
+#   typesafe/jev-latest              -> ישירות ל-TypeSafe
+#   openrouter/typesafe/jev-1.13     -> דרך OpenRouter
+#   ollama-local/<model>             -> Ollama מקומי >= 0.35
+# מזהה ללא קידומת, כגון jev-latest, ממשיך להשתמש ב-OpenRouter. ערכות הפיתוח של TypeSafe פועלות עם baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # המודלים של שרתי העורף שהוגדרו: { object: "list", data: [{ id, name, pricing, ... }] }
 
 # חיפוש Jina (s.jina.ai; כינויי ספק: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# ניהול תוכן
+# סינון תוכן
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — מחזיר גוף audio/mpeg (או בפורמט המבוקש)
+# TTS — מחזיר גוף audio/mpeg (או בפורמט שהתבקש)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS דורש שפה וקול: ברירת המחדל של `language` היא "en"; קול חסר
-# או שם של קול מובנה ב-OpenAI (alloy, nova, …) מוחלף ב-"Adrian"
+# עבור TTS של Soniox נדרשים שפה וקול: ברירת המחדל של `language` היא "en"; אם חסר קול
+# או שנבחר שם של קול OpenAI מובנה (alloy, nova, …), ייעשה שימוש ב-"Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # עריכת תמונה (multipart)
@@ -488,29 +498,26 @@ POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **צומתי ספק לדירוג מחדש:** `POST /v1/rerank` מנתב גם לצומתי ספק תואמי OpenAI
-> (oMLX, vLLM, Infinity, TEI מאחורי שער, …) שאליהם פונים בתור `<node-prefix>/<model>`. צומתי loopback
-> (`localhost`, `127.0.0.1`, `172.16.0.0/12`) תמיד כשירים. צמתים בכל מארח אחר
-> — מחשב ברשת LAN או עמית Tailscale — כשירים רק כאשר המפעיל מפעיל את דגל התכונה
-> `RERANK_REMOTE_PROVIDER_NODES` **וגם** כתובת ה-URL הבסיסית של הצומת עומדת במדיניות כתובות ה-URL
-> היוצאות של הספק (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> לעולם לא מתבצע ניתוב למארחי מטא-נתונים בענן. שלב הדירוג מחדש של מנוע הזיכרון קורא לנתיב הזה דרך
+> **צמתים של ספקי Rerank:** `POST /v1/rerank` מנתב גם לצמתים של ספקים תואמי OpenAI
+> (oMLX, vLLM, Infinity, TEI מאחורי שער, …) שכתובתם היא `<node-prefix>/<model>`. צומתי loopback
+> (`localhost`, `127.0.0.1`, `172.16.0.0/12`) תמיד כשירים. צמתים בכל מארח אחר — מחשב ברשת המקומית או עמית ב-Tailscale — כשירים רק אם המפעיל מפעיל את דגל התכונה
+> `RERANK_REMOTE_PROVIDER_NODES` **וגם** כתובת הבסיס של הצומת עוברת את מדיניות כתובות ה-URL היוצאות של ספקים
+> (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); לעולם אין לנתב למארחים של מטא-נתוני ענן. שלב ה-rerank של מנוע הזיכרון קורא לנתיב הזה דרך
 > loopback, ולכן אותו כלל חל על `rerankProviderModel` בהגדרות הזיכרון.
 >
-> **מבני שרת מקומי:** הקריאה לצומת מתבצעת ב-`<base>/v1/rerank`, ובמקרה של 404, ב-`<base>/rerank`
-> (Infinity, TEI). הגוף הנשלח לשירות במעלה הזרם כולל הן את האיות של Cohere/OpenAI (`documents`,
-> `return_documents`) והן את האיות של TEI (`texts`, `return_text`), והתגובה משירות זה
-> מנורמלת למעטפת Cohere: המערך החשוף של TEI מסוג `[{index, score, text}]`, המבנה `{results: [{index, score}]}`
-> משערים דקים, והמבנה בסגנון Voyage מסוג `{data: [...]}` — כולם מוחזרים ללקוח בתור
-> `{results: [{index, relevance_score, document?}]}`, ממוינים לפי ציון ומוגבלים ל-`top_n`.
+> **מבנים של שרתים מקומיים:** הקריאה לצומת מתבצעת אל `<base>/v1/rerank` ואם מתקבלת תשובת 404, אל `<base>/rerank`
+> (Infinity, TEI). גוף הבקשה לשירות המקור מכיל גם את הניסוח של Cohere/OpenAI (`documents`,
+> `return_documents`) וגם את הניסוח של TEI (`texts`, `return_text`), ותגובת השירות מנורמלת
+> למעטפת של Cohere: תשובת TEI במערך חשוף `[{index, score, text}]`, התשובה
+> `{results: [{index, score}]}` משערים פשוטים, והתשובה בסגנון Voyage `{data: [...]}` — כולן מוחזרות ללקוח כ-
+> `{results: [{index, relevance_score, document?}]}`, ממוינות לפי ציון ומוגבלות ל-`top_n`.
 
-> **גילוי צומתי ספק:** מודלים בצומת ספק תואם OpenAI מופיעים ב־`GET /v1/models`
-> תחת קידומת הצומת. שורות שאינן כוללות מטא־נתונים של נקודת קצה (כמקובל ברשימות `/v1/models` מקומיות)
-> יורשות את ה־`apiType` של הצומת, כך שהמודלים של צומת `embeddings` הם `type: "embedding"` והמודלים של
-> צומת `rerank` הם `type: "rerank"` במקום שברירת המחדל שלהם תהיה צ'אט; ערך מפורש של
-> `supportedEndpoints` בשורה שסונכרנה או נוספה ידנית עדיין מקבל עדיפות.
+> **גילוי צומתי ספקים:** מודלים בצומת ספק תואם OpenAI מופיעים ב-`GET /v1/models`
+> תחת התחילית של הצומת. שורות שאין בהן מטא-נתונים של נקודות קצה (מצב אופייני ברשימות מקומיות של `/v1/models`)
+> יורשות את `apiType` של הצומת, כך שמודלים של צומת `embeddings` הם מסוג `type: "embedding"` ומודלים של צומת
+> `rerank` הם מסוג `type: "rerank"` במקום לקבל כברירת מחדל את סוג הצ'אט; `supportedEndpoints` מפורש בשורה מסונכרנת או שנוספה ידנית עדיין מקבל עדיפות.
 
-### נתיבים ייעודיים לספק
+### נתיבי ספק ייעודיים
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -518,7 +525,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-קידומת הספק מתווספת אוטומטית אם היא חסרה. מודלים שאינם תואמים מחזירים `400`.
+תחילית הספק מתווספת אוטומטית אם היא חסרה. מודלים שאינם תואמים מחזירים `400`.
 
 ---
 

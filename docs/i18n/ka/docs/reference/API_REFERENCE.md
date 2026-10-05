@@ -408,91 +408,101 @@ GET /api/v1/provider-plugin-manifest
 
 ---
 
-## თავსებადობის საბოლოო წერტილები
+## თავსებადობის endpoint-ები
 
-| მეთოდი | გზა                                       | ფორმატი                                     |
-| ------ | ----------------------------------------- | ------------------------------------------- |
-| POST   | `/v1/chat/completions`                    | OpenAI                                      |
-| POST   | `/v1/messages`                            | Anthropic                                   |
-| POST   | `/v1/responses`                           | OpenAI Responses                            |
-| POST   | `/v1/embeddings`                          | OpenAI                                      |
-| POST   | `/v1/images/generations`                  | OpenAI Images                               |
-| POST   | `/v1/images/edits`                        | OpenAI Images (რედაქტირება/შევსება)         |
-| POST   | `/v1/videos/generations`                  | OpenAI-ის სტილის ვიდეოს გენერაცია           |
-| POST   | `/v1/music/generations`                   | OpenAI-ის სტილის მუსიკის გენერაცია          |
-| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                          |
-| POST   | `/v1/audio/speech`                        | OpenAI TTS (აბრუნებს აუდიოს სხეულს)         |
-| POST   | `/v1/rerank`                              | Cohere/Voyage-ის სტილის ხელახალი რანჟირება  |
-| POST   | `/v1/classify`                            | Jina-ს კლასიფიკაცია (`api.jina.ai`)         |
-| POST   | `/v1/segment`                             | Jina-ს სეგმენტატორი (`segment.jina.ai`)     |
-| POST   | `/v1/moderations`                         | OpenAI Moderations                          |
-| GET    | `/v1/models`                              | OpenAI                                      |
-| POST   | `/v1/messages/count_tokens`               | Anthropic                                   |
-| GET    | `/v1beta/models`                          | Gemini                                      |
-| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                      |
-| POST   | `/v1/api/chat`                            | Ollama                                      |
-| GET    | `/api/v1/vscode/{token}/`                 | OpenAI-ის კატალოგის ფსევდონიმი              |
-| GET    | `/api/v1/vscode/{token}/models`           | OpenAI-ის მოდელების ფსევდონიმი              |
-| POST   | `/api/v1/vscode/{token}/chat/completions` | OpenAI-ის ტოკენიზებული ფსევდონიმი           |
-| POST   | `/api/v1/vscode/{token}/responses`        | OpenAI Responses-ის ტოკენიზებული ფსევდონიმი |
-| POST   | `/api/v1/vscode/{token}/api/chat`         | Ollama-ს ტოკენიზებული ფსევდონიმი            |
-| GET    | `/api/v1/vscode/{token}/api/tags`         | Ollama-ს ტეგების ტოკენიზებული ფსევდონიმი    |
+| მეთოდი | გზა                                       | ფორმატი                               |
+| ------ | ----------------------------------------- | ------------------------------------- |
+| POST   | `/v1/chat/completions`                    | OpenAI                                |
+| POST   | `/v1/messages`                            | Anthropic                             |
+| POST   | `/v1/responses`                           | OpenAI Responses                      |
+| POST   | `/v1/embeddings`                          | OpenAI                                |
+| POST   | `/v1/images/generations`                  | OpenAI Images                         |
+| POST   | `/v1/images/edits`                        | OpenAI Images (რედაქტირება/inpaint)   |
+| POST   | `/v1/videos/generations`                  | OpenAI-ის სტილის ვიდეოს გენერაცია     |
+| POST   | `/v1/music/generations`                   | OpenAI-ის სტილის მუსიკის გენერაცია    |
+| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                    |
+| POST   | `/v1/audio/speech`                        | OpenAI TTS (აბრუნებს აუდიოს body-ს)   |
+| POST   | `/v1/rerank`                              | Cohere/Voyage-ის სტილის rerank        |
+| POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)         |
+| POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)    |
+| POST   | `/v1/systemone`                           | გადაწყვეტილების მოდელები (System One) |
+| GET    | `/v1/systemone/models`                    | გადაწყვეტილების მოდელების სია         |
+| POST   | `/v1/moderations`                         | OpenAI Moderations                    |
+| GET    | `/v1/models`                              | OpenAI                                |
+| POST   | `/v1/messages/count_tokens`               | Anthropic                             |
+| GET    | `/v1beta/models`                          | Gemini                                |
+| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                |
+| POST   | `/v1/api/chat`                            | Ollama                                |
+| GET    | `/api/v1/vscode/{token}/`                 | OpenAI-ის კატალოგის alias             |
+| GET    | `/api/v1/vscode/{token}/models`           | OpenAI-ის მოდელების alias             |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | OpenAI-ის tokenized alias             |
+| POST   | `/api/v1/vscode/{token}/responses`        | OpenAI Responses-ის tokenized alias   |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Ollama-ს tokenized alias              |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Ollama-ს tags-ის tokenized alias      |
 
-ყველა POST მარშრუტი ერთსა და იმავე სტრუქტურას იყენებს: `Bearer your-api-key` + Zod-ით ვალიდირებული JSON სხეული (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` და ა.შ.; იხილეთ `src/shared/validation/schemas.ts`). სქემის შემოწმების წარუმატებლობისას ბრუნდება 4xx.
+ყველა POST მარშრუტს ერთნაირი ფორმა აქვს: `Bearer your-api-key` + Zod-ით ვალიდირებული JSON body (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` და ა.შ.; იხილეთ `src/shared/validation/schemas.ts`). სქემის ვალიდაციის წარუმატებლობისას ბრუნდება 4xx.
 
-კლიენტებისთვის, რომლებსაც `Authorization: Bearer ...`-ის მიმაგრება არ შეუძლიათ, OmniRoute ასევე იღებს API გასაღებებს URL-ში — ან მოთხოვნის სტრიქონთან თავსებადობის მეშვეობით (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`), ან ქვემოთ აღწერილი სპეციალური `/api/v1/vscode/{token}/...` საბოლოო წერტილების მეშვეობით.
+კლიენტებისთვის, რომლებსაც `Authorization: Bearer ...`-ის დამატება არ შეუძლიათ, OmniRoute ასევე იღებს API გასაღებებს URL-ში — query string-ის თავსებადობის ვარიანტებით (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) ან ქვემოთ აღწერილი სპეციალური `/api/v1/vscode/{token}/...` endpoint-ებით.
 
 ```bash
-# ხელახალი რანჟირება (ღრუბლოვანი რეესტრის პროვაიდერი ან OpenAI-თან თავსებადი პროვაიდერის კვანძი ფორმატით "<prefix>/<model>")
+# Rerank (ღრუბლოვანი რეესტრის პროვაიდერი ან OpenAI-სთან თავსებადი პროვაიდერის კვანძი "<prefix>/<model>" ფორმით)
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Jina-ს კლასიფიკაცია (Foundation API-ის ავტორიზაციის მონაცემები)
+# Jina classify (Foundation API-ის ავტორიზაციის მონაცემები)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Jina-ს სეგმენტატორი
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# Jina-ს ძიება (s.jina.ai; პროვაიდერის ფსევდონიმები: jina-search, jina-ai, jina)
+# გადაწყვეტილების მოდელები (System One). პირველი მოდელის პრეფიქსი განსაზღვრავს კავშირს:
+#   typesafe/jev-latest              -> პირდაპირ TypeSafe-თან
+#   openrouter/typesafe/jev-1.13     -> OpenRouter-ის გავლით
+#   ollama-local/<model>             -> ლოკალური Ollama >= 0.35
+# არაკვალიფიცირებული ID, მაგალითად jev-latest, OpenRouter-ის გამოყენებას განაგრძობს. TypeSafe SDK-ები მუშაობს baseURL = OmniRoute-ით.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # კონფიგურირებული backend-ების მოდელები: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Jina search (s.jina.ai; პროვაიდერის alias-ები: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# მოდერაცია
+# Moderations
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — აბრუნებს audio/mpeg-ის (ან მოთხოვნილი ფორმატის) სხეულს
+# TTS — აბრუნებს audio/mpeg (ან მოთხოვნილი ფორმატის) body-ს
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS მოითხოვს ენასა და ხმას: `language`-ის ნაგულისხმევი მნიშვნელობაა "en"; გამოტოვებული
-# ხმა ან OpenAI-ის სტანდარტული ხმის სახელი (alloy, nova, …) ჩანაცვლდება "Adrian"-ით
+# Soniox TTS-ს ენა და ხმა სჭირდება: `language`-ის ნაგულისხმევი მნიშვნელობაა "en"; თუ ხმა მითითებული არ არის
+# ან მითითებულია OpenAI-ის სტანდარტული ხმის სახელი (alloy, nova, …), გამოყენებული იქნება "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # სურათის რედაქტირება (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# ვიდეოს / მუსიკის გენერაცია (პროვაიდერის პრეფიქსიანი მოდელის ID)
+# ვიდეოს / მუსიკის გენერაცია (მოდელის ID პროვაიდერის პრეფიქსით)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **ხელახალი რანჟირების პროვაიდერის კვანძები:** `POST /v1/rerank` ასევე მიმართავს მოთხოვნებს OpenAI-თან თავსებადი პროვაიდერის კვანძებისკენ
-> (oMLX, vLLM, Infinity, TEI კარიბჭის მიღმა, …), რომლებიც მიეთითება ფორმატით `<node-prefix>/<model>`. უკუკავშირის
-> კვანძები (`localhost`, `127.0.0.1`, `172.16.0.0/12`) ყოველთვის დაშვებულია. ნებისმიერ სხვა
-> ჰოსტზე განთავსებული კვანძები — LAN მოწყობილობა ან Tailscale-ის თანასწორი კვანძი — დაშვებულია მხოლოდ მაშინ, როცა ოპერატორი ჩართავს
-> `RERANK_REMOTE_PROVIDER_NODES` ფუნქციის ალამს **და** კვანძის საბაზისო URL გაივლის პროვაიდერის
-> გამავალი URL-ების პოლიტიკის შემოწმებას (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> მოთხოვნები ღრუბლოვანი მეტამონაცემების ჰოსტებისკენ არასოდეს გადაიგზავნება. მეხსიერების ძრავის ხელახალი რანჟირების ეტაპი ამ მარშრუტს
-> უკუკავშირის ინტერფეისით იძახებს, ამიტომ იგივე წესი მართავს `rerankProviderModel`-საც მეხსიერების პარამეტრებში.
+> **Rerank პროვაიდერის კვანძები:** `POST /v1/rerank` ასევე მიმართავს OpenAI-სთან თავსებად პროვაიდერის კვანძებს
+> (oMLX, vLLM, Infinity, TEI gateway-ის უკან, …), რომელთა მისამართებია `<node-prefix>/<model>`. Loopback
+> კვანძები (`localhost`, `127.0.0.1`, `172.16.0.0/12`) ყოველთვის დაშვებულია. სხვა ნებისმიერ
+> ჰოსტზე განთავსებული კვანძები — LAN-ზე არსებული კომპიუტერი ან Tailscale-ის peer — დაშვებულია მხოლოდ მაშინ,
+> როცა ოპერატორი ჩართავს `RERANK_REMOTE_PROVIDER_NODES` ფუნქციის დროშას **და** კვანძის საბაზისო URL აკმაყოფილებს პროვაიდერის
+> გამავალი URL-ების პოლიტიკას (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
+> cloud-მეტამონაცემების ჰოსტებზე მიმართვა არასოდეს ხდება. მეხსიერების ძრავის rerank ნაბიჯი ამ route-ს loopback-ის გავლით
+> იძახებს, ამიტომ იგივე წესი ვრცელდება Memory-ის პარამეტრებში არსებულ `rerankProviderModel`-ზეც.
 >
-> **ლოკალური სერვერის სტრუქტურები:** კვანძის გამოძახება ხდება მისამართზე `<base>/v1/rerank`, ხოლო 404-ის შემთხვევაში — მისამართზე `<base>/rerank`
-> (Infinity, TEI). ზედა დონის სერვერისთვის გაგზავნილი სხეული შეიცავს როგორც Cohere/OpenAI-ის მართლწერას (`documents`,
-> `return_documents`), ასევე TEI-ის მართლწერას (`texts`, `return_text`), ხოლო ზედა დონის სერვერის პასუხი
-> ნორმალიზდება Cohere-ის გარსში: TEI-ის უშუალო `[{index, score, text}]`, მსუბუქი კარიბჭეებიდან მიღებული `{results: [{index, score}]}`
-> და Voyage-ის სტილის `{data: [...]}` — ყველაფერი კლიენტს უბრუნდება ფორმატით
+> **ლოკალური სერვერის ფორმატები:** კვანძს მიმართავენ `<base>/v1/rerank` მისამართზე, ხოლო 404-ის შემთხვევაში — `<base>/rerank` მისამართზე
+> (Infinity, TEI). upstream-ის body შეიცავს როგორც Cohere/OpenAI-ის ფორმატს (`documents`,
+> `return_documents`), ისე TEI-ის ფორმატს (`texts`, `return_text`), ხოლო upstream-ის პასუხი
+> ნორმალიზდება Cohere-ის envelope-ად: TEI-ის შიშველი `[{index, score, text}]`, თხელი gateway-ებიდან მიღებული `{results: [{index, score}]}`
+> და Voyage-ის სტილის `{data: [...]}` კლიენტს უბრუნდება ფორმატით
 > `{results: [{index, relevance_score, document?}]}`, ქულის მიხედვით დალაგებული და `top_n`-ით შეზღუდული.
 
-> **პროვაიდერ-კვანძის აღმოჩენა:** OpenAI-თან თავსებად პროვაიდერ-კვანძზე არსებული მოდელები `GET /v1/models`-ში
-> კვანძის პრეფიქსით გამოჩნდება. ჩანაწერები, რომლებიც endpoint-ის მეტამონაცემებს არ შეიცავს (რაც ტიპურია ლოკალური `/v1/models` სიებისთვის),
-> მემკვიდრეობით იღებს კვანძის `apiType`-ს, ამიტომ `embeddings` კვანძის მოდელების ტიპია `type: "embedding"`, ხოლო
-> `rerank` კვანძის მოდელების — `type: "rerank"`, ნაცვლად იმისა, რომ ნაგულისხმევად chat ტიპი მიენიჭოს; სინქრონიზებულ ან ხელით დამატებულ ჩანაწერში ცხადად მითითებულ
+> **პროვაიდერის კვანძების აღმოჩენა:** OpenAI-სთან თავსებადი პროვაიდერის კვანძის მოდელები `GET /v1/models`-ში გამოჩნდება
+> კვანძის პრეფიქსით. Endpoint-ის მეტამონაცემების არმქონე ჩანაწერებში (რაც բնորոշ է ადგილობრივი `/v1/models` ჩამონათვალებისთვის)
+> მემკვიდრეობით გამოიყენება კვანძის `apiType`, ამიტომ `embeddings` კვანძის მოდელებს ენიჭება `type: "embedding"`, ხოლო
+> `rerank` კვანძის მოდელებს — `type: "rerank"`; ისინი chat-ის ტიპად ნაგულისხმევად არ განისაზღვრება. სინქრონიზებული ან ხელით დამატებული ჩანაწერის
 > `supportedEndpoints`-ს კვლავ უპირატესობა ენიჭება.
 
 ### პროვაიდერის გამოყოფილი მარშრუტები
@@ -503,7 +513,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-თუ პროვაიდერის პრეფიქსი არ არის მითითებული, ის ავტომატურად ემატება. შეუსაბამო მოდელებისთვის ბრუნდება `400`.
+თუ პროვაიდერის პრეფიქსი აკლია, ის ავტომატურად დაემატება. მოდელის შეუსაბამობის შემთხვევაში ბრუნდება `400`.
 
 ---
 

@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Gerbang AI Percuma
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Jangan berhenti mengekod. Setiap alat AI → 358 penyedia — 150+ percuma — melalui satu titik akhir. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ke dalam Claude / GPT / Gemini PERCUMA dengan sandaran automatik. Mampatan bertindan RTK + Caveman menjimatkan 15–95% token (purata ~89%) — tidak pernah mencapai had. 358 penyedia AI · 150+ peringkat percuma · ~1.62B token percuma/bulan · 19 strategi penghalaan · $0 untuk bermula."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Jangan berhenti menulis kod. Setiap alat AI → 359 penyedia — 150+ percuma — melalui satu titik akhir. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ke Claude / GPT / Gemini PERCUMA dengan sandaran automatik. Pemampatan bertindih RTK + Caveman menjimatkan 15–95% token (purata ~89%) — tidak akan mencapai had. 359 penyedia AI · 150+ peringkat percuma · ~1.62B token percuma/bulan · 19 strategi penghalaan · Bermula dengan $0."/>
 
 </div>
 
@@ -214,32 +214,32 @@
 
 <div align="center">
 
-## 🆓 Berfungsi sebaik sahaja anda memasangnya — tiada kunci, tiada konfigurasi
+## 🆓 Berfungsi sebaik sahaja anda memasangnya — tanpa kunci, tanpa konfigurasi
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Berfungsi sebaik sahaja anda memasangnya — konfigurasi sifar. Tiga langkah: 1. Pasang — npm i -g omniroute, pelayan bermula pada localhost:20128. 2. Halakan alat anda ke http://localhost:20128/v1 — mana-mana alat yang serasi dengan OpenAI (Claude Code, Cursor, Cline). 3. Ia menjawab — panggil model auto untuk balasan segera, tanpa kunci API, tanpa pendaftaran, tanpa konfigurasi. Pembekal tanpa kunci OpenCode Free telah dipasang siap ke dalam kombo auto, jadi pemasangan baharu akan bertindak balas serta-merta."/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="Berfungsi sebaik sahaja anda memasangnya — tanpa konfigurasi. Tiga langkah: 1. Pasang — npm i -g omniroute, pelayan bermula pada localhost:20128. 2. Halakan alat anda ke http://localhost:20128/v1 — mana-mana alat yang serasi dengan OpenAI (Claude Code, Cursor, Cline). 3. Ia menjawab — panggil model auto untuk mendapatkan jawapan segera, tanpa kunci API, tanpa pendaftaran, tanpa konfigurasi. Penyedia tanpa kunci OpenCode Free telah disertakan dalam gabungan auto, jadi pemasangan baharu terus boleh memberikan respons."/>
 
 ```bash
-# Pemasangan baharu, sifar kelayakan — `auto` sudah berfungsi:
+# Pemasangan baharu, tanpa sebarang kelayakan — `auto` sudah boleh digunakan:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>Lebih suka backend percuma yang spesifik? Panggil `oc/…` (OpenCode Free) secara langsung. Kemudian tingkatkan kepada `auto` dan biarkan OmniRoute memilih.</sub>
+<sub>Lebih suka bahagian belakang percuma yang khusus? Panggil `oc/…` (OpenCode Free) secara terus. Kemudian beralih kepada `auto` dan biarkan OmniRoute memilih.</sub>
 
-<sub>📦 Skrip permulaan pantas salin-tampal untuk **Python, Node.js, PHP, dan cURL** → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 Skrip mula pantas untuk **Python, Node.js, PHP dan cURL** yang boleh disalin dan ditampal → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 Janji
+# 💥 Janji Kami
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Janji — Satu titik akhir dan 358 pembekal. Fallback automatik mengekalkan penghalaan selagi sasaran sihat lain tersedia. Enam tonggak: fallback berdaya tahan merentasi 358 pembekal · penjimatan token sehingga 95% pada beban kerja yang layak · $0 untuk bermula dengan 150+ peringkat percuma dan 54 pembekal percuma-selamanya berulang/tanpa kunci · 36 integrasi CLI/agen melalui satu konfigurasi · keserasian OpenAI, Claude, Gemini dan Responses API di /v1 · kawalan pengeluaran termasuk pemutus litar, penyembunyian TLS, alat MCP 110, A2A, memori, pagar keselamatan, penilaian dan 39,000+ pengisytiharan ujian statik merentasi 5,100+ fail ujian yang dijejaki."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Janji Kami — Satu titik akhir dan 359 penyedia. Sandaran automatik memastikan penghalaan diteruskan selagi sasaran sihat lain masih tersedia. Enam tonggak: sandaran berdaya tahan merentas 359 penyedia · penjimatan token sehingga 95% untuk beban kerja yang layak · $0 untuk bermula dengan lebih 150 peringkat percuma dan 54 penyedia percuma berulang/tanpa kunci selama-lamanya · 36 integrasi CLI/ejen melalui satu konfigurasi · keserasian dengan API OpenAI, Claude, Gemini dan Responses pada /v1 · kawalan produksi termasuk pemutus litar, penyamaran TLS, 110 alat MCP, A2A, memori, pagar perlindungan, penilaian dan lebih 39,000 pengisytiharan ujian statik merentas lebih 5,100 fail ujian yang dijejaki."/>
 
 <br/>
 <br/>
@@ -250,11 +250,11 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Mengapa OmniRoute — berhenti menguruskan 10 papan pemuka, kunci API mati dan bil mengejut. Sepuluh masalah harian vs penyelesaian: kuota tamat tempoh tidak digunakan → memaksimumkan langganan; had kadar di tengah pengekodan → fallback automatik 4 peringkat (Langganan → API → Murah → Percuma); output alat membakar token → RTK + pemampatan Caveman (15–95%); API mahal → penghalaan dioptimumkan kos; setiap alat persediaan sendiri → satu titik akhir, satu papan pemuka; AI disekat → proksi 3 peringkat + penyembunyian TLS; kunci mati → daya tahan 3 lapisan (pemutus litar, penyejukan kunci, penguncian model); pasukan berkongsi satu langganan → kumpulan kunci dengan kuota perkongsian adil; gesaan melalui awan seseorang → tempatan-pertama dengan kunci disulitkan AES-256-GCM; tiada keterlihatan perbelanjaan → analitik langsung (penggunaan, kuota, penjimatan, kependaman p95)."/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="Mengapa OmniRoute — berhenti bersusah payah mengurus 10 papan pemuka, kunci API yang tidak berfungsi dan bil yang tidak dijangka. Sepuluh masalah harian dan penyelesaiannya: kuota luput tanpa digunakan → maksimumkan langganan; had kadar semasa menulis kod → sandaran automatik 4 peringkat (Langganan → API → Murah → Percuma); output alat menghabiskan token → pemampatan RTK + Caveman (15–95%); API mahal → penghalaan yang dioptimumkan untuk kos; setiap alat memerlukan persediaan tersendiri → satu titik akhir, satu papan pemuka; AI disekat → proksi 3 peringkat + penyamaran TLS; kunci tidak berfungsi → daya tahan 3 lapisan (pemutus litar, tempoh bertenang kunci, sekatan model); pasukan berkongsi satu langganan → kumpulan kunci dengan kuota perkongsian adil; gesaan melalui perkhidmatan awan orang lain → utamakan setempat dengan kunci yang disulitkan menggunakan AES-256-GCM; tiada paparan perbelanjaan → analitik langsung (penggunaan, kuota, penjimatan, kependaman p95)."/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Aliran permintaan OmniRoute: IDE atau CLI anda (Claude Code, Cursor, Cline…) memanggil satu titik akhir tempatan (http://localhost:20128/v1); OmniRoute Smart Router (RTK + pemampatan Caveman, 19 strategi penghalaan, pemutus litar, penyembunyian TLS, MCP, A2A, pagar keselamatan) boleh kembali ke 4 peringkat pembekal selagi sasaran sihat yang layak kekal — Peringkat 1 Langganan, Peringkat 2 Kunci API, Peringkat 3 Murah dan Peringkat 4 Percuma."/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="Aliran permintaan OmniRoute: IDE atau CLI anda (Claude Code, Cursor, Cline…) memanggil satu titik akhir setempat (http://localhost:20128/v1); Penghala Pintar OmniRoute (pemampatan RTK + Caveman, 19 strategi penghalaan, pemutus litar, penyamaran TLS, MCP, A2A, pagar perlindungan) boleh membuat sandaran merentas 4 peringkat penyedia selagi sasaran sihat yang layak masih tersedia — Peringkat 1 Langganan, Peringkat 2 Kunci API, Peringkat 3 Murah dan Peringkat 4 Percuma."/>
 
 </div>
 
@@ -488,13 +488,13 @@ Kesemua **19** strategi — gabung dan padankan bagi setiap langkah kombo:
 
 <div align="center">
 
-## 🏆 Apa yang Membezakan OmniRoute
+## 🏆 Keistimewaan OmniRoute
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Apa yang membezakan OmniRoute — gambaran ciri yang bertarikh berbanding 9router, OpenRouter, CLIProxyAPI dan LiteLLM merentasi 13 keupayaan. OmniRoute: 358 penyedia, 150+ peringkat percuma terbina dalam, 19 strategi penghalaan, pemampatan token 12-enjin, pelayan MCP terbina dalam dengan 110 alat, protokol ejen A2A, memori berterusan, pagar keselamatan, ejen awan, penyamaran cap jari TLS, Desktop/Termux/PWA dan 42 lokal UI i18n. OmniRoute dilesenkan MIT dan boleh dihoskan sendiri. Keupayaan dan kiraan pesaing mungkin berubah; lihat metodologi yang dipautkan."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Keistimewaan OmniRoute — gambaran ciri bertarikh berbanding 9router, OpenRouter, CLIProxyAPI dan LiteLLM merentasi 13 keupayaan. OmniRoute: 359 penyedia, lebih 150 peringkat percuma terbina dalam, 19 strategi penghalaan, pemampatan token dengan 12 enjin, pelayan MCP terbina dalam dengan 110 alat, protokol ejen A2A, memori kekal, pagar kawalan, ejen awan, penyamaran cap jari TLS, Desktop/Termux/PWA dan 42 bahasa UI i18n. OmniRoute dilesenkan di bawah MIT dan boleh dihoskan sendiri. Keupayaan dan jumlah pesaing mungkin berubah; lihat metodologi yang dipautkan."/>
 
-<sub>📊 Metodologi penuh &amp; butiran setiap ciri berbanding 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Metodologi lengkap &amp; perincian setiap ciri berbanding 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 

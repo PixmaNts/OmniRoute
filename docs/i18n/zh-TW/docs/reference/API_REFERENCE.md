@@ -413,40 +413,50 @@ GET /api/v1/provider-plugin-manifest
 | POST | `/v1/responses`                           | OpenAI Responses                 |
 | POST | `/v1/embeddings`                          | OpenAI                           |
 | POST | `/v1/images/generations`                  | OpenAI Images                    |
-| POST | `/v1/images/edits`                        | OpenAI Images（編輯／局部重繪）  |
-| POST | `/v1/videos/generations`                  | OpenAI 風格的影片生成            |
-| POST | `/v1/music/generations`                   | OpenAI 風格的音樂生成            |
+| POST | `/v1/images/edits`                        | OpenAI Images（編輯/修補）       |
+| POST | `/v1/videos/generations`                  | OpenAI 風格影片生成              |
+| POST | `/v1/music/generations`                   | OpenAI 風格音樂生成              |
 | POST | `/v1/audio/transcriptions`                | OpenAI Audio（STT）              |
-| POST | `/v1/audio/speech`                        | OpenAI TTS（回傳音訊主體）       |
-| POST | `/v1/rerank`                              | Cohere/Voyage 風格的重新排序     |
+| POST | `/v1/audio/speech`                        | OpenAI TTS（回傳音訊本文）       |
+| POST | `/v1/rerank`                              | Cohere/Voyage 風格重新排序       |
 | POST | `/v1/classify`                            | Jina 分類（`api.jina.ai`）       |
 | POST | `/v1/segment`                             | Jina 分段器（`segment.jina.ai`） |
+| POST | `/v1/systemone`                           | 決策模型（System One）           |
+| GET  | `/v1/systemone/models`                    | 決策模型清單                     |
 | POST | `/v1/moderations`                         | OpenAI Moderations               |
 | GET  | `/v1/models`                              | OpenAI                           |
 | POST | `/v1/messages/count_tokens`               | Anthropic                        |
 | GET  | `/v1beta/models`                          | Gemini                           |
 | POST | `/v1beta/models/{...path}`                | Gemini generateContent           |
 | POST | `/v1/api/chat`                            | Ollama                           |
-| GET  | `/api/v1/vscode/{token}/`                 | OpenAI 目錄別名                  |
+| GET  | `/api/v1/vscode/{token}/`                 | OpenAI 型錄別名                  |
 | GET  | `/api/v1/vscode/{token}/models`           | OpenAI 模型別名                  |
 | POST | `/api/v1/vscode/{token}/chat/completions` | OpenAI 權杖化別名                |
 | POST | `/api/v1/vscode/{token}/responses`        | OpenAI Responses 權杖化別名      |
 | POST | `/api/v1/vscode/{token}/api/chat`         | Ollama 權杖化別名                |
 | GET  | `/api/v1/vscode/{token}/api/tags`         | Ollama 標籤權杖化別名            |
 
-所有 POST 路由都遵循相同格式：`Bearer your-api-key` + 經 Zod 驗證的 JSON 主體（`v1RerankSchema`、`v1ModerationSchema`、`v1AudioSpeechSchema` 等，請參閱 `src/shared/validation/schemas.ts`）。結構描述驗證失敗時會回傳 4xx。
+所有 POST 路由都遵循相同的格式：`Bearer your-api-key` + 經 Zod 驗證的 JSON 主體（`v1RerankSchema`、`v1ModerationSchema`、`v1AudioSpeechSchema` 等，請參閱 `src/shared/validation/schemas.ts`）。若結構描述驗證失敗，會回傳 4xx。
 
-對於無法附加 `Authorization: Bearer ...` 的用戶端，OmniRoute 也接受透過 URL 傳入 API 金鑰，方式可以是查詢字串相容模式（`?token=...`、`?apiKey=...`、`?api_key=...`、`?key=...`），或使用下方說明的專用 `/api/v1/vscode/{token}/...` 端點。
+對於無法附加 `Authorization: Bearer ...` 的用戶端，OmniRoute 也接受透過 URL 傳入的 API 金鑰，可使用相容性查詢字串（`?token=...`、`?apiKey=...`、`?api_key=...`、`?key=...`），或使用下方文件所述的專用 `/api/v1/vscode/{token}/...` 端點。
 
 ```bash
-# 重新排序（雲端登錄提供者，或以 "<prefix>/<model>" 表示的 OpenAI 相容提供者節點）
+# 重新排序（雲端登錄表提供者，或名稱為 "<prefix>/<model>" 的 OpenAI 相容提供者節點）
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Jina 分類（Foundation API 認證資訊）
+# Jina 分類（Foundation API 憑證）
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
 # Jina 分段器
 POST /v1/segment     { "content": "...", "return_chunks": true }
+
+# 決策模型（System One）。第一個模型前綴會決定連線方式：
+#   typesafe/jev-latest              -> 直接連線至 TypeSafe
+#   openrouter/typesafe/jev-1.13     -> 透過 OpenRouter
+#   ollama-local/<model>             -> 本機 Ollama >= 0.35
+# 未指定前綴的 ID（例如 jev-latest）會繼續使用 OpenRouter。TypeSafe SDK 可將 baseURL 設為 OmniRoute。
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # 已設定後端的模型：{ object: "list", data: [{ id, name, pricing, ... }] }
 
 # Jina 搜尋（s.jina.ai；提供者別名：jina-search、jina-ai、jina）
 POST /v1/search      { "query": "...", "provider": "jina-search" }
@@ -454,42 +464,25 @@ POST /v1/search      { "query": "...", "provider": "jina-search" }
 # 內容審核
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — 回傳 audio/mpeg（或所要求格式）的主體
+# TTS — 回傳 audio/mpeg（或指定格式）本文
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS 需要語言和語音：`language` 預設為 "en"；若缺少
-# 語音，或使用 OpenAI 內建語音名稱（alloy、nova、…），則會改為 "Adrian"
+# Soniox TTS 需要語言和語音：`language` 預設為 "en"；若未指定語音，或使用 OpenAI 預設語音名稱（alloy、nova、…），則會改用 "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # 圖片編輯（multipart）
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# 影片／音樂生成（帶有提供者前綴的模型 ID）
+# 影片/音樂生成（提供者前綴模型 ID）
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **重新排序提供者節點：** `POST /v1/rerank` 也會路由至 OpenAI 相容的提供者節點
-> （oMLX、vLLM、閘道後方的 Infinity、TEI 等），其定址格式為 `<node-prefix>/<model>`。迴路
-> 節點（`localhost`、`127.0.0.1`、`172.16.0.0/12`）一律符合資格。位於任何其他
-> 主機上的節點（LAN 主機或 Tailscale 對等節點），只有在操作員啟用
-> `RERANK_REMOTE_PROVIDER_NODES` 功能旗標，**且**節點的基底 URL 通過提供者
-> 對外 URL 政策（`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`）時才符合資格；
-> 雲端中繼資料主機永遠不會被路由至。記憶體引擎的重新排序步驟會透過
-> 迴路呼叫此路由，因此相同規則也適用於 Memory 設定中的 `rerankProviderModel`。
+> **重新排序提供者節點：**`POST /v1/rerank` 也會將請求路由至 OpenAI 相容的提供者節點（oMLX、vLLM、Infinity、閘道器後方的 TEI 等），這些節點以 `<node-prefix>/<model>` 定址。迴環節點（`localhost`、`127.0.0.1`、`172.16.0.0/12`）一律符合資格。位於其他任何主機上的節點——無論是 LAN 電腦或 Tailscale 對等節點——只有在操作人員啟用 `RERANK_REMOTE_PROVIDER_NODES` 功能旗標，**且**節點的基底 URL 通過提供者對外 URL 政策（`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`）時，才符合資格；絕不會將請求路由至雲端中繼資料主機。記憶體引擎的 rerank 步驟會透過迴環呼叫此路由，因此 Memory 設定中的 `rerankProviderModel` 也遵循相同規則。
 >
-> **本機伺服器格式：** 節點會先透過 `<base>/v1/rerank` 呼叫，若收到 404，則改用 `<base>/rerank`
-> （Infinity、TEI）。上游主體同時包含 Cohere/OpenAI 拼法（`documents`、
-> `return_documents`）與 TEI 拼法（`texts`、`return_text`），而上游回應會
-> 正規化為 Cohere 封裝格式：TEI 的裸陣列 `[{index, score, text}]`、來自精簡閘道的
-> `{results: [{index, score}]}`，以及 Voyage 風格的 `{data: [...]}`，都會以
-> `{results: [{index, relevance_score, document?}]}` 格式回傳給用戶端，依分數排序，並以 `top_n` 為上限。
+> **本機伺服器格式：**系統會呼叫節點的 `<base>/v1/rerank`，若收到 404，則改呼叫 `<base>/rerank`（Infinity、TEI）。上游請求本文同時帶有 Cohere/OpenAI 的欄位名稱（`documents`、`return_documents`）與 TEI 的欄位名稱（`texts`、`return_text`），並將上游回應正規化為 Cohere 格式：TEI 的純陣列 `[{index, score, text}]`、精簡閘道器回傳的 `{results: [{index, score}]}`，以及 Voyage 格式的 `{data: [...]}`，都會以 `{results: [{index, relevance_score, document?}]}` 的形式回傳給用戶端，並依分數排序且限制在 `top_n` 筆。
 
-> **提供者節點探索：** OpenAI 相容提供者節點上的模型會顯示於 `GET /v1/models`
-> 中，並位於該節點的前綴之下。未包含端點中繼資料的資料列（常見於本機 `/v1/models` 清單）
-> 會繼承節點的 `apiType`，因此 `embeddings` 節點的模型會是 `type: "embedding"`，而
-> `rerank` 節點的模型會是 `type: "rerank"`，而非預設為聊天；已同步或手動新增的資料列若明確指定
-> `supportedEndpoints`，仍具有較高優先權。
+> **提供者節點探索：**OpenAI 相容提供者節點上的模型會以節點前綴顯示在 `GET /v1/models` 中。沒有端點中繼資料的資料列（本機 `/v1/models` 清單常見）會沿用節點的 `apiType`，因此 `embeddings` 節點上的模型會是 `type: "embedding"`，而 `rerank` 節點上的模型會是 `type: "rerank"`，不會預設為 chat；已同步或手動新增資料列上明確指定的 `supportedEndpoints` 仍會優先採用。
 
 ### 專用提供者路由
 
@@ -499,7 +492,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-若缺少提供者前綴，系統會自動新增。模型不相符時會傳回 `400`。
+若缺少提供者前綴，系統會自動加上。模型不相符時會回傳 `400`。
 
 ---
 
@@ -1130,7 +1123,7 @@ Content-Type: application/json
 }
 ```
 
-> **結構描述注意事項** (`setBudgetSchema`)：`apiKeyId` 為必填；`dailyLimitUsd`、`weeklyLimitUsd` 或 `monthlyLimitUsd` 中至少一個必須大於零。選填欄位：`warningThreshold`（0–1）、`resetInterval`（`daily` | `weekly` | `monthly`）、`resetTime`（`HH:MM`）。舊版的 `{keyId, limit, period}` 格式會傳回 `400 Bad Request`。
+> **結構描述備註**（`setBudgetSchema`）：`apiKeyId` 為必填；`dailyLimitUsd`、`weeklyLimitUsd` 或 `monthlyLimitUsd` 至少一個必須大於零。選填欄位：`warningThreshold`（0–1）、`resetInterval`（`daily` | `weekly` | `monthly`）、`resetTime`（`HH:MM`）。舊版 `{keyId, limit, period}` 格式會回傳 `400 Bad Request`。
 
 ## Token 限制
 

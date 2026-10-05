@@ -441,94 +441,104 @@ GET /api/v1/provider-plugin-manifest
 
 ---
 
-## نقاط نهاية التوافق
+## نقاط النهاية للتوافق
 
-| الطريقة | المسار                                    | التنسيق                                           |
-| ------- | ----------------------------------------- | ------------------------------------------------- |
-| POST    | `/v1/chat/completions`                    | OpenAI                                            |
-| POST    | `/v1/messages`                            | Anthropic                                         |
-| POST    | `/v1/responses`                           | استجابات OpenAI                                   |
-| POST    | `/v1/embeddings`                          | OpenAI                                            |
-| POST    | `/v1/images/generations`                  | صور OpenAI                                        |
-| POST    | `/v1/images/edits`                        | صور OpenAI (تحرير/ترميم)                          |
-| POST    | `/v1/videos/generations`                  | إنشاء فيديو بأسلوب OpenAI                         |
-| POST    | `/v1/music/generations`                   | إنشاء موسيقى بأسلوب OpenAI                        |
-| POST    | `/v1/audio/transcriptions`                | صوت OpenAI (تحويل الكلام إلى نص)                  |
-| POST    | `/v1/audio/speech`                        | تحويل النص إلى كلام من OpenAI (يعيد محتوى صوتيًا) |
-| POST    | `/v1/rerank`                              | إعادة ترتيب بأسلوب Cohere/Voyage                  |
-| POST    | `/v1/classify`                            | تصنيف Jina (`api.jina.ai`)                        |
-| POST    | `/v1/segment`                             | مُجزّئ Jina (`segment.jina.ai`)                   |
-| POST    | `/v1/moderations`                         | إشراف المحتوى من OpenAI                           |
-| GET     | `/v1/models`                              | OpenAI                                            |
-| POST    | `/v1/messages/count_tokens`               | Anthropic                                         |
-| GET     | `/v1beta/models`                          | Gemini                                            |
-| POST    | `/v1beta/models/{...path}`                | Gemini generateContent                            |
-| POST    | `/v1/api/chat`                            | Ollama                                            |
-| GET     | `/api/v1/vscode/{token}/`                 | اسم مستعار لكتالوج OpenAI                         |
-| GET     | `/api/v1/vscode/{token}/models`           | اسم مستعار لنماذج OpenAI                          |
-| POST    | `/api/v1/vscode/{token}/chat/completions` | اسم مستعار مُرمَّز برمز لـ OpenAI                 |
-| POST    | `/api/v1/vscode/{token}/responses`        | اسم مستعار مُرمَّز برمز لاستجابات OpenAI          |
-| POST    | `/api/v1/vscode/{token}/api/chat`         | اسم مستعار مُرمَّز برمز لـ Ollama                 |
-| GET     | `/api/v1/vscode/{token}/api/tags`         | اسم مستعار مُرمَّز برمز لوسوم Ollama              |
+| الطريقة | المسار                                    | التنسيق                                    |
+| ------- | ----------------------------------------- | ------------------------------------------ |
+| POST    | `/v1/chat/completions`                    | OpenAI                                     |
+| POST    | `/v1/messages`                            | Anthropic                                  |
+| POST    | `/v1/responses`                           | OpenAI Responses                           |
+| POST    | `/v1/embeddings`                          | OpenAI                                     |
+| POST    | `/v1/images/generations`                  | OpenAI Images                              |
+| POST    | `/v1/images/edits`                        | OpenAI Images (تحرير/ترميم)                |
+| POST    | `/v1/videos/generations`                  | إنشاء فيديو بأسلوب OpenAI                  |
+| POST    | `/v1/music/generations`                   | إنشاء موسيقى بأسلوب OpenAI                 |
+| POST    | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                         |
+| POST    | `/v1/audio/speech`                        | OpenAI TTS (يعيد محتوى صوتيًا)             |
+| POST    | `/v1/rerank`                              | إعادة ترتيب بأسلوب Cohere/Voyage           |
+| POST    | `/v1/classify`                            | تصنيف Jina (`api.jina.ai`)                 |
+| POST    | `/v1/segment`                             | مقسّم Jina (`segment.jina.ai`)             |
+| POST    | `/v1/systemone`                           | نماذج اتخاذ القرار (System One)            |
+| GET     | `/v1/systemone/models`                    | قائمة نماذج اتخاذ القرار                   |
+| POST    | `/v1/moderations`                         | OpenAI Moderations                         |
+| GET     | `/v1/models`                              | OpenAI                                     |
+| POST    | `/v1/messages/count_tokens`               | Anthropic                                  |
+| GET     | `/v1beta/models`                          | Gemini                                     |
+| POST    | `/v1beta/models/{...path}`                | Gemini generateContent                     |
+| POST    | `/v1/api/chat`                            | Ollama                                     |
+| GET     | `/api/v1/vscode/{token}/`                 | اسم مستعار لفهرس OpenAI                    |
+| GET     | `/api/v1/vscode/{token}/models`           | اسم مستعار لنماذج OpenAI                   |
+| POST    | `/api/v1/vscode/{token}/chat/completions` | اسم مستعار لـ OpenAI يتضمن رمزًا           |
+| POST    | `/api/v1/vscode/{token}/responses`        | اسم مستعار لـ OpenAI Responses يتضمن رمزًا |
+| POST    | `/api/v1/vscode/{token}/api/chat`         | اسم مستعار لـ Ollama يتضمن رمزًا           |
+| GET     | `/api/v1/vscode/{token}/api/tags`         | اسم مستعار لوسوم Ollama يتضمن رمزًا        |
 
-تتبع جميع مسارات POST البنية نفسها: `Bearer your-api-key` + محتوى JSON متحقق منه بواسطة Zod (`v1RerankSchema`، و`v1ModerationSchema`، و`v1AudioSpeechSchema`، وغيرها؛ راجع `src/shared/validation/schemas.ts`). تُعاد حالة 4xx عند فشل التحقق من المخطط.
+تتبع جميع مسارات POST البنية نفسها: `Bearer your-api-key` + جسم JSON تم التحقق منه باستخدام Zod (`v1RerankSchema` و`v1ModerationSchema` و`v1AudioSpeechSchema` وغيرها؛ راجع `src/shared/validation/schemas.ts`). يُعاد الخطأ 4xx عند فشل التحقق من المخطط.
 
-بالنسبة إلى العملاء الذين لا يمكنهم إرفاق `Authorization: Bearer ...`، يقبل OmniRoute أيضًا مفاتيح API في عنوان URL، إما عبر توافق سلسلة الاستعلام (`?token=...`، أو `?apiKey=...`، أو `?api_key=...`، أو `?key=...`) أو عبر نقاط النهاية المخصصة `/api/v1/vscode/{token}/...` الموثقة أدناه.
+بالنسبة إلى العملاء الذين لا يمكنهم إرفاق `Authorization: Bearer ...`، يقبل OmniRoute أيضًا مفاتيح API في عنوان URL، إما عبر التوافق باستخدام سلسلة الاستعلام (`?token=...` أو `?apiKey=...` أو `?api_key=...` أو `?key=...`) أو عبر نقاط النهاية المخصصة `/api/v1/vscode/{token}/...` الموثقة أدناه.
 
 ```bash
-# إعادة الترتيب (موفّر سجل سحابي، أو عقدة موفّر متوافقة مع OpenAI بصيغة "<prefix>/<model>")
+# إعادة الترتيب (موفر من سجل الخدمات السحابية، أو عقدة موفر متوافقة مع OpenAI بصيغة "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # تصنيف Jina (بيانات اعتماد Foundation API)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# مُجزّئ Jina
+# مقسّم Jina
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# بحث Jina ‏(s.jina.ai؛ الأسماء المستعارة للموفّر: jina-search، وjina-ai، وjina)
+# نماذج اتخاذ القرار (System One). تحدد بادئة النموذج الأولى الاتصال:
+#   typesafe/jev-latest              -> اتصال مباشر بـ TypeSafe
+#   openrouter/typesafe/jev-1.13     -> عبر OpenRouter
+#   ollama-local/<model>             -> Ollama محلي >= 0.35
+# يواصل معرّف غير مؤهل مثل jev-latest استخدام OpenRouter. تعمل حزم TypeSafe SDK مع baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # نماذج الواجهات الخلفية المُعدّة: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# بحث Jina (s.jina.ai؛ الأسماء المستعارة للموفر: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
 # الإشراف على المحتوى
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# تحويل النص إلى كلام — يعيد محتوى audio/mpeg (أو التنسيق المطلوب)
+# TTS — يعيد محتوى من النوع audio/mpeg (أو بالتنسيق المطلوب)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# يتطلب تحويل النص إلى كلام من Soniox لغةً وصوتًا: تكون القيمة الافتراضية لـ `language` هي "en"؛ وعند غياب
-# الصوت أو استخدام اسم صوت افتراضي من OpenAI ‏(alloy، وnova، و…)، يصبح الصوت "Adrian"
+# يتطلب TTS من Soniox لغةً وصوتًا: تكون قيمة `language` الافتراضية هي "en"؛ وإذا لم يُحدّد
+# الصوت أو استُخدم اسم صوت افتراضي من OpenAI (alloy, nova, …)، فسيكون الصوت "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
-# تحرير صورة (متعدد الأجزاء)
+# تحرير الصور (متعدد الأجزاء)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# إنشاء فيديو / موسيقى (معرّف نموذج مسبوق باسم الموفّر)
+# إنشاء الفيديو/الموسيقى (معرّف النموذج مسبوق ببادئة الموفر)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **عُقد موفّري إعادة الترتيب:** يوجّه `POST /v1/rerank` أيضًا الطلبات إلى عُقد موفّرين متوافقة مع OpenAI
-> ‏(oMLX، وvLLM، وInfinity، وTEI خلف بوابة، و…) يُشار إليها بالصيغة `<node-prefix>/<model>`. تكون عُقد
-> الاسترجاع المحلي (`localhost`، و`127.0.0.1`، و`172.16.0.0/12`) مؤهلة دائمًا. أما العُقد الموجودة على أي
-> مضيف آخر — سواء كان جهازًا على شبكة LAN أو نظيرًا على Tailscale — فلا تكون مؤهلة إلا عندما يفعّل المشغّل
-> علامة الميزة `RERANK_REMOTE_PROVIDER_NODES` **ويكون** عنوان URL الأساسي للعقدة متوافقًا مع سياسة عناوين URL
-> الصادرة الخاصة بالموفّر (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`)؛
-> ولا تُوجَّه الطلبات مطلقًا إلى مضيفي بيانات تعريف السحابة. تستدعي خطوة إعادة الترتيب في محرك الذاكرة هذا المسار عبر
-> الاسترجاع المحلي، ولذلك تنطبق القاعدة نفسها على `rerankProviderModel` ضمن إعدادات الذاكرة.
+> **إعادة ترتيب عُقد المزوّدين:** يوجّه `POST /v1/rerank` الطلبات أيضًا إلى عُقد المزوّدين المتوافقة مع OpenAI
+> (oMLX وvLLM وInfinity وTEI خلف بوابة، …) والمُشار إليها بالشكل `<node-prefix>/<model>`. عُقد
+> الواجهة المحلية (`localhost` و`127.0.0.1` و`172.16.0.0/12`) مؤهلة دائمًا. أما العُقد الموجودة على
+> أي مضيف آخر — مثل جهاز على الشبكة المحلية أو نظير Tailscale — فلا تكون مؤهلة إلا إذا فعّل المشغّل
+> علامة الميزات `RERANK_REMOTE_PROVIDER_NODES` **وكان** عنوان URL الأساسي للعقدة يجتاز سياسة عناوين URL
+> الصادرة للمزوّدين (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`)؛
+> ولا تُوجّه الطلبات مطلقًا إلى مضيفات البيانات الوصفية السحابية. تستدعي خطوة إعادة الترتيب في محرّك
+> الذاكرة هذا المسار عبر الواجهة المحلية، لذا تنطبق القاعدة نفسها على `rerankProviderModel` في إعدادات الذاكرة.
 >
-> **بُنى الخوادم المحلية:** تُستدعى العقدة عند `<base>/v1/rerank`، وعند تلقي 404، عند `<base>/rerank`
-> ‏(Infinity، وTEI). يحمل المحتوى المرسل إلى الخدمة العليا كلًا من تهجئة Cohere/OpenAI ‏(`documents`،
-> و`return_documents`) وتهجئة TEI ‏(`texts`، و`return_text`)، وتُطبَّع استجابة الخدمة العليا إلى غلاف Cohere:
-> إذ تُعاد مصفوفة TEI المجرّدة `[{index, score, text}]`، و`{results: [{index, score}]}` الواردة
-> من البوابات الخفيفة، و`{data: [...]}` بأسلوب Voyage، جميعها إلى العميل بالصيغة
-> `{results: [{index, relevance_score, document?}]}`، مرتبة حسب الدرجة ومحدودة عند `top_n`.
+> **أشكال الخوادم المحلية:** يُستدعى المسار على `<base>/v1/rerank`، وعند تلقي 404 يُستدعى على `<base>/rerank`
+> (Infinity وTEI). يتضمن نص الطلب المرسل إلى الخدمة النهائية صيغتي Cohere/OpenAI (`documents`،
+> `return_documents`) وصيغة TEI (`texts`، `return_text`)، وتُوحّد الاستجابة الواردة من الخدمة النهائية
+> لتتبع تنسيق Cohere: تعاد إلى العميل استجابات TEI ذات المصفوفة المجردة `[{index, score, text}]`، و`{results: [{index, score}]}`
+> من البوابات الخفيفة، وكذلك استجابات Voyage ذات الصيغة `{data: [...]}`، على شكل
+> `{results: [{index, relevance_score, document?}]}`، مرتبة حسب الدرجة ومحدودة بـ `top_n`.
 
-> **اكتشاف عُقد المزوّد:** تظهر النماذج الموجودة على عقدة مزوّد متوافقة مع OpenAI في `GET /v1/models`
-> ضمن بادئة العقدة. ترث الصفوف التي لا تحتوي على بيانات وصفية لنقطة النهاية (كما هو معتاد في قوائم `/v1/models` المحلية)
-> قيمة `apiType` الخاصة بالعقدة، ولذلك تكون نماذج عقدة `embeddings` من النوع `type: "embedding"` ونماذج عقدة
-> `rerank` من النوع `type: "rerank"` بدلًا من تعيين نوع الدردشة افتراضيًا؛ وتظل قيمة `supportedEndpoints` الصريحة
-> في صف متزامن أو مضاف يدويًا ذات أولوية.
+> **اكتشاف عُقد المزوّدين:** تظهر النماذج الموجودة على عقدة مزوّد متوافقة مع OpenAI في `GET /v1/models`
+> تحت بادئة العقدة. ترث الصفوف التي لا تتضمن بيانات وصفية عن نقاط النهاية (وهي شائعة في قوائم `/v1/models` المحلية)
+> قيمة `apiType` الخاصة بالعقدة، لذا يكون `type: "embedding"` لنماذج عقدة `embeddings` و`type: "rerank"`
+> لنماذج عقدة `rerank` بدلًا من تعيينها افتراضيًا إلى chat؛ وتظل قيمة `supportedEndpoints` الصريحة
+> في صف تمت مزامنته أو إضافته يدويًا هي المعتمدة.
 
-### مسارات مخصصة للمزوّد
+### مسارات المزوّدين المخصّصة
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -536,7 +546,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-تُضاف بادئة المزوّد تلقائيًا إذا كانت مفقودة. تُرجع النماذج غير المتطابقة الرمز `400`.
+تُضاف بادئة المزوّد تلقائيًا إن لم تكن موجودة. وتُعيد النماذج غير المتطابقة `400`.
 
 ---
 

@@ -423,51 +423,61 @@ GET /api/v1/provider-plugin-manifest
 
 ---
 
-## เอนด์พอยต์ที่รองรับความเข้ากันได้
+## ปลายทางที่รองรับความเข้ากันได้
 
-| เมธอด | พาธ                                       | รูปแบบ                                  |
-| ----- | ----------------------------------------- | --------------------------------------- |
-| POST  | `/v1/chat/completions`                    | OpenAI                                  |
-| POST  | `/v1/messages`                            | Anthropic                               |
-| POST  | `/v1/responses`                           | OpenAI Responses                        |
-| POST  | `/v1/embeddings`                          | OpenAI                                  |
-| POST  | `/v1/images/generations`                  | OpenAI Images                           |
-| POST  | `/v1/images/edits`                        | OpenAI Images (แก้ไข/เติมภาพ)           |
-| POST  | `/v1/videos/generations`                  | การสร้างวิดีโอในรูปแบบ OpenAI           |
-| POST  | `/v1/music/generations`                   | การสร้างเพลงในรูปแบบ OpenAI             |
-| POST  | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                      |
-| POST  | `/v1/audio/speech`                        | OpenAI TTS (ส่งคืนเนื้อหาเสียง)         |
-| POST  | `/v1/rerank`                              | การจัดอันดับใหม่แบบ Cohere/Voyage       |
-| POST  | `/v1/classify`                            | การจำแนกประเภทด้วย Jina (`api.jina.ai`) |
-| POST  | `/v1/segment`                             | ตัวแบ่งส่วนของ Jina (`segment.jina.ai`) |
-| POST  | `/v1/moderations`                         | OpenAI Moderations                      |
-| GET   | `/v1/models`                              | OpenAI                                  |
-| POST  | `/v1/messages/count_tokens`               | Anthropic                               |
-| GET   | `/v1beta/models`                          | Gemini                                  |
-| POST  | `/v1beta/models/{...path}`                | Gemini generateContent                  |
-| POST  | `/v1/api/chat`                            | Ollama                                  |
-| GET   | `/api/v1/vscode/{token}/`                 | นามแฝงแค็ตตาล็อก OpenAI                 |
-| GET   | `/api/v1/vscode/{token}/models`           | นามแฝงโมเดล OpenAI                      |
-| POST  | `/api/v1/vscode/{token}/chat/completions` | นามแฝง OpenAI ที่ใช้โทเค็น              |
-| POST  | `/api/v1/vscode/{token}/responses`        | นามแฝง OpenAI Responses ที่ใช้โทเค็น    |
-| POST  | `/api/v1/vscode/{token}/api/chat`         | นามแฝง Ollama ที่ใช้โทเค็น              |
-| GET   | `/api/v1/vscode/{token}/api/tags`         | นามแฝงแท็ก Ollama ที่ใช้โทเค็น          |
+| วิธีการ | เส้นทาง                                   | รูปแบบ                                    |
+| ------- | ----------------------------------------- | ----------------------------------------- |
+| POST    | `/v1/chat/completions`                    | OpenAI                                    |
+| POST    | `/v1/messages`                            | Anthropic                                 |
+| POST    | `/v1/responses`                           | OpenAI Responses                          |
+| POST    | `/v1/embeddings`                          | OpenAI                                    |
+| POST    | `/v1/images/generations`                  | OpenAI Images                             |
+| POST    | `/v1/images/edits`                        | OpenAI Images (แก้ไข/เติมส่วนที่ขาด)      |
+| POST    | `/v1/videos/generations`                  | การสร้างวิดีโอรูปแบบ OpenAI               |
+| POST    | `/v1/music/generations`                   | การสร้างเพลงรูปแบบ OpenAI                 |
+| POST    | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                        |
+| POST    | `/v1/audio/speech`                        | OpenAI TTS (ส่งคืนเนื้อหาเสียง)           |
+| POST    | `/v1/rerank`                              | การจัดอันดับใหม่รูปแบบ Cohere/Voyage      |
+| POST    | `/v1/classify`                            | Jina classify (`api.jina.ai`)             |
+| POST    | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)        |
+| POST    | `/v1/systemone`                           | โมเดลการตัดสินใจ (System One)             |
+| GET     | `/v1/systemone/models`                    | รายการโมเดลการตัดสินใจ                    |
+| POST    | `/v1/moderations`                         | OpenAI Moderations                        |
+| GET     | `/v1/models`                              | OpenAI                                    |
+| POST    | `/v1/messages/count_tokens`               | Anthropic                                 |
+| GET     | `/v1beta/models`                          | Gemini                                    |
+| POST    | `/v1beta/models/{...path}`                | Gemini generateContent                    |
+| POST    | `/v1/api/chat`                            | Ollama                                    |
+| GET     | `/api/v1/vscode/{token}/`                 | ชื่อแทนแค็ตตาล็อก OpenAI                  |
+| GET     | `/api/v1/vscode/{token}/models`           | ชื่อแทนโมเดล OpenAI                       |
+| POST    | `/api/v1/vscode/{token}/chat/completions` | ชื่อแทน OpenAI ที่มีโทเค็นกำกับ           |
+| POST    | `/api/v1/vscode/{token}/responses`        | ชื่อแทน OpenAI Responses ที่มีโทเค็นกำกับ |
+| POST    | `/api/v1/vscode/{token}/api/chat`         | ชื่อแทน Ollama ที่มีโทเค็นกำกับ           |
+| GET     | `/api/v1/vscode/{token}/api/tags`         | ชื่อแทนแท็ก Ollama ที่มีโทเค็นกำกับ       |
 
-เส้นทาง POST ทั้งหมดใช้โครงสร้างเดียวกัน: `Bearer your-api-key` + เนื้อหา JSON ที่ตรวจสอบความถูกต้องด้วย Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` ฯลฯ โปรดดู `src/shared/validation/schemas.ts`) ระบบจะส่งคืน 4xx เมื่อการตรวจสอบสคีมาล้มเหลว
+เส้นทาง POST ทั้งหมดมีรูปแบบเดียวกัน: `Bearer your-api-key` + เนื้อหา JSON ที่ตรวจสอบด้วย Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` ฯลฯ ดูที่ `src/shared/validation/schemas.ts`) หากตรวจสอบสคีมาไม่ผ่าน จะส่งกลับสถานะ 4xx
 
-สำหรับไคลเอนต์ที่ไม่สามารถแนบ `Authorization: Bearer ...` ได้ OmniRoute ยังรองรับคีย์ API ใน URL ผ่านพารามิเตอร์คิวรีเพื่อความเข้ากันได้ (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) หรือผ่านเอนด์พอยต์เฉพาะ `/api/v1/vscode/{token}/...` ที่อธิบายไว้ด้านล่าง
+สำหรับไคลเอ็นต์ที่ไม่สามารถแนบ `Authorization: Bearer ...` ได้ OmniRoute ยังรับ API key ใน URL ได้ผ่าน query string เพื่อรองรับความเข้ากันได้ (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) หรือใช้ปลายทางเฉพาะ `/api/v1/vscode/{token}/...` ที่ระบุไว้ด้านล่าง
 
 ```bash
-# จัดอันดับใหม่ (ผู้ให้บริการในรีจิสทรีคลาวด์ หรือโหนดผู้ให้บริการที่เข้ากันได้กับ OpenAI ในรูปแบบ "<prefix>/<model>")
+# จัดอันดับใหม่ (ผู้ให้บริการจาก cloud registry หรือโหนดผู้ให้บริการที่รองรับ OpenAI โดยใช้รูปแบบ "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# จำแนกประเภทด้วย Jina (ข้อมูลประจำตัวของ Foundation API)
+# Jina classify (ข้อมูลรับรอง Foundation API)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# ตัวแบ่งส่วนของ Jina
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# การค้นหาด้วย Jina (s.jina.ai; นามแฝงผู้ให้บริการ: jina-search, jina-ai, jina)
+# โมเดลการตัดสินใจ (System One) คำนำหน้าของโมเดลตัวแรกจะเลือกการเชื่อมต่อ:
+#   typesafe/jev-latest              -> เชื่อมต่อกับ TypeSafe โดยตรง
+#   openrouter/typesafe/jev-1.13     -> ผ่าน OpenRouter
+#   ollama-local/<model>             -> Ollama ภายในเครื่อง >= 0.35
+# หากใช้ ID ที่ไม่มีคำนำหน้า เช่น jev-latest จะยังคงใช้ OpenRouter ต่อไป SDK ของ TypeSafe ใช้ baseURL = OmniRoute ได้
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # โมเดลจากแบ็กเอนด์ที่กำหนดค่าไว้: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Jina search (s.jina.ai; ชื่อแทนผู้ให้บริการ: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
 # การกลั่นกรอง
@@ -476,43 +486,25 @@ POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 # TTS — ส่งคืนเนื้อหา audio/mpeg (หรือรูปแบบที่ร้องขอ)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS ต้องระบุภาษาและเสียง: `language` มีค่าเริ่มต้นเป็น "en"; หากไม่ระบุ
-# เสียงหรือใช้ชื่อเสียงมาตรฐานของ OpenAI (alloy, nova, …) ระบบจะเปลี่ยนเป็น "Adrian"
+# TTS ของ Soniox ต้องระบุภาษาและเสียง: ค่าเริ่มต้นของ `language` คือ "en"; หากไม่ระบุ
+# เสียง หรือใช้ชื่อเสียงมาตรฐานของ OpenAI (alloy, nova, …) ระบบจะเปลี่ยนเป็น "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
-# แก้ไขภาพ (multipart)
+# แก้ไขรูปภาพ (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# สร้างวิดีโอ / เพลง (รหัสโมเดลที่มีคำนำหน้าผู้ให้บริการ)
+# การสร้างวิดีโอ / เพลง (ID โมเดลที่มีคำนำหน้าผู้ให้บริการ)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **โหนดผู้ให้บริการสำหรับการจัดอันดับใหม่:** `POST /v1/rerank` ยังส่งต่อคำขอไปยังโหนดผู้ให้บริการ
-> ที่เข้ากันได้กับ OpenAI (oMLX, vLLM, Infinity, TEI ที่อยู่หลังเกตเวย์, …) ซึ่งระบุด้วย
-> `<node-prefix>/<model>` โหนดลูปแบ็ก (`localhost`, `127.0.0.1`, `172.16.0.0/12`) ใช้งานได้เสมอ
-> โหนดบนโฮสต์อื่นทั้งหมด ไม่ว่าจะเป็นเครื่องใน LAN หรือเพียร์ Tailscale จะใช้งานได้ต่อเมื่อ
-> ผู้ดำเนินการเปิดใช้แฟล็กฟีเจอร์ `RERANK_REMOTE_PROVIDER_NODES` **และ** URL ฐานของโหนด
-> ผ่านนโยบาย URL ขาออกของผู้ให้บริการ (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` /
-> `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) เท่านั้น ระบบจะไม่ส่งต่อคำขอไปยังโฮสต์ข้อมูลเมตาของคลาวด์
-> ขั้นตอนการจัดอันดับใหม่ของเอนจินหน่วยความจำจะเรียกเส้นทางนี้ผ่านลูปแบ็ก ดังนั้นกฎเดียวกันนี้จึงควบคุม
-> `rerankProviderModel` ในการตั้งค่าหน่วยความจำด้วย
+> **โหนดผู้ให้บริการ Rerank:** `POST /v1/rerank` จะส่งคำขอไปยังโหนดผู้ให้บริการที่รองรับ OpenAI ได้เช่นกัน (oMLX, vLLM, Infinity, TEI ที่อยู่หลังเกตเวย์ ฯลฯ) ซึ่งระบุที่อยู่เป็น `<node-prefix>/<model>` โหนดแบบ loopback (`localhost`, `127.0.0.1`, `172.16.0.0/12`) จะมีสิทธิ์ใช้งานได้เสมอ ส่วนโหนดบนโฮสต์อื่น เช่น เครื่องใน LAN หรือเพียร์ Tailscale จะมีสิทธิ์ใช้งานก็ต่อเมื่อผู้ดูแลระบบเปิดใช้ feature flag `RERANK_REMOTE_PROVIDER_NODES` **และ** URL พื้นฐานของโหนดผ่านนโยบาย URL ขาออกของผู้ให้บริการ (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`) เท่านั้น โดยจะไม่มีการส่งคำขอไปยังโฮสต์ข้อมูลเมตาคลาวด์ ขั้นตอน rerank ของเอนจินหน่วยความจำจะเรียกเส้นทางนี้ผ่าน loopback ดังนั้นกฎเดียวกันนี้จึงใช้กับ `rerankProviderModel` ในการตั้งค่า Memory ด้วย
 >
-> **รูปแบบของเซิร์ฟเวอร์ภายในเครื่อง:** ระบบจะเรียกโหนดที่ `<base>/v1/rerank` และหากได้รับ 404
-> จะเรียกที่ `<base>/rerank` (Infinity, TEI) เนื้อหาคำขอต้นทางจะมีทั้งการสะกดแบบ Cohere/OpenAI
-> (`documents`, `return_documents`) และการสะกดแบบ TEI (`texts`, `return_text`) ส่วนการตอบกลับ
-> จากต้นทางจะถูกปรับให้เป็นเอนเวโลปแบบ Cohere: ทั้งอาร์เรย์เปล่าของ TEI `[{index, score, text}]`,
-> `{results: [{index, score}]}` จากเกตเวย์ขนาดเล็ก และรูปแบบ Voyage `{data: [...]}` จะถูกส่งกลับ
-> ไปยังไคลเอนต์เป็น `{results: [{index, relevance_score, document?}]}` โดยเรียงตามคะแนนและจำกัด
-> จำนวนสูงสุดตาม `top_n`
+> **รูปแบบเซิร์ฟเวอร์ภายในเครื่อง:** ระบบจะเรียกโหนดที่ `<base>/v1/rerank` และเมื่อได้ 404 จะเรียกที่ `<base>/rerank` (Infinity, TEI) เนื้อหาคำขอที่ส่งไปยัง upstream จะมีทั้งชื่อฟิลด์แบบ Cohere/OpenAI (`documents`, `return_documents`) และแบบ TEI (`texts`, `return_text`) ส่วนการตอบกลับจาก upstream จะถูกปรับให้อยู่ในรูปแบบ Cohere: ผลลัพธ์แบบไม่มีโครงห่อของ TEI `[{index, score, text}]`, `{results: [{index, score}]}` จากเกตเวย์แบบบาง และ `{data: [...]}` แบบ Voyage จะถูกส่งกลับไปยังไคลเอนต์เป็น `{results: [{index, relevance_score, document?}]}` โดยเรียงตามคะแนนและจำกัดจำนวนไม่เกิน `top_n`
 
-> **การค้นหาโหนดผู้ให้บริการ:** โมเดลบนโหนดผู้ให้บริการที่เข้ากันได้กับ OpenAI จะปรากฏใน `GET /v1/models`
-> ภายใต้คำนำหน้าของโหนด แถวที่ไม่มีข้อมูลเมตาของเอนด์พอยต์ (ซึ่งพบได้ทั่วไปในรายการ `/v1/models` ภายในเครื่อง)
-> จะสืบทอด `apiType` ของโหนด ดังนั้นโมเดลของโหนด `embeddings` จะมี `type: "embedding"` และ
-> โมเดลของโหนด `rerank` จะมี `type: "rerank"` แทนที่จะใช้ค่าเริ่มต้นเป็นแชต ทั้งนี้ `supportedEndpoints`
-> ที่ระบุไว้อย่างชัดเจนในแถวที่ซิงค์หรือเพิ่มด้วยตนเองยังคงมีลำดับความสำคัญสูงกว่า
+> **การค้นพบโหนดผู้ให้บริการ:** โมเดลบนโหนดผู้ให้บริการที่รองรับ OpenAI จะแสดงใน `GET /v1/models` ภายใต้คำนำหน้าโหนด แถวที่ไม่มีข้อมูลเมตาของ endpoint (ซึ่งพบได้ทั่วไปในรายการ `/v1/models` ภายในเครื่อง) จะรับช่วง `apiType` ของโหนด ดังนั้นโมเดลของโหนด `embeddings` จะมี `type: "embedding"` และโมเดลของโหนด `rerank` จะมี `type: "rerank"` แทนที่จะตั้งค่าเริ่มต้นเป็น chat ทั้งนี้ `supportedEndpoints` ที่ระบุไว้อย่างชัดเจนในแถวที่ซิงก์หรือเพิ่มด้วยตนเองจะยังคงมีลำดับความสำคัญสูงกว่า
 
-### เส้นทางเฉพาะสำหรับผู้ให้บริการ
+### เส้นทางผู้ให้บริการเฉพาะ
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -520,7 +512,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-ระบบจะเพิ่มคำนำหน้าผู้ให้บริการโดยอัตโนมัติหากไม่มี โมเดลที่ไม่ตรงกันจะส่งคืน `400`
+ระบบจะเพิ่มคำนำหน้าผู้ให้บริการให้อัตโนมัติหากไม่มี โมเดลที่ไม่ตรงกันจะส่งกลับ `400`
 
 ---
 

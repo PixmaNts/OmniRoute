@@ -419,7 +419,7 @@ To končno točko uporabite, ko se stranski proces izvaja zunaj glavnega procesa
 
 ---
 
-## Združljive končne točke
+## Združljivostne končne točke
 
 | Metoda | Pot                                       | Oblika                                    |
 | ------ | ----------------------------------------- | ----------------------------------------- |
@@ -428,88 +428,93 @@ To končno točko uporabite, ko se stranski proces izvaja zunaj glavnega procesa
 | POST   | `/v1/responses`                           | OpenAI Responses                          |
 | POST   | `/v1/embeddings`                          | OpenAI                                    |
 | POST   | `/v1/images/generations`                  | OpenAI Images                             |
-| POST   | `/v1/images/edits`                        | OpenAI Images (urejanje/zapolnjevanje)    |
+| POST   | `/v1/images/edits`                        | OpenAI Images (urejanje/slikanje)         |
 | POST   | `/v1/videos/generations`                  | Ustvarjanje videoposnetkov v slogu OpenAI |
 | POST   | `/v1/music/generations`                   | Ustvarjanje glasbe v slogu OpenAI         |
 | POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                        |
 | POST   | `/v1/audio/speech`                        | OpenAI TTS (vrne zvočno telo)             |
-| POST   | `/v1/rerank`                              | Prerazvrščanje v slogu Cohere/Voyage      |
-| POST   | `/v1/classify`                            | Klasifikacija Jina (`api.jina.ai`)        |
-| POST   | `/v1/segment`                             | Segmentator Jina (`segment.jina.ai`)      |
+| POST   | `/v1/rerank`                              | Ponovno razvrščanje v slogu Cohere/Voyage |
+| POST   | `/v1/classify`                            | Jina classify (`api.jina.ai`)             |
+| POST   | `/v1/segment`                             | Jina segmenter (`segment.jina.ai`)        |
+| POST   | `/v1/systemone`                           | Odločitveni modeli (System One)           |
+| GET    | `/v1/systemone/models`                    | Seznam odločitvenih modelov               |
 | POST   | `/v1/moderations`                         | OpenAI Moderations                        |
 | GET    | `/v1/models`                              | OpenAI                                    |
 | POST   | `/v1/messages/count_tokens`               | Anthropic                                 |
 | GET    | `/v1beta/models`                          | Gemini                                    |
 | POST   | `/v1beta/models/{...path}`                | Gemini generateContent                    |
 | POST   | `/v1/api/chat`                            | Ollama                                    |
-| GET    | `/api/v1/vscode/{token}/`                 | Vzdevek kataloga OpenAI                   |
-| GET    | `/api/v1/vscode/{token}/models`           | Vzdevek modelov OpenAI                    |
-| POST   | `/api/v1/vscode/{token}/chat/completions` | Vzdevek OpenAI s tokenom                  |
-| POST   | `/api/v1/vscode/{token}/responses`        | Vzdevek OpenAI Responses s tokenom        |
-| POST   | `/api/v1/vscode/{token}/api/chat`         | Vzdevek Ollama s tokenom                  |
-| GET    | `/api/v1/vscode/{token}/api/tags`         | Vzdevek oznak Ollama s tokenom            |
+| GET    | `/api/v1/vscode/{token}/`                 | Nadomestna pot za katalog OpenAI          |
+| GET    | `/api/v1/vscode/{token}/models`           | Nadomestna pot za modele OpenAI           |
+| POST   | `/api/v1/vscode/{token}/chat/completions` | Nadomestna pot OpenAI z žetonom           |
+| POST   | `/api/v1/vscode/{token}/responses`        | Nadomestna pot OpenAI Responses z žetonom |
+| POST   | `/api/v1/vscode/{token}/api/chat`         | Nadomestna pot Ollama z žetonom           |
+| GET    | `/api/v1/vscode/{token}/api/tags`         | Nadomestna pot Ollama tags z žetonom      |
 
-Vse poti POST imajo enako obliko: `Bearer your-api-key` + telo JSON, preverjeno z Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` itd.; glejte `src/shared/validation/schemas.ts`). Ob neuspešnem preverjanju sheme se vrne 4xx.
+Vse poti POST imajo enako obliko: `Bearer your-api-key` + telo JSON, preverjeno z Zod (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` itd.; glejte `src/shared/validation/schemas.ts`). Ob napaki pri preverjanju sheme se vrne koda 4xx.
 
-Za odjemalce, ki ne morejo priložiti `Authorization: Bearer ...`, OmniRoute sprejema ključe API tudi v URL-ju, bodisi prek združljivostnih parametrov poizvedbenega niza (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) bodisi prek namenskih končnih točk `/api/v1/vscode/{token}/...`, dokumentiranih spodaj.
+Za odjemalce, ki ne morejo dodati glave `Authorization: Bearer ...`, OmniRoute sprejema tudi ključe API v URL-ju, in sicer prek združljivih parametrov poizvedbenega niza (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) ali namenskih končnih točk `/api/v1/vscode/{token}/...`, opisanih spodaj.
 
 ```bash
-# Prerazvrščanje (ponudnik iz registra v oblaku ali vozlišče ponudnika, združljivo z OpenAI, kot "<prefix>/<model>")
+# Ponovno razvrščanje (ponudnik iz registra v oblaku ali vozlišče ponudnika, združljivo z OpenAI, v obliki "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
-# Klasifikacija Jina (poverilnice za Foundation API)
+# Jina classify (poverilnice za Foundation API)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Segmentator Jina
+# Jina segmenter
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# Iskanje Jina (s.jina.ai; vzdevki ponudnika: jina-search, jina-ai, jina)
+# Odločitveni modeli (System One). Predpona prvega modela določa povezavo:
+#   typesafe/jev-latest              -> neposredno prek TypeSafe
+#   openrouter/typesafe/jev-1.13     -> prek OpenRouter
+#   ollama-local/<model>             -> lokalni Ollama >= 0.35
+# Nekvalificiran identifikator, kot je jev-latest, še naprej uporablja OpenRouter. SDK-ji TypeSafe delujejo z baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # modeli konfiguriranih zalednih sistemov: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Jina search (s.jina.ai; vzdevki ponudnika: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
-# Moderiranje
+# Moderacije
 POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 
-# TTS — vrne telo audio/mpeg (ali zahtevano obliko)
+# TTS — vrne telo audio/mpeg (ali zahtevane oblike)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS zahteva jezik in glas: privzeta vrednost za `language` je "en"; manjkajoči
-# glas ali ime standardnega glasu OpenAI (alloy, nova, …) se spremeni v "Adrian"
+# Soniox TTS zahteva jezik in glas: `language` ima privzeto vrednost "en"; če manjka
+# glas ali je navedeno standardno ime glasu OpenAI (alloy, nova, …), se uporabi "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # Urejanje slike (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Ustvarjanje videoposnetkov/glasbe (ID modela s predpono ponudnika)
+# Ustvarjanje videoposnetkov / glasbe (ID modela s predpono ponudnika)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Vozlišča ponudnikov za prerazvrščanje:** `POST /v1/rerank` usmerja zahteve tudi do vozlišč ponudnikov,
-> združljivih z OpenAI (oMLX, vLLM, Infinity, TEI za prehodom, …), ki so naslovljena kot
-> `<node-prefix>/<model>`. Vozlišča povratne zanke (`localhost`, `127.0.0.1`, `172.16.0.0/12`)
-> so vedno primerna. Vozlišča na katerem koli drugem gostitelju — napravi v omrežju LAN ali vrstniku
-> Tailscale — so primerna samo, ko upravljavec omogoči zastavico funkcije
-> `RERANK_REMOTE_PROVIDER_NODES` **in** osnovni URL vozlišča izpolnjuje pravilnik ponudnika za
-> odhodne URL-je (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> zahteve se nikoli ne usmerjajo do gostiteljev metapodatkov v oblaku. Korak prerazvrščanja mehanizma
-> pomnilnika kliče to pot prek povratne zanke, zato isto pravilo ureja `rerankProviderModel`
-> v nastavitvah pomnilnika.
+> **Ponovno razvrščanje vozlišč ponudnikov:** `POST /v1/rerank` usmerja tudi na vozlišča ponudnikov, združljiva z OpenAI
+> (oMLX, vLLM, Infinity, TEI za prehodom, …), ki so naslovljena kot `<node-prefix>/<model>`. Vozlišča povratne zanke
+> (`localhost`, `127.0.0.1`, `172.16.0.0/12`) so vedno primerna. Vozlišča na vseh drugih
+> gostiteljih — računalnik v lokalnem omrežju ali vrstnik Tailscale — so primerna samo, če upravljavec omogoči
+> zastavico funkcije `RERANK_REMOTE_PROVIDER_NODES` **in** osnovni URL vozlišča ustreza pravilom za odhodne URL-je ponudnikov
+> (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); na gostitelje z metapodatki oblaka se zahteve nikoli ne usmerjajo. Korak ponovnega razvrščanja mehanizma pomnilnika kliče to pot prek
+> povratne zanke, zato isto pravilo velja za `rerankProviderModel` v nastavitvah pomnilnika.
 >
-> **Oblike lokalnih strežnikov:** vozlišče se pokliče na `<base>/v1/rerank`, ob odgovoru 404 pa na
-> `<base>/rerank` (Infinity, TEI). Telo zahteve nadrejenemu strežniku vsebuje tako zapis
-> Cohere/OpenAI (`documents`, `return_documents`) kot zapis TEI (`texts`, `return_text`), odgovor
-> nadrejenega strežnika pa se normalizira v ovojnico Cohere: goli odgovor TEI
-> `[{index, score, text}]`, `{results: [{index, score}]}` iz preprostih prehodov in odgovor
-> v slogu Voyage `{data: [...]}` se odjemalcu vrnejo kot
+> **Oblike lokalnih strežnikov:** vozlišče se pokliče na `<base>/v1/rerank`, ob odgovoru 404 pa na `<base>/rerank`
+> (Infinity, TEI). Telo zahteve za ponudnika navzgor vsebuje zapis za Cohere/OpenAI (`documents`,
+> `return_documents`) in zapis za TEI (`texts`, `return_text`), odgovor ponudnika navzgor pa se
+> normalizira v ovojnico Cohere: goli odgovor TEI `[{index, score, text}]`, `{results: [{index, score}]}`
+> iz preprostih prehodov in odgovori v slogu Voyage `{data: [...]}` se odjemalcu vrnejo kot
 > `{results: [{index, relevance_score, document?}]}`, razvrščeni po oceni in omejeni na `top_n`.
 
-> **Odkrivanje vozlišč ponudnika:** modeli v vozlišču ponudnika, združljivem z OpenAI, so prikazani v `GET /v1/models`
-> pod predpono vozlišča. Vrstice brez metapodatkov o končni točki (kar je značilno za lokalne sezname `/v1/models`)
-> podedujejo `apiType` vozlišča, zato imajo modeli vozlišča `embeddings` vrednost `type: "embedding"`, modeli
-> vozlišča `rerank` pa vrednost `type: "rerank"`, namesto da bi bila privzeto uporabljena vrsta klepeta; izrecno podani
-> `supportedEndpoints` v sinhronizirani ali ročno dodani vrstici imajo še vedno prednost.
+> **Odkrivanje vozlišč ponudnikov:** modeli na vozlišču ponudnika, združljivem z OpenAI, so v `GET /v1/models`
+> prikazani pod predpono vozlišča. Vrstice brez metapodatkov o končnih točkah (kar je običajno pri lokalnih seznamih `/v1/models`)
+> podedujejo `apiType` vozlišča, zato so modeli vozlišča `embeddings` označeni kot `type: "embedding"`, modeli vozlišča
+> `rerank` pa kot `type: "rerank"` namesto privzetega tipa `chat`; izrecno naveden `supportedEndpoints` v sinhronizirani ali ročno dodani vrstici ima še vedno prednost.
 
-### Namenske poti ponudnika
+### Namenske poti ponudnikov
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -517,7 +522,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-Predpona ponudnika se samodejno doda, če manjka. Neujemajoči se modeli vrnejo `400`.
+Predpona ponudnika se doda samodejno, če manjka. Neujemajoči se modeli vrnejo `400`.
 
 ---
 

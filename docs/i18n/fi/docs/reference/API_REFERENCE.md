@@ -435,49 +435,59 @@ Käytä tätä päätepistettä, kun rinnakkaisprosessi suoritetaan pääprosess
 
 ## Yhteensopivuuspäätepisteet
 
-| Metodi | Polku                                     | Muoto                                      |
-| ------ | ----------------------------------------- | ------------------------------------------ |
-| POST   | `/v1/chat/completions`                    | OpenAI                                     |
-| POST   | `/v1/messages`                            | Anthropic                                  |
-| POST   | `/v1/responses`                           | OpenAI Responses                           |
-| POST   | `/v1/embeddings`                          | OpenAI                                     |
-| POST   | `/v1/images/generations`                  | OpenAI Images                              |
-| POST   | `/v1/images/edits`                        | OpenAI Images (muokkaus/täyttö)            |
-| POST   | `/v1/videos/generations`                  | OpenAI-tyylinen videogenerointi            |
-| POST   | `/v1/music/generations`                   | OpenAI-tyylinen musiikkigenerointi         |
-| POST   | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                         |
-| POST   | `/v1/audio/speech`                        | OpenAI TTS (palauttaa äänisisällön)        |
-| POST   | `/v1/rerank`                              | Cohere/Voyage-tyylinen uudelleenjärjestely |
-| POST   | `/v1/classify`                            | Jina-luokittelu (`api.jina.ai`)            |
-| POST   | `/v1/segment`                             | Jina-segmentoija (`segment.jina.ai`)       |
-| POST   | `/v1/moderations`                         | OpenAI Moderations                         |
-| GET    | `/v1/models`                              | OpenAI                                     |
-| POST   | `/v1/messages/count_tokens`               | Anthropic                                  |
-| GET    | `/v1beta/models`                          | Gemini                                     |
-| POST   | `/v1beta/models/{...path}`                | Gemini generateContent                     |
-| POST   | `/v1/api/chat`                            | Ollama                                     |
-| GET    | `/api/v1/vscode/{token}/`                 | OpenAI-luettelon alias                     |
-| GET    | `/api/v1/vscode/{token}/models`           | OpenAI-mallien alias                       |
-| POST   | `/api/v1/vscode/{token}/chat/completions` | OpenAI:n tokenisoitu alias                 |
-| POST   | `/api/v1/vscode/{token}/responses`        | OpenAI Responsesin tokenisoitu alias       |
-| POST   | `/api/v1/vscode/{token}/api/chat`         | Ollaman tokenisoitu alias                  |
-| GET    | `/api/v1/vscode/{token}/api/tags`         | Ollama-tunnisteiden tokenisoitu alias      |
+| Menetelmä | Polku                                     | Muoto                                     |
+| --------- | ----------------------------------------- | ----------------------------------------- |
+| POST      | `/v1/chat/completions`                    | OpenAI                                    |
+| POST      | `/v1/messages`                            | Anthropic                                 |
+| POST      | `/v1/responses`                           | OpenAI Responses                          |
+| POST      | `/v1/embeddings`                          | OpenAI                                    |
+| POST      | `/v1/images/generations`                  | OpenAI Images                             |
+| POST      | `/v1/images/edits`                        | OpenAI Images (muokkaus/inpaint)          |
+| POST      | `/v1/videos/generations`                  | OpenAI-tyylinen videon luonti             |
+| POST      | `/v1/music/generations`                   | OpenAI-tyylinen musiikin luonti           |
+| POST      | `/v1/audio/transcriptions`                | OpenAI Audio (STT)                        |
+| POST      | `/v1/audio/speech`                        | OpenAI TTS (palauttaa äänisisällön)       |
+| POST      | `/v1/rerank`                              | Cohere/Voyage-tyylinen uudelleenjärjestys |
+| POST      | `/v1/classify`                            | Jina-luokittelu (`api.jina.ai`)           |
+| POST      | `/v1/segment`                             | Jina-segmentointi (`segment.jina.ai`)     |
+| POST      | `/v1/systemone`                           | Päätösmallit (System One)                 |
+| GET       | `/v1/systemone/models`                    | Päätösmallien luettelo                    |
+| POST      | `/v1/moderations`                         | OpenAI Moderations                        |
+| GET       | `/v1/models`                              | OpenAI                                    |
+| POST      | `/v1/messages/count_tokens`               | Anthropic                                 |
+| GET       | `/v1beta/models`                          | Gemini                                    |
+| POST      | `/v1beta/models/{...path}`                | Gemini generateContent                    |
+| POST      | `/v1/api/chat`                            | Ollama                                    |
+| GET       | `/api/v1/vscode/{token}/`                 | OpenAI-luettelon alias                    |
+| GET       | `/api/v1/vscode/{token}/models`           | OpenAI-mallien alias                      |
+| POST      | `/api/v1/vscode/{token}/chat/completions` | OpenAI-tokenisoitu alias                  |
+| POST      | `/api/v1/vscode/{token}/responses`        | OpenAI Responses -tokenisoitu alias       |
+| POST      | `/api/v1/vscode/{token}/api/chat`         | Ollama-tokenisoitu alias                  |
+| GET       | `/api/v1/vscode/{token}/api/tags`         | Ollama-tunnisteiden tokenisoitu alias     |
 
-Kaikki POST-reitit noudattavat samaa rakennetta: `Bearer your-api-key` + Zod-validoitu JSON-runko (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` jne.; katso `src/shared/validation/schemas.ts`). Skeeman validoinnin epäonnistuessa palautetaan 4xx.
+Kaikki POST-reitit noudattavat samaa muotoa: `Bearer your-api-key` + Zod-validoitu JSON-pyyntörunko (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema` jne.; katso `src/shared/validation/schemas.ts`). Skeeman virheestä palautetaan 4xx-vastaus.
 
-Asiakkaille, jotka eivät voi liittää `Authorization: Bearer ...` -otsaketta, OmniRoute hyväksyy API-avaimet myös URL-osoitteessa joko yhteensopivuuskyselyparametreina (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) tai alla dokumentoitujen erillisten `/api/v1/vscode/{token}/...`-päätepisteiden kautta.
+Asiakkaille, jotka eivät voi liittää pyyntöön `Authorization: Bearer ...` -otsaketta, OmniRoute hyväksyy API-avaimet myös URL-osoitteessa joko yhteensopivuutta varten tuetulla kyselymerkkijonolla (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) tai alla dokumentoiduissa omissa `/api/v1/vscode/{token}/...`-päätepisteissä.
 
 ```bash
-# Uudelleenjärjestely (pilvirekisteripalveluntarjoaja tai OpenAI-yhteensopiva palveluntarjoajasolmu muodossa "<prefix>/<model>")
+# Uudelleenjärjestys (pilvirekisterin tarjoaja tai OpenAI-yhteensopiva tarjoajasolmu muodossa "<prefix>/<model>")
 POST /v1/rerank      { "model": "jina-ai/jina-reranker-v3.5", "query": "...", "documents": ["..."] }
 
 # Jina-luokittelu (Foundation API -tunnistetiedot)
 POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."], "labels": ["a", "b"] }
 
-# Jina-segmentoija
+# Jina-segmentointi
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
-# Jina-haku (s.jina.ai; palveluntarjoaja-aliakset: jina-search, jina-ai, jina)
+# Päätösmallit (System One). Ensimmäinen mallin etuliite valitsee yhteyden:
+#   typesafe/jev-latest              -> suoraan TypeSafe-palveluun
+#   openrouter/typesafe/jev-1.13     -> OpenRouterin kautta
+#   ollama-local/<model>             -> paikallinen Ollama >= 0.35
+# Etuliitteetön tunnus, kuten jev-latest, käyttää edelleen OpenRouteria. TypeSafe SDK:t toimivat, kun baseURL = OmniRoute.
+POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
+GET  /v1/systemone/models   # määritettyjen taustapalvelujen mallit: { object: "list", data: [{ id, name, pricing, ... }] }
+
+# Jina-haku (s.jina.ai; tarjoajien aliakset: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }
 
 # Moderointi
@@ -486,41 +496,38 @@ POST /v1/moderations { "model": "omni-moderation-latest", "input": "..." }
 # TTS — palauttaa audio/mpeg-sisällön (tai pyydetyn muodon)
 POST /v1/audio/speech { "model": "openai/tts-1", "input": "Hello", "voice": "alloy" }
 
-# Soniox TTS edellyttää kieltä ja ääntä: `language`-kentän oletusarvo on "en"; puuttuva
-# ääni tai OpenAI:n vakioäänen nimi (alloy, nova, …) korvataan arvolla "Adrian"
+# Soniox TTS edellyttää kieltä ja ääntä: `language`-oletusarvo on "en"; jos ääni puuttuu
+# tai käytössä on OpenAI:n oletusäänen nimi (alloy, nova, …), ääneksi tulee "Adrian"
 POST /v1/audio/speech { "model": "soniox/tts-rt-v1", "input": "Xin chào", "voice": "Adrian", "language": "vi" }
 
 # Kuvan muokkaus (multipart)
 POST /v1/images/edits  -F image=@input.png -F prompt="..." -F mask=@mask.png
 
-# Videon/musiikin generointi (palveluntarjoajan etuliitteellä varustettu mallitunnus)
+# Videon / musiikin luonti (tarjoajan etuliitteellä varustettu mallin tunnus)
 POST /v1/videos/generations { "model": "runway/gen-3", "prompt": "..." }
 POST /v1/music/generations  { "model": "kie/suno-v4.0",   "prompt": "..." }
 ```
 
-> **Uudelleenjärjestelyn palveluntarjoajasolmut:** `POST /v1/rerank` reitittää pyynnöt myös OpenAI-yhteensopiviin palveluntarjoajasolmuihin
-> (oMLX, vLLM, Infinity, yhdyskäytävän takana oleva TEI, …), joihin viitataan muodossa `<node-prefix>/<model>`. Loopback-
-> solmut (`localhost`, `127.0.0.1`, `172.16.0.0/12`) ovat aina käytettävissä. Millä tahansa muulla
-> isännällä sijaitsevat solmut — lähiverkon laite tai Tailscale-vertaislaite — ovat käytettävissä vain, kun operaattori ottaa käyttöön
-> `RERANK_REMOTE_PROVIDER_NODES`-ominaisuuslipun **ja** solmun perus-URL läpäisee palveluntarjoajan
-> lähtevien URL-osoitteiden käytännön (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`);
-> pilven metatietoisäntiin ei koskaan reititetä. Muistimoottorin uudelleenjärjestelyvaihe kutsuu tätä reittiä
-> loopback-yhteyden kautta, joten sama sääntö koskee Muisti-asetusten `rerankProviderModel`-arvoa.
+> **Järjestä palveluntarjoajasolmut uudelleen:** `POST /v1/rerank` reitittää pyynnöt myös OpenAI-yhteensopiviin palveluntarjoajasolmuihin
+> (oMLX, vLLM, Infinity, yhdyskäytävän takana oleva TEI, …), joiden osoite on `<node-prefix>/<model>`. Loopback-solmut (`localhost`, `127.0.0.1`, `172.16.0.0/12`) ovat aina kelvollisia. Solmut missä tahansa muussa
+> isäntäkoneessa — lähiverkon koneessa tai Tailscale-vertaisessa — ovat kelvollisia vain, kun ylläpitäjä ottaa käyttöön
+> `RERANK_REMOTE_PROVIDER_NODES`-ominaisuuslipun **ja** solmun perus-URL läpäisee palveluntarjoajien lähtevien
+> URL-osoitteiden käytännön (`OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS` / `OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS`); pilvipalveluiden metatietoisäntiin ei koskaan reititetä. Muistimoottorin uudelleenjärjestelyvaihe kutsuu tätä reittiä loopbackin kautta, joten sama sääntö koskee Memory-asetusten `rerankProviderModel`-arvoa.
 >
-> **Paikallisten palvelinten rakenteet:** solmua kutsutaan osoitteessa `<base>/v1/rerank` ja 404-vastauksen tapauksessa osoitteessa `<base>/rerank`
-> (Infinity, TEI). Ylävirtaan lähetettävä runko sisältää sekä Cohere/OpenAI-kirjoitusasun (`documents`,
-> `return_documents`) että TEI-kirjoitusasun (`texts`, `return_text`), ja ylävirran vastaus
-> normalisoidaan Cohere-kuoreen: TEI:n paljas `[{index, score, text}]`, ohuiden yhdyskäytävien
-> `{results: [{index, score}]}` ja Voyage-tyylinen `{data: [...]}` palautetaan kaikki asiakkaalle muodossa
-> `{results: [{index, relevance_score, document?}]}`, pistemäärän mukaan järjestettynä ja enintään `top_n` tulokseen rajattuna.
+> **Paikallisten palvelinten muodot:** solmua kutsutaan osoitteessa `<base>/v1/rerank` ja 404-virheen sattuessa osoitteessa `<base>/rerank`
+> (Infinity, TEI). Ylävirtaan lähetettävä runko sisältää sekä Cohere/OpenAI-muodon (`documents`,
+> `return_documents`) että TEI-muodon (`texts`, `return_text`), ja ylävirran vastaus
+> normalisoidaan Cohere-kääreeseen: TEI:n paljas `[{index, score, text}]`, ohuiden yhdyskäytävien `{results: [{index, score}]}`
+> ja Voyage-tyylinen `{data: [...]}` palautuvat asiakkaalle muodossa
+> `{results: [{index, relevance_score, document?}]}`, pisteiden mukaan lajiteltuina ja `top_n`-arvolla rajattuina.
 
-> **Palvelinsolmujen haku:** OpenAI-yhteensopivan palvelinsolmun mallit näkyvät `GET /v1/models` -vastauksessa
-> solmun etuliitteen alla. Rivit, joissa ei ole päätepisteiden metatietoja (tyypillistä paikallisissa `/v1/models`-listauksissa),
-> perivät solmun `apiType`-arvon, joten `embeddings`-solmun mallien `type` on `"embedding"` ja
-> `rerank`-solmun mallien `type` on `"rerank"` sen sijaan, että oletusarvona olisi chat; synkronoidulla tai manuaalisesti lisätyllä rivillä eksplisiittisesti määritetty
-> `supportedEndpoints` on silti ensisijainen.
+> **Palveluntarjoajasolmujen mallien haku:** OpenAI-yhteensopivan palveluntarjoajasolmun mallit näkyvät reitillä `GET /v1/models`
+> solmun etuliitteen alla. Rivien, joissa ei ole päätepisteen metatietoja (tavallista paikallisissa `/v1/models`-luetteloissa),
+> `apiType` periytyy solmulta, joten `embeddings`-solmun mallien `type` on `"embedding"` ja
+> `rerank`-solmun mallien `"rerank"` sen sijaan, että niiden oletusarvoksi tulisi chat; synkronoidulle tai manuaalisesti lisätylle riville nimenomaisesti määritetty
+> `supportedEndpoints` on silti etusijalla.
 
-### Palvelinkohtaiset reitit
+### Palveluntarjoajien erilliset reitit
 
 ```bash
 POST /v1/providers/{provider}/chat/completions
@@ -528,7 +535,7 @@ POST /v1/providers/{provider}/embeddings
 POST /v1/providers/{provider}/images/generations
 ```
 
-Palvelimen etuliite lisätään automaattisesti, jos se puuttuu. Yhteensopimattomat mallit palauttavat tilakoodin `400`.
+Palveluntarjoajan etuliite lisätään automaattisesti, jos se puuttuu. Malliristiriidat palauttavat `400`.
 
 ---
 

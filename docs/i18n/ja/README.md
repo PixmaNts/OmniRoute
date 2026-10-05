@@ -6,14 +6,14 @@
 
 <div align="center">
 
-<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute Dashboard" width="820"/>
+<img src="./docs/screenshots/MainOmniRoute.png" alt="OmniRoute ダッシュボード" width="820"/>
 
 <br/>
 <br/>
 
 # 🚀 OmniRoute — 無料のAIゲートウェイ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Never stop coding. Every AI tool → 358 providers — 150+ free — through one endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity into FREE Claude / GPT / Gemini with auto-fallback. RTK + Caveman stacked compression saves 15–95% tokens (~89% avg) — never hit limits. 358 AI providers · 150+ free tiers · ~1.62B free tokens/mo · 19 routing strategies · $0 to start."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — コーディングを止めない。あらゆるAIツールを、1つのエンドポイント経由で359のプロバイダー（無料プラン150以上）へ接続。Claude Code、Codex、Cursor、Cline、Copilot、Antigravityから、無料のClaude / GPT / Geminiへ自動フォールバック付きで接続。RTK + Cavemanを組み合わせた圧縮でトークンを15～95%節約（平均約89%）し、制限に達することはありません。AIプロバイダー359社 · 無料プラン150以上 · 無料トークン月間約16.2億 · ルーティング戦略19種類 · 初期費用0ドル。"/>
 
 </div>
 
@@ -214,47 +214,47 @@
 
 <div align="center">
 
-## 🆓 インストール後すぐに動作 — キーも設定も不要
+## 🆓 インストールした瞬間から使えます — キーも設定も不要
 
 </div>
 
-<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="インストール後すぐに動作 — 設定不要。3つのステップ：1. インストール — npm i -g omniroute、サーバーはlocalhost:20128で起動します。2. ツールをhttp://localhost:20128/v1にポイントします — OpenAI互換ツール（Claude Code、Cursor、Cline）なら何でも。3. 応答します — APIキー、サインアップ、設定なしで、即座に返信を得るためにモデルautoを呼び出します。キーレスプロバイダーOpenCode Freeはautoコンボに事前に配線されているため、新規インストールで箱から出してすぐに応答します。"/>
+<img src="./docs/diagrams/works-zero-config.svg" width="100%" alt="インストールした瞬間から使えます — 設定不要。3つのステップ: 1. インストール — npm i -g omniroute を実行すると、サーバーが localhost:20128 で起動します。2. ツールの接続先を http://localhost:20128/v1 に設定 — Claude Code、Cursor、Cline など、OpenAI 互換のツールなら何でも使えます。3. すぐに応答 — モデル auto を呼び出せば、API キーもサインアップも設定も不要で、すぐに応答が返ります。キー不要のプロバイダー OpenCode Free は auto の組み合わせにあらかじめ設定されているため、新規インストールした状態ですぐに応答します。"/>
 
 ```bash
-# 新規インストール、認証情報ゼロ — `auto`はすでに動作します：
+# 新規インストール、認証情報不要 — `auto` はすぐに使えます:
 curl http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"auto","messages":[{"role":"user","content":"Hello!"}]}'
 ```
 
-<sub>特定の無料バックエンドをご希望ですか？`oc/…` (OpenCode Free) を直接呼び出してください。その後、`auto`に移行してOmniRouteに選択させましょう。</sub>
+<sub>特定の無料バックエンドを使いたい場合は、`oc/…`（OpenCode Free）を直接呼び出してください。その後は `auto` に切り替えて、OmniRoute に選択を任せましょう。</sub>
 
-<sub>📦 **Python、Node.js、PHP、cURL** のクイックスタートスクリプトをコピー＆ペースト → [`examples/quickstart/`](examples/quickstart/)</sub>
+<sub>📦 **Python、Node.js、PHP、cURL** 用のクイックスタートスクリプトをコピーして実行 → [`examples/quickstart/`](examples/quickstart/)</sub>
 
 <br/>
 
 <div align="center">
 
-# 💥 約束
+# 💥 OmniRoute が約束すること
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="約束 — 1つのエンドポイントと358のプロバイダー。自動フォールバックにより、健全なターゲットが利用可能な限りルーティングを維持します。6つの柱：358のプロバイダーにわたる回復力のあるフォールバック · 対象となるワークロードで最大95%のトークン節約 · 150以上の無料ティアと54の定期/キーレス永久無料プロバイダーで$0から開始 · 1つの設定で36のCLI/エージェント統合 · /v1でのOpenAI、Claude、GeminiおよびResponses API互換性 · サーキットブレーカー、TLSステルス、MCP 110ツール、A2A、メモリ、ガードレール、評価、5,100以上の追跡されたテストファイルにわたる39,000以上の静的テスト宣言を含む本番環境制御。"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute が約束すること — 1つのエンドポイントで359のプロバイダーを利用できます。正常な接続先がある限り、自動フォールバックでルーティングを継続します。6つの柱: 359のプロバイダーをまたぐ堅牢なフォールバック · 対象ワークロードでトークンを最大95%削減 · 150以上の無料プランと、継続利用可能でキー不要の永久無料プロバイダー54社により、$0から利用開始 · 1つの設定で36のCLI/エージェントと連携 · /v1 で OpenAI、Claude、Gemini、Responses API と互換 · サーキットブレーカー、TLS stealth、110種類のMCPツール、A2A、メモリ、ガードレール、評価機能、5,100件以上の追跡対象テストファイルにわたる39,000件以上の静的テスト宣言など、本番環境向けの制御機能。"/>
 
 <br/>
 <br/>
 
 <div align="center">
 
-# 🤔 なぜOmniRouteなのか？
+# 🤔 なぜ OmniRoute なのか？
 
 </div>
 
-<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="なぜOmniRouteなのか — 10個のダッシュボード、期限切れのAPIキー、予期せぬ請求に悩まされるのをやめましょう。10の日常的な問題と解決策：未使用のクォータが期限切れになる → サブスクリプションを最大化；コーディング中にレート制限 → 4層自動フォールバック（サブスクリプション → API → 安価 → 無料）；ツール出力がトークンを消費 → RTK + Caveman圧縮（15～95%）；高価なAPI → コスト最適化ルーティング；すべてのツールに独自のセットアップ → 1つのエンドポイント、1つのダッシュボード；AIがブロックされる → 3レベルプロキシ + TLSステルス；期限切れのキー → 3層レジリエンス（サーキットブレーカー、キークールダウン、モデルロックアウト）；チームで1つのサブスクリプションを共有 → 公平なクォータを持つキープール；誰かのクラウドを介したプロンプト → AES-256-GCM暗号化キーによるローカルファースト；支出の可視性なし → ライブ分析（使用量、クォータ、節約、p95レイテンシ）。"/>
+<img src="./docs/diagrams/why-pain-fix.svg" width="100%" alt="なぜ OmniRoute なのか — 10個ものダッシュボード、無効なAPIキー、予想外の請求額に振り回されるのはもう終わり。日々の10の悩みと解決策: 使わないまま期限切れになる利用枠 → サブスクリプションを最大限に活用; コーディング中のレート制限 → 4段階の自動フォールバック（サブスクリプション → API → 低コスト → 無料）; ツール出力でトークンを浪費 → RTK + Caveman による圧縮（15〜95%）; 高額なAPI → コスト最適化ルーティング; ツールごとに個別の設定が必要 → 1つのエンドポイント、1つのダッシュボード; AIへのアクセスがブロックされる → 3段階プロキシ + TLS stealth; 無効なキー → 3層のレジリエンス（サーキットブレーカー、キーのクールダウン、モデルのロックアウト）; チームで1つのサブスクリプションを共有 → 公平な割り当て枠を備えたキーのプール; 誰かのクラウド経由でプロンプトを送信 → ローカル優先とAES-256-GCM暗号化キー; 利用額が見えない → リアルタイム分析（使用量、利用枠、節約額、p95レイテンシ）。"/>
 
 <div align="center">
 
-<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRouteリクエストフロー：IDEまたはCLI（Claude Code、Cursor、Clineなど）が1つのローカルエンドポイント（http://localhost:20128/v1）を呼び出します。OmniRouteスマートルーター（RTK + Caveman圧縮、19のルーティング戦略、サーキットブレーカー、TLSステルス、MCP、A2A、ガードレール）は、適格な健全なターゲットが残っている限り、4つのプロバイダーティア（ティア1サブスクリプション、ティア2 APIキー、ティア3安価、ティア4無料）にフォールバックできます。"/>
+<img src="./docs/diagrams/tier-cascade.svg" width="100%" alt="OmniRoute のリクエストフロー: IDEまたはCLI（Claude Code、Cursor、Cline…）から1つのローカルエンドポイント（http://localhost:20128/v1）を呼び出します。OmniRoute Smart Router（RTK + Caveman 圧縮、19種類のルーティング戦略、サーキットブレーカー、TLS stealth、MCP、A2A、ガードレール）は、正常で利用可能な対象がある限り、4つのプロバイダー階層をまたいでフォールバックできます — Tier 1 サブスクリプション、Tier 2 APIキー、Tier 3 低コスト、Tier 4 無料。"/>
 
 </div>
 
@@ -488,13 +488,13 @@ curl http://localhost:20128/v1/chat/completions \
 
 <div align="center">
 
-## 🏆 OmniRoute の特徴
+## 🏆 OmniRouteの特長
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute の特徴 — 9router、OpenRouter、CLIProxyAPI、LiteLLM との13の機能における最新の機能スナップショット。OmniRoute: 358のプロバイダー、150以上の無料ティアを内蔵、19のルーティング戦略、12エンジンのトークン圧縮、110のツールを備えた内蔵MCPサーバー、A2Aエージェントプロトコル、永続メモリ、ガードレール、クラウドエージェント、TLSフィンガープリントステルス、デスクトップ/Termux/PWA、42のi18n UIロケール。OmniRoute は MIT ライセンスで自己ホスト可能です。競合の機能と数は変更される可能性があります。リンクされた方法論を参照してください。"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRouteの特長 — 9router、OpenRouter、CLIProxyAPI、LiteLLMと13の機能を比較した、日付入りのスナップショット。OmniRoute：359のプロバイダー、標準搭載の150以上の無料プラン、19のルーティング戦略、12エンジンによるトークン圧縮、110のツールを備えた組み込みMCPサーバー、A2Aエージェントプロトコル、永続メモリ、ガードレール、クラウドエージェント、TLSフィンガープリントによるステルス機能、Desktop/Termux/PWA、42のUIロケール。OmniRouteはMITライセンスで、セルフホストが可能です。競合製品の機能や数は変更される場合があります。リンク先の方法論をご覧ください。"/>
 
-<sub>📊 9router、OpenRouter、CLIProxyAPI、LiteLLM との比較における完全な方法論と機能ごとの詳細 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 9router、OpenRouter、CLIProxyAPI、LiteLLMとの比較に関する詳しい方法論と機能別の詳細 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 
