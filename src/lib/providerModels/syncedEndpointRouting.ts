@@ -1,5 +1,9 @@
 import { getAllCustomModels, getSyncedAvailableModelsByConnection } from "@/lib/db/models";
-import { isSelfHostedChatProvider, resolveProviderId } from "@/shared/constants/providers";
+import {
+  isOpenAICompatibleProvider,
+  isSelfHostedChatProvider,
+  resolveProviderId,
+} from "@/shared/constants/providers";
 
 export type LocalSyncedEndpointRoute = {
   provider: string;
@@ -16,7 +20,14 @@ export async function resolveLocalSyncedEndpointRoute(
 
   const providerPrefix = modelStr.slice(0, slashIndex);
   const provider = resolveProviderId(providerPrefix);
-  if (!isSelfHostedChatProvider(provider)) return null;
+  // #14989: a user-defined openai-compatible node (internal id
+  // "openai-compatible-…") can sync image models too; the per-model
+  // supportedEndpoints check below still gates which connections qualify.
+  // Scoped to images so embeddings routing is unchanged.
+  const allowed =
+    isSelfHostedChatProvider(provider) ||
+    (endpoint === "images" && isOpenAICompatibleProvider(provider));
+  if (!allowed) return null;
 
   const rawSuffix = modelStr.slice(slashIndex + 1);
   // Some self-hosted servers (llama.cpp included) report models by absolute
