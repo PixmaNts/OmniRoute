@@ -200,8 +200,9 @@ test("shared set size includes live REGISTRY and retired Designer + Felo + Qwen 
   // Reconciled 2026-09-23: #14468 (suno retirement) landed on the tip first, which already
   // measured 413 there; with gemini-business also retired on top of it the live set is 412
   // (413 -> 412). Measured, not hand-derived: RESERVED_PROVIDER_PREFIXES.size on this head.
-  // Native TypeSafe adds one identical id/alias to the reserved set (2026-10-05).
-  assert.equal(RESERVED_PREFIX_COUNT, 413);
+  // Native TypeSafe adds one identical id/alias to the reserved set. Measured 2026-10-07 on
+  // this head: the release/v3.8.52 tip's live set is 413, +1 typesafe — 414.
+  assert.equal(RESERVED_PREFIX_COUNT, 414);
 });
 
 test("isReservedProviderPrefix rejects non-string input", () => {
