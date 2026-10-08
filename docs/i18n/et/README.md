@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — tasuta AI-lüüs
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ära lõpeta kunagi kodeerimist. Kõik AI-tööriistad → 359 teenusepakkujat — neist 150+ tasuta — ühe lõpp-punkti kaudu. Claude Code, Codex, Cursor, Cline, Copilot ja Antigravity ühenduvad TASUTA Claude'i / GPT / Gemini teenustega automaatse varuühenduse kaudu. RTK ja Cavemani virnastatud tihendus säästab 15–95% tokeneid (keskmiselt ~89%) — limiidid ei saa kunagi täis. 359 AI-teenusepakkujat · 150+ tasuta paketti · ~1,62B tasuta tokenit kuus · 19 marsruutimisstrateegiat · alustamine maksab 0 $."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ära lõpeta kunagi kodeerimist. Kõik AI-tööriistad → 358 teenusepakkujat — neist 150+ tasuta — ühe lõpp-punkti kaudu. Claude Code, Codex, Cursor, Cline, Copilot ja Antigravity ühenduvad TASUTA Claude'i / GPT / Gemini teenustega automaatse varuühenduse kaudu. RTK ja Cavemani virnastatud tihendus säästab 15–95% tokeneid (keskmiselt ~89%) — limiidid ei saa kunagi täis. 358 AI-teenusepakkujat · 150+ tasuta paketti · ~1,62B tasuta tokenit kuus · 19 marsruutimisstrateegiat · alustamine maksab 0 $."/>
 
 </div>
 
@@ -240,7 +240,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Lubadus — üks lõpp-punkt ja 359 teenusepakkujat. Automaatne varuvalik hoiab suunamise töös, kui saadaval on veel mõni terve sihtmärk. Kuus alustala: vastupidav varuvalik 359 teenusepakkuja vahel · kuni 95% tokenite kokkuhoidu sobilike töökoormuste puhul · alusta 0 dollariga, saadaval on üle 150 tasuta paketi ja 54 korduvat/võtmeta, igavesti tasuta teenusepakkujat · 36 CLI-/agendiliidest ühe seadistuse kaudu · OpenAI, Claude'i, Gemini ja Responses API ühilduvus aadressil /v1 · tootmiskeskkonna juhtelemendid, sealhulgas kaitselülitid, TLS-i varjamine, MCP 110 tööriista, A2A, mälu, kaitsepiirded, hindamised ning üle 39 000 staatilise testi deklaratsiooni enam kui 5100 jälgitavas testifailis."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Lubadus — üks lõpp-punkt ja 358 teenusepakkujat. Automaatne varuvalik hoiab suunamise töös, kui saadaval on veel mõni terve sihtmärk. Kuus alustala: vastupidav varuvalik 358 teenusepakkuja vahel · kuni 95% tokenite kokkuhoidu sobilike töökoormuste puhul · alusta 0 dollariga, saadaval on üle 150 tasuta paketi ja 54 korduvat/võtmeta, igavesti tasuta teenusepakkujat · 36 CLI-/agendiliidest ühe seadistuse kaudu · OpenAI, Claude'i, Gemini ja Responses API ühilduvus aadressil /v1 · tootmiskeskkonna juhtelemendid, sealhulgas kaitselülitid, TLS-i varjamine, MCP 110 tööriista, A2A, mälu, kaitsepiirded, hindamised ning üle 39 000 staatilise testi deklaratsiooni enam kui 5100 jälgitavas testifailis."/>
 
 <br/>
 <br/>
@@ -493,7 +493,7 @@ Kõik **19** strateegiat — kombineerige neid kombo igas etapis:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Mis eristab OmniRoute'i — aegunud funktsioonide võrdlus 9routeri, OpenRouteri, CLIProxyAPI ja LiteLLM-iga 13 võimekuse lõikes. OmniRoute: 359 pakkujat, üle 150 sisseehitatud tasuta paketi, 19 marsruutimisstrateegiat, 12 mootoriga tokenite tihendamine, sisseehitatud MCP-server 110 tööriistaga, A2A agendiprotokoll, püsiv mälu, kaitsepiirded, pilveagendid, TLS-i sõrmejälgede varjamine, Desktop/Termux/PWA ja kasutajaliides 42 keeles. OmniRoute on MIT-litsentsiga ja ise majutatav. Konkurentide võimalused ja arvud võivad muutuda; vaadake lingitud metoodikat."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Mis eristab OmniRoute'i — aegunud funktsioonide võrdlus 9routeri, OpenRouteri, CLIProxyAPI ja LiteLLM-iga 13 võimekuse lõikes. OmniRoute: 358 pakkujat, üle 150 sisseehitatud tasuta paketi, 19 marsruutimisstrateegiat, 12 mootoriga tokenite tihendamine, sisseehitatud MCP-server 110 tööriistaga, A2A agendiprotokoll, püsiv mälu, kaitsepiirded, pilveagendid, TLS-i sõrmejälgede varjamine, Desktop/Termux/PWA ja kasutajaliides 42 keeles. OmniRoute on MIT-litsentsiga ja ise majutatav. Konkurentide võimalused ja arvud võivad muutuda; vaadake lingitud metoodikat."/>
 
 <sub>📊 Täielik metoodika ja funktsioonide üksikasjad võrdluses 9routeri, OpenRouteri, CLIProxyAPI ja LiteLLM-iga → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

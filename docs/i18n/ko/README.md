@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — 무료 AI 게이트웨이
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — 코딩을 멈추지 마세요. 모든 AI 도구를 하나의 엔드포인트를 통해 359개 제공업체(무료 제공업체 150개 이상)에 연결합니다. Claude Code, Codex, Cursor, Cline, Copilot 및 Antigravity를 자동 대체 기능으로 무료 Claude / GPT / Gemini에 연결합니다. RTK + Caveman 조합 압축으로 토큰을 15–95% 절약합니다(평균 약 89%). 한도에 도달하지 않습니다. AI 제공업체 359개 · 무료 티어 150개 이상 · 월 무료 토큰 약 1.62B개 · 라우팅 전략 19개 · 시작 비용 $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — 코딩을 멈추지 마세요. 모든 AI 도구를 하나의 엔드포인트를 통해 358개 제공업체(무료 제공업체 150개 이상)에 연결합니다. Claude Code, Codex, Cursor, Cline, Copilot 및 Antigravity를 자동 대체 기능으로 무료 Claude / GPT / Gemini에 연결합니다. RTK + Caveman 조합 압축으로 토큰을 15–95% 절약합니다(평균 약 89%). 한도에 도달하지 않습니다. AI 제공업체 358개 · 무료 티어 150개 이상 · 월 무료 토큰 약 1.62B개 · 라우팅 전략 19개 · 시작 비용 $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute의 약속 — 하나의 엔드포인트와 359개 제공업체. 정상적으로 사용할 수 있는 대상이 있으면 자동 대체 기능으로 라우팅을 계속합니다. 여섯 가지 핵심 가치: 359개 제공업체 전반에서 복원력 있는 대체 처리 · 적합한 워크로드에서 최대 95% 토큰 절감 · 150개 이상의 무료 티어와 54개의 정기 제공/키 불필요 무료 영구 제공업체로 $0부터 시작 · 하나의 설정으로 36개의 CLI/에이전트 통합 · /v1에서 OpenAI, Claude, Gemini 및 Responses API 호환 · 서킷 브레이커, TLS 스텔스, 110개 MCP 도구, A2A, 메모리, 가드레일, 평가, 5,100개 이상의 추적 테스트 파일에 걸친 39,000개 이상의 정적 테스트 선언을 포함한 프로덕션 제어 기능."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute의 약속 — 하나의 엔드포인트와 358개 제공업체. 정상적으로 사용할 수 있는 대상이 있으면 자동 대체 기능으로 라우팅을 계속합니다. 여섯 가지 핵심 가치: 358개 제공업체 전반에서 복원력 있는 대체 처리 · 적합한 워크로드에서 최대 95% 토큰 절감 · 150개 이상의 무료 티어와 54개의 정기 제공/키 불필요 무료 영구 제공업체로 $0부터 시작 · 하나의 설정으로 36개의 CLI/에이전트 통합 · /v1에서 OpenAI, Claude, Gemini 및 Responses API 호환 · 서킷 브레이커, TLS 스텔스, 110개 MCP 도구, A2A, 메모리, 가드레일, 평가, 5,100개 이상의 추적 테스트 파일에 걸친 39,000개 이상의 정적 테스트 선언을 포함한 프로덕션 제어 기능."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute의 차별점 — 13개 기능에서 9router, OpenRouter, CLIProxyAPI, LiteLLM과 비교한 날짜 기준 기능 스냅샷. OmniRoute: 359개 제공자, 기본 제공 무료 티어 150개 이상, 19가지 라우팅 전략, 12개 엔진 토큰 압축, 110개 도구를 갖춘 기본 제공 MCP 서버, A2A 에이전트 프로토콜, 영구 메모리, 가드레일, 클라우드 에이전트, TLS 지문 위장, Desktop/Termux/PWA, 42개 UI 현지화 언어. OmniRoute는 MIT 라이선스로 제공되며 자체 호스팅이 가능합니다. 경쟁 제품의 기능과 수치는 변경될 수 있습니다. 링크된 방법론을 참조하세요."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute의 차별점 — 13개 기능에서 9router, OpenRouter, CLIProxyAPI, LiteLLM과 비교한 날짜 기준 기능 스냅샷. OmniRoute: 358개 제공자, 기본 제공 무료 티어 150개 이상, 19가지 라우팅 전략, 12개 엔진 토큰 압축, 110개 도구를 갖춘 기본 제공 MCP 서버, A2A 에이전트 프로토콜, 영구 메모리, 가드레일, 클라우드 에이전트, TLS 지문 위장, Desktop/Termux/PWA, 42개 UI 현지화 언어. OmniRoute는 MIT 라이선스로 제공되며 자체 호스팅이 가능합니다. 경쟁 제품의 기능과 수치는 변경될 수 있습니다. 링크된 방법론을 참조하세요."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI, LiteLLM과 비교한 전체 방법론 및 기능별 세부 정보 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

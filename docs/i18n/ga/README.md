@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — An Tairseach AI Shaor
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Ná stop den chódú riamh. Gach uirlis AI → 359 soláthraí — breis agus 150 saor — trí chríochphointe amháin. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity isteach in Claude / GPT / Gemini SAOR in aisce le cúltaca uathoibríoch. Sábhálann comhbhrú cruachta RTK + Caveman 15–95% de na comharthaí (~89% ar an meán) — ná bain amach na teorainneacha riamh. 359 soláthraí AI · breis agus 150 sraith saor in aisce · ~1.62B comhartha saor in aisce sa mhí · 19 straitéis ródaithe · $0 le tosú."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Ná stop den chódú riamh. Gach uirlis AI → 358 soláthraí — breis agus 150 saor — trí chríochphointe amháin. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity isteach in Claude / GPT / Gemini SAOR in aisce le cúltaca uathoibríoch. Sábhálann comhbhrú cruachta RTK + Caveman 15–95% de na comharthaí (~89% ar an meán) — ná bain amach na teorainneacha riamh. 358 soláthraí AI · breis agus 150 sraith saor in aisce · ~1.62B comhartha saor in aisce sa mhí · 19 straitéis ródaithe · $0 le tosú."/>
 
 </div>
 
@@ -240,7 +240,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="An Gealltanas — Críochphointe amháin agus 359 soláthraí. Coinníonn cúltaca uathoibríoch an ródú ar siúl fad is atá sprioc shláintiúil eile ar fáil. Sé cholún: cúltaca athléimneach ar fud 359 soláthraí · suas le 95% de choigilteas comharthaí ar ualaí oibre incháilithe · $0 le tosú, le breis agus 150 sraith saor in aisce agus 54 soláthraí saor in aisce go deo a athfhilleann nó nach dteastaíonn eochair uathu · 36 comhtháthú CLI/gníomhaire trí chumraíocht amháin · comhoiriúnacht le OpenAI, Claude, Gemini agus Responses API ag /v1 · rialuithe táirgeachta lena n-áirítear scoradáin chiorcaid, TLS stealth, MCP le 110 uirlis, A2A, cuimhne, ráillí cosanta, meastóireachtaí agus breis agus 39,000 dearbhú tástála statach ar fud breis agus 5,100 comhad tástála rianaithe."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="An Gealltanas — Críochphointe amháin agus 358 soláthraí. Coinníonn cúltaca uathoibríoch an ródú ar siúl fad is atá sprioc shláintiúil eile ar fáil. Sé cholún: cúltaca athléimneach ar fud 358 soláthraí · suas le 95% de choigilteas comharthaí ar ualaí oibre incháilithe · $0 le tosú, le breis agus 150 sraith saor in aisce agus 54 soláthraí saor in aisce go deo a athfhilleann nó nach dteastaíonn eochair uathu · 36 comhtháthú CLI/gníomhaire trí chumraíocht amháin · comhoiriúnacht le OpenAI, Claude, Gemini agus Responses API ag /v1 · rialuithe táirgeachta lena n-áirítear scoradáin chiorcaid, TLS stealth, MCP le 110 uirlis, A2A, cuimhne, ráillí cosanta, meastóireachtaí agus breis agus 39,000 dearbhú tástála statach ar fud breis agus 5,100 comhad tástála rianaithe."/>
 
 <br/>
 <br/>
@@ -493,7 +493,7 @@ Na **19** straitéis ar fad — measc agus meaitseáil ag gach céim den teaglam
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Cad a dhéanann OmniRoute éagsúil — léargas dátaithe ar ghnéithe i gcomparáid le 9router, OpenRouter, CLIProxyAPI agus LiteLLM ar fud 13 chumas. OmniRoute: 359 soláthraí, breis agus 150 sraith saor in aisce ionsuite, 19 straitéis ródaithe, comhbhrú comharthaí le 12 inneall, freastalaí MCP ionsuite le 110 uirlis, prótacal gníomhairí A2A, cuimhne bhuan, cosaintí, gníomhairí néil, dofheictheacht méarlorg TLS, Deasc/Termux/PWA agus 42 logchaighdeán UI i18n. Tá OmniRoute ceadúnaithe faoin MIT agus is féidir é a óstáil tú féin. D’fhéadfadh cumais agus comhairimh na n-iomaitheoirí athrú; féach an mhodheolaíocht nasctha."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Cad a dhéanann OmniRoute éagsúil — léargas dátaithe ar ghnéithe i gcomparáid le 9router, OpenRouter, CLIProxyAPI agus LiteLLM ar fud 13 chumas. OmniRoute: 358 soláthraí, breis agus 150 sraith saor in aisce ionsuite, 19 straitéis ródaithe, comhbhrú comharthaí le 12 inneall, freastalaí MCP ionsuite le 110 uirlis, prótacal gníomhairí A2A, cuimhne bhuan, cosaintí, gníomhairí néil, dofheictheacht méarlorg TLS, Deasc/Termux/PWA agus 42 logchaighdeán UI i18n. Tá OmniRoute ceadúnaithe faoin MIT agus is féidir é a óstáil tú féin. D’fhéadfadh cumais agus comhairimh na n-iomaitheoirí athrú; féach an mhodheolaíocht nasctha."/>
 
 <sub>📊 Modheolaíocht iomlán agus sonraí de réir gné i gcomparáid le 9router, OpenRouter, CLIProxyAPI agus LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

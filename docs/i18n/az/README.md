@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Pulsuz AI Şlüzü
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yazmağı heç vaxt dayandırmayın. Hər AI aləti → 359 provayder — 150+-i pulsuz — vahid endpoint vasitəsilə. Claude Code, Codex, Cursor, Cline, Copilot və Antigravity, avtomatik ehtiyat keçidi ilə PULSUZ Claude / GPT / Gemini-yə qoşulur. RTK + Caveman qatlı sıxılma tokenlərə 15–95% qənaət edir (orta hesabla ~89%) — limitlərə heç vaxt çatmayın. 359 AI provayderi · 150+-i pulsuz tarif · ayda ~1.62B pulsuz token · 19 yönləndirmə strategiyası · Başlamaq üçün $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yazmağı heç vaxt dayandırmayın. Hər AI aləti → 358 provayder — 150+-i pulsuz — vahid endpoint vasitəsilə. Claude Code, Codex, Cursor, Cline, Copilot və Antigravity, avtomatik ehtiyat keçidi ilə PULSUZ Claude / GPT / Gemini-yə qoşulur. RTK + Caveman qatlı sıxılma tokenlərə 15–95% qənaət edir (orta hesabla ~89%) — limitlərə heç vaxt çatmayın. 358 AI provayderi · 150+-i pulsuz tarif · ayda ~1.62B pulsuz token · 19 yönləndirmə strategiyası · Başlamaq üçün $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vədimiz — Bir endpoint və 359 provayder. Avtomatik ehtiyat keçidi başqa sağlam hədəf mövcud olduqda sorğuların yönləndirilməsini davam etdirir. Altı dayaq: 359 provayder arasında dayanıqlı ehtiyat keçidi · uyğun iş yükələrində tokenlərə 95%-dək qənaət · 150-dən çox pulsuz tarif və daim pulsuz olan, təkrarlanan istifadə və ya açar tələb etməyən 54 provayderlə $0-dan başlayın · vahid konfiqurasiya vasitəsilə 36 CLI/agent inteqrasiyası · /v1 ünvanında OpenAI, Claude, Gemini və Responses API uyğunluğu · circuit breaker-lər, TLS gizliliyi, 110 MCP aləti, A2A, yaddaş, mühafizə qaydaları, qiymətləndirmələr, həmçinin 5,100-dən çox izlənən test faylında 39,000-dən çox statik test bəyanatı daxil olmaqla istehsal mühiti üçün idarəetmə vasitələri."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vədimiz — Bir endpoint və 358 provayder. Avtomatik ehtiyat keçidi başqa sağlam hədəf mövcud olduqda sorğuların yönləndirilməsini davam etdirir. Altı dayaq: 358 provayder arasında dayanıqlı ehtiyat keçidi · uyğun iş yükələrində tokenlərə 95%-dək qənaət · 150-dən çox pulsuz tarif və daim pulsuz olan, təkrarlanan istifadə və ya açar tələb etməyən 54 provayderlə $0-dan başlayın · vahid konfiqurasiya vasitəsilə 36 CLI/agent inteqrasiyası · /v1 ünvanında OpenAI, Claude, Gemini və Responses API uyğunluğu · circuit breaker-lər, TLS gizliliyi, 110 MCP aləti, A2A, yaddaş, mühafizə qaydaları, qiymətləndirmələr, həmçinin 5,100-dən çox izlənən test faylında 39,000-dən çox statik test bəyanatı daxil olmaqla istehsal mühiti üçün idarəetmə vasitələri."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Bütün **19** strategiya — hər kombo addımında qarışdırıb uyğunlaşd�
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute-u fərqləndirən cəhətlər — 13 imkan üzrə 9router, OpenRouter, CLIProxyAPI və LiteLLM ilə xüsusiyyətlərin tarixli müqayisəsi. OmniRoute: 359 provayder, daxili 150+ pulsuz istifadə səviyyəsi, 19 marşrutlaşdırma strategiyası, 12 mühərrikli token sıxılması, 110 alətə malik daxili MCP serveri, A2A agent protokolu, davamlı yaddaş, təhlükəsizlik məhdudiyyətləri, bulud agentləri, TLS barmaq izi gizlətməsi, Desktop/Termux/PWA və 42 i18n istifadəçi interfeysi dili. OmniRoute MIT lisenziyası ilə yayımlanır və öz serverinizdə yerləşdirilə bilər. Rəqiblərin imkanları və say göstəriciləri dəyişə bilər; metodologiya üçün keçidə baxın."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute-u fərqləndirən cəhətlər — 13 imkan üzrə 9router, OpenRouter, CLIProxyAPI və LiteLLM ilə xüsusiyyətlərin tarixli müqayisəsi. OmniRoute: 358 provayder, daxili 150+ pulsuz istifadə səviyyəsi, 19 marşrutlaşdırma strategiyası, 12 mühərrikli token sıxılması, 110 alətə malik daxili MCP serveri, A2A agent protokolu, davamlı yaddaş, təhlükəsizlik məhdudiyyətləri, bulud agentləri, TLS barmaq izi gizlətməsi, Desktop/Termux/PWA və 42 i18n istifadəçi interfeysi dili. OmniRoute MIT lisenziyası ilə yayımlanır və öz serverinizdə yerləşdirilə bilər. Rəqiblərin imkanları və say göstəriciləri dəyişə bilər; metodologiya üçün keçidə baxın."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI və LiteLLM ilə tam metodologiya və hər xüsusiyyət üzrə ətraflı müqayisə → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Lango Huru la AI
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Usiache kamwe kuandika msimbo. Kila zana ya AI → watoa huduma 359 — 150+ bila malipo — kupitia endpoint moja. Claude Code, Codex, Cursor, Cline, Copilot na Antigravity kwenda kwa Claude / GPT / Gemini BILA MALIPO, kwa kutumia ubadilishaji wa kiotomatiki iwapo huduma itashindwa. Mfinyazo uliounganishwa wa RTK + Caveman huokoa 15–95% ya tokeni (wastani wa ~89%) — usifikie vikomo kamwe. Watoa huduma 359 wa AI · viwango 150+ vya bure · ~tokeni bilioni 1.62 za bure kwa mwezi · mikakati 19 ya uelekezaji · anza kwa $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Usiache kamwe kuandika msimbo. Kila zana ya AI → watoa huduma 358 — 150+ bila malipo — kupitia endpoint moja. Claude Code, Codex, Cursor, Cline, Copilot na Antigravity kwenda kwa Claude / GPT / Gemini BILA MALIPO, kwa kutumia ubadilishaji wa kiotomatiki iwapo huduma itashindwa. Mfinyazo uliounganishwa wa RTK + Caveman huokoa 15–95% ya tokeni (wastani wa ~89%) — usifikie vikomo kamwe. Watoa huduma 358 wa AI · viwango 150+ vya bure · ~tokeni bilioni 1.62 za bure kwa mwezi · mikakati 19 ya uelekezaji · anza kwa $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ahadi Yetu — Kiendeshaji kimoja na watoa huduma 359. Mfumo wa kurejea kiotomatiki huendeleza uelekezaji mradi tu kuna lengwa jingine linalopatikana na lenye afya. Nguzo sita: kurejea kwa uthabiti katika watoa huduma 359 · kuokoa hadi 95% ya tokeni katika kazi zinazostahiki · kuanza kwa $0 ukiwa na mipango 150+ ya bure na watoa huduma 54 wa bure kabisa wanaopatikana mara kwa mara/bila ufunguo · miunganisho 36 ya CLI/agent kupitia usanidi mmoja · uoanifu na API za OpenAI, Claude, Gemini na Responses kwenye /v1 · vidhibiti vya uzalishaji vinavyojumuisha vizuia mzunguko, ufichaji wa TLS, zana 110 za MCP, A2A, kumbukumbu, vizuizi vya usalama, tathmini, na matamko 39,000+ ya majaribio tuli katika faili 5,100+ za majaribio zinazofuatiliwa."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ahadi Yetu — Kiendeshaji kimoja na watoa huduma 358. Mfumo wa kurejea kiotomatiki huendeleza uelekezaji mradi tu kuna lengwa jingine linalopatikana na lenye afya. Nguzo sita: kurejea kwa uthabiti katika watoa huduma 358 · kuokoa hadi 95% ya tokeni katika kazi zinazostahiki · kuanza kwa $0 ukiwa na mipango 150+ ya bure na watoa huduma 54 wa bure kabisa wanaopatikana mara kwa mara/bila ufunguo · miunganisho 36 ya CLI/agent kupitia usanidi mmoja · uoanifu na API za OpenAI, Claude, Gemini na Responses kwenye /v1 · vidhibiti vya uzalishaji vinavyojumuisha vizuia mzunguko, ufichaji wa TLS, zana 110 za MCP, A2A, kumbukumbu, vizuizi vya usalama, tathmini, na matamko 39,000+ ya majaribio tuli katika faili 5,100+ za majaribio zinazofuatiliwa."/>
 
 <br/>
 <br/>
@@ -425,7 +425,7 @@ Mikakati yote **19** — changanya na kuoanisha kwa kila hatua ya combo:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kinachoitofautisha OmniRoute — muhtasari wa vipengele wa wakati fulani ukilinganisha na 9router, OpenRouter, CLIProxyAPI na LiteLLM katika uwezo 13. OmniRoute: watoa huduma 359, zaidi ya mipango 150 ya bila malipo iliyojumuishwa, mikakati 19 ya uelekezaji, mbano wa tokeni unaotumia injini 12, seva ya MCP iliyojumuishwa yenye zana 110, itifaki ya wakala ya A2A, kumbukumbu endelevu, vizuizi vya usalama, mawakala wa wingu, ufichaji wa alama za vidole za TLS, Desktop/Termux/PWA na lugha 42 za kiolesura cha i18n. OmniRoute ina leseni ya MIT na inaweza kupangishwa kwenye seva yako mwenyewe. Uwezo na idadi za washindani zinaweza kubadilika; tazama mbinu iliyounganishwa."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kinachoitofautisha OmniRoute — muhtasari wa vipengele wa wakati fulani ukilinganisha na 9router, OpenRouter, CLIProxyAPI na LiteLLM katika uwezo 13. OmniRoute: watoa huduma 358, zaidi ya mipango 150 ya bila malipo iliyojumuishwa, mikakati 19 ya uelekezaji, mbano wa tokeni unaotumia injini 12, seva ya MCP iliyojumuishwa yenye zana 110, itifaki ya wakala ya A2A, kumbukumbu endelevu, vizuizi vya usalama, mawakala wa wingu, ufichaji wa alama za vidole za TLS, Desktop/Termux/PWA na lugha 42 za kiolesura cha i18n. OmniRoute ina leseni ya MIT na inaweza kupangishwa kwenye seva yako mwenyewe. Uwezo na idadi za washindani zinaweza kubadilika; tazama mbinu iliyounganishwa."/>
 
 <sub>📊 Mbinu kamili na maelezo ya kila kipengele ukilinganisha na 9router, OpenRouter, CLIProxyAPI na LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

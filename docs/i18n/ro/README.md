@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Poarta AI gratuită
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nu te opri niciodată din programat. Fiecare instrument AI → 359 de furnizori — peste 150 gratuit — printr-un singur endpoint. Claude Code, Codex, Cursor, Cline, Copilot și Antigravity către Claude / GPT / Gemini GRATUITE, cu comutare automată la o alternativă. Compresia cumulată RTK + Caveman economisește 15–95% din tokenuri (în medie ~89%) — nu mai atinge niciodată limitele. 359 de furnizori AI · peste 150 de niveluri gratuite · ~1,62 mld. de tokenuri gratuite/lună · 19 strategii de rutare · începi cu 0 $."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nu te opri niciodată din programat. Fiecare instrument AI → 358 de furnizori — peste 150 gratuit — printr-un singur endpoint. Claude Code, Codex, Cursor, Cline, Copilot și Antigravity către Claude / GPT / Gemini GRATUITE, cu comutare automată la o alternativă. Compresia cumulată RTK + Caveman economisește 15–95% din tokenuri (în medie ~89%) — nu mai atinge niciodată limitele. 358 de furnizori AI · peste 150 de niveluri gratuite · ~1,62 mld. de tokenuri gratuite/lună · 19 strategii de rutare · începi cu 0 $."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Promisiunea — Un singur endpoint și 359 de furnizori. Fallback-ul automat menține rutarea cât timp este disponibilă o altă destinație funcțională. Șase piloni: fallback rezilient pentru 359 de furnizori · economii de până la 95% la tokenuri pentru sarcinile eligibile · începe cu 0 $, cu peste 150 de niveluri gratuite și 54 de furnizori gratuiți pe viață, fără cheie sau cu acces gratuit recurent · 36 de integrări CLI/agent printr-o singură configurare · compatibilitate cu OpenAI, Claude, Gemini și Responses API la /v1 · controale pentru producție, inclusiv întrerupătoare de circuit, camuflaj TLS, 110 instrumente MCP, A2A, memorie, măsuri de protecție, evaluări și peste 39.000 de declarații statice de testare în peste 5.100 de fișiere de testare urmărite."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Promisiunea — Un singur endpoint și 358 de furnizori. Fallback-ul automat menține rutarea cât timp este disponibilă o altă destinație funcțională. Șase piloni: fallback rezilient pentru 358 de furnizori · economii de până la 95% la tokenuri pentru sarcinile eligibile · începe cu 0 $, cu peste 150 de niveluri gratuite și 54 de furnizori gratuiți pe viață, fără cheie sau cu acces gratuit recurent · 36 de integrări CLI/agent printr-o singură configurare · compatibilitate cu OpenAI, Claude, Gemini și Responses API la /v1 · controale pentru producție, inclusiv întrerupătoare de circuit, camuflaj TLS, 110 instrumente MCP, A2A, memorie, măsuri de protecție, evaluări și peste 39.000 de declarații statice de testare în peste 5.100 de fișiere de testare urmărite."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Toate cele **19** strategii — combinați-le după preferințe pentru fiecare p
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Prin ce se remarcă OmniRoute — o comparație datată a funcționalităților cu 9router, OpenRouter, CLIProxyAPI și LiteLLM pentru 13 capabilități. OmniRoute: 359 de furnizori, peste 150 de niveluri gratuite incluse, 19 strategii de rutare, comprimarea tokenurilor cu 12 motoare, server MCP integrat cu 110 instrumente, protocolul pentru agenți A2A, memorie persistentă, mecanisme de protecție, agenți cloud, mascarea amprentei TLS, Desktop/Termux/PWA și interfața localizată în 42 de limbi. OmniRoute este licențiat sub MIT și poate fi găzduit autonom. Capabilitățile și numărul acestora pentru concurenți se pot schimba; consultați metodologia asociată."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Prin ce se remarcă OmniRoute — o comparație datată a funcționalităților cu 9router, OpenRouter, CLIProxyAPI și LiteLLM pentru 13 capabilități. OmniRoute: 358 de furnizori, peste 150 de niveluri gratuite incluse, 19 strategii de rutare, comprimarea tokenurilor cu 12 motoare, server MCP integrat cu 110 instrumente, protocolul pentru agenți A2A, memorie persistentă, mecanisme de protecție, agenți cloud, mascarea amprentei TLS, Desktop/Termux/PWA și interfața localizată în 42 de limbi. OmniRoute este licențiat sub MIT și poate fi găzduit autonom. Capabilitățile și numărul acestora pentru concurenți se pot schimba; consultați metodologia asociată."/>
 
 <sub>📊 Metodologia completă și detalii pentru fiecare funcționalitate, în comparație cu 9router, OpenRouter, CLIProxyAPI și LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

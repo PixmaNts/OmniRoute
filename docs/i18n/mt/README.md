@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Il-Gateway tal-IA B'xejn
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Qatt tieqaf tipprogramma. Kull għodda tal-IA → 359 fornitur — 150+ b'xejn — permezz ta' endpoint wieħed. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity lejn Claude / GPT / Gemini B'XEJN b'fallback awtomatiku. Il-kompressjoni magħquda ta' RTK + Caveman tiffranka 15–95% tat-tokens (medja ta' ~89%) — qatt ma tilħaq il-limiti. 359 fornitur tal-IA · 150+ livelli b'xejn · ~1.62B tokens b'xejn/xahar · 19-il strateġija ta' routing · $0 biex tibda."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Qatt tieqaf tipprogramma. Kull għodda tal-IA → 358 fornitur — 150+ b'xejn — permezz ta' endpoint wieħed. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity lejn Claude / GPT / Gemini B'XEJN b'fallback awtomatiku. Il-kompressjoni magħquda ta' RTK + Caveman tiffranka 15–95% tat-tokens (medja ta' ~89%) — qatt ma tilħaq il-limiti. 358 fornitur tal-IA · 150+ livelli b'xejn · ~1.62B tokens b'xejn/xahar · 19-il strateġija ta' routing · $0 biex tibda."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Il-Wegħda — Endpoint wieħed u 359 fornitur. Il-fallback awtomatiku jżomm ir-routing għaddej sakemm ikun għad hemm destinazzjoni oħra li taħdem sew. Sitt pilastri: fallback reżiljenti bejn 359 fornitur · sa 95% iffrankar fuq it-tokens għal xogħol eliġibbli · $0 biex tibda b’aktar minn 150 livell b’xejn u 54 fornitur b’xejn għal dejjem li jaħdmu regolarment jew mingħajr ċavetta · 36 integrazzjoni CLI/aġent permezz ta’ konfigurazzjoni waħda · kompatibbiltà ma’ OpenAI, Claude, Gemini u Responses API f’/v1 · kontrolli għall-produzzjoni inklużi circuit breakers, stealth TLS, MCP b’110 għodda, A2A, memorja, guardrails, evals u aktar minn 39,000 dikjarazzjoni statika tat-test f’aktar minn 5,100 fajl tat-test irreġistrat."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Il-Wegħda — Endpoint wieħed u 358 fornitur. Il-fallback awtomatiku jżomm ir-routing għaddej sakemm ikun għad hemm destinazzjoni oħra li taħdem sew. Sitt pilastri: fallback reżiljenti bejn 358 fornitur · sa 95% iffrankar fuq it-tokens għal xogħol eliġibbli · $0 biex tibda b’aktar minn 150 livell b’xejn u 54 fornitur b’xejn għal dejjem li jaħdmu regolarment jew mingħajr ċavetta · 36 integrazzjoni CLI/aġent permezz ta’ konfigurazzjoni waħda · kompatibbiltà ma’ OpenAI, Claude, Gemini u Responses API f’/v1 · kontrolli għall-produzzjoni inklużi circuit breakers, stealth TLS, MCP b’110 għodda, A2A, memorja, guardrails, evals u aktar minn 39,000 dikjarazzjoni statika tat-test f’aktar minn 5,100 fajl tat-test irreġistrat."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Id-**19-il** strateġija kollha — ħallat u qabbel għal kull pass tal-combo:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="X’jagħmel lil OmniRoute differenti — stampa datata tal-karatteristiċi meta mqabbla ma’ 9router, OpenRouter, CLIProxyAPI u LiteLLM f’13-il kapaċità. OmniRoute: 359 fornitur, aktar minn 150 pjan bla ħlas integrati, 19-il strateġija ta’ rotta, kompressjoni tat-tokens bi 12-il magna, server MCP integrat b’110 għodda, protokoll tal-aġenti A2A, memorja persistenti, protezzjonijiet, aġenti tal-cloud, stealth tal-marki tas-swaba’ TLS, Desktop/Termux/PWA u 42 lokalità tal-UI i18n. OmniRoute huwa liċenzjat taħt MIT u jista’ jiġi ospitat minnek stess. Il-kapaċitajiet u l-għadd tal-kompetituri jistgħu jinbidlu; ara l-metodoloġija marbuta."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="X’jagħmel lil OmniRoute differenti — stampa datata tal-karatteristiċi meta mqabbla ma’ 9router, OpenRouter, CLIProxyAPI u LiteLLM f’13-il kapaċità. OmniRoute: 358 fornitur, aktar minn 150 pjan bla ħlas integrati, 19-il strateġija ta’ rotta, kompressjoni tat-tokens bi 12-il magna, server MCP integrat b’110 għodda, protokoll tal-aġenti A2A, memorja persistenti, protezzjonijiet, aġenti tal-cloud, stealth tal-marki tas-swaba’ TLS, Desktop/Termux/PWA u 42 lokalità tal-UI i18n. OmniRoute huwa liċenzjat taħt MIT u jista’ jiġi ospitat minnek stess. Il-kapaċitajiet u l-għadd tal-kompetituri jistgħu jinbidlu; ara l-metodoloġija marbuta."/>
 
 <sub>📊 Il-metodoloġija sħiħa u d-dettalji għal kull karatteristika meta mqabbla ma’ 9router, OpenRouter, CLIProxyAPI u LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

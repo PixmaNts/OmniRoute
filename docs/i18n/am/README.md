@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — ነፃ AI ጌትዌይ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ኮድ መጻፍን ፈጽሞ አታቁም። እያንዳንዱ AI መሣሪያ → 359 አቅራቢዎች — 150+ ነፃ — በአንድ ኤንድፖይንት በኩል። Claude Code፣ Codex፣ Cursor፣ Cline፣ Copilot እና Antigravity ወደ ነፃ Claude / GPT / Gemini በራስ-ሰር መቀያየር። RTK + Caveman በአንድ ላይ የተደረደረ ጭመቃ 15–95% ቶከኖችን (~89% በአማካይ) ይቆጥባል — ገደቦችን ፈጽሞ አይደርሱም። 359 AI አቅራቢዎች · 150+ ነፃ እቅዶች · ~1.62B ነፃ ቶከኖች/ወር · 19 የማዞሪያ ስልቶች · ለመጀመር $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ኮድ መጻፍን ፈጽሞ አታቁም። እያንዳንዱ AI መሣሪያ → 358 አቅራቢዎች — 150+ ነፃ — በአንድ ኤንድፖይንት በኩል። Claude Code፣ Codex፣ Cursor፣ Cline፣ Copilot እና Antigravity ወደ ነፃ Claude / GPT / Gemini በራስ-ሰር መቀያየር። RTK + Caveman በአንድ ላይ የተደረደረ ጭመቃ 15–95% ቶከኖችን (~89% በአማካይ) ይቆጥባል — ገደቦችን ፈጽሞ አይደርሱም። 358 AI አቅራቢዎች · 150+ ነፃ እቅዶች · ~1.62B ነፃ ቶከኖች/ወር · 19 የማዞሪያ ስልቶች · ለመጀመር $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ቃል ኪዳኑ — አንድ መድረሻ እና 359 አቅራቢዎች። ሌላ ጤናማ መድረሻ እስካለ ድረስ ራስ-ሰር የመመለሻ መንገድ ማዘዋወርን ይቀጥላል። ስድስት መሠረታዊ አቅሞች፦ በ359 አቅራቢዎች ላይ ጽኑ የመመለሻ መንገድ · ብቁ በሆኑ የሥራ ጫናዎች ላይ እስከ 95% የቶከን ቁጠባ · ከ150+ ነፃ እቅዶች እና 54 በተደጋጋሚ የሚቀርቡ/ቁልፍ የማይፈልጉ ለዘላለም ነፃ አቅራቢዎች ጋር በ$0 መጀመር · በአንድ ውቅር 36 የCLI/ኤጀንት ውህደቶች · በ/v1 ላይ ከOpenAI፣ Claude፣ Gemini እና Responses API ጋር ተስማሚነት · የምርት አካባቢ ቁጥጥሮች፤ circuit breaker-ዎች፣ TLS stealth፣ MCP 110 መሣሪያዎች፣ A2A፣ ማህደረ ትውስታ፣ የጥበቃ ሕጎች፣ ግምገማዎች እና በ5,100+ በተከታተሉ የሙከራ ፋይሎች ውስጥ 39,000+ የማይለወጡ የሙከራ መግለጫዎች።"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ቃል ኪዳኑ — አንድ መድረሻ እና 358 አቅራቢዎች። ሌላ ጤናማ መድረሻ እስካለ ድረስ ራስ-ሰር የመመለሻ መንገድ ማዘዋወርን ይቀጥላል። ስድስት መሠረታዊ አቅሞች፦ በ358 አቅራቢዎች ላይ ጽኑ የመመለሻ መንገድ · ብቁ በሆኑ የሥራ ጫናዎች ላይ እስከ 95% የቶከን ቁጠባ · ከ150+ ነፃ እቅዶች እና 54 በተደጋጋሚ የሚቀርቡ/ቁልፍ የማይፈልጉ ለዘላለም ነፃ አቅራቢዎች ጋር በ$0 መጀመር · በአንድ ውቅር 36 የCLI/ኤጀንት ውህደቶች · በ/v1 ላይ ከOpenAI፣ Claude፣ Gemini እና Responses API ጋር ተስማሚነት · የምርት አካባቢ ቁጥጥሮች፤ circuit breaker-ዎች፣ TLS stealth፣ MCP 110 መሣሪያዎች፣ A2A፣ ማህደረ ትውስታ፣ የጥበቃ ሕጎች፣ ግምገማዎች እና በ5,100+ በተከታተሉ የሙከራ ፋይሎች ውስጥ 39,000+ የማይለወጡ የሙከራ መግለጫዎች።"/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRouteን የሚለየው — በ13 አቅሞች ላይ ከ9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLM ጋር የተደረገ የቆየ የባህሪያት ንጽጽር። OmniRoute፦ 359 አቅራቢዎች፣ ከ150 በላይ አብረው የተካተቱ ነፃ አገልግሎቶች፣ 19 የማዘዋወር ስልቶች፣ 12-ሞተር የቶከን መጭመቂያ፣ 110 መሣሪያዎች ያሉት አብሮ የተካተተ MCP ሰርቨር፣ የA2A የወኪሎች ፕሮቶኮል፣ ቋሚ ማህደረ ትውስታ፣ የጥበቃ ገደቦች፣ የደመና ወኪሎች፣ የTLS የጣት አሻራ መደበቂያ፣ Desktop/Termux/PWA እና 42 የi18n የበይነገጽ ቋንቋዎች። OmniRoute በMIT ፈቃድ ስር የተለቀቀ ሲሆን በራስዎ ሰርቨር ላይ ማስተናገድ ይቻላል። የተወዳዳሪዎች አቅሞችና ቁጥሮች ሊለወጡ ይችላሉ፤ የተገናኘውን የንጽጽር ዘዴ ይመልከቱ።"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRouteን የሚለየው — በ13 አቅሞች ላይ ከ9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLM ጋር የተደረገ የቆየ የባህሪያት ንጽጽር። OmniRoute፦ 358 አቅራቢዎች፣ ከ150 በላይ አብረው የተካተቱ ነፃ አገልግሎቶች፣ 19 የማዘዋወር ስልቶች፣ 12-ሞተር የቶከን መጭመቂያ፣ 110 መሣሪያዎች ያሉት አብሮ የተካተተ MCP ሰርቨር፣ የA2A የወኪሎች ፕሮቶኮል፣ ቋሚ ማህደረ ትውስታ፣ የጥበቃ ገደቦች፣ የደመና ወኪሎች፣ የTLS የጣት አሻራ መደበቂያ፣ Desktop/Termux/PWA እና 42 የi18n የበይነገጽ ቋንቋዎች። OmniRoute በMIT ፈቃድ ስር የተለቀቀ ሲሆን በራስዎ ሰርቨር ላይ ማስተናገድ ይቻላል። የተወዳዳሪዎች አቅሞችና ቁጥሮች ሊለወጡ ይችላሉ፤ የተገናኘውን የንጽጽር ዘዴ ይመልከቱ።"/>
 
 <sub>📊 ሙሉ የንጽጽር ዘዴ እና ከ9router፣ OpenRouter፣ CLIProxyAPI እና LiteLLM ጋር የባህሪ ዝርዝር → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

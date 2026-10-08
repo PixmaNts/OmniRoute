@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — အခမဲ့ AI Gateway
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ကုဒ်ရေးတာကို ဘယ်တော့မှ မရပ်လိုက်ပါနဲ့။ AI ကိရိယာတိုင်း → ပံ့ပိုးပေးသူ 359 ဦး — အခမဲ့ 150+ ဦး — ကို endpoint တစ်ခုတည်းမှတစ်ဆင့် အသုံးပြုနိုင်သည်။ Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ကို အလိုအလျောက် အစားထိုးအသုံးပြုနိုင်သည့် အခမဲ့ Claude / GPT / Gemini သို့ ချိတ်ဆက်ပေးသည်။ RTK + Caveman ပေါင်းစပ်ချုံ့မှုက token 15–95% (~ပျမ်းမျှ 89%) ချွေတာပေးပြီး ကန့်သတ်ချက်များနှင့် မကြုံစေပါ။ AI ပံ့ပိုးပေးသူ 359 ဦး · အခမဲ့အစီအစဉ် 150+ ခု · တစ်လလျှင် အခမဲ့ token ~1.62B · လမ်းကြောင်းရွေးချယ်မှု မဟာဗျူဟာ 19 မျိုး · စတင်ရန် ကုန်ကျစရိတ် $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ကုဒ်ရေးတာကို ဘယ်တော့မှ မရပ်လိုက်ပါနဲ့။ AI ကိရိယာတိုင်း → ပံ့ပိုးပေးသူ 358 ဦး — အခမဲ့ 150+ ဦး — ကို endpoint တစ်ခုတည်းမှတစ်ဆင့် အသုံးပြုနိုင်သည်။ Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ကို အလိုအလျောက် အစားထိုးအသုံးပြုနိုင်သည့် အခမဲ့ Claude / GPT / Gemini သို့ ချိတ်ဆက်ပေးသည်။ RTK + Caveman ပေါင်းစပ်ချုံ့မှုက token 15–95% (~ပျမ်းမျှ 89%) ချွေတာပေးပြီး ကန့်သတ်ချက်များနှင့် မကြုံစေပါ။ AI ပံ့ပိုးပေးသူ 358 ဦး · အခမဲ့အစီအစဉ် 150+ ခု · တစ်လလျှင် အခမဲ့ token ~1.62B · လမ်းကြောင်းရွေးချယ်မှု မဟာဗျူဟာ 19 မျိုး · စတင်ရန် ကုန်ကျစရိတ် $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ကျွန်ုပ်တို့၏ ကတိ — endpoint တစ်ခုတည်းနှင့် provider 359 ခု။ အသုံးပြုနိုင်သေးသော ကျန်းမာသည့် target တစ်ခု ရှိနေသရွေ့ အလိုအလျောက် fallback က routing ကို ဆက်လက်လုပ်ဆောင်စေသည်။ အဓိကမဏ္ဍိုင် ၆ ခု — provider 359 ခုအကြား ခံနိုင်ရည်ရှိသော fallback · သင့်လျော်သည့် workload များတွင် token 95% အထိ ချွေတာနိုင်ခြင်း · အခမဲ့ tier 150+ ခုနှင့် ထပ်တလဲလဲရရှိနိုင်သော၊ API key မလိုသည့် အခမဲ့အမြဲတမ်း provider 54 ခုဖြင့် $0 မှ စတင်နိုင်ခြင်း · config တစ်ခုတည်းဖြင့် CLI/agent ပေါင်းစည်းမှု 36 ခု · /v1 တွင် OpenAI, Claude, Gemini နှင့် Responses API တို့နှင့် လိုက်ဖက်ညီခြင်း · circuit breaker၊ TLS stealth၊ tool 110 ခုပါ MCP၊ A2A၊ memory၊ guardrails၊ evals နှင့် စောင့်ကြည့်ထားသော test file 5,100+ ခုအနှံ့ static test declaration 39,000+ ခု အပါအဝင် production ထိန်းချုပ်မှုများ။"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ကျွန်ုပ်တို့၏ ကတိ — endpoint တစ်ခုတည်းနှင့် provider 358 ခု။ အသုံးပြုနိုင်သေးသော ကျန်းမာသည့် target တစ်ခု ရှိနေသရွေ့ အလိုအလျောက် fallback က routing ကို ဆက်လက်လုပ်ဆောင်စေသည်။ အဓိကမဏ္ဍိုင် ၆ ခု — provider 358 ခုအကြား ခံနိုင်ရည်ရှိသော fallback · သင့်လျော်သည့် workload များတွင် token 95% အထိ ချွေတာနိုင်ခြင်း · အခမဲ့ tier 150+ ခုနှင့် ထပ်တလဲလဲရရှိနိုင်သော၊ API key မလိုသည့် အခမဲ့အမြဲတမ်း provider 54 ခုဖြင့် $0 မှ စတင်နိုင်ခြင်း · config တစ်ခုတည်းဖြင့် CLI/agent ပေါင်းစည်းမှု 36 ခု · /v1 တွင် OpenAI, Claude, Gemini နှင့် Responses API တို့နှင့် လိုက်ဖက်ညီခြင်း · circuit breaker၊ TLS stealth၊ tool 110 ခုပါ MCP၊ A2A၊ memory၊ guardrails၊ evals နှင့် စောင့်ကြည့်ထားသော test file 5,100+ ခုအနှံ့ static test declaration 39,000+ ခု အပါအဝင် production ထိန်းချုပ်မှုများ။"/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ combo ဖန်တီးရန် မလိုပါ။ သင့်မော်
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute ကို ထူးခြားစေသည့်အချက်များ — 9router, OpenRouter, CLIProxyAPI နှင့် LiteLLM တို့နှင့် စွမ်းဆောင်ရည် 13 မျိုးကို နှိုင်းယှဉ်ထားသော ရက်စွဲပါ လုပ်ဆောင်ချက်အကျဉ်းချုပ်။ OmniRoute တွင် ပံ့ပိုးပေးသူ 359 ခု၊ အသင့်ပါဝင်သည့် အခမဲ့အသုံးပြုနိုင်သော အဆင့် 150 ကျော်၊ လမ်းကြောင်းရွေးချယ်မှု နည်းဗျူဟာ 19 မျိုး၊ token ချုံ့သည့် engine 12 ခု၊ tool 110 ခုပါဝင်သည့် အသင့်ပါ MCP server၊ A2A agent protocol၊ ဆက်လက်တည်ရှိသော မှတ်ဉာဏ်၊ ကာကွယ်စည်းမျဉ်းများ၊ cloud agent များ၊ TLS fingerprint ဖုံးကွယ်မှု၊ Desktop/Termux/PWA နှင့် UI ဘာသာစကား 42 မျိုး ပါဝင်သည်။ OmniRoute ကို MIT လိုင်စင်ဖြင့် ဖြန့်ချိထားပြီး ကိုယ်တိုင် host လုပ်နိုင်သည်။ ပြိုင်ဘက်များ၏ စွမ်းဆောင်ရည်များနှင့် အရေအတွက်များ ပြောင်းလဲနိုင်ပါသည်။ ချိတ်ဆက်ထားသော နည်းလမ်းဖော်ပြချက်ကို ကြည့်ပါ။"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute ကို ထူးခြားစေသည့်အချက်များ — 9router, OpenRouter, CLIProxyAPI နှင့် LiteLLM တို့နှင့် စွမ်းဆောင်ရည် 13 မျိုးကို နှိုင်းယှဉ်ထားသော ရက်စွဲပါ လုပ်ဆောင်ချက်အကျဉ်းချုပ်။ OmniRoute တွင် ပံ့ပိုးပေးသူ 358 ခု၊ အသင့်ပါဝင်သည့် အခမဲ့အသုံးပြုနိုင်သော အဆင့် 150 ကျော်၊ လမ်းကြောင်းရွေးချယ်မှု နည်းဗျူဟာ 19 မျိုး၊ token ချုံ့သည့် engine 12 ခု၊ tool 110 ခုပါဝင်သည့် အသင့်ပါ MCP server၊ A2A agent protocol၊ ဆက်လက်တည်ရှိသော မှတ်ဉာဏ်၊ ကာကွယ်စည်းမျဉ်းများ၊ cloud agent များ၊ TLS fingerprint ဖုံးကွယ်မှု၊ Desktop/Termux/PWA နှင့် UI ဘာသာစကား 42 မျိုး ပါဝင်သည်။ OmniRoute ကို MIT လိုင်စင်ဖြင့် ဖြန့်ချိထားပြီး ကိုယ်တိုင် host လုပ်နိုင်သည်။ ပြိုင်ဘက်များ၏ စွမ်းဆောင်ရည်များနှင့် အရေအတွက်များ ပြောင်းလဲနိုင်ပါသည်။ ချိတ်ဆက်ထားသော နည်းလမ်းဖော်ပြချက်ကို ကြည့်ပါ။"/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI နှင့် LiteLLM တို့နှင့် နှိုင်းယှဉ်ထားသော နည်းလမ်းအပြည့်အစုံနှင့် လုပ်ဆောင်ချက်တစ်ခုချင်းစီ၏ အသေးစိတ် → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

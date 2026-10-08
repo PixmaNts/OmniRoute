@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Ang Libreng AI Gateway
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Huwag tumigil sa pag-code. Bawat AI tool → 359 na provider — 150+ na libre — gamit ang iisang endpoint. Claude Code, Codex, Cursor, Cline, Copilot at Antigravity papunta sa LIBRENG Claude / GPT / Gemini na may awtomatikong fallback. Ang pinagsamang compression ng RTK + Caveman ay nakakatipid ng 15–95% na token (~89% sa average) — hindi kailanman maaabot ang limitasyon. 359 na AI provider · 150+ na libreng tier · ~1.62B libreng token/buwan · 19 na diskarte sa routing · $0 para makapagsimula."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Huwag tumigil sa pag-code. Bawat AI tool → 358 na provider — 150+ na libre — gamit ang iisang endpoint. Claude Code, Codex, Cursor, Cline, Copilot at Antigravity papunta sa LIBRENG Claude / GPT / Gemini na may awtomatikong fallback. Ang pinagsamang compression ng RTK + Caveman ay nakakatipid ng 15–95% na token (~89% sa average) — hindi kailanman maaabot ang limitasyon. 358 na AI provider · 150+ na libreng tier · ~1.62B libreng token/buwan · 19 na diskarte sa routing · $0 para makapagsimula."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ang Pangako — Isang endpoint at 359 provider. Tinitiyak ng awtomatikong fallback na magpapatuloy ang routing habang may iba pang gumaganang target. Anim na haligi: maaasahang fallback sa 359 provider · hanggang 95% matitipid sa token para sa mga kwalipikadong workload · $0 para makapagsimula, may mahigit 150 libreng tier at 54 paulit-ulit na libreng provider na hindi kailanman nangangailangan ng bayad o key · 36 CLI/agent integration gamit ang iisang config · tugma sa OpenAI, Claude, Gemini at Responses API sa /v1 · mga kontrol para sa production, kabilang ang mga circuit breaker, TLS stealth, 110 MCP tool, A2A, memory, guardrail, eval at mahigit 39,000 deklarasyon ng static test sa mahigit 5,100 sinusubaybayang test file."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ang Pangako — Isang endpoint at 358 provider. Tinitiyak ng awtomatikong fallback na magpapatuloy ang routing habang may iba pang gumaganang target. Anim na haligi: maaasahang fallback sa 358 provider · hanggang 95% matitipid sa token para sa mga kwalipikadong workload · $0 para makapagsimula, may mahigit 150 libreng tier at 54 paulit-ulit na libreng provider na hindi kailanman nangangailangan ng bayad o key · 36 CLI/agent integration gamit ang iisang config · tugma sa OpenAI, Claude, Gemini at Responses API sa /v1 · mga kontrol para sa production, kabilang ang mga circuit breaker, TLS stealth, 110 MCP tool, A2A, memory, guardrail, eval at mahigit 39,000 deklarasyon ng static test sa mahigit 5,100 sinusubaybayang test file."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Lahat ng **19** na diskarte — paghalu-haluin at pagtugmain sa bawat hakbang ng
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ano ang nagpapabukod-tangi sa OmniRoute — isang may petsang snapshot ng mga feature kumpara sa 9router, OpenRouter, CLIProxyAPI at LiteLLM sa 13 kakayahan. OmniRoute: 359 provider, 150+ built-in na libreng tier, 19 diskarte sa pagruruta, compression ng token gamit ang 12 engine, built-in na MCP server na may 110 tool, A2A agent protocol, persistent memory, mga guardrail, mga cloud agent, stealth gamit ang TLS fingerprint, Desktop/Termux/PWA at 42 lokal ng UI para sa i18n. Lisensyado ang OmniRoute sa ilalim ng MIT at puwedeng i-self-host. Maaaring magbago ang mga kakayahan at bilang ng mga kakompetensya; tingnan ang naka-link na metodolohiya."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ano ang nagpapabukod-tangi sa OmniRoute — isang may petsang snapshot ng mga feature kumpara sa 9router, OpenRouter, CLIProxyAPI at LiteLLM sa 13 kakayahan. OmniRoute: 358 provider, 150+ built-in na libreng tier, 19 diskarte sa pagruruta, compression ng token gamit ang 12 engine, built-in na MCP server na may 110 tool, A2A agent protocol, persistent memory, mga guardrail, mga cloud agent, stealth gamit ang TLS fingerprint, Desktop/Termux/PWA at 42 lokal ng UI para sa i18n. Lisensyado ang OmniRoute sa ilalim ng MIT at puwedeng i-self-host. Maaaring magbago ang mga kakayahan at bilang ng mga kakompetensya; tingnan ang naka-link na metodolohiya."/>
 
 <sub>📊 Buong metodolohiya at mga detalye ng bawat feature kumpara sa 9router, OpenRouter, CLIProxyAPI at LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

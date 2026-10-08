@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Bepul AI shlyuzi
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yozishni hech qachon to‘xtatmang. Har qanday AI vositasi → 359 ta provayder — 150+ tasi bepul — bitta endpoint orqali. Claude Code, Codex, Cursor, Cline, Copilot va Antigravity bepul Claude / GPT / Gemini xizmatlariga avtomatik zaxira o‘tish bilan ulanadi. RTK + Caveman birgalikdagi siqish tokenlarning 15–95% ini (o‘rtacha ~89%) tejaydi — limitlarga hech qachon yetib bormang. 359 ta AI provayderi · 150+ ta bepul tarif · oyiga ~1,62 mlrd bepul token · 19 ta yo‘naltirish strategiyasi · boshlash narxi $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yozishni hech qachon to‘xtatmang. Har qanday AI vositasi → 358 ta provayder — 150+ tasi bepul — bitta endpoint orqali. Claude Code, Codex, Cursor, Cline, Copilot va Antigravity bepul Claude / GPT / Gemini xizmatlariga avtomatik zaxira o‘tish bilan ulanadi. RTK + Caveman birgalikdagi siqish tokenlarning 15–95% ini (o‘rtacha ~89%) tejaydi — limitlarga hech qachon yetib bormang. 358 ta AI provayderi · 150+ ta bepul tarif · oyiga ~1,62 mlrd bepul token · 19 ta yo‘naltirish strategiyasi · boshlash narxi $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vaʼda — Bitta endpoint va 359 ta provayder. Boshqa sogʻlom manzil mavjud ekan, avtomatik zaxira yoʻnaltirish ishni davom ettiradi. Olti tayanch: 359 ta provayder boʻylab ishonchli zaxira yoʻnaltirish · mos keladigan ish yuklarida tokenlarni 95% gacha tejash · 150 dan ortiq bepul tarif va muntazam ishlaydigan/kalitsiz, doim bepul 54 ta provayder bilan $0 dan boshlash · bitta sozlama orqali 36 ta CLI/agent integratsiyasi · /v1 da OpenAI, Claude, Gemini va Responses API bilan moslik · avtomatik uzgichlar, TLS yashirinligi, 110 ta MCP vositasi, A2A, xotira, himoya qoidalari, baholashlar va 5 100 dan ortiq kuzatiladigan test faylida 39 000 dan ortiq statik test deklaratsiyasini oʻz ichiga olgan ishlab chiqarish muhiti boshqaruv vositalari."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vaʼda — Bitta endpoint va 358 ta provayder. Boshqa sogʻlom manzil mavjud ekan, avtomatik zaxira yoʻnaltirish ishni davom ettiradi. Olti tayanch: 358 ta provayder boʻylab ishonchli zaxira yoʻnaltirish · mos keladigan ish yuklarida tokenlarni 95% gacha tejash · 150 dan ortiq bepul tarif va muntazam ishlaydigan/kalitsiz, doim bepul 54 ta provayder bilan $0 dan boshlash · bitta sozlama orqali 36 ta CLI/agent integratsiyasi · /v1 da OpenAI, Claude, Gemini va Responses API bilan moslik · avtomatik uzgichlar, TLS yashirinligi, 110 ta MCP vositasi, A2A, xotira, himoya qoidalari, baholashlar va 5 100 dan ortiq kuzatiladigan test faylida 39 000 dan ortiq statik test deklaratsiyasini oʻz ichiga olgan ishlab chiqarish muhiti boshqaruv vositalari."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Barcha **19 ta** strategiya — har bir kombo bosqichida aralashtirib moslashtir
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute’ni nimasi ajratib turadi — 13 ta imkoniyat bo‘yicha 9router, OpenRouter, CLIProxyAPI va LiteLLM bilan eskirishi mumkin bo‘lgan taqqoslash. OmniRoute: 359 ta provayder, ichiga o‘rnatilgan 150+ ta bepul tarif, 19 ta marshrutlash strategiyasi, tokenlarni siqish uchun 12 ta dvigatel, 110 ta vositaga ega ichki MCP serveri, A2A agent protokoli, doimiy xotira, himoya qoidalari, bulut agentlari, TLS fingerprint yashirinligi, Desktop/Termux/PWA va UI uchun 42 ta i18n tili. OmniRoute MIT litsenziyasi ostida tarqatiladi va o‘z serveringizda joylashtirilishi mumkin. Raqobatchilarning imkoniyatlari va soni o‘zgarishi mumkin; metodologiya bilan havola orqali tanishing."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute’ni nimasi ajratib turadi — 13 ta imkoniyat bo‘yicha 9router, OpenRouter, CLIProxyAPI va LiteLLM bilan eskirishi mumkin bo‘lgan taqqoslash. OmniRoute: 358 ta provayder, ichiga o‘rnatilgan 150+ ta bepul tarif, 19 ta marshrutlash strategiyasi, tokenlarni siqish uchun 12 ta dvigatel, 110 ta vositaga ega ichki MCP serveri, A2A agent protokoli, doimiy xotira, himoya qoidalari, bulut agentlari, TLS fingerprint yashirinligi, Desktop/Termux/PWA va UI uchun 42 ta i18n tili. OmniRoute MIT litsenziyasi ostida tarqatiladi va o‘z serveringizda joylashtirilishi mumkin. Raqobatchilarning imkoniyatlari va soni o‘zgarishi mumkin; metodologiya bilan havola orqali tanishing."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI va LiteLLM bilan taqqoslashning to‘liq metodologiyasi va har bir imkoniyat tafsilotlari → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

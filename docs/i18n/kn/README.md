@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — ಉಚಿತ AI ಗೇಟ್‌ವೇ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ಕೋಡಿಂಗ್ ನಿಲ್ಲಿಸಬೇಡಿ. ಪ್ರತಿಯೊಂದು AI ಪರಿಕರವೂ → ಒಂದೇ ಎಂಡ್‌ಪಾಯಿಂಟ್ ಮೂಲಕ 359 ಪೂರೈಕೆದಾರರಿಗೆ — 150+ ಉಚಿತ — ಸಂಪರ್ಕಗೊಳ್ಳುತ್ತದೆ. Claude Code, Codex, Cursor, Cline, Copilot ಮತ್ತು Antigravity, ಸ್ವಯಂಚಾಲಿತ ಫೇಲ್‌ಓವರ್‌ನೊಂದಿಗೆ ಉಚಿತ Claude / GPT / Gemini ಗೆ ಸಂಪರ್ಕಗೊಳ್ಳುತ್ತವೆ. RTK + Caveman ಸಂಯೋಜಿತ ಸಂಕುಚನವು 15–95% ಟೋಕನ್‌ಗಳನ್ನು (~89% ಸರಾಸರಿ) ಉಳಿಸುತ್ತದೆ — ಮಿತಿಗಳನ್ನು ಎಂದಿಗೂ ತಲುಪುವುದಿಲ್ಲ. 359 AI ಪೂರೈಕೆದಾರರು · 150+ ಉಚಿತ ಹಂತಗಳು · ತಿಂಗಳಿಗೆ ~1.62B ಉಚಿತ ಟೋಕನ್‌ಗಳು · 19 ರೂಟಿಂಗ್ ತಂತ್ರಗಳು · $0 ವೆಚ್ಚದಲ್ಲಿ ಪ್ರಾರಂಭಿಸಿ."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — ಕೋಡಿಂಗ್ ನಿಲ್ಲಿಸಬೇಡಿ. ಪ್ರತಿಯೊಂದು AI ಪರಿಕರವೂ → ಒಂದೇ ಎಂಡ್‌ಪಾಯಿಂಟ್ ಮೂಲಕ 358 ಪೂರೈಕೆದಾರರಿಗೆ — 150+ ಉಚಿತ — ಸಂಪರ್ಕಗೊಳ್ಳುತ್ತದೆ. Claude Code, Codex, Cursor, Cline, Copilot ಮತ್ತು Antigravity, ಸ್ವಯಂಚಾಲಿತ ಫೇಲ್‌ಓವರ್‌ನೊಂದಿಗೆ ಉಚಿತ Claude / GPT / Gemini ಗೆ ಸಂಪರ್ಕಗೊಳ್ಳುತ್ತವೆ. RTK + Caveman ಸಂಯೋಜಿತ ಸಂಕುಚನವು 15–95% ಟೋಕನ್‌ಗಳನ್ನು (~89% ಸರಾಸರಿ) ಉಳಿಸುತ್ತದೆ — ಮಿತಿಗಳನ್ನು ಎಂದಿಗೂ ತಲುಪುವುದಿಲ್ಲ. 358 AI ಪೂರೈಕೆದಾರರು · 150+ ಉಚಿತ ಹಂತಗಳು · ತಿಂಗಳಿಗೆ ~1.62B ಉಚಿತ ಟೋಕನ್‌ಗಳು · 19 ರೂಟಿಂಗ್ ತಂತ್ರಗಳು · $0 ವೆಚ್ಚದಲ್ಲಿ ಪ್ರಾರಂಭಿಸಿ."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ಭರವಸೆ — ಒಂದು ಎಂಡ್‌ಪಾಯಿಂಟ್ ಮತ್ತು 359 ಪ್ರೊವೈಡರ್‌ಗಳು. ಆರೋಗ್ಯಕರ ಗುರಿ ಲಭ್ಯವಿರುವವರೆಗೆ ಸ್ವಯಂಚಾಲಿತ ಫೇಲ್‌ಓವರ್ ರೌಟಿಂಗ್ ಅನ್ನು ಮುಂದುವರಿಸುತ್ತದೆ. ಆರು ಆಧಾರಸ್ತಂಭಗಳು: 359 ಪ್ರೊವೈಡರ್‌ಗಳಾದ್ಯಂತ ಸ್ಥಿತಿಸ್ಥಾಪಕ ಫೇಲ್‌ಓವರ್ · ಅರ್ಹ ವರ್ಕ್‌ಲೋಡ್‌ಗಳಲ್ಲಿ ಟೋಕನ್ ವೆಚ್ಚದಲ್ಲಿ 95% ವರೆಗೆ ಉಳಿತಾಯ · 150+ ಉಚಿತ ಹಂತಗಳು ಮತ್ತು ಮರುಕಳಿಸುವ/ಕೀ ಅಗತ್ಯವಿಲ್ಲದ, ಸದಾ ಉಚಿತ 54 ಪ್ರೊವೈಡರ್‌ಗಳೊಂದಿಗೆ $0 ವೆಚ್ಚದಲ್ಲಿ ಪ್ರಾರಂಭಿಸಿ · ಒಂದೇ ಕಾನ್ಫಿಗ್ ಮೂಲಕ 36 CLI/ಏಜೆಂಟ್ ಇಂಟಿಗ್ರೇಷನ್‌ಗಳು · /v1 ನಲ್ಲಿ OpenAI, Claude, Gemini ಮತ್ತು Responses API ಹೊಂದಾಣಿಕೆ · ಸರ್ಕ್ಯೂಟ್ ಬ್ರೇಕರ್‌ಗಳು, TLS stealth, 110 MCP ಟೂಲ್‌ಗಳು, A2A, ಮೆಮೊರಿ, ಗಾರ್ಡ್‌ರೇಲ್‌ಗಳು, ಮೌಲ್ಯಮಾಪನಗಳು ಮತ್ತು 5,100+ ಟ್ರ್ಯಾಕ್ ಮಾಡಲಾದ ಟೆಸ್ಟ್ ಫೈಲ್‌ಗಳಾದ್ಯಂತ 39,000+ ಸ್ಥಿರ ಟೆಸ್ಟ್ ಘೋಷಣೆಗಳು ಸೇರಿದಂತೆ ಪ್ರೊಡಕ್ಷನ್ ನಿಯಂತ್ರಣಗಳು."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="ಭರವಸೆ — ಒಂದು ಎಂಡ್‌ಪಾಯಿಂಟ್ ಮತ್ತು 358 ಪ್ರೊವೈಡರ್‌ಗಳು. ಆರೋಗ್ಯಕರ ಗುರಿ ಲಭ್ಯವಿರುವವರೆಗೆ ಸ್ವಯಂಚಾಲಿತ ಫೇಲ್‌ಓವರ್ ರೌಟಿಂಗ್ ಅನ್ನು ಮುಂದುವರಿಸುತ್ತದೆ. ಆರು ಆಧಾರಸ್ತಂಭಗಳು: 358 ಪ್ರೊವೈಡರ್‌ಗಳಾದ್ಯಂತ ಸ್ಥಿತಿಸ್ಥಾಪಕ ಫೇಲ್‌ಓವರ್ · ಅರ್ಹ ವರ್ಕ್‌ಲೋಡ್‌ಗಳಲ್ಲಿ ಟೋಕನ್ ವೆಚ್ಚದಲ್ಲಿ 95% ವರೆಗೆ ಉಳಿತಾಯ · 150+ ಉಚಿತ ಹಂತಗಳು ಮತ್ತು ಮರುಕಳಿಸುವ/ಕೀ ಅಗತ್ಯವಿಲ್ಲದ, ಸದಾ ಉಚಿತ 54 ಪ್ರೊವೈಡರ್‌ಗಳೊಂದಿಗೆ $0 ವೆಚ್ಚದಲ್ಲಿ ಪ್ರಾರಂಭಿಸಿ · ಒಂದೇ ಕಾನ್ಫಿಗ್ ಮೂಲಕ 36 CLI/ಏಜೆಂಟ್ ಇಂಟಿಗ್ರೇಷನ್‌ಗಳು · /v1 ನಲ್ಲಿ OpenAI, Claude, Gemini ಮತ್ತು Responses API ಹೊಂದಾಣಿಕೆ · ಸರ್ಕ್ಯೂಟ್ ಬ್ರೇಕರ್‌ಗಳು, TLS stealth, 110 MCP ಟೂಲ್‌ಗಳು, A2A, ಮೆಮೊರಿ, ಗಾರ್ಡ್‌ರೇಲ್‌ಗಳು, ಮೌಲ್ಯಮಾಪನಗಳು ಮತ್ತು 5,100+ ಟ್ರ್ಯಾಕ್ ಮಾಡಲಾದ ಟೆಸ್ಟ್ ಫೈಲ್‌ಗಳಾದ್ಯಂತ 39,000+ ಸ್ಥಿರ ಟೆಸ್ಟ್ ಘೋಷಣೆಗಳು ಸೇರಿದಂತೆ ಪ್ರೊಡಕ್ಷನ್ ನಿಯಂತ್ರಣಗಳು."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute ಅನ್ನು ವಿಭಿನ್ನವಾಗಿಸುವುದು ಏನು — 13 ಸಾಮರ್ಥ್ಯಗಳಲ್ಲಿ 9router, OpenRouter, CLIProxyAPI ಮತ್ತು LiteLLM ಜೊತೆಗೆ ಹಳೆಯ ವೈಶಿಷ್ಟ್ಯಗಳ ಸ್ನ್ಯಾಪ್‌ಶಾಟ್ ಹೋಲಿಕೆ. OmniRoute: 359 providers, ಅಂತರ್ನಿರ್ಮಿತ 150+ ಉಚಿತ ಶ್ರೇಣಿಗಳು, 19 routing strategies, 12-engine token compression, 110 tools ಹೊಂದಿರುವ ಅಂತರ್ನಿರ್ಮಿತ MCP server, A2A agent protocol, persistent memory, guardrails, cloud agents, TLS fingerprint stealth, Desktop/Termux/PWA ಮತ್ತು 42 i18n UI locales. OmniRoute MIT ಪರವಾನಗಿ ಹೊಂದಿದೆ ಮತ್ತು ಸ್ವಯಂ ಹೋಸ್ಟ್ ಮಾಡಬಹುದು. ಸ್ಪರ್ಧಿಗಳ ಸಾಮರ್ಥ್ಯಗಳು ಮತ್ತು ಸಂಖ್ಯೆಗಳು ಬದಲಾಗಬಹುದು; ಲಿಂಕ್ ಮಾಡಲಾದ ವಿಧಿವಿಧಾನವನ್ನು ನೋಡಿ."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute ಅನ್ನು ವಿಭಿನ್ನವಾಗಿಸುವುದು ಏನು — 13 ಸಾಮರ್ಥ್ಯಗಳಲ್ಲಿ 9router, OpenRouter, CLIProxyAPI ಮತ್ತು LiteLLM ಜೊತೆಗೆ ಹಳೆಯ ವೈಶಿಷ್ಟ್ಯಗಳ ಸ್ನ್ಯಾಪ್‌ಶಾಟ್ ಹೋಲಿಕೆ. OmniRoute: 358 providers, ಅಂತರ್ನಿರ್ಮಿತ 150+ ಉಚಿತ ಶ್ರೇಣಿಗಳು, 19 routing strategies, 12-engine token compression, 110 tools ಹೊಂದಿರುವ ಅಂತರ್ನಿರ್ಮಿತ MCP server, A2A agent protocol, persistent memory, guardrails, cloud agents, TLS fingerprint stealth, Desktop/Termux/PWA ಮತ್ತು 42 i18n UI locales. OmniRoute MIT ಪರವಾನಗಿ ಹೊಂದಿದೆ ಮತ್ತು ಸ್ವಯಂ ಹೋಸ್ಟ್ ಮಾಡಬಹುದು. ಸ್ಪರ್ಧಿಗಳ ಸಾಮರ್ಥ್ಯಗಳು ಮತ್ತು ಸಂಖ್ಯೆಗಳು ಬದಲಾಗಬಹುದು; ಲಿಂಕ್ ಮಾಡಲಾದ ವಿಧಿವಿಧಾನವನ್ನು ನೋಡಿ."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI ಮತ್ತು LiteLLM ಜೊತೆಗೆ ಸಂಪೂರ್ಣ ವಿಧಿವಿಧಾನ ಮತ್ತು ಪ್ರತಿ ವೈಶಿಷ್ಟ್ಯದ ವಿವರ → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Gateway AI Gratis
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Jangan pernah berhenti menulis kode. Setiap alat AI → 359 penyedia — 150+ gratis — melalui satu endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ke Claude / GPT / Gemini GRATIS dengan fallback otomatis. Kompresi bertumpuk RTK + Caveman menghemat 15–95% token (rata-rata ~89%) — jangan pernah mencapai batas. 359 penyedia AI · 150+ paket gratis · ~1,62 miliar token gratis/bulan · 19 strategi perutean · mulai dari $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Jangan pernah berhenti menulis kode. Setiap alat AI → 358 penyedia — 150+ gratis — melalui satu endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ke Claude / GPT / Gemini GRATIS dengan fallback otomatis. Kompresi bertumpuk RTK + Caveman menghemat 15–95% token (rata-rata ~89%) — jangan pernah mencapai batas. 358 penyedia AI · 150+ paket gratis · ~1,62 miliar token gratis/bulan · 19 strategi perutean · mulai dari $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Janji Kami — Satu endpoint dan 359 penyedia. Fallback otomatis menjaga perutean tetap berjalan selama masih tersedia target sehat lainnya. Enam pilar: fallback tangguh di antara 359 penyedia · penghematan token hingga 95% untuk beban kerja yang memenuhi syarat · mulai dengan biaya $0, dengan lebih dari 150 paket gratis dan 54 penyedia gratis selamanya yang tersedia secara berkala/tanpa kunci · 36 integrasi CLI/agen melalui satu konfigurasi · kompatibilitas API OpenAI, Claude, Gemini, dan Responses di /v1 · kontrol produksi termasuk circuit breaker, TLS stealth, MCP 110 alat, A2A, memori, guardrail, evaluasi, dan lebih dari 39.000 deklarasi pengujian statis di lebih dari 5.100 file pengujian yang dilacak."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Janji Kami — Satu endpoint dan 358 penyedia. Fallback otomatis menjaga perutean tetap berjalan selama masih tersedia target sehat lainnya. Enam pilar: fallback tangguh di antara 358 penyedia · penghematan token hingga 95% untuk beban kerja yang memenuhi syarat · mulai dengan biaya $0, dengan lebih dari 150 paket gratis dan 54 penyedia gratis selamanya yang tersedia secara berkala/tanpa kunci · 36 integrasi CLI/agen melalui satu konfigurasi · kompatibilitas API OpenAI, Claude, Gemini, dan Responses di /v1 · kontrol produksi termasuk circuit breaker, TLS stealth, MCP 110 alat, A2A, memori, guardrail, evaluasi, dan lebih dari 39.000 deklarasi pengujian statis di lebih dari 5.100 file pengujian yang dilacak."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Seluruh **19** strategi — padukan sesuai kebutuhan pada setiap langkah combo:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Keunggulan OmniRoute — snapshot fitur bertanggal yang membandingkannya dengan 9router, OpenRouter, CLIProxyAPI, dan LiteLLM dalam 13 kapabilitas. OmniRoute: 359 penyedia, lebih dari 150 paket gratis bawaan, 19 strategi perutean, kompresi token dengan 12 mesin, server MCP bawaan dengan 110 alat, protokol agen A2A, memori persisten, guardrail, agen cloud, penyamaran sidik jari TLS, Desktop/Termux/PWA, dan 42 lokal UI i18n. OmniRoute berlisensi MIT dan dapat di-host sendiri. Kapabilitas dan jumlah kompetitor dapat berubah; lihat metodologi yang ditautkan."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Keunggulan OmniRoute — snapshot fitur bertanggal yang membandingkannya dengan 9router, OpenRouter, CLIProxyAPI, dan LiteLLM dalam 13 kapabilitas. OmniRoute: 358 penyedia, lebih dari 150 paket gratis bawaan, 19 strategi perutean, kompresi token dengan 12 mesin, server MCP bawaan dengan 110 alat, protokol agen A2A, memori persisten, guardrail, agen cloud, penyamaran sidik jari TLS, Desktop/Termux/PWA, dan 42 lokal UI i18n. OmniRoute berlisensi MIT dan dapat di-host sendiri. Kapabilitas dan jumlah kompetitor dapat berubah; lihat metodologi yang ditautkan."/>
 
 <sub>📊 Metodologi lengkap &amp; detail tiap fitur dibandingkan dengan 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

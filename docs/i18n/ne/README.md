@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — निःशुल्क AI गेटवे
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — कोडिङ गर्न कहिल्यै नरोकिनुहोस्। हरेक AI उपकरण → 359 प्रदायकहरू — 150+ निःशुल्क — एउटै endpoint मार्फत। Claude Code, Codex, Cursor, Cline, Copilot र Antigravity लाई स्वचालित fallback सहित निःशुल्क Claude / GPT / Gemini मा जोड्नुहोस्। RTK + Caveman को संयुक्त कम्प्रेसनले 15–95% टोकन बचत गर्छ (औसत ~89%) — सीमामा कहिल्यै नपुग्नुहोस्। 359 AI प्रदायकहरू · 150+ निःशुल्क tier · ~1.62B निःशुल्क टोकन/महिना · 19 routing रणनीतिहरू · सुरु गर्न $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — कोडिङ गर्न कहिल्यै नरोकिनुहोस्। हरेक AI उपकरण → 358 प्रदायकहरू — 150+ निःशुल्क — एउटै endpoint मार्फत। Claude Code, Codex, Cursor, Cline, Copilot र Antigravity लाई स्वचालित fallback सहित निःशुल्क Claude / GPT / Gemini मा जोड्नुहोस्। RTK + Caveman को संयुक्त कम्प्रेसनले 15–95% टोकन बचत गर्छ (औसत ~89%) — सीमामा कहिल्यै नपुग्नुहोस्। 358 AI प्रदायकहरू · 150+ निःशुल्क tier · ~1.62B निःशुल्क टोकन/महिना · 19 routing रणनीतिहरू · सुरु गर्न $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="हाम्रो प्रतिबद्धता — एउटा endpoint र 359 प्रदायक। अर्को स्वस्थ लक्ष्य उपलब्ध रहुन्जेल स्वचालित fallback ले राउटिङ जारी राख्छ। छवटा आधारस्तम्भ: 359 प्रदायकमा भरपर्दो fallback · योग्य कार्यभारमा 95% सम्म टोकन बचत · 150+ निःशुल्क टियर र 54 नियमित रूपमा उपलब्ध/कुञ्जीविहीन सधैँ निःशुल्क प्रदायकसहित $0 बाट सुरु · एउटै कन्फिगरेसनमार्फत 36 CLI/agent एकीकरण · /v1 मा OpenAI, Claude, Gemini र Responses API अनुकूलता · circuit breaker, TLS stealth, MCP का 110 उपकरण, A2A, memory, guardrails, evals र 5,100+ ट्र्याक गरिएका परीक्षण फाइलमा 39,000+ स्थिर परीक्षण घोषणासहितका उत्पादन नियन्त्रणहरू।"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="हाम्रो प्रतिबद्धता — एउटा endpoint र 358 प्रदायक। अर्को स्वस्थ लक्ष्य उपलब्ध रहुन्जेल स्वचालित fallback ले राउटिङ जारी राख्छ। छवटा आधारस्तम्भ: 358 प्रदायकमा भरपर्दो fallback · योग्य कार्यभारमा 95% सम्म टोकन बचत · 150+ निःशुल्क टियर र 54 नियमित रूपमा उपलब्ध/कुञ्जीविहीन सधैँ निःशुल्क प्रदायकसहित $0 बाट सुरु · एउटै कन्फिगरेसनमार्फत 36 CLI/agent एकीकरण · /v1 मा OpenAI, Claude, Gemini र Responses API अनुकूलता · circuit breaker, TLS stealth, MCP का 110 उपकरण, A2A, memory, guardrails, evals र 5,100+ ट्र्याक गरिएका परीक्षण फाइलमा 39,000+ स्थिर परीक्षण घोषणासहितका उत्पादन नियन्त्रणहरू।"/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute लाई के कुराले फरक बनाउँछ — 13 वटा क्षमतामा 9router, OpenRouter, CLIProxyAPI र LiteLLM सँगको मितिसहितको सुविधा तुलना। OmniRoute: 359 प्रदायक, पहिल्यै समावेश गरिएका 150+ निःशुल्क टियर, 19 राउटिङ रणनीति, 12-इन्जिन टोकन सङ्कुचन, 110 उपकरणसहितको अन्तर्निर्मित MCP सर्भर, A2A एजेन्ट प्रोटोकल, स्थायी मेमोरी, गार्डरेल, क्लाउड एजेन्ट, TLS फिङ्गरप्रिन्ट स्टेल्थ, Desktop/Termux/PWA र 42 i18n UI भाषा। OmniRoute MIT-लाइसेन्सप्राप्त र आफ्नै सर्भरमा होस्ट गर्न सकिने छ। प्रतिस्पर्धीका क्षमता र सङ्ख्या परिवर्तन हुन सक्छन्; लिङ्क गरिएको कार्यविधि हेर्नुहोस्।"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute लाई के कुराले फरक बनाउँछ — 13 वटा क्षमतामा 9router, OpenRouter, CLIProxyAPI र LiteLLM सँगको मितिसहितको सुविधा तुलना। OmniRoute: 358 प्रदायक, पहिल्यै समावेश गरिएका 150+ निःशुल्क टियर, 19 राउटिङ रणनीति, 12-इन्जिन टोकन सङ्कुचन, 110 उपकरणसहितको अन्तर्निर्मित MCP सर्भर, A2A एजेन्ट प्रोटोकल, स्थायी मेमोरी, गार्डरेल, क्लाउड एजेन्ट, TLS फिङ्गरप्रिन्ट स्टेल्थ, Desktop/Termux/PWA र 42 i18n UI भाषा। OmniRoute MIT-लाइसेन्सप्राप्त र आफ्नै सर्भरमा होस्ट गर्न सकिने छ। प्रतिस्पर्धीका क्षमता र सङ्ख्या परिवर्तन हुन सक्छन्; लिङ्क गरिएको कार्यविधि हेर्नुहोस्।"/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI र LiteLLM सँगको पूर्ण कार्यविधि र प्रत्येक सुविधाको विवरण → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

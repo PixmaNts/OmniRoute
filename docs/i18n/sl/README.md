@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Brezplačni prehod za UI
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikoli ne prenehajte programirati. Vsako orodje UI → 359 ponudnikov — več kot 150 brezplačnih — prek ene končne točke. Claude Code, Codex, Cursor, Cline, Copilot in Antigravity do brezplačnih Claude / GPT / Gemini s samodejnim preklopom. Zloženo stiskanje RTK + Caveman prihrani 15–95 % žetonov (povprečno ~89 %) — nikoli ne dosežete omejitev. 359 ponudnikov UI · več kot 150 brezplačnih paketov · ~1.62B brezplačnih žetonov/mesec · 19 strategij usmerjanja · začnite za $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikoli ne prenehajte programirati. Vsako orodje UI → 358 ponudnikov — več kot 150 brezplačnih — prek ene končne točke. Claude Code, Codex, Cursor, Cline, Copilot in Antigravity do brezplačnih Claude / GPT / Gemini s samodejnim preklopom. Zloženo stiskanje RTK + Caveman prihrani 15–95 % žetonov (povprečno ~89 %) — nikoli ne dosežete omejitev. 358 ponudnikov UI · več kot 150 brezplačnih paketov · ~1.62B brezplačnih žetonov/mesec · 19 strategij usmerjanja · začnite za $0."/>
 
 </div>
 
@@ -240,7 +240,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Obljuba — ena končna točka in 359 ponudnikov. Samodejni preklop zagotavlja nadaljnje usmerjanje, dokler je na voljo drug delujoč cilj. Šest stebrov: zanesljiv preklop med 359 ponudniki · do 95 % prihranka žetonov pri ustreznih obremenitvah · začnite brezplačno z več kot 150 brezplačnimi paketi ter 54 brezplačnimi ponudniki, ki so na voljo stalno in ne potrebujejo ključa · 36 integracij CLI/agentov z eno samo konfiguracijo · združljivost z API-ji OpenAI, Claude, Gemini in Responses na /v1 · produkcijski nadzor, vključno z odklopniki, prikritim TLS, 110 orodji MCP, A2A, pomnilnikom, varovali, evalvacijami in več kot 39.000 statičnimi izjavami testov v več kot 5.100 spremljanih datotekah testov."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Obljuba — ena končna točka in 358 ponudnikov. Samodejni preklop zagotavlja nadaljnje usmerjanje, dokler je na voljo drug delujoč cilj. Šest stebrov: zanesljiv preklop med 358 ponudniki · do 95 % prihranka žetonov pri ustreznih obremenitvah · začnite brezplačno z več kot 150 brezplačnimi paketi ter 54 brezplačnimi ponudniki, ki so na voljo stalno in ne potrebujejo ključa · 36 integracij CLI/agentov z eno samo konfiguracijo · združljivost z API-ji OpenAI, Claude, Gemini in Responses na /v1 · produkcijski nadzor, vključno z odklopniki, prikritim TLS, 110 orodji MCP, A2A, pomnilnikom, varovali, evalvacijami in več kot 39.000 statičnimi izjavami testov v več kot 5.100 spremljanih datotekah testov."/>
 
 <br/>
 <br/>
@@ -493,7 +493,7 @@ Vseh **19** strategij — poljubno jih kombinirajte pri vsakem koraku kombinacij
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Po čem OmniRoute izstopa — časovni posnetek funkcij v primerjavi z 9router, OpenRouter, CLIProxyAPI in LiteLLM na 13 področjih. OmniRoute: 359 ponudnikov, več kot 150 vgrajenih brezplačnih paketov, 19 strategij usmerjanja, stiskanje žetonov z 12 pogoni, vgrajeni strežnik MCP s 110 orodji, protokol agentov A2A, trajni pomnilnik, varovala, agenti v oblaku, prikrivanje prstnih odtisov TLS, Desktop/Termux/PWA in 42 jezikov uporabniškega vmesnika. OmniRoute je licenciran pod licenco MIT in ga lahko gostite sami. Funkcije in število funkcij pri konkurentih se lahko spreminjajo; glejte povezano metodologijo."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Po čem OmniRoute izstopa — časovni posnetek funkcij v primerjavi z 9router, OpenRouter, CLIProxyAPI in LiteLLM na 13 področjih. OmniRoute: 358 ponudnikov, več kot 150 vgrajenih brezplačnih paketov, 19 strategij usmerjanja, stiskanje žetonov z 12 pogoni, vgrajeni strežnik MCP s 110 orodji, protokol agentov A2A, trajni pomnilnik, varovala, agenti v oblaku, prikrivanje prstnih odtisov TLS, Desktop/Termux/PWA in 42 jezikov uporabniškega vmesnika. OmniRoute je licenciran pod licenco MIT in ga lahko gostite sami. Funkcije in število funkcij pri konkurentih se lahko spreminjajo; glejte povezano metodologijo."/>
 
 <sub>📊 Celotna metodologija in podrobnosti o posameznih funkcijah v primerjavi z 9router, OpenRouter, CLIProxyAPI in LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

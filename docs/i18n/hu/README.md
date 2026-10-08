@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Az ingyenes AI-átjáró
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Soha ne hagyd abba a kódolást. Minden AI-eszköz → 359 szolgáltató — ebből 150+ ingyenes — egyetlen végponton keresztül. Claude Code, Codex, Cursor, Cline, Copilot és Antigravity ingyenes Claude / GPT / Gemini-modellekhez, automatikus tartalékra váltással. Az RTK + Caveman rétegzett tömörítés 15–95% tokent takarít meg (átlagosan ~89%) — soha nem éred el a limiteket. 359 AI-szolgáltató · 150+ ingyenes csomag · ~1.62B ingyenes token/hó · 19 útválasztási stratégia · 0 $ a kezdéshez."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Soha ne hagyd abba a kódolást. Minden AI-eszköz → 358 szolgáltató — ebből 150+ ingyenes — egyetlen végponton keresztül. Claude Code, Codex, Cursor, Cline, Copilot és Antigravity ingyenes Claude / GPT / Gemini-modellekhez, automatikus tartalékra váltással. Az RTK + Caveman rétegzett tömörítés 15–95% tokent takarít meg (átlagosan ~89%) — soha nem éred el a limiteket. 358 AI-szolgáltató · 150+ ingyenes csomag · ~1.62B ingyenes token/hó · 19 útválasztási stratégia · 0 $ a kezdéshez."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Az ígéret — Egy végpont és 359 szolgáltató. Az automatikus tartalék útvonal biztosítja az útválasztást, amíg elérhető egy másik egészséges célpont. Hat pillér: rugalmas tartalék útvonal 359 szolgáltatón keresztül · akár 95% tokenmegtakarítás a jogosult munkaterheléseknél · $0 indulási költség, 150+ ingyenes csomaggal és 54 állandóan ingyenes, rendszeresen elérhető vagy kulcs nélküli szolgáltatóval · 36 CLI-/ügynökintegráció egyetlen konfiguráción keresztül · OpenAI-, Claude-, Gemini- és Responses API-kompatibilitás a /v1 címen · éles környezethez szükséges vezérlők, többek között áramkör-megszakítók, TLS stealth, 110 MCP-eszköz, A2A, memória, védőkorlátok, kiértékelések, valamint 39 000+ statikus tesztdeklaráció több mint 5100 nyomon követett tesztfájlban."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Az ígéret — Egy végpont és 358 szolgáltató. Az automatikus tartalék útvonal biztosítja az útválasztást, amíg elérhető egy másik egészséges célpont. Hat pillér: rugalmas tartalék útvonal 358 szolgáltatón keresztül · akár 95% tokenmegtakarítás a jogosult munkaterheléseknél · $0 indulási költség, 150+ ingyenes csomaggal és 54 állandóan ingyenes, rendszeresen elérhető vagy kulcs nélküli szolgáltatóval · 36 CLI-/ügynökintegráció egyetlen konfiguráción keresztül · OpenAI-, Claude-, Gemini- és Responses API-kompatibilitás a /v1 címen · éles környezethez szükséges vezérlők, többek között áramkör-megszakítók, TLS stealth, 110 MCP-eszköz, A2A, memória, védőkorlátok, kiértékelések, valamint 39 000+ statikus tesztdeklaráció több mint 5100 nyomon követett tesztfájlban."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Mind a **19** stratégia — szabadon kombinálhatók a kombó egyes lépéseibe
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Miben különbözik az OmniRoute — pillanatfelvétel az elérhető funkciókról, összehasonlítva a 9routerrel, az OpenRouterrel, a CLIProxyAPI-val és a LiteLLM-mel 13 képesség mentén. OmniRoute: 359 szolgáltató, több mint 150 beépített ingyenes csomag, 19 útválasztási stratégia, 12 motoros tokenkompresszió, beépített MCP-szerver 110 eszközzel, A2A-ügynökprotokoll, perzisztens memória, védelmi korlátok, felhőügynökök, TLS-ujjlenyomat-alapú rejtőzködés, Desktop/Termux/PWA és 42 felületi lokalizáció. Az OmniRoute MIT-licencű, és saját kiszolgálón is üzemeltethető. A versenytársak képességei és számai változhatnak; lásd a hivatkozott módszertant."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Miben különbözik az OmniRoute — pillanatfelvétel az elérhető funkciókról, összehasonlítva a 9routerrel, az OpenRouterrel, a CLIProxyAPI-val és a LiteLLM-mel 13 képesség mentén. OmniRoute: 358 szolgáltató, több mint 150 beépített ingyenes csomag, 19 útválasztási stratégia, 12 motoros tokenkompresszió, beépített MCP-szerver 110 eszközzel, A2A-ügynökprotokoll, perzisztens memória, védelmi korlátok, felhőügynökök, TLS-ujjlenyomat-alapú rejtőzködés, Desktop/Termux/PWA és 42 felületi lokalizáció. Az OmniRoute MIT-licencű, és saját kiszolgálón is üzemeltethető. A versenytársak képességei és számai változhatnak; lásd a hivatkozott módszertant."/>
 
 <sub>📊 Teljes módszertan és funkciónkénti részletek a 9routerrel, az OpenRouterrel, a CLIProxyAPI-val és a LiteLLM-mel való összehasonlításról → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

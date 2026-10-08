@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Bezplatná AI brána
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikdy neprestaňte programovať. Každý AI nástroj → 359 poskytovateľov — z toho 150+ bezplatných — cez jeden koncový bod. Claude Code, Codex, Cursor, Cline, Copilot a Antigravity s automatickým záložným prepnutím na bezplatné Claude / GPT / Gemini. Kombinovaná kompresia RTK + Caveman šetrí 15–95 % tokenov (v priemere ~89 %) — nikdy nenarazíte na limity. 359 poskytovateľov AI · 150+ bezplatných programov · ~1,62 mld. bezplatných tokenov mesačne · 19 stratégií smerovania · Začnite za $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikdy neprestaňte programovať. Každý AI nástroj → 358 poskytovateľov — z toho 150+ bezplatných — cez jeden koncový bod. Claude Code, Codex, Cursor, Cline, Copilot a Antigravity s automatickým záložným prepnutím na bezplatné Claude / GPT / Gemini. Kombinovaná kompresia RTK + Caveman šetrí 15–95 % tokenov (v priemere ~89 %) — nikdy nenarazíte na limity. 358 poskytovateľov AI · 150+ bezplatných programov · ~1,62 mld. bezplatných tokenov mesačne · 19 stratégií smerovania · Začnite za $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Prísľub — jeden koncový bod a 359 poskytovateľov. Automatické záložné smerovanie zabezpečí pokračovanie smerovania, pokiaľ je k dispozícii iný funkčný cieľ. Šesť pilierov: odolné záložné smerovanie naprieč 359 poskytovateľmi · úspora až 95 % tokenov pri vhodných úlohách · začnite za 0 $ s viac než 150 bezplatnými programami a 54 bezplatnými poskytovateľmi, ktorí sú opakovane dostupní alebo nevyžadujú kľúč · 36 integrácií CLI/agentov prostredníctvom jedinej konfigurácie · kompatibilita s OpenAI, Claude, Gemini a Responses API na /v1 · produkčné ovládacie prvky vrátane ističov, TLS stealth, MCP so 110 nástrojmi, A2A, pamäte, ochranných pravidiel, evaluácií a viac než 39 000 deklarácií statických testov v rámci viac než 5 100 sledovaných testovacích súborov."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Prísľub — jeden koncový bod a 358 poskytovateľov. Automatické záložné smerovanie zabezpečí pokračovanie smerovania, pokiaľ je k dispozícii iný funkčný cieľ. Šesť pilierov: odolné záložné smerovanie naprieč 358 poskytovateľmi · úspora až 95 % tokenov pri vhodných úlohách · začnite za 0 $ s viac než 150 bezplatnými programami a 54 bezplatnými poskytovateľmi, ktorí sú opakovane dostupní alebo nevyžadujú kľúč · 36 integrácií CLI/agentov prostredníctvom jedinej konfigurácie · kompatibilita s OpenAI, Claude, Gemini a Responses API na /v1 · produkčné ovládacie prvky vrátane ističov, TLS stealth, MCP so 110 nástrojmi, A2A, pamäte, ochranných pravidiel, evaluácií a viac než 39 000 deklarácií statických testov v rámci viac než 5 100 sledovaných testovacích súborov."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Všetkých **19** stratégií — ľubovoľne ich kombinujte v jednotlivých kro
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Čím sa OmniRoute odlišuje — časovo označený prehľad funkcií v porovnaní s 9router, OpenRouter, CLIProxyAPI a LiteLLM v 13 oblastiach. OmniRoute: 359 poskytovateľov, viac než 150 vstavaných bezplatných taríf, 19 stratégií smerovania, kompresia tokenov pomocou 12 enginov, vstavaný server MCP so 110 nástrojmi, protokol agentov A2A, trvalá pamäť, ochranné prvky, cloudoví agenti, utajenie pomocou TLS fingerprintingu, Desktop/Termux/PWA a používateľské rozhranie v 42 jazykoch. OmniRoute má licenciu MIT a možno ho hostovať na vlastnej infraštruktúre. Funkcie a počty konkurentov sa môžu meniť; pozrite si odkazovanú metodiku."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Čím sa OmniRoute odlišuje — časovo označený prehľad funkcií v porovnaní s 9router, OpenRouter, CLIProxyAPI a LiteLLM v 13 oblastiach. OmniRoute: 358 poskytovateľov, viac než 150 vstavaných bezplatných taríf, 19 stratégií smerovania, kompresia tokenov pomocou 12 enginov, vstavaný server MCP so 110 nástrojmi, protokol agentov A2A, trvalá pamäť, ochranné prvky, cloudoví agenti, utajenie pomocou TLS fingerprintingu, Desktop/Termux/PWA a používateľské rozhranie v 42 jazykoch. OmniRoute má licenciu MIT a možno ho hostovať na vlastnej infraštruktúre. Funkcie a počty konkurentov sa môžu meniť; pozrite si odkazovanú metodiku."/>
 
 <sub>📊 Kompletná metodika a podrobnosti o jednotlivých funkciách v porovnaní s 9router, OpenRouter, CLIProxyAPI a LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

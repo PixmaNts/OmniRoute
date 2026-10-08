@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — නොමිලේ AI ගේට්වේ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — කේතනය කිරීම කිසිදා නවත්වන්න එපා. සෑම AI මෙවලමක්ම → එක් endpoint එකක් හරහා සැපයුම්කරුවන් 359කට — 150කට වැඩි නොමිලේ. Claude Code, Codex, Cursor, Cline, Copilot සහ Antigravity, ස්වයංක්‍රීය fallback සමඟ නොමිලේ Claude / GPT / Gemini වෙත. RTK + Caveman ඒකාබද්ධ සම්පීඩනයෙන් tokens 15–95%ක් (~89%ක සාමාන්‍යයක්) ඉතිරි කරයි — සීමාවන්ට කිසිදා නොපැමිණෙන්න. AI සැපයුම්කරුවන් 359ක් · නොමිලේ භාවිත කළ හැකි සැලසුම් 150කට වැඩි · මසකට නොමිලේ tokens ~1.62B · routing උපායමාර්ග 19ක් · ආරම්භ කිරීමට $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — කේතනය කිරීම කිසිදා නවත්වන්න එපා. සෑම AI මෙවලමක්ම → එක් endpoint එකක් හරහා සැපයුම්කරුවන් 358කට — 150කට වැඩි නොමිලේ. Claude Code, Codex, Cursor, Cline, Copilot සහ Antigravity, ස්වයංක්‍රීය fallback සමඟ නොමිලේ Claude / GPT / Gemini වෙත. RTK + Caveman ඒකාබද්ධ සම්පීඩනයෙන් tokens 15–95%ක් (~89%ක සාමාන්‍යයක්) ඉතිරි කරයි — සීමාවන්ට කිසිදා නොපැමිණෙන්න. AI සැපයුම්කරුවන් 358ක් · නොමිලේ භාවිත කළ හැකි සැලසුම් 150කට වැඩි · මසකට නොමිලේ tokens ~1.62B · routing උපායමාර්ග 19ක් · ආරම්භ කිරීමට $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="පොරොන්දුව — එක් endpoint එකක් සහ providers 359ක්. තවත් සෞඛ්‍ය සම්පන්න ඉලක්කයක් තිබෙන තාක් ස්වයංක්‍රීය fallback මඟින් routing අඛණ්ඩව සිදු කරයි. ප්‍රධාන කරුණු හයක්: providers 359ක් හරහා විශ්වාසදායක fallback · සුදුසු වැඩබර සඳහා tokens සඳහා 95% දක්වා ඉතිරිය · නොමිලේ ආරම්භ කරන්න; නොමිලේ භාවිත කළ හැකි මට්ටම් 150කට වැඩි ප්‍රමාණයක් සහ නැවත නැවත භාවිත කළ හැකි/යතුරු රහිත සදහටම නොමිලේ providers 54ක් · එක් වින්‍යාසයකින් CLI/agent ඒකාබද්ධ කිරීම් 36ක් · /v1 හි OpenAI, Claude, Gemini සහ Responses API සමඟ අනුකූලතාව · circuit breakers, TLS stealth, MCP tools 110ක්, A2A, memory, guardrails, evals සහ නිරීක්ෂණය කරන test files 5,100කට වැඩි ප්‍රමාණයක් පුරා ස්ථිතික test ප්‍රකාශන 39,000කට වැඩි ප්‍රමාණයක් ඇතුළු නිෂ්පාදන-මට්ටමේ පාලන."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="පොරොන්දුව — එක් endpoint එකක් සහ providers 358ක්. තවත් සෞඛ්‍ය සම්පන්න ඉලක්කයක් තිබෙන තාක් ස්වයංක්‍රීය fallback මඟින් routing අඛණ්ඩව සිදු කරයි. ප්‍රධාන කරුණු හයක්: providers 358ක් හරහා විශ්වාසදායක fallback · සුදුසු වැඩබර සඳහා tokens සඳහා 95% දක්වා ඉතිරිය · නොමිලේ ආරම්භ කරන්න; නොමිලේ භාවිත කළ හැකි මට්ටම් 150කට වැඩි ප්‍රමාණයක් සහ නැවත නැවත භාවිත කළ හැකි/යතුරු රහිත සදහටම නොමිලේ providers 54ක් · එක් වින්‍යාසයකින් CLI/agent ඒකාබද්ධ කිරීම් 36ක් · /v1 හි OpenAI, Claude, Gemini සහ Responses API සමඟ අනුකූලතාව · circuit breakers, TLS stealth, MCP tools 110ක්, A2A, memory, guardrails, evals සහ නිරීක්ෂණය කරන test files 5,100කට වැඩි ප්‍රමාණයක් පුරා ස්ථිතික test ප්‍රකාශන 39,000කට වැඩි ප්‍රමාණයක් ඇතුළු නිෂ්පාදන-මට්ටමේ පාලන."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ combo එකක් සෑදීමට අවශ්ය නැත. ඔබේ ම�
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute වෙනස් වන්නේ කුමක් නිසාද — 9router, OpenRouter, CLIProxyAPI සහ LiteLLM සමඟ හැකියාවන් 13ක් පුරා සැසඳෙන, දින නියම කළ විශේෂාංග සැණරුවක්. OmniRoute: සපයන්නන් 359ක්, නොමිලේ භාවිත කළ හැකි මට්ටම් 150කට වැඩි ප්‍රමාණයක් ගොඩනඟා ඇතුළත් කර ඇත, මාර්ගගත කිරීමේ උපායමාර්ග 19ක්, ටෝකන සම්පීඩනය සඳහා එන්ජින් 12ක්, මෙවලම් 110ක් සහිත ගොඩනඟා ඇති MCP සේවාදායකයක්, A2A නියෝජිත ප්‍රොටෝකෝලය, ස්ථිර මතකය, ආරක්ෂණ සීමා, වලාකුළු නියෝජිතයන්, TLS ඇඟිලි සලකුණු සැඟවීම, Desktop/Termux/PWA සහ UI සඳහා i18n භාෂා 42ක්. OmniRoute MIT බලපත්‍රය යටතේ නිකුත් කර ඇති අතර, ඔබටම සත්කාරකත්වය සැපයිය හැකිය. තරඟකරුවන්ගේ හැකියාවන් සහ ගණන් වෙනස් විය හැකිය; සබැඳි ක්‍රමවේදය බලන්න."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute වෙනස් වන්නේ කුමක් නිසාද — 9router, OpenRouter, CLIProxyAPI සහ LiteLLM සමඟ හැකියාවන් 13ක් පුරා සැසඳෙන, දින නියම කළ විශේෂාංග සැණරුවක්. OmniRoute: සපයන්නන් 358ක්, නොමිලේ භාවිත කළ හැකි මට්ටම් 150කට වැඩි ප්‍රමාණයක් ගොඩනඟා ඇතුළත් කර ඇත, මාර්ගගත කිරීමේ උපායමාර්ග 19ක්, ටෝකන සම්පීඩනය සඳහා එන්ජින් 12ක්, මෙවලම් 110ක් සහිත ගොඩනඟා ඇති MCP සේවාදායකයක්, A2A නියෝජිත ප්‍රොටෝකෝලය, ස්ථිර මතකය, ආරක්ෂණ සීමා, වලාකුළු නියෝජිතයන්, TLS ඇඟිලි සලකුණු සැඟවීම, Desktop/Termux/PWA සහ UI සඳහා i18n භාෂා 42ක්. OmniRoute MIT බලපත්‍රය යටතේ නිකුත් කර ඇති අතර, ඔබටම සත්කාරකත්වය සැපයිය හැකිය. තරඟකරුවන්ගේ හැකියාවන් සහ ගණන් වෙනස් විය හැකිය; සබැඳි ක්‍රමවේදය බලන්න."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI සහ LiteLLM සමඟ සසඳන සම්පූර්ණ ක්‍රමවේදය සහ එක් එක් විශේෂාංගය පිළිබඳ විස්තර → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

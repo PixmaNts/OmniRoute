@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — مفت AI گیٹ وے
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — کوڈنگ کبھی نہ روکیں۔ ہر AI ٹول → 359 فراہم کنندگان — 150+ مفت — ایک اینڈ پوائنٹ کے ذریعے۔ Claude Code، Codex، Cursor، Cline، Copilot اور Antigravity کو خودکار فال بیک کے ساتھ مفت Claude / GPT / Gemini سے جوڑیں۔ RTK + Caveman کی مشترکہ کمپریشن 15–95% ٹوکن بچاتی ہے (اوسطاً ~89%) — حدود کبھی ختم نہ ہوں۔ 359 AI فراہم کنندگان · 150+ مفت ٹائرز · ماہانہ ~1.62B مفت ٹوکنز · 19 روٹنگ حکمتِ عملیاں · شروع کرنے کی لاگت $0۔"/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — کوڈنگ کبھی نہ روکیں۔ ہر AI ٹول → 358 فراہم کنندگان — 150+ مفت — ایک اینڈ پوائنٹ کے ذریعے۔ Claude Code، Codex، Cursor، Cline، Copilot اور Antigravity کو خودکار فال بیک کے ساتھ مفت Claude / GPT / Gemini سے جوڑیں۔ RTK + Caveman کی مشترکہ کمپریشن 15–95% ٹوکن بچاتی ہے (اوسطاً ~89%) — حدود کبھی ختم نہ ہوں۔ 358 AI فراہم کنندگان · 150+ مفت ٹائرز · ماہانہ ~1.62B مفت ٹوکنز · 19 روٹنگ حکمتِ عملیاں · شروع کرنے کی لاگت $0۔"/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="وعدہ — ایک endpoint اور 359 providers۔ خودکار fallback، کسی دوسرے صحت مند ہدف کی دستیابی تک routing جاری رکھتا ہے۔ چھ ستون: 359 providers میں مضبوط fallback · اہل workloads پر token کی بچت 95% تک · 150+ مفت tiers اور 54 بار بار دستیاب/بلا کلید، ہمیشہ مفت providers کے ساتھ $0 سے آغاز · ایک config کے ذریعے 36 CLI/agent integrations · /v1 پر OpenAI، Claude، Gemini اور Responses API compatibility · production controls، جن میں circuit breakers، TLS stealth، MCP کے 110 tools، A2A، memory، guardrails، evals اور 5,100+ زیرِ نگرانی test files میں 39,000+ static test declarations شامل ہیں۔"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="وعدہ — ایک endpoint اور 358 providers۔ خودکار fallback، کسی دوسرے صحت مند ہدف کی دستیابی تک routing جاری رکھتا ہے۔ چھ ستون: 358 providers میں مضبوط fallback · اہل workloads پر token کی بچت 95% تک · 150+ مفت tiers اور 54 بار بار دستیاب/بلا کلید، ہمیشہ مفت providers کے ساتھ $0 سے آغاز · ایک config کے ذریعے 36 CLI/agent integrations · /v1 پر OpenAI، Claude، Gemini اور Responses API compatibility · production controls، جن میں circuit breakers، TLS stealth، MCP کے 110 tools، A2A، memory، guardrails، evals اور 5,100+ زیرِ نگرانی test files میں 39,000+ static test declarations شامل ہیں۔"/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute کو کیا منفرد بناتا ہے — 9router، OpenRouter، CLIProxyAPI اور LiteLLM کے مقابلے میں 13 صلاحیتوں کا ایک پرانا فیچر اسنیپ شاٹ۔ OmniRoute: 359 فراہم کنندگان، پہلے سے شامل 150+ مفت درجے، 19 روٹنگ حکمتِ عملیاں، 12 انجنوں پر مشتمل ٹوکن کمپریشن، 110 ٹولز والا بلٹ اِن MCP سرور، A2A ایجنٹ پروٹوکول، مستقل میموری، گارڈ ریلز، کلاؤڈ ایجنٹس، TLS فنگرپرنٹ اسٹیلتھ، Desktop/Termux/PWA اور UI کے لیے 42 i18n زبانیں۔ OmniRoute، MIT لائسنس کے تحت ہے اور اسے خود ہوسٹ کیا جا سکتا ہے۔ حریفوں کی صلاحیتیں اور تعداد تبدیل ہو سکتی ہیں؛ منسلک طریقۂ کار دیکھیں۔"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute کو کیا منفرد بناتا ہے — 9router، OpenRouter، CLIProxyAPI اور LiteLLM کے مقابلے میں 13 صلاحیتوں کا ایک پرانا فیچر اسنیپ شاٹ۔ OmniRoute: 358 فراہم کنندگان، پہلے سے شامل 150+ مفت درجے، 19 روٹنگ حکمتِ عملیاں، 12 انجنوں پر مشتمل ٹوکن کمپریشن، 110 ٹولز والا بلٹ اِن MCP سرور، A2A ایجنٹ پروٹوکول، مستقل میموری، گارڈ ریلز، کلاؤڈ ایجنٹس، TLS فنگرپرنٹ اسٹیلتھ، Desktop/Termux/PWA اور UI کے لیے 42 i18n زبانیں۔ OmniRoute، MIT لائسنس کے تحت ہے اور اسے خود ہوسٹ کیا جا سکتا ہے۔ حریفوں کی صلاحیتیں اور تعداد تبدیل ہو سکتی ہیں؛ منسلک طریقۂ کار دیکھیں۔"/>
 
 <sub>📊 9router، OpenRouter، CLIProxyAPI اور LiteLLM کے مقابلے میں مکمل طریقۂ کار اور ہر فیچر کی تفصیل → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

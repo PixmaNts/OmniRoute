@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — De gratis AI-gateway
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Stop nooit met coderen. Elke AI-tool → 359 providers — waarvan 150+ gratis — via één endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity met GRATIS Claude / GPT / Gemini, met automatische fallback. Gestapelde compressie met RTK + Caveman bespaart 15–95% tokens (gemiddeld ~89%) — bereik nooit limieten. 359 AI-providers · 150+ gratis abonnementen · ~1,62B gratis tokens/maand · 19 routeringsstrategieën · Starten voor $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Stop nooit met coderen. Elke AI-tool → 358 providers — waarvan 150+ gratis — via één endpoint. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity met GRATIS Claude / GPT / Gemini, met automatische fallback. Gestapelde compressie met RTK + Caveman bespaart 15–95% tokens (gemiddeld ~89%) — bereik nooit limieten. 358 AI-providers · 150+ gratis abonnementen · ~1,62B gratis tokens/maand · 19 routeringsstrategieën · Starten voor $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="De belofte — Eén endpoint en 359 providers. Automatische fallback blijft routeren zolang er een andere gezonde bestemming beschikbaar is. Zes pijlers: robuuste fallback via 359 providers · tot 95% besparing op tokens bij geschikte workloads · start voor $0 met meer dan 150 gratis abonnementen en 54 terugkerende/gratis-voor-altijdproviders zonder sleutel · 36 CLI-/agentintegraties via één configuratie · compatibiliteit met OpenAI, Claude, Gemini en de Responses API op /v1 · productiebeheer met circuitonderbrekers, TLS-stealth, MCP met 110 tools, A2A, geheugen, beveiligingsmaatregelen, evaluaties en meer dan 39.000 statische testdeclaraties verspreid over meer dan 5.100 bijgehouden testbestanden."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="De belofte — Eén endpoint en 358 providers. Automatische fallback blijft routeren zolang er een andere gezonde bestemming beschikbaar is. Zes pijlers: robuuste fallback via 358 providers · tot 95% besparing op tokens bij geschikte workloads · start voor $0 met meer dan 150 gratis abonnementen en 54 terugkerende/gratis-voor-altijdproviders zonder sleutel · 36 CLI-/agentintegraties via één configuratie · compatibiliteit met OpenAI, Claude, Gemini en de Responses API op /v1 · productiebeheer met circuitonderbrekers, TLS-stealth, MCP met 110 tools, A2A, geheugen, beveiligingsmaatregelen, evaluaties en meer dan 39.000 statische testdeclaraties verspreid over meer dan 5.100 bijgehouden testbestanden."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Alle **19** strategieën — vrij te combineren per combostap:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Wat OmniRoute onderscheidt — een gedateerde momentopname van functies, vergeleken met 9router, OpenRouter, CLIProxyAPI en LiteLLM op basis van 13 mogelijkheden. OmniRoute: 359 providers, meer dan 150 ingebouwde gratis abonnementen, 19 routeringsstrategieën, tokencompressie met 12 engines, ingebouwde MCP-server met 110 tools, A2A-agentprotocol, persistent geheugen, guardrails, cloudagents, TLS-fingerprintverhulling, Desktop/Termux/PWA en 42 i18n-lokalisaties voor de gebruikersinterface. OmniRoute heeft een MIT-licentie en kan zelf worden gehost. De mogelijkheden en aantallen van concurrenten kunnen veranderen; zie de gelinkte methodologie."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Wat OmniRoute onderscheidt — een gedateerde momentopname van functies, vergeleken met 9router, OpenRouter, CLIProxyAPI en LiteLLM op basis van 13 mogelijkheden. OmniRoute: 358 providers, meer dan 150 ingebouwde gratis abonnementen, 19 routeringsstrategieën, tokencompressie met 12 engines, ingebouwde MCP-server met 110 tools, A2A-agentprotocol, persistent geheugen, guardrails, cloudagents, TLS-fingerprintverhulling, Desktop/Termux/PWA en 42 i18n-lokalisaties voor de gebruikersinterface. OmniRoute heeft een MIT-licentie en kan zelf worden gehost. De mogelijkheden en aantallen van concurrenten kunnen veranderen; zie de gelinkte methodologie."/>
 
 <sub>📊 Volledige methodologie en details per functie, vergeleken met 9router, OpenRouter, CLIProxyAPI en LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

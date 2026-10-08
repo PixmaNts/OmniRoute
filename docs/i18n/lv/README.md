@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — bezmaksas AI vārteja
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nekad nepārtrauciet programmēt. Ikviens AI rīks → 359 pakalpojumu sniedzēji — no tiem 150+ bezmaksas — izmantojot vienu galapunktu. Claude Code, Codex, Cursor, Cline, Copilot un Antigravity ar automātisku rezerves pārslēgšanos uz bezmaksas Claude / GPT / Gemini. RTK un Caveman kombinētā saspiešana ietaupa 15–95% tokenu (vidēji ~89%) — nekad nepārsniedziet limitus. 359 AI pakalpojumu sniedzēji · 150+ bezmaksas plāni · ~1,62 miljardi bezmaksas tokenu mēnesī · 19 maršrutēšanas stratēģijas · Sāciet par 0 $."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nekad nepārtrauciet programmēt. Ikviens AI rīks → 358 pakalpojumu sniedzēji — no tiem 150+ bezmaksas — izmantojot vienu galapunktu. Claude Code, Codex, Cursor, Cline, Copilot un Antigravity ar automātisku rezerves pārslēgšanos uz bezmaksas Claude / GPT / Gemini. RTK un Caveman kombinētā saspiešana ietaupa 15–95% tokenu (vidēji ~89%) — nekad nepārsniedziet limitus. 358 AI pakalpojumu sniedzēji · 150+ bezmaksas plāni · ~1,62 miljardi bezmaksas tokenu mēnesī · 19 maršrutēšanas stratēģijas · Sāciet par 0 $."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Solījums — viens galapunkts un 359 pakalpojumu sniedzēji. Automātiskā rezerves maršrutēšana turpina novirzīt pieprasījumus, kamēr ir pieejams cits darbspējīgs mērķis. Seši pamatprincipi: noturīga rezerves maršrutēšana starp 359 pakalpojumu sniedzējiem · līdz pat 95% mazāks tokenu patēriņš piemērotām slodzēm · sāciet par 0 $ ar vairāk nekā 150 bezmaksas plāniem un 54 bezmaksas pakalpojumu sniedzējiem, kas pieejami vienmēr un bez atslēgām · 36 CLI/aģentu integrācijas, izmantojot vienu konfigurāciju · saderība ar OpenAI, Claude, Gemini un Responses API vietnē /v1 · ražošanas vides vadīklas, tostarp ķēdes pārtraucēji, TLS slepenais režīms, MCP 110 rīki, A2A, atmiņa, aizsargmehānismi, novērtējumi un vairāk nekā 39 000 statisku testu deklarāciju vairāk nekā 5 100 izsekojamos testu failos."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Solījums — viens galapunkts un 358 pakalpojumu sniedzēji. Automātiskā rezerves maršrutēšana turpina novirzīt pieprasījumus, kamēr ir pieejams cits darbspējīgs mērķis. Seši pamatprincipi: noturīga rezerves maršrutēšana starp 358 pakalpojumu sniedzējiem · līdz pat 95% mazāks tokenu patēriņš piemērotām slodzēm · sāciet par 0 $ ar vairāk nekā 150 bezmaksas plāniem un 54 bezmaksas pakalpojumu sniedzējiem, kas pieejami vienmēr un bez atslēgām · 36 CLI/aģentu integrācijas, izmantojot vienu konfigurāciju · saderība ar OpenAI, Claude, Gemini un Responses API vietnē /v1 · ražošanas vides vadīklas, tostarp ķēdes pārtraucēji, TLS slepenais režīms, MCP 110 rīki, A2A, atmiņa, aizsargmehānismi, novērtējumi un vairāk nekā 39 000 statisku testu deklarāciju vairāk nekā 5 100 izsekojamos testu failos."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Visas **19** stratēģijas — brīvi kombinējiet tās katrā kombinācijas sol
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kas OmniRoute atšķir no citiem — datēts funkciju pārskats salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM, aptverot 13 iespējas. OmniRoute: 359 pakalpojumu sniedzēji, 150+ bezmaksas plāni, 19 maršrutēšanas stratēģijas, tokenu saspiešana ar 12 dzinējiem, iebūvēts MCP serveris ar 110 rīkiem, A2A aģentu protokols, pastāvīgā atmiņa, aizsargmehānismi, mākoņa aģenti, TLS pirkstu nospiedumu slēpšana, Desktop/Termux/PWA un 42 i18n lietotāja saskarnes lokalizācijas. OmniRoute ir licencēts saskaņā ar MIT licenci, un to var mitināt savā serverī. Konkurentu iespējas un skaits var mainīties; skatiet saiti uz metodoloģiju."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kas OmniRoute atšķir no citiem — datēts funkciju pārskats salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM, aptverot 13 iespējas. OmniRoute: 358 pakalpojumu sniedzēji, 150+ bezmaksas plāni, 19 maršrutēšanas stratēģijas, tokenu saspiešana ar 12 dzinējiem, iebūvēts MCP serveris ar 110 rīkiem, A2A aģentu protokols, pastāvīgā atmiņa, aizsargmehānismi, mākoņa aģenti, TLS pirkstu nospiedumu slēpšana, Desktop/Termux/PWA un 42 i18n lietotāja saskarnes lokalizācijas. OmniRoute ir licencēts saskaņā ar MIT licenci, un to var mitināt savā serverī. Konkurentu iespējas un skaits var mainīties; skatiet saiti uz metodoloģiju."/>
 
 <sub>📊 Pilna metodoloģija un detalizēta informācija par katru funkciju salīdzinājumā ar 9router, OpenRouter, CLIProxyAPI un LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

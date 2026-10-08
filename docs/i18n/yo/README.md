@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Ẹnu-ọ̀nà AI Ọ̀fẹ́
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Má ṣe dá kóòdù dúró láéláé. Gbogbo irinṣẹ́ AI → àwọn olùpèsè 359 — 150+ ọ̀fẹ́ — nípasẹ̀ ibi ìparí kan ṣoṣo. Claude Code, Codex, Cursor, Cline, Copilot àti Antigravity sí Claude / GPT / Gemini ọ̀fẹ́ pẹ̀lú ìyípadà aládàáṣe sí àṣàyàn míì. Ìfúnpọ̀ RTK + Caveman tí a tò pọ̀ ń fi 15–95% àwọn token pamọ́ (~89% ní àárín) — o kò ní dé ààlà láéláé. Àwọn olùpèsè AI 359 · àwọn ipele ọ̀fẹ́ 150+ · ~1.62B token ọ̀fẹ́/òsù · àwọn ọgbọ́n ìtọ́sọ́nà 19 · $0 láti bẹ̀rẹ̀."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Má ṣe dá kóòdù dúró láéláé. Gbogbo irinṣẹ́ AI → àwọn olùpèsè 358 — 150+ ọ̀fẹ́ — nípasẹ̀ ibi ìparí kan ṣoṣo. Claude Code, Codex, Cursor, Cline, Copilot àti Antigravity sí Claude / GPT / Gemini ọ̀fẹ́ pẹ̀lú ìyípadà aládàáṣe sí àṣàyàn míì. Ìfúnpọ̀ RTK + Caveman tí a tò pọ̀ ń fi 15–95% àwọn token pamọ́ (~89% ní àárín) — o kò ní dé ààlà láéláé. Àwọn olùpèsè AI 358 · àwọn ipele ọ̀fẹ́ 150+ · ~1.62B token ọ̀fẹ́/òsù · àwọn ọgbọ́n ìtọ́sọ́nà 19 · $0 láti bẹ̀rẹ̀."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ohun tí a ṣèlérí — Ọ̀nà ìpẹ̀kun kan àti àwọn olùpèsè 359. Ìyípadà aládàáni sí ẹ̀yìn mìíràn ń jẹ́ kí ìtọ́sọ́nà máa bá a lọ nígbà tí ibi-afẹ́de mìíràn tó ṣì wà ní ìlera bá wà. Àwọn òpó mẹ́fà: ìyípadà tó lágbára sí ẹ̀yìn mìíràn láàárín àwọn olùpèsè 359 · ìfipamọ́ tó tó 95% lórí àwọn iṣẹ́ tó yẹ · $0 láti bẹ̀rẹ̀ pẹ̀lú àwọn ètò ọ̀fẹ́ tó ju 150 lọ àti àwọn olùpèsè ọ̀fẹ́ títí láé 54 tí ń tún ara wọn ṣe/tí kò nílò kọ́kọ́rọ́ · ìṣọ̀kan CLI/agent 36 nípasẹ̀ ìṣètò kan ṣoṣo · ìbámu pẹ̀lú OpenAI, Claude, Gemini àti Responses API ní /v1 · àwọn ìṣàkóso ìpele iṣẹ́ gidi pẹ̀lú àwọn circuit breaker, TLS stealth, àwọn irinṣẹ́ MCP 110, A2A, ìrántí, àwọn guardrail, àwọn eval, àti àwọn ìkéde ìdánwò aláìyípadà tó ju 39,000 lọ káàkiri àwọn fáìlì ìdánwò tó lé ní 5,100."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Ohun tí a ṣèlérí — Ọ̀nà ìpẹ̀kun kan àti àwọn olùpèsè 358. Ìyípadà aládàáni sí ẹ̀yìn mìíràn ń jẹ́ kí ìtọ́sọ́nà máa bá a lọ nígbà tí ibi-afẹ́de mìíràn tó ṣì wà ní ìlera bá wà. Àwọn òpó mẹ́fà: ìyípadà tó lágbára sí ẹ̀yìn mìíràn láàárín àwọn olùpèsè 358 · ìfipamọ́ tó tó 95% lórí àwọn iṣẹ́ tó yẹ · $0 láti bẹ̀rẹ̀ pẹ̀lú àwọn ètò ọ̀fẹ́ tó ju 150 lọ àti àwọn olùpèsè ọ̀fẹ́ títí láé 54 tí ń tún ara wọn ṣe/tí kò nílò kọ́kọ́rọ́ · ìṣọ̀kan CLI/agent 36 nípasẹ̀ ìṣètò kan ṣoṣo · ìbámu pẹ̀lú OpenAI, Claude, Gemini àti Responses API ní /v1 · àwọn ìṣàkóso ìpele iṣẹ́ gidi pẹ̀lú àwọn circuit breaker, TLS stealth, àwọn irinṣẹ́ MCP 110, A2A, ìrántí, àwọn guardrail, àwọn eval, àti àwọn ìkéde ìdánwò aláìyípadà tó ju 39,000 lọ káàkiri àwọn fáìlì ìdánwò tó lé ní 5,100."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Gbogbo ọgbọ́n **19** — dapọ̀ wọn bí o ṣe fẹ́ fún ìgbésẹ̀
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Àwọn ohun tó yà OmniRoute sí mọ́ — àkójọpọ̀ àwọn ẹ̀yà ara tó ti pẹ́ díẹ̀ ní ìfiwéra pẹ̀lú 9router, OpenRouter, CLIProxyAPI àti LiteLLM káàkiri àwọn agbára 13. OmniRoute: àwọn olùpèsè 359, àwọn ètò ọ̀fẹ́ 150+ tí a ti ṣe sínú rẹ̀, àwọn ọgbọ́n ìdarí 19, ìfúnpọ̀ àmì 12-engine, olupin MCP tí a ṣe sínú rẹ̀ pẹ̀lú àwọn irinṣẹ́ 110, ìlànà aṣojú A2A, ìrántí tó dúró ṣinṣin, àwọn ìdènà ààbò, àwọn aṣojú àwọsánmà, ìfarapamọ́ ìka-àmì TLS, Desktop/Termux/PWA àti àwọn èdè UI i18n 42. A fún OmniRoute ní ìwé-àṣẹ MIT, o sì ṣeé gbàlejò fúnra rẹ. Àwọn agbára àti iye àwọn olùdíje lè yí padà; wo ìlànà àfiwé tó wà ní ìjápọ̀ náà."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Àwọn ohun tó yà OmniRoute sí mọ́ — àkójọpọ̀ àwọn ẹ̀yà ara tó ti pẹ́ díẹ̀ ní ìfiwéra pẹ̀lú 9router, OpenRouter, CLIProxyAPI àti LiteLLM káàkiri àwọn agbára 13. OmniRoute: àwọn olùpèsè 358, àwọn ètò ọ̀fẹ́ 150+ tí a ti ṣe sínú rẹ̀, àwọn ọgbọ́n ìdarí 19, ìfúnpọ̀ àmì 12-engine, olupin MCP tí a ṣe sínú rẹ̀ pẹ̀lú àwọn irinṣẹ́ 110, ìlànà aṣojú A2A, ìrántí tó dúró ṣinṣin, àwọn ìdènà ààbò, àwọn aṣojú àwọsánmà, ìfarapamọ́ ìka-àmì TLS, Desktop/Termux/PWA àti àwọn èdè UI i18n 42. A fún OmniRoute ní ìwé-àṣẹ MIT, o sì ṣeé gbàlejò fúnra rẹ. Àwọn agbára àti iye àwọn olùdíje lè yí padà; wo ìlànà àfiwé tó wà ní ìjápọ̀ náà."/>
 
 <sub>📊 Ìlànà àfiwé kíkún àti àlàyé ẹ̀yà kọ̀ọ̀kan ní ìfiwéra pẹ̀lú 9router, OpenRouter, CLIProxyAPI àti LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

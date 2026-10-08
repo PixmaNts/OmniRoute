@@ -1,6 +1,7 @@
 export const MODEL_SUPPORTED_ENDPOINT_VALUES = [
   "chat",
   "systemone",
+  "responses",
   "embeddings",
   "rerank",
   "images",
@@ -44,6 +45,8 @@ export function classifyModelSupportedEndpoints(endpoints: readonly string[]): {
     !endpoints.includes("responses")
   )
     return { type: "decision" };
+  // "chat" and "responses" are text-conversation endpoints; they carry no
+  // modality type, so they fall through to the empty return below.
   if (endpoints.includes("embeddings")) return { type: "embedding" };
   if (endpoints.includes("rerank")) return { type: "rerank" };
   if (endpoints.includes("images")) return { type: "image" };

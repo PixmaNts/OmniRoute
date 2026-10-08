@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — 無料のAIゲートウェイ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — コーディングを止めない。あらゆるAIツールを、1つのエンドポイント経由で359のプロバイダー（無料プラン150以上）へ接続。Claude Code、Codex、Cursor、Cline、Copilot、Antigravityから、無料のClaude / GPT / Geminiへ自動フォールバック付きで接続。RTK + Cavemanを組み合わせた圧縮でトークンを15～95%節約（平均約89%）し、制限に達することはありません。AIプロバイダー359社 · 無料プラン150以上 · 無料トークン月間約16.2億 · ルーティング戦略19種類 · 初期費用0ドル。"/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — コーディングを止めない。あらゆるAIツールを、1つのエンドポイント経由で358のプロバイダー（無料プラン150以上）へ接続。Claude Code、Codex、Cursor、Cline、Copilot、Antigravityから、無料のClaude / GPT / Geminiへ自動フォールバック付きで接続。RTK + Cavemanを組み合わせた圧縮でトークンを15～95%節約（平均約89%）し、制限に達することはありません。AIプロバイダー358社 · 無料プラン150以上 · 無料トークン月間約16.2億 · ルーティング戦略19種類 · 初期費用0ドル。"/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute が約束すること — 1つのエンドポイントで359のプロバイダーを利用できます。正常な接続先がある限り、自動フォールバックでルーティングを継続します。6つの柱: 359のプロバイダーをまたぐ堅牢なフォールバック · 対象ワークロードでトークンを最大95%削減 · 150以上の無料プランと、継続利用可能でキー不要の永久無料プロバイダー54社により、$0から利用開始 · 1つの設定で36のCLI/エージェントと連携 · /v1 で OpenAI、Claude、Gemini、Responses API と互換 · サーキットブレーカー、TLS stealth、110種類のMCPツール、A2A、メモリ、ガードレール、評価機能、5,100件以上の追跡対象テストファイルにわたる39,000件以上の静的テスト宣言など、本番環境向けの制御機能。"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute が約束すること — 1つのエンドポイントで358のプロバイダーを利用できます。正常な接続先がある限り、自動フォールバックでルーティングを継続します。6つの柱: 358のプロバイダーをまたぐ堅牢なフォールバック · 対象ワークロードでトークンを最大95%削減 · 150以上の無料プランと、継続利用可能でキー不要の永久無料プロバイダー54社により、$0から利用開始 · 1つの設定で36のCLI/エージェントと連携 · /v1 で OpenAI、Claude、Gemini、Responses API と互換 · サーキットブレーカー、TLS stealth、110種類のMCPツール、A2A、メモリ、ガードレール、評価機能、5,100件以上の追跡対象テストファイルにわたる39,000件以上の静的テスト宣言など、本番環境向けの制御機能。"/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRouteの特長 — 9router、OpenRouter、CLIProxyAPI、LiteLLMと13の機能を比較した、日付入りのスナップショット。OmniRoute：359のプロバイダー、標準搭載の150以上の無料プラン、19のルーティング戦略、12エンジンによるトークン圧縮、110のツールを備えた組み込みMCPサーバー、A2Aエージェントプロトコル、永続メモリ、ガードレール、クラウドエージェント、TLSフィンガープリントによるステルス機能、Desktop/Termux/PWA、42のUIロケール。OmniRouteはMITライセンスで、セルフホストが可能です。競合製品の機能や数は変更される場合があります。リンク先の方法論をご覧ください。"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRouteの特長 — 9router、OpenRouter、CLIProxyAPI、LiteLLMと13の機能を比較した、日付入りのスナップショット。OmniRoute：358のプロバイダー、標準搭載の150以上の無料プラン、19のルーティング戦略、12エンジンによるトークン圧縮、110のツールを備えた組み込みMCPサーバー、A2Aエージェントプロトコル、永続メモリ、ガードレール、クラウドエージェント、TLSフィンガープリントによるステルス機能、Desktop/Termux/PWA、42のUIロケール。OmniRouteはMITライセンスで、セルフホストが可能です。競合製品の機能や数は変更される場合があります。リンク先の方法論をご覧ください。"/>
 
 <sub>📊 9router、OpenRouter、CLIProxyAPI、LiteLLMとの比較に関する詳しい方法論と機能別の詳細 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

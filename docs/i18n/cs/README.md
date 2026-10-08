@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Bezplatná AI brána
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikdy nepřestávejte programovat. Každý AI nástroj → 359 poskytovatelů — 150+ zdarma — přes jediný endpoint. Claude Code, Codex, Cursor, Cline, Copilot a Antigravity do FREE Claude / GPT / Gemini s automatickým přepnutím při selhání. Kombinovaná komprese RTK + Caveman ušetří 15–95 % tokenů (v průměru ~89 %) — nikdy nenarazíte na limity. 359 AI poskytovatelů · 150+ bezplatných tarifů · ~1,62 miliardy bezplatných tokenů měsíčně · 19 strategií směrování · začněte za $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikdy nepřestávejte programovat. Každý AI nástroj → 358 poskytovatelů — 150+ zdarma — přes jediný endpoint. Claude Code, Codex, Cursor, Cline, Copilot a Antigravity do FREE Claude / GPT / Gemini s automatickým přepnutím při selhání. Kombinovaná komprese RTK + Caveman ušetří 15–95 % tokenů (v průměru ~89 %) — nikdy nenarazíte na limity. 358 AI poskytovatelů · 150+ bezplatných tarifů · ~1,62 miliardy bezplatných tokenů měsíčně · 19 strategií směrování · začněte za $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Příslib — jeden endpoint a 359 poskytovatelů. Automatický fallback zajišťuje směrování, dokud je k dispozici jiný funkční cíl. Šest pilířů: odolný fallback napříč 359 poskytovateli · až 95% úspora tokenů u vhodných úloh · začněte za $0 díky více než 150 bezplatným tarifům a 54 bezplatným poskytovatelům, kteří jsou trvale dostupní bez klíče · 36 integrací CLI/agentů prostřednictvím jediné konfigurace · kompatibilita s OpenAI, Claude, Gemini a Responses API na /v1 · produkční funkce včetně přerušovačů okruhů, TLS stealth, MCP se 110 nástroji, A2A, paměti, ochranných pravidel, evaluací a 39,000+ statických deklarací testů napříč více než 5,100 sledovanými testovacími soubory."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Příslib — jeden endpoint a 358 poskytovatelů. Automatický fallback zajišťuje směrování, dokud je k dispozici jiný funkční cíl. Šest pilířů: odolný fallback napříč 358 poskytovateli · až 95% úspora tokenů u vhodných úloh · začněte za $0 díky více než 150 bezplatným tarifům a 54 bezplatným poskytovatelům, kteří jsou trvale dostupní bez klíče · 36 integrací CLI/agentů prostřednictvím jediné konfigurace · kompatibilita s OpenAI, Claude, Gemini a Responses API na /v1 · produkční funkce včetně přerušovačů okruhů, TLS stealth, MCP se 110 nástroji, A2A, paměti, ochranných pravidel, evaluací a 39,000+ statických deklarací testů napříč více než 5,100 sledovanými testovacími soubory."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Všech **19** strategií — libovolně je kombinujte v jednotlivých krocích k
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Čím se OmniRoute odlišuje — datovaný přehled funkcí v porovnání s 9router, OpenRouter, CLIProxyAPI a LiteLLM napříč 13 možnostmi. OmniRoute: 359 poskytovatelů, více než 150 bezplatných tarifů přímo v základu, 19 strategií směrování, komprese tokenů s 12 enginy, vestavěný server MCP se 110 nástroji, protokol agentů A2A, trvalá paměť, ochranná pravidla, cloudoví agenti, utajení pomocí otisků TLS, rozhraní pro Desktop/Termux/PWA a 42 lokalizací uživatelského rozhraní. OmniRoute je licencován pod MIT a lze jej hostovat na vlastním serveru. Možnosti a počty u konkurence se mohou měnit; viz odkazovaná metodika."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Čím se OmniRoute odlišuje — datovaný přehled funkcí v porovnání s 9router, OpenRouter, CLIProxyAPI a LiteLLM napříč 13 možnostmi. OmniRoute: 358 poskytovatelů, více než 150 bezplatných tarifů přímo v základu, 19 strategií směrování, komprese tokenů s 12 enginy, vestavěný server MCP se 110 nástroji, protokol agentů A2A, trvalá paměť, ochranná pravidla, cloudoví agenti, utajení pomocí otisků TLS, rozhraní pro Desktop/Termux/PWA a 42 lokalizací uživatelského rozhraní. OmniRoute je licencován pod MIT a lze jej hostovat na vlastním serveru. Možnosti a počty u konkurence se mohou měnit; viz odkazovaná metodika."/>
 
 <sub>📊 Úplná metodika a podrobnosti jednotlivých funkcí v porovnání s 9router, OpenRouter, CLIProxyAPI a LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Ƙofar AI Kyauta
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kada ka daina rubuta lamba. Kowane kayan aikin AI → masu samar da AI 359 — sama da 150 kyauta — ta hanyar endpoint guda. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity zuwa Claude / GPT / Gemini KYAUTA tare da sauyawa ta atomatik. Matsi mai matakai na RTK + Caveman yana adana tokens 15–95% (matsakaicin ~89%) — ba za ka taɓa kai wa iyaka ba. Masu samar da AI 359 · matakan kyauta sama da 150 · ~tokens kyauta biliyan 1.62/wata · dabarun tuƙi 19 · farawa da $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kada ka daina rubuta lamba. Kowane kayan aikin AI → masu samar da AI 358 — sama da 150 kyauta — ta hanyar endpoint guda. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity zuwa Claude / GPT / Gemini KYAUTA tare da sauyawa ta atomatik. Matsi mai matakai na RTK + Caveman yana adana tokens 15–95% (matsakaicin ~89%) — ba za ka taɓa kai wa iyaka ba. Masu samar da AI 358 · matakan kyauta sama da 150 · ~tokens kyauta biliyan 1.62/wata · dabarun tuƙi 19 · farawa da $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Alkawarin — Ƙarshen API guda ɗaya da masu samarwa 359. Komawa ta atomatik tana ci gaba da tura buƙatu muddin akwai wani wurin da ke aiki lafiya. Ginshiƙai shida: komawa mai juriya a tsakanin masu samarwa 359 · tanadin kuɗin token har zuwa 95% kan nauyin aiki da ya cancanta · fara da $0 tare da matakan kyauta 150+ da masu samarwa kyauta har abada 54 da ake samu akai-akai/ba sa buƙatar maɓalli · haɗin CLI/agent 36 ta hanyar saitin guda ɗaya · jituwa da OpenAI, Claude, Gemini da Responses API a /v1 · sarrafawa don yanayin samarwa ciki har da circuit breakers, ɓoyewar TLS, kayan aikin MCP 110, A2A, ƙwaƙwalwa, guardrails, gwaje-gwajen kimantawa, da bayanan gwaji na tsaye 39,000+ a cikin fayilolin gwaji 5,100+ da ake sa ido a kansu."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Alkawarin — Ƙarshen API guda ɗaya da masu samarwa 358. Komawa ta atomatik tana ci gaba da tura buƙatu muddin akwai wani wurin da ke aiki lafiya. Ginshiƙai shida: komawa mai juriya a tsakanin masu samarwa 358 · tanadin kuɗin token har zuwa 95% kan nauyin aiki da ya cancanta · fara da $0 tare da matakan kyauta 150+ da masu samarwa kyauta har abada 54 da ake samu akai-akai/ba sa buƙatar maɓalli · haɗin CLI/agent 36 ta hanyar saitin guda ɗaya · jituwa da OpenAI, Claude, Gemini da Responses API a /v1 · sarrafawa don yanayin samarwa ciki har da circuit breakers, ɓoyewar TLS, kayan aikin MCP 110, A2A, ƙwaƙwalwa, guardrails, gwaje-gwajen kimantawa, da bayanan gwaji na tsaye 39,000+ a cikin fayilolin gwaji 5,100+ da ake sa ido a kansu."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Dukkan dabarun **19** — haɗa su yadda kake so a kowane matakin combo:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Abin da ya bambanta OmniRoute — taƙaitaccen fasaloli na wani lokaci da ya gabata idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI da LiteLLM a kan ƙwarewa 13. OmniRoute: masu samarwa 359, matakan kyauta sama da 150 da aka gina a ciki, dabarun turawa 19, matsewar alamun token ta injuna 12, sabar MCP da aka gina a ciki mai kayan aiki 110, ƙa'idar wakilai ta A2A, ƙwaƙwalwa mai ɗorewa, matakan kariya, wakilan girgije, ɓoyewar sawun TLS, Desktop/Termux/PWA da harsunan UI na i18n 42. Lasisin OmniRoute MIT ne kuma ana iya ɗaukar nauyinsa da kanka. Ƙarfin fasali da ƙididdigar masu fafatawa na iya canzawa; duba hanyar binciken da aka haɗa."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Abin da ya bambanta OmniRoute — taƙaitaccen fasaloli na wani lokaci da ya gabata idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI da LiteLLM a kan ƙwarewa 13. OmniRoute: masu samarwa 358, matakan kyauta sama da 150 da aka gina a ciki, dabarun turawa 19, matsewar alamun token ta injuna 12, sabar MCP da aka gina a ciki mai kayan aiki 110, ƙa'idar wakilai ta A2A, ƙwaƙwalwa mai ɗorewa, matakan kariya, wakilan girgije, ɓoyewar sawun TLS, Desktop/Termux/PWA da harsunan UI na i18n 42. Lasisin OmniRoute MIT ne kuma ana iya ɗaukar nauyinsa da kanka. Ƙarfin fasali da ƙididdigar masu fafatawa na iya canzawa; duba hanyar binciken da aka haɗa."/>
 
 <sub>📊 Cikakkiyar hanyar bincike da cikakkun bayanai kan kowane fasali idan aka kwatanta da 9router, OpenRouter, CLIProxyAPI da LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

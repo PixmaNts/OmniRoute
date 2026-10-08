@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — nemokami AI vartai
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Niekada nenustokite programuoti. Kiekvienas AI įrankis → 359 teikėjai — iš jų daugiau nei 150 nemokamų — per vieną galinį tašką. Claude Code, Codex, Cursor, Cline, Copilot ir Antigravity nukreipiami į NEMOKAMUS Claude / GPT / Gemini, automatiškai pereinant prie kitos parinkties. RTK + Caveman kombinuotas glaudinimas sutaupo 15–95 % žetonų (vidutiniškai apie 89 %) — limitai niekada nebus pasiekti. 359 AI teikėjai · daugiau nei 150 nemokamų planų · apie 1,62 mlrd. nemokamų žetonų per mėnesį · 19 maršrutizavimo strategijų · pradėti galima už 0 $."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Niekada nenustokite programuoti. Kiekvienas AI įrankis → 358 teikėjai — iš jų daugiau nei 150 nemokamų — per vieną galinį tašką. Claude Code, Codex, Cursor, Cline, Copilot ir Antigravity nukreipiami į NEMOKAMUS Claude / GPT / Gemini, automatiškai pereinant prie kitos parinkties. RTK + Caveman kombinuotas glaudinimas sutaupo 15–95 % žetonų (vidutiniškai apie 89 %) — limitai niekada nebus pasiekti. 358 AI teikėjai · daugiau nei 150 nemokamų planų · apie 1,62 mlrd. nemokamų žetonų per mėnesį · 19 maršrutizavimo strategijų · pradėti galima už 0 $."/>
 
 </div>
 
@@ -240,7 +240,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute pažadas — vienas galinis taškas ir 359 teikėjai. Automatinis perjungimas užtikrina maršrutizavimą, kol yra kitas veikiantis tikslas. Šeši pagrindiniai privalumai: patikimas perjungimas tarp 359 teikėjų · iki 95 % mažesnės žetonų sąnaudos tinkamoms apkrovoms · pradėti galima už 0 $, nes yra daugiau nei 150 nemokamų planų ir 54 nuolat nemokami teikėjai, nereikalaujantys raktų · 36 CLI ir agentų integracijos naudojant vieną konfigūraciją · suderinamumas su OpenAI, Claude, Gemini ir Responses API adresu /v1 · gamybinės aplinkos valdikliai, įskaitant grandinės pertraukiklius, TLS slėpimą, 110 MCP įrankių, A2A, atmintį, apsaugos priemones, vertinimus ir 39 000+ statinių testų deklaracijų iš daugiau nei 5 100 stebimų testų failų."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="OmniRoute pažadas — vienas galinis taškas ir 358 teikėjai. Automatinis perjungimas užtikrina maršrutizavimą, kol yra kitas veikiantis tikslas. Šeši pagrindiniai privalumai: patikimas perjungimas tarp 358 teikėjų · iki 95 % mažesnės žetonų sąnaudos tinkamoms apkrovoms · pradėti galima už 0 $, nes yra daugiau nei 150 nemokamų planų ir 54 nuolat nemokami teikėjai, nereikalaujantys raktų · 36 CLI ir agentų integracijos naudojant vieną konfigūraciją · suderinamumas su OpenAI, Claude, Gemini ir Responses API adresu /v1 · gamybinės aplinkos valdikliai, įskaitant grandinės pertraukiklius, TLS slėpimą, 110 MCP įrankių, A2A, atmintį, apsaugos priemones, vertinimus ir 39 000+ statinių testų deklaracijų iš daugiau nei 5 100 stebimų testų failų."/>
 
 <br/>
 <br/>
@@ -493,7 +493,7 @@ Visos **19** strategijų — derinkite jas kiekviename derinio žingsnyje:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kuo išsiskiria „OmniRoute“ — pasenusi funkcijų apžvalga, palyginanti su 9router, OpenRouter, CLIProxyAPI ir LiteLLM pagal 13 galimybių. „OmniRoute“: 359 teikėjai, daugiau nei 150 nemokamų planų, 19 maršrutizavimo strategijų, žetonų glaudinimas naudojant 12 variklių, integruotas MCP serveris su 110 įrankių, A2A agentų protokolas, nuolatinė atmintis, apsaugos priemonės, debesijos agentai, TLS pirštų atspaudų slėpimas, Desktop/Termux/PWA ir 42 i18n sąsajos lokalės. „OmniRoute“ licencijuojama pagal MIT licenciją ir gali būti talpinama savarankiškai. Konkurentų galimybės ir skaičiai gali keistis; žr. susietą metodiką."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Kuo išsiskiria „OmniRoute“ — pasenusi funkcijų apžvalga, palyginanti su 9router, OpenRouter, CLIProxyAPI ir LiteLLM pagal 13 galimybių. „OmniRoute“: 358 teikėjai, daugiau nei 150 nemokamų planų, 19 maršrutizavimo strategijų, žetonų glaudinimas naudojant 12 variklių, integruotas MCP serveris su 110 įrankių, A2A agentų protokolas, nuolatinė atmintis, apsaugos priemonės, debesijos agentai, TLS pirštų atspaudų slėpimas, Desktop/Termux/PWA ir 42 i18n sąsajos lokalės. „OmniRoute“ licencijuojama pagal MIT licenciją ir gali būti talpinama savarankiškai. Konkurentų galimybės ir skaičiai gali keistis; žr. susietą metodiką."/>
 
 <sub>📊 Visa metodika ir išsami informacija apie kiekvieną funkciją, palyginti su 9router, OpenRouter, CLIProxyAPI ir LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

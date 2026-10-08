@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Gerbang AI Percuma
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Jangan berhenti menulis kod. Setiap alat AI → 359 penyedia — 150+ percuma — melalui satu titik akhir. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ke Claude / GPT / Gemini PERCUMA dengan sandaran automatik. Pemampatan bertindih RTK + Caveman menjimatkan 15–95% token (purata ~89%) — tidak akan mencapai had. 359 penyedia AI · 150+ peringkat percuma · ~1.62B token percuma/bulan · 19 strategi penghalaan · Bermula dengan $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Jangan berhenti menulis kod. Setiap alat AI → 358 penyedia — 150+ percuma — melalui satu titik akhir. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity ke Claude / GPT / Gemini PERCUMA dengan sandaran automatik. Pemampatan bertindih RTK + Caveman menjimatkan 15–95% token (purata ~89%) — tidak akan mencapai had. 358 penyedia AI · 150+ peringkat percuma · ~1.62B token percuma/bulan · 19 strategi penghalaan · Bermula dengan $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Janji Kami — Satu titik akhir dan 359 penyedia. Sandaran automatik memastikan penghalaan diteruskan selagi sasaran sihat lain masih tersedia. Enam tonggak: sandaran berdaya tahan merentas 359 penyedia · penjimatan token sehingga 95% untuk beban kerja yang layak · $0 untuk bermula dengan lebih 150 peringkat percuma dan 54 penyedia percuma berulang/tanpa kunci selama-lamanya · 36 integrasi CLI/ejen melalui satu konfigurasi · keserasian dengan API OpenAI, Claude, Gemini dan Responses pada /v1 · kawalan produksi termasuk pemutus litar, penyamaran TLS, 110 alat MCP, A2A, memori, pagar perlindungan, penilaian dan lebih 39,000 pengisytiharan ujian statik merentas lebih 5,100 fail ujian yang dijejaki."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Janji Kami — Satu titik akhir dan 358 penyedia. Sandaran automatik memastikan penghalaan diteruskan selagi sasaran sihat lain masih tersedia. Enam tonggak: sandaran berdaya tahan merentas 358 penyedia · penjimatan token sehingga 95% untuk beban kerja yang layak · $0 untuk bermula dengan lebih 150 peringkat percuma dan 54 penyedia percuma berulang/tanpa kunci selama-lamanya · 36 integrasi CLI/ejen melalui satu konfigurasi · keserasian dengan API OpenAI, Claude, Gemini dan Responses pada /v1 · kawalan produksi termasuk pemutus litar, penyamaran TLS, 110 alat MCP, A2A, memori, pagar perlindungan, penilaian dan lebih 39,000 pengisytiharan ujian statik merentas lebih 5,100 fail ujian yang dijejaki."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Kesemua **19** strategi — gabung dan padankan bagi setiap langkah kombo:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Keistimewaan OmniRoute — gambaran ciri bertarikh berbanding 9router, OpenRouter, CLIProxyAPI dan LiteLLM merentasi 13 keupayaan. OmniRoute: 359 penyedia, lebih 150 peringkat percuma terbina dalam, 19 strategi penghalaan, pemampatan token dengan 12 enjin, pelayan MCP terbina dalam dengan 110 alat, protokol ejen A2A, memori kekal, pagar kawalan, ejen awan, penyamaran cap jari TLS, Desktop/Termux/PWA dan 42 bahasa UI i18n. OmniRoute dilesenkan di bawah MIT dan boleh dihoskan sendiri. Keupayaan dan jumlah pesaing mungkin berubah; lihat metodologi yang dipautkan."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Keistimewaan OmniRoute — gambaran ciri bertarikh berbanding 9router, OpenRouter, CLIProxyAPI dan LiteLLM merentasi 13 keupayaan. OmniRoute: 358 penyedia, lebih 150 peringkat percuma terbina dalam, 19 strategi penghalaan, pemampatan token dengan 12 enjin, pelayan MCP terbina dalam dengan 110 alat, protokol ejen A2A, memori kekal, pagar kawalan, ejen awan, penyamaran cap jari TLS, Desktop/Termux/PWA dan 42 bahasa UI i18n. OmniRoute dilesenkan di bawah MIT dan boleh dihoskan sendiri. Keupayaan dan jumlah pesaing mungkin berubah; lihat metodologi yang dipautkan."/>
 
 <sub>📊 Metodologi lengkap &amp; perincian setiap ciri berbanding 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

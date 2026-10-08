@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Il gateway AI gratuito
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Non smettere mai di programmare. Ogni strumento AI → 359 provider — 150+ gratuiti — tramite un unico endpoint. Claude Code, Codex, Cursor, Cline, Copilot e Antigravity con Claude / GPT / Gemini GRATUITI e fallback automatico. La compressione combinata di RTK + Caveman consente di risparmiare il 15–95% dei token (~89% in media) — senza mai raggiungere i limiti. 359 provider AI · 150+ piani gratuiti · ~1,62B di token gratuiti al mese · 19 strategie di routing · $0 per iniziare."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Non smettere mai di programmare. Ogni strumento AI → 358 provider — 150+ gratuiti — tramite un unico endpoint. Claude Code, Codex, Cursor, Cline, Copilot e Antigravity con Claude / GPT / Gemini GRATUITI e fallback automatico. La compressione combinata di RTK + Caveman consente di risparmiare il 15–95% dei token (~89% in media) — senza mai raggiungere i limiti. 358 provider AI · 150+ piani gratuiti · ~1,62B di token gratuiti al mese · 19 strategie di routing · $0 per iniziare."/>
 
 </div>
 
@@ -240,7 +240,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="La promessa — Un endpoint e 359 provider. Il fallback automatico continua a instradare le richieste finché è disponibile un altro servizio integro. Sei pilastri: fallback resiliente tra 359 provider · fino al 95% di risparmio sui token per i carichi di lavoro idonei · $0 per iniziare, con oltre 150 piani gratuiti e 54 provider gratuiti ricorrenti o senza chiave, per sempre · 36 integrazioni CLI/agent tramite un’unica configurazione · compatibilità con OpenAI, Claude, Gemini e Responses API su /v1 · controlli per la produzione, tra cui interruttori automatici, TLS stealth, 110 strumenti MCP, A2A, memoria, protezioni, valutazioni e oltre 39.000 dichiarazioni di test statiche distribuite in più di 5.100 file di test monitorati."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="La promessa — Un endpoint e 358 provider. Il fallback automatico continua a instradare le richieste finché è disponibile un altro servizio integro. Sei pilastri: fallback resiliente tra 358 provider · fino al 95% di risparmio sui token per i carichi di lavoro idonei · $0 per iniziare, con oltre 150 piani gratuiti e 54 provider gratuiti ricorrenti o senza chiave, per sempre · 36 integrazioni CLI/agent tramite un’unica configurazione · compatibilità con OpenAI, Claude, Gemini e Responses API su /v1 · controlli per la produzione, tra cui interruttori automatici, TLS stealth, 110 strumenti MCP, A2A, memoria, protezioni, valutazioni e oltre 39.000 dichiarazioni di test statiche distribuite in più di 5.100 file di test monitorati."/>
 
 <br/>
 <br/>
@@ -493,7 +493,7 @@ Tutte le **19** strategie — combinale liberamente per ogni passaggio del combo
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Cosa distingue OmniRoute — un'istantanea datata delle funzionalità a confronto con 9router, OpenRouter, CLIProxyAPI e LiteLLM in 13 ambiti. OmniRoute: 359 provider, oltre 150 piani gratuiti integrati, 19 strategie di instradamento, compressione dei token con 12 motori, server MCP integrato con 110 strumenti, protocollo per agenti A2A, memoria persistente, protezioni, agenti cloud, modalità stealth con fingerprint TLS, Desktop/Termux/PWA e interfaccia utente in 42 lingue. OmniRoute è distribuito con licenza MIT ed è installabile autonomamente. Le funzionalità e i conteggi dei concorrenti possono cambiare; consulta la metodologia collegata."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Cosa distingue OmniRoute — un'istantanea datata delle funzionalità a confronto con 9router, OpenRouter, CLIProxyAPI e LiteLLM in 13 ambiti. OmniRoute: 358 provider, oltre 150 piani gratuiti integrati, 19 strategie di instradamento, compressione dei token con 12 motori, server MCP integrato con 110 strumenti, protocollo per agenti A2A, memoria persistente, protezioni, agenti cloud, modalità stealth con fingerprint TLS, Desktop/Termux/PWA e interfaccia utente in 42 lingue. OmniRoute è distribuito con licenza MIT ed è installabile autonomamente. Le funzionalità e i conteggi dei concorrenti possono cambiare; consulta la metodologia collegata."/>
 
 <sub>📊 Metodologia completa e dettagli per funzionalità a confronto con 9router, OpenRouter, CLIProxyAPI e LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

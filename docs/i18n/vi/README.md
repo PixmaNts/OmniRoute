@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Cổng AI miễn phí
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Không bao giờ ngừng lập trình. Mọi công cụ AI → 359 nhà cung cấp — hơn 150 miễn phí — thông qua một điểm cuối. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity kết nối với Claude / GPT / Gemini MIỄN PHÍ, có tự động chuyển dự phòng. Nén kết hợp RTK + Caveman tiết kiệm 15–95% token (trung bình ~89%) — không bao giờ chạm giới hạn. 359 nhà cung cấp AI · hơn 150 gói miễn phí · ~1,62 tỷ token miễn phí/tháng · 19 chiến lược định tuyến · Bắt đầu với $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Không bao giờ ngừng lập trình. Mọi công cụ AI → 358 nhà cung cấp — hơn 150 miễn phí — thông qua một điểm cuối. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity kết nối với Claude / GPT / Gemini MIỄN PHÍ, có tự động chuyển dự phòng. Nén kết hợp RTK + Caveman tiết kiệm 15–95% token (trung bình ~89%) — không bao giờ chạm giới hạn. 358 nhà cung cấp AI · hơn 150 gói miễn phí · ~1,62 tỷ token miễn phí/tháng · 19 chiến lược định tuyến · Bắt đầu với $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Lời hứa — Một điểm cuối và 359 nhà cung cấp. Tự động chuyển phương án dự phòng để tiếp tục định tuyến khi vẫn còn một đích khả dụng khác. Sáu trụ cột: chuyển dự phòng linh hoạt giữa 359 nhà cung cấp · tiết kiệm đến 95% token trên các khối lượng công việc đủ điều kiện · bắt đầu với $0 nhờ hơn 150 gói miễn phí và 54 nhà cung cấp miễn phí vĩnh viễn, định kỳ/không cần khóa · tích hợp 36 CLI/agent thông qua một cấu hình · tương thích với OpenAI, Claude, Gemini và Responses API tại /v1 · các tính năng kiểm soát dành cho môi trường production, bao gồm bộ ngắt mạch, TLS stealth, MCP với 110 công cụ, A2A, bộ nhớ, cơ chế bảo vệ, đánh giá, cùng hơn 39.000 khai báo kiểm thử tĩnh trên hơn 5.100 tệp kiểm thử được theo dõi."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Lời hứa — Một điểm cuối và 358 nhà cung cấp. Tự động chuyển phương án dự phòng để tiếp tục định tuyến khi vẫn còn một đích khả dụng khác. Sáu trụ cột: chuyển dự phòng linh hoạt giữa 358 nhà cung cấp · tiết kiệm đến 95% token trên các khối lượng công việc đủ điều kiện · bắt đầu với $0 nhờ hơn 150 gói miễn phí và 54 nhà cung cấp miễn phí vĩnh viễn, định kỳ/không cần khóa · tích hợp 36 CLI/agent thông qua một cấu hình · tương thích với OpenAI, Claude, Gemini và Responses API tại /v1 · các tính năng kiểm soát dành cho môi trường production, bao gồm bộ ngắt mạch, TLS stealth, MCP với 110 công cụ, A2A, bộ nhớ, cơ chế bảo vệ, đánh giá, cùng hơn 39.000 khai báo kiểm thử tĩnh trên hơn 5.100 tệp kiểm thử được theo dõi."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Toàn bộ **19** chiến lược — kết hợp tùy ý cho từng bước c�
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Điều gì khiến OmniRoute khác biệt — bản chụp tính năng tại thời điểm hiện tại so với 9router, OpenRouter, CLIProxyAPI và LiteLLM trên 13 khả năng. OmniRoute: 359 nhà cung cấp, tích hợp sẵn hơn 150 gói miễn phí, 19 chiến lược định tuyến, nén token bằng 12 engine, máy chủ MCP tích hợp sẵn với 110 công cụ, giao thức tác tử A2A, bộ nhớ liên tục, các biện pháp bảo vệ, tác tử đám mây, chế độ ẩn danh bằng dấu vân tay TLS, Desktop/Termux/PWA và giao diện người dùng hỗ trợ 42 ngôn ngữ. OmniRoute được cấp phép theo MIT và có thể tự lưu trữ. Khả năng và số liệu của đối thủ có thể thay đổi; xem phương pháp luận trong liên kết."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Điều gì khiến OmniRoute khác biệt — bản chụp tính năng tại thời điểm hiện tại so với 9router, OpenRouter, CLIProxyAPI và LiteLLM trên 13 khả năng. OmniRoute: 358 nhà cung cấp, tích hợp sẵn hơn 150 gói miễn phí, 19 chiến lược định tuyến, nén token bằng 12 engine, máy chủ MCP tích hợp sẵn với 110 công cụ, giao thức tác tử A2A, bộ nhớ liên tục, các biện pháp bảo vệ, tác tử đám mây, chế độ ẩn danh bằng dấu vân tay TLS, Desktop/Termux/PWA và giao diện người dùng hỗ trợ 42 ngôn ngữ. OmniRoute được cấp phép theo MIT và có thể tự lưu trữ. Khả năng và số liệu của đối thủ có thể thay đổi; xem phương pháp luận trong liên kết."/>
 
 <sub>📊 Phương pháp luận đầy đủ &amp; chi tiết từng tính năng so với 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

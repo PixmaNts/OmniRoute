@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Besplatni AI pristupnik
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikad ne prestajte programirati. Svaki AI alat → 359 pružatelja usluga — više od 150 besplatnih — putem jedne krajnje točke. Claude Code, Codex, Cursor, Cline, Copilot i Antigravity povezani s besplatnim uslugama Claude / GPT / Gemini uz automatski rezervni odabir. Kombinirana kompresija RTK + Caveman štedi 15–95 % tokena (prosječno ~89 %) — nikad ne dosegnite ograničenja. 359 AI pružatelja usluga · više od 150 besplatnih paketa · ~1,62 mlrd. besplatnih tokena mjesečno · 19 strategija usmjeravanja · početak bez troškova."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Nikad ne prestajte programirati. Svaki AI alat → 358 pružatelja usluga — više od 150 besplatnih — putem jedne krajnje točke. Claude Code, Codex, Cursor, Cline, Copilot i Antigravity povezani s besplatnim uslugama Claude / GPT / Gemini uz automatski rezervni odabir. Kombinirana kompresija RTK + Caveman štedi 15–95 % tokena (prosječno ~89 %) — nikad ne dosegnite ograničenja. 358 AI pružatelja usluga · više od 150 besplatnih paketa · ~1,62 mlrd. besplatnih tokena mjesečno · 19 strategija usmjeravanja · početak bez troškova."/>
 
 </div>
 
@@ -240,7 +240,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Obećanje — Jedna krajnja točka i 359 pružatelja. Automatski pričuvni sustav održava usmjeravanje dok je dostupan neki drugi ispravan cilj. Šest stupova: otporan pričuvni sustav među 359 pružatelja · ušteda do 95% tokena za prikladna radna opterećenja · 0 $ za početak uz više od 150 besplatnih razina i 54 besplatna pružatelja koji trajno ostaju besplatni te ne zahtijevaju ključ · 36 integracija CLI-ja i agenata putem jedne konfiguracije · kompatibilnost s API-jima OpenAI, Claude, Gemini i Responses na /v1 · produkcijske kontrole, uključujući prekidače strujnog kruga, TLS stealth, MCP s 110 alata, A2A, memoriju, zaštitne mjere, evaluacije i više od 39 000 statičkih testnih deklaracija u više od 5 100 praćenih testnih datoteka."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Obećanje — Jedna krajnja točka i 358 pružatelja. Automatski pričuvni sustav održava usmjeravanje dok je dostupan neki drugi ispravan cilj. Šest stupova: otporan pričuvni sustav među 358 pružatelja · ušteda do 95% tokena za prikladna radna opterećenja · 0 $ za početak uz više od 150 besplatnih razina i 54 besplatna pružatelja koji trajno ostaju besplatni te ne zahtijevaju ključ · 36 integracija CLI-ja i agenata putem jedne konfiguracije · kompatibilnost s API-jima OpenAI, Claude, Gemini i Responses na /v1 · produkcijske kontrole, uključujući prekidače strujnog kruga, TLS stealth, MCP s 110 alata, A2A, memoriju, zaštitne mjere, evaluacije i više od 39 000 statičkih testnih deklaracija u više od 5 100 praćenih testnih datoteka."/>
 
 <br/>
 <br/>
@@ -493,7 +493,7 @@ Svih **19** strategija — kombinirajte ih po želji za svaki korak kombinacije:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Po čemu se OmniRoute izdvaja — vremenski označena usporedba značajki s alatima 9router, OpenRouter, CLIProxyAPI i LiteLLM kroz 13 mogućnosti. OmniRoute: 359 pružatelja usluga, više od 150 ugrađenih besplatnih paketa, 19 strategija usmjeravanja, kompresija tokena s 12 mehanizama, ugrađeni MCP poslužitelj sa 110 alata, A2A protokol agenata, trajna memorija, zaštitne mjere, agenti u oblaku, prikrivanje TLS otiska, Desktop/Termux/PWA i sučelje lokalizirano na 42 jezika. OmniRoute je licenciran pod MIT licencom i može se samostalno hostati. Mogućnosti i brojke konkurenata mogu se mijenjati; pogledajte povezanu metodologiju."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Po čemu se OmniRoute izdvaja — vremenski označena usporedba značajki s alatima 9router, OpenRouter, CLIProxyAPI i LiteLLM kroz 13 mogućnosti. OmniRoute: 358 pružatelja usluga, više od 150 ugrađenih besplatnih paketa, 19 strategija usmjeravanja, kompresija tokena s 12 mehanizama, ugrađeni MCP poslužitelj sa 110 alata, A2A protokol agenata, trajna memorija, zaštitne mjere, agenti u oblaku, prikrivanje TLS otiska, Desktop/Termux/PWA i sučelje lokalizirano na 42 jezika. OmniRoute je licenciran pod MIT licencom i može se samostalno hostati. Mogućnosti i brojke konkurenata mogu se mijenjati; pogledajte povezanu metodologiju."/>
 
 <sub>📊 Cjelovita metodologija i pojedinosti po značajkama u usporedbi s alatima 9router, OpenRouter, CLIProxyAPI i LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

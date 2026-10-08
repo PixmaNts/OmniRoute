@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Ọnụ ụzọ AI efu
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="Akwụsịla ide koodu. Ngwaọrụ AI niile → ndị na-enye ọrụ 359 — 150+ n'efu — site n'otu endpoint. Claude Code, Codex, Cursor, Cline, Copilot na Antigravity gaa na Claude / GPT / Gemini N'EFU, site n'ịgbanwe gaa na nke ọzọ na-akpaghị aka. Mkpakọ jikọtara ọnụ nke RTK + Caveman na-echekwa token 15–95% (nkezi ~89%) — agaghị agafe oke. Ndị na-enye ọrụ AI 359 · atụmatụ efu 150+ · token efu ~1.62B kwa ọnwa · atụmatụ ntụgharị 19 · ịmalite na $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="Akwụsịla ide koodu. Ngwaọrụ AI niile → ndị na-enye ọrụ 358 — 150+ n'efu — site n'otu endpoint. Claude Code, Codex, Cursor, Cline, Copilot na Antigravity gaa na Claude / GPT / Gemini N'EFU, site n'ịgbanwe gaa na nke ọzọ na-akpaghị aka. Mkpakọ jikọtara ọnụ nke RTK + Caveman na-echekwa token 15–95% (nkezi ~89%) — agaghị agafe oke. Ndị na-enye ọrụ AI 358 · atụmatụ efu 150+ · token efu ~1.62B kwa ọnwa · atụmatụ ntụgharị 19 · ịmalite na $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Nkwa ahụ — Otu endpoint na ndị na-enye ọrụ 359. Ndabere akpaka na-eme ka ụzọ ịgafe na-aga n’ihu ma ọ bụrụ na ebe ọzọ dị mma ka dị. Ogidi isii: ndabere siri ike gafee ndị na-enye ọrụ 359 · nchekwa token ruru 95% n’ọrụ ndị ruru eru · $0 iji malite, nwere ọkwa efu 150+ na ndị na-enye ọrụ efu ruo mgbe ebighị ebi 54 na-aga n’ihu/n’enweghị igodo · njikọ CLI/agent 36 site n’otu nhazi · ndakọrịta OpenAI, Claude, Gemini na Responses API na /v1 · njikwa maka gburugburu mmepụta gụnyere ndị na-egbochi okirikiri, nzuzo TLS, ngwa ọrụ MCP 110, A2A, ebe nchekwa, ihe nchebe, nyocha arụmọrụ na nkwupụta ule kwụ ọtọ 39,000+ n’ime faịlụ ule 5,100+ a na-enyocha."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Nkwa ahụ — Otu endpoint na ndị na-enye ọrụ 358. Ndabere akpaka na-eme ka ụzọ ịgafe na-aga n’ihu ma ọ bụrụ na ebe ọzọ dị mma ka dị. Ogidi isii: ndabere siri ike gafee ndị na-enye ọrụ 358 · nchekwa token ruru 95% n’ọrụ ndị ruru eru · $0 iji malite, nwere ọkwa efu 150+ na ndị na-enye ọrụ efu ruo mgbe ebighị ebi 54 na-aga n’ihu/n’enweghị igodo · njikọ CLI/agent 36 site n’otu nhazi · ndakọrịta OpenAI, Claude, Gemini na Responses API na /v1 · njikwa maka gburugburu mmepụta gụnyere ndị na-egbochi okirikiri, nzuzo TLS, ngwa ọrụ MCP 110, A2A, ebe nchekwa, ihe nchebe, nyocha arụmọrụ na nkwupụta ule kwụ ọtọ 39,000+ n’ime faịlụ ule 5,100+ a na-enyocha."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Atụmatụ **19** niile — gwakọta ma jikọta ha na nzọụkwụ combo ọ
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ihe na-eme ka OmniRoute pụọ iche — nchịkọta atụmatụ e mere n’oge gara aga ma e jiri ya tụnyere 9router, OpenRouter, CLIProxyAPI na LiteLLM n’akụkụ ikike 13. OmniRoute: ndị na-enye ọrụ 359, atụmatụ efu 150+ e tinyere n’ime ya, usoro ntụgharị arịrịọ 19, mkpakọ token nke injin 12, sava MCP e tinyere n’ime ya nke nwere ngwa ọrụ 110, usoro iwu onye nnọchi anya A2A, ebe nchekwa na-adịgide adịgide, nchedo iwu, ndị nnọchi anya igwe ojii, izochi akara mkpịsị aka TLS, Desktop/Termux/PWA na asụsụ UI i18n 42. Ikikere OmniRoute bụ MIT, a pụkwara ịnabata ya na sava nke aka gị. Atụmatụ na ọnụọgụ ndị asọmpi nwere ike ịgbanwe; lee usoro nyocha e jikọtara."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ihe na-eme ka OmniRoute pụọ iche — nchịkọta atụmatụ e mere n’oge gara aga ma e jiri ya tụnyere 9router, OpenRouter, CLIProxyAPI na LiteLLM n’akụkụ ikike 13. OmniRoute: ndị na-enye ọrụ 358, atụmatụ efu 150+ e tinyere n’ime ya, usoro ntụgharị arịrịọ 19, mkpakọ token nke injin 12, sava MCP e tinyere n’ime ya nke nwere ngwa ọrụ 110, usoro iwu onye nnọchi anya A2A, ebe nchekwa na-adịgide adịgide, nchedo iwu, ndị nnọchi anya igwe ojii, izochi akara mkpịsị aka TLS, Desktop/Termux/PWA na asụsụ UI i18n 42. Ikikere OmniRoute bụ MIT, a pụkwara ịnabata ya na sava nke aka gị. Atụmatụ na ọnụọgụ ndị asọmpi nwere ike ịgbanwe; lee usoro nyocha e jikọtara."/>
 
 <sub>📊 Usoro nyocha zuru ezu &amp; nkọwa atụmatụ nke ọ bụla e jiri ya tụnyere 9router, OpenRouter, CLIProxyAPI &amp; LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

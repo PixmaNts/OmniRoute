@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — സൗജന്യ AI ഗേറ്റ്‌വേ
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — കോഡിംഗ് ഒരിക്കലും നിർത്തരുത്. എല്ലാ AI ടൂളുകളും → 359 പ്രൊവൈഡർമാർ — 150+ സൗജന്യം — ഒരൊറ്റ എൻഡ്‌പോയിന്റിലൂടെ. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity എന്നിവയിലൂടെ സൗജന്യ Claude / GPT / Gemini ലഭ്യമാക്കുന്നു; ഓട്ടോ-ഫാൾബാക്കും ഉണ്ട്. RTK + Caveman സ്റ്റാക്ക് ചെയ്ത കംപ്രഷൻ 15–95% ടോക്കണുകൾ ലാഭിക്കുന്നു (~89% ശരാശരി) — പരിധികൾ ഒരിക്കലും കടക്കില്ല. 359 AI പ്രൊവൈഡർമാർ · 150+ സൗജന്യ പ്ലാനുകൾ · പ്രതിമാസം ~1.62B സൗജന്യ ടോക്കണുകൾ · 19 റൂട്ടിംഗ് തന്ത്രങ്ങൾ · തുടങ്ങാൻ $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — കോഡിംഗ് ഒരിക്കലും നിർത്തരുത്. എല്ലാ AI ടൂളുകളും → 358 പ്രൊവൈഡർമാർ — 150+ സൗജന്യം — ഒരൊറ്റ എൻഡ്‌പോയിന്റിലൂടെ. Claude Code, Codex, Cursor, Cline, Copilot & Antigravity എന്നിവയിലൂടെ സൗജന്യ Claude / GPT / Gemini ലഭ്യമാക്കുന്നു; ഓട്ടോ-ഫാൾബാക്കും ഉണ്ട്. RTK + Caveman സ്റ്റാക്ക് ചെയ്ത കംപ്രഷൻ 15–95% ടോക്കണുകൾ ലാഭിക്കുന്നു (~89% ശരാശരി) — പരിധികൾ ഒരിക്കലും കടക്കില്ല. 358 AI പ്രൊവൈഡർമാർ · 150+ സൗജന്യ പ്ലാനുകൾ · പ്രതിമാസം ~1.62B സൗജന്യ ടോക്കണുകൾ · 19 റൂട്ടിംഗ് തന്ത്രങ്ങൾ · തുടങ്ങാൻ $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="വാഗ്ദാനം — ഒരൊറ്റ എൻഡ്‌പോയിന്റും 359 ദാതാക്കളും. പ്രവർത്തനക്ഷമമായ മറ്റൊരു ലക്ഷ്യം ലഭ്യമുള്ളിടത്തോളം സ്വയമേവയുള്ള ഫാൾബാക്ക് റൂട്ടിംഗ് തുടരും. ആറ് തൂണുകൾ: 359 ദാതാക്കളിലുടനീളം പ്രതിരോധശേഷിയുള്ള ഫാൾബാക്ക് · യോഗ്യമായ വർക്ക്‌ലോഡുകളിൽ ടോക്കൺ ചെലവ് 95% വരെ കുറയ്ക്കാം · 150-ലധികം സൗജന്യ ടയറുകളും ആവർത്തിച്ച് ലഭിക്കുന്നതോ കീ ആവശ്യമില്ലാത്തതോ ആയ എക്കാലവും സൗജന്യ 54 ദാതാക്കളും ഉപയോഗിച്ച് $0-ൽ തുടങ്ങാം · ഒരൊറ്റ കോൺഫിഗറേഷനിലൂടെ 36 CLI/ഏജന്റ് സംയോജനങ്ങൾ · /v1-ൽ OpenAI, Claude, Gemini, Responses API എന്നിവയുമായുള്ള പൊരുത്തം · സർക്യൂട്ട് ബ്രേക്കറുകൾ, TLS സ്റ്റെൽത്ത്, 110 MCP ടൂളുകൾ, A2A, മെമ്മറി, ഗാർഡ്‌റെയിലുകൾ, ഇവാലുകൾ, 5,100-ലധികം ട്രാക്ക് ചെയ്ത ടെസ്റ്റ് ഫയലുകളിലായി 39,000-ലധികം സ്റ്റാറ്റിക് ടെസ്റ്റ് പ്രഖ്യാപനങ്ങൾ എന്നിവയുൾപ്പെടെയുള്ള പ്രൊഡക്ഷൻ നിയന്ത്രണങ്ങൾ."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="വാഗ്ദാനം — ഒരൊറ്റ എൻഡ്‌പോയിന്റും 358 ദാതാക്കളും. പ്രവർത്തനക്ഷമമായ മറ്റൊരു ലക്ഷ്യം ലഭ്യമുള്ളിടത്തോളം സ്വയമേവയുള്ള ഫാൾബാക്ക് റൂട്ടിംഗ് തുടരും. ആറ് തൂണുകൾ: 358 ദാതാക്കളിലുടനീളം പ്രതിരോധശേഷിയുള്ള ഫാൾബാക്ക് · യോഗ്യമായ വർക്ക്‌ലോഡുകളിൽ ടോക്കൺ ചെലവ് 95% വരെ കുറയ്ക്കാം · 150-ലധികം സൗജന്യ ടയറുകളും ആവർത്തിച്ച് ലഭിക്കുന്നതോ കീ ആവശ്യമില്ലാത്തതോ ആയ എക്കാലവും സൗജന്യ 54 ദാതാക്കളും ഉപയോഗിച്ച് $0-ൽ തുടങ്ങാം · ഒരൊറ്റ കോൺഫിഗറേഷനിലൂടെ 36 CLI/ഏജന്റ് സംയോജനങ്ങൾ · /v1-ൽ OpenAI, Claude, Gemini, Responses API എന്നിവയുമായുള്ള പൊരുത്തം · സർക്യൂട്ട് ബ്രേക്കറുകൾ, TLS സ്റ്റെൽത്ത്, 110 MCP ടൂളുകൾ, A2A, മെമ്മറി, ഗാർഡ്‌റെയിലുകൾ, ഇവാലുകൾ, 5,100-ലധികം ട്രാക്ക് ചെയ്ത ടെസ്റ്റ് ഫയലുകളിലായി 39,000-ലധികം സ്റ്റാറ്റിക് ടെസ്റ്റ് പ്രഖ്യാപനങ്ങൾ എന്നിവയുൾപ്പെടെയുള്ള പ്രൊഡക്ഷൻ നിയന്ത്രണങ്ങൾ."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute-നെ വേറിട്ടുനിർത്തുന്നത് — 13 സവിശേഷതകളിൽ 9router, OpenRouter, CLIProxyAPI, LiteLLM എന്നിവയുമായുള്ള തീയതിയോടുകൂടിയ സവിശേഷതാ താരതമ്യം. OmniRoute: 359 providers, മുൻകൂട്ടി ഉൾപ്പെടുത്തിയ 150-ലധികം സൗജന്യ പ്ലാനുകൾ, 19 routing strategies, 12-engine token compression, 110 tools ഉള്ള built-in MCP server, A2A agent protocol, persistent memory, guardrails, cloud agents, TLS fingerprint stealth, Desktop/Termux/PWA, 42 i18n UI locales. OmniRoute-ന് MIT license ഉണ്ട്; സ്വയം ഹോസ്റ്റ് ചെയ്യാം. എതിരാളികളുടെ സവിശേഷതകളും എണ്ണവും മാറാം; methodology കാണുക."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute-നെ വേറിട്ടുനിർത്തുന്നത് — 13 സവിശേഷതകളിൽ 9router, OpenRouter, CLIProxyAPI, LiteLLM എന്നിവയുമായുള്ള തീയതിയോടുകൂടിയ സവിശേഷതാ താരതമ്യം. OmniRoute: 358 providers, മുൻകൂട്ടി ഉൾപ്പെടുത്തിയ 150-ലധികം സൗജന്യ പ്ലാനുകൾ, 19 routing strategies, 12-engine token compression, 110 tools ഉള്ള built-in MCP server, A2A agent protocol, persistent memory, guardrails, cloud agents, TLS fingerprint stealth, Desktop/Termux/PWA, 42 i18n UI locales. OmniRoute-ന് MIT license ഉണ്ട്; സ്വയം ഹോസ്റ്റ് ചെയ്യാം. എതിരാളികളുടെ സവിശേഷതകളും എണ്ണവും മാറാം; methodology കാണുക."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI, LiteLLM എന്നിവയുമായുള്ള പൂർണ്ണ methodology-യും ഓരോ സവിശേഷതയുടെയും വിശദാംശങ്ങളും → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

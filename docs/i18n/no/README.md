@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Den gratis AI-gatewayen
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Slutt aldri å kode. Alle AI-verktøy → 359 leverandører — 150+ gratis — via ett endepunkt. Claude Code, Codex, Cursor, Cline, Copilot og Antigravity kobles til GRATIS Claude / GPT / Gemini med automatisk reservevalg. Stablet komprimering med RTK + Caveman sparer 15–95 % av tokenene (gjennomsnittlig ~89 %) — unngå å nå grensene. 359 AI-leverandører · 150+ gratisnivåer · ~1,62B gratis token per måned · 19 rutingsstrategier · $0 for å komme i gang."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Slutt aldri å kode. Alle AI-verktøy → 358 leverandører — 150+ gratis — via ett endepunkt. Claude Code, Codex, Cursor, Cline, Copilot og Antigravity kobles til GRATIS Claude / GPT / Gemini med automatisk reservevalg. Stablet komprimering med RTK + Caveman sparer 15–95 % av tokenene (gjennomsnittlig ~89 %) — unngå å nå grensene. 358 AI-leverandører · 150+ gratisnivåer · ~1,62B gratis token per måned · 19 rutingsstrategier · $0 for å komme i gang."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Løftet — Ett endepunkt og 359 leverandører. Automatisk reservekobling sørger for videre ruting så lenge et annet tilgjengelig mål finnes. Seks hovedpilarer: robust reservekobling på tvers av 359 leverandører · opptil 95 % tokenbesparelser for kvalifiserte arbeidsbelastninger · $0 for å komme i gang med over 150 gratisnivåer og 54 tilbakevendende/nøkkelfrie leverandører som alltid er gratis · 36 CLI-/agentintegrasjoner gjennom én konfigurasjon · kompatibilitet med OpenAI, Claude, Gemini og Responses API på /v1 · produksjonskontroller, inkludert effektbrytere, TLS-stealth, MCP med 110 verktøy, A2A, minne, sikkerhetsregler, evalueringer og over 39 000 statiske testdeklarasjoner fordelt på over 5 100 sporede testfiler."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Løftet — Ett endepunkt og 358 leverandører. Automatisk reservekobling sørger for videre ruting så lenge et annet tilgjengelig mål finnes. Seks hovedpilarer: robust reservekobling på tvers av 358 leverandører · opptil 95 % tokenbesparelser for kvalifiserte arbeidsbelastninger · $0 for å komme i gang med over 150 gratisnivåer og 54 tilbakevendende/nøkkelfrie leverandører som alltid er gratis · 36 CLI-/agentintegrasjoner gjennom én konfigurasjon · kompatibilitet med OpenAI, Claude, Gemini og Responses API på /v1 · produksjonskontroller, inkludert effektbrytere, TLS-stealth, MCP med 110 verktøy, A2A, minne, sikkerhetsregler, evalueringer og over 39 000 statiske testdeklarasjoner fordelt på over 5 100 sporede testfiler."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Alle **19** strategiene — bland og kombiner per kombinasjonstrinn:
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Dette skiller OmniRoute fra andre — et datert øyeblikksbilde av funksjoner sammenlignet med 9router, OpenRouter, CLIProxyAPI og LiteLLM på tvers av 13 funksjoner. OmniRoute: 359 leverandører, over 150 innebygde gratisnivåer, 19 rutingstrategier, tokenkomprimering med 12 motorer, innebygd MCP-server med 110 verktøy, A2A-agentprotokoll, vedvarende minne, sikkerhetsregler, skyagenter, TLS-fingeravtrykksskjuling, Desktop/Termux/PWA og 42 språk i brukergrensesnittet. OmniRoute er MIT-lisensiert og kan selvdriftes. Konkurrentenes funksjoner og antall kan endres; se den lenkede metodikken."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Dette skiller OmniRoute fra andre — et datert øyeblikksbilde av funksjoner sammenlignet med 9router, OpenRouter, CLIProxyAPI og LiteLLM på tvers av 13 funksjoner. OmniRoute: 358 leverandører, over 150 innebygde gratisnivåer, 19 rutingstrategier, tokenkomprimering med 12 motorer, innebygd MCP-server med 110 verktøy, A2A-agentprotokoll, vedvarende minne, sikkerhetsregler, skyagenter, TLS-fingeravtrykksskjuling, Desktop/Termux/PWA og 42 språk i brukergrensesnittet. OmniRoute er MIT-lisensiert og kan selvdriftes. Konkurrentenes funksjoner og antall kan endres; se den lenkede metodikken."/>
 
 <sub>📊 Fullstendig metodikk og detaljer per funksjon sammenlignet med 9router, OpenRouter, CLIProxyAPI og LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

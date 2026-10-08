@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — 免费 AI 网关
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — 永不停下编码。每款 AI 工具 → 359 个服务商 — 其中 150+ 个免费 — 通过一个端点接入。将 Claude Code、Codex、Cursor、Cline、Copilot 和 Antigravity 接入免费的 Claude / GPT / Gemini，并自动回退。RTK + Caveman 叠加压缩可节省 15–95% 的 token（平均约 89%）— 永不触及限额。359 个 AI 服务商 · 150+ 个免费套餐 · 每月约 16.2 亿个免费 token · 19 种路由策略 · $0 起步。"/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — 永不停下编码。每款 AI 工具 → 358 个服务商 — 其中 150+ 个免费 — 通过一个端点接入。将 Claude Code、Codex、Cursor、Cline、Copilot 和 Antigravity 接入免费的 Claude / GPT / Gemini，并自动回退。RTK + Caveman 叠加压缩可节省 15–95% 的 token（平均约 89%）— 永不触及限额。358 个 AI 服务商 · 150+ 个免费套餐 · 每月约 16.2 亿个免费 token · 19 种路由策略 · $0 起步。"/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="我们的承诺 — 一个端点，接入 359 家服务提供者。只要还有其他健康可用的目标，自动故障转移就会持续路由。六大支柱：在 359 家服务提供者之间实现弹性故障转移 · 符合条件的工作负载最多可节省 95% 的令牌 · $0 即可开始，提供 150 多种免费方案，以及 54 家长期免费、免密的服务提供者 · 通过一次配置集成 36 种 CLI/代理工具 · 兼容 OpenAI、Claude、Gemini 和 Responses API，接口路径为 /v1 · 面向生产环境的控制功能，包括断路器、TLS 隐身、MCP 110 种工具、A2A、记忆、护栏、评估，以及 5,100 多个受跟踪的测试文件中包含 39,000 多项静态测试声明。"/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="我们的承诺 — 一个端点，接入 358 家服务提供者。只要还有其他健康可用的目标，自动故障转移就会持续路由。六大支柱：在 358 家服务提供者之间实现弹性故障转移 · 符合条件的工作负载最多可节省 95% 的令牌 · $0 即可开始，提供 150 多种免费方案，以及 54 家长期免费、免密的服务提供者 · 通过一次配置集成 36 种 CLI/代理工具 · 兼容 OpenAI、Claude、Gemini 和 Responses API，接口路径为 /v1 · 面向生产环境的控制功能，包括断路器、TLS 隐身、MCP 110 种工具、A2A、记忆、护栏、评估，以及 5,100 多个受跟踪的测试文件中包含 39,000 多项静态测试声明。"/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute 的独特之处——与 9router、OpenRouter、CLIProxyAPI 和 LiteLLM 在 13 项能力上的功能快照对比（数据可能已过时）。OmniRoute：359 个提供者，内置 150 多个免费层级，19 种路由策略，12 引擎令牌压缩，内置 MCP 服务器，提供 110 种工具，A2A 智能体协议，持久化记忆，防护机制，云端智能体，TLS 指纹隐匿，支持 Desktop/Termux/PWA 和 42 种 i18n UI 语言。OmniRoute 采用 MIT 许可，可自行托管。竞争产品的功能和数量可能会变化；请参阅链接中的方法说明。"/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute 的独特之处——与 9router、OpenRouter、CLIProxyAPI 和 LiteLLM 在 13 项能力上的功能快照对比（数据可能已过时）。OmniRoute：358 个提供者，内置 150 多个免费层级，19 种路由策略，12 引擎令牌压缩，内置 MCP 服务器，提供 110 种工具，A2A 智能体协议，持久化记忆，防护机制，云端智能体，TLS 指纹隐匿，支持 Desktop/Termux/PWA 和 42 种 i18n UI 语言。OmniRoute 采用 MIT 许可，可自行托管。竞争产品的功能和数量可能会变化；请参阅链接中的方法说明。"/>
 
 <sub>📊 与 9router、OpenRouter、CLIProxyAPI 和 LiteLLM 的完整方法说明及各项功能详情 → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — La passerelle IA gratuite
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Ne cessez jamais de coder. Chaque outil d’IA → 359 fournisseurs — dont 150+ gratuits — via un seul point de terminaison. Claude Code, Codex, Cursor, Cline, Copilot et Antigravity vers Claude / GPT / Gemini GRATUITS avec basculement automatique. La compression combinée RTK + Caveman économise 15–95 % de jetons (environ 89 % en moyenne) — ne dépassez jamais les limites. 359 fournisseurs d’IA · 150+ offres gratuites · ~1,62 milliard de jetons gratuits/mois · 19 stratégies de routage · 0 $ pour commencer."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Ne cessez jamais de coder. Chaque outil d’IA → 358 fournisseurs — dont 150+ gratuits — via un seul point de terminaison. Claude Code, Codex, Cursor, Cline, Copilot et Antigravity vers Claude / GPT / Gemini GRATUITS avec basculement automatique. La compression combinée RTK + Caveman économise 15–95 % de jetons (environ 89 % en moyenne) — ne dépassez jamais les limites. 358 fournisseurs d’IA · 150+ offres gratuites · ~1,62 milliard de jetons gratuits/mois · 19 stratégies de routage · 0 $ pour commencer."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="La promesse — Un seul endpoint et 359 fournisseurs. Le basculement automatique assure le routage tant qu’une autre cible opérationnelle est disponible. Six piliers : basculement résilient entre 359 fournisseurs · jusqu’à 95 % d’économies de jetons sur les charges de travail éligibles · 0 $ pour commencer grâce à plus de 150 offres gratuites et à 54 fournisseurs gratuits à vie, récurrents ou sans clé · 36 intégrations CLI/agent via une seule configuration · compatibilité avec les API OpenAI, Claude, Gemini et Responses sur /v1 · contrôles de production, notamment coupe-circuits, furtivité TLS, 110 outils MCP, A2A, mémoire, garde-fous, évaluations et plus de 39 000 déclarations de tests statiques réparties dans plus de 5 100 fichiers de test suivis."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="La promesse — Un seul endpoint et 358 fournisseurs. Le basculement automatique assure le routage tant qu’une autre cible opérationnelle est disponible. Six piliers : basculement résilient entre 358 fournisseurs · jusqu’à 95 % d’économies de jetons sur les charges de travail éligibles · 0 $ pour commencer grâce à plus de 150 offres gratuites et à 54 fournisseurs gratuits à vie, récurrents ou sans clé · 36 intégrations CLI/agent via une seule configuration · compatibilité avec les API OpenAI, Claude, Gemini et Responses sur /v1 · contrôles de production, notamment coupe-circuits, furtivité TLS, 110 outils MCP, A2A, mémoire, garde-fous, évaluations et plus de 39 000 déclarations de tests statiques réparties dans plus de 5 100 fichiers de test suivis."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Les **19** stratégies — à combiner librement à chaque étape du combo :
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ce qui distingue OmniRoute — instantané daté des fonctionnalités comparant OmniRoute à 9router, OpenRouter, CLIProxyAPI et LiteLLM sur 13 capacités. OmniRoute : 359 fournisseurs, plus de 150 offres gratuites intégrées, 19 stratégies de routage, compression des jetons par 12 moteurs, serveur MCP intégré avec 110 outils, protocole d’agents A2A, mémoire persistante, garde-fous, agents cloud, furtivité par empreinte TLS, interface Desktop/Termux/PWA et interface utilisateur disponible en 42 langues. OmniRoute est sous licence MIT et peut être auto-hébergé. Les capacités et les chiffres des concurrents peuvent évoluer ; consultez la méthodologie liée."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="Ce qui distingue OmniRoute — instantané daté des fonctionnalités comparant OmniRoute à 9router, OpenRouter, CLIProxyAPI et LiteLLM sur 13 capacités. OmniRoute : 358 fournisseurs, plus de 150 offres gratuites intégrées, 19 stratégies de routage, compression des jetons par 12 moteurs, serveur MCP intégré avec 110 outils, protocole d’agents A2A, mémoire persistante, garde-fous, agents cloud, furtivité par empreinte TLS, interface Desktop/Termux/PWA et interface utilisateur disponible en 42 langues. OmniRoute est sous licence MIT et peut être auto-hébergé. Les capacités et les chiffres des concurrents peuvent évoluer ; consultez la méthodologie liée."/>
 
 <sub>📊 Méthodologie complète et détails par fonctionnalité comparant OmniRoute à 9router, OpenRouter, CLIProxyAPI et LiteLLM → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 

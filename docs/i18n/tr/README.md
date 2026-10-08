@@ -13,7 +13,7 @@
 
 # 🚀 OmniRoute — Ücretsiz Yapay Z zekâ Ağ Geçidi
 
-<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yazmayı asla bırakmayın. Her yapay zekâ aracı → 359 sağlayıcı — 150'den fazlası ücretsiz — tek bir uç nokta üzerinden. Claude Code, Codex, Cursor, Cline, Copilot ve Antigravity; otomatik yedek geçişle ÜCRETSİZ Claude / GPT / Gemini'ye bağlanır. RTK + Caveman katmanlı sıkıştırması, belirteçlerden %15–95 tasarruf sağlar (ortalama ~%89) — sınırlara asla takılmayın. 359 yapay zekâ sağlayıcısı · 150'den fazla ücretsiz katman · ayda ~1,62 milyar ücretsiz belirteç · 19 yönlendirme stratejisi · Başlamak için $0."/>
+<img src="./docs/diagrams/readme-hero.svg" width="100%" alt="OmniRoute — Kod yazmayı asla bırakmayın. Her yapay zekâ aracı → 358 sağlayıcı — 150'den fazlası ücretsiz — tek bir uç nokta üzerinden. Claude Code, Codex, Cursor, Cline, Copilot ve Antigravity; otomatik yedek geçişle ÜCRETSİZ Claude / GPT / Gemini'ye bağlanır. RTK + Caveman katmanlı sıkıştırması, belirteçlerden %15–95 tasarruf sağlar (ortalama ~%89) — sınırlara asla takılmayın. 358 yapay zekâ sağlayıcısı · 150'den fazla ücretsiz katman · ayda ~1,62 milyar ücretsiz belirteç · 19 yönlendirme stratejisi · Başlamak için $0."/>
 
 </div>
 
@@ -239,7 +239,7 @@ curl http://localhost:20128/v1/chat/completions \
 
 </div>
 
-<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vaat — Tek uç nokta ve 359 sağlayıcı. Başka bir sağlıklı hedef kullanılabilir durumdayken otomatik yedek geçiş, yönlendirmeyi sürdürür. Altı temel özellik: 359 sağlayıcı arasında dayanıklı yedek geçiş · uygun iş yüklerinde token maliyetinde %95'e varan tasarruf · 150'den fazla ücretsiz katman ve düzenli olarak kullanılabilen/anahtarsız, sonsuza dek ücretsiz 54 sağlayıcıyla 0 $ maliyetle başlangıç · tek bir yapılandırmayla 36 CLI/agent entegrasyonu · /v1 adresinde OpenAI, Claude, Gemini ve Responses API uyumluluğu · devre kesiciler, TLS gizliliği, 110 MCP aracı, A2A, bellek, koruma kuralları, değerlendirmeler ve 5.100'den fazla izlenen test dosyasına yayılmış 39.000'den fazla statik test bildirimi gibi üretim denetimleri."/>
+<img src="./docs/diagrams/promise-pillars.svg" width="100%" alt="Vaat — Tek uç nokta ve 358 sağlayıcı. Başka bir sağlıklı hedef kullanılabilir durumdayken otomatik yedek geçiş, yönlendirmeyi sürdürür. Altı temel özellik: 358 sağlayıcı arasında dayanıklı yedek geçiş · uygun iş yüklerinde token maliyetinde %95'e varan tasarruf · 150'den fazla ücretsiz katman ve düzenli olarak kullanılabilen/anahtarsız, sonsuza dek ücretsiz 54 sağlayıcıyla 0 $ maliyetle başlangıç · tek bir yapılandırmayla 36 CLI/agent entegrasyonu · /v1 adresinde OpenAI, Claude, Gemini ve Responses API uyumluluğu · devre kesiciler, TLS gizliliği, 110 MCP aracı, A2A, bellek, koruma kuralları, değerlendirmeler ve 5.100'den fazla izlenen test dosyasına yayılmış 39.000'den fazla statik test bildirimi gibi üretim denetimleri."/>
 
 <br/>
 <br/>
@@ -492,7 +492,7 @@ Kombo oluşturmanız gerekmez. Modelinizi `auto` (veya bir varyantı) olarak aya
 
 </div>
 
-<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute’u farklı kılan özellikler — 13 yetenek açısından 9router, OpenRouter, CLIProxyAPI ve LiteLLM ile güncel olmayan bir özellik karşılaştırması. OmniRoute: 359 sağlayıcı, yerleşik 150’den fazla ücretsiz katman, 19 yönlendirme stratejisi, 12 motorlu token sıkıştırma, 110 araç içeren yerleşik MCP sunucusu, A2A ajan protokolü, kalıcı bellek, koruma kuralları, bulut ajanları, TLS parmak izi gizleme, Desktop/Termux/PWA ve 42 i18n arayüz yerel ayarı. OmniRoute MIT lisanslıdır ve kendi sunucunuzda barındırılabilir. Rakiplerin özellikleri ve sayıları değişebilir; bağlantıdaki metodolojiye bakın."/>
+<img src="./docs/diagrams/comparison-table.svg" width="100%" alt="OmniRoute’u farklı kılan özellikler — 13 yetenek açısından 9router, OpenRouter, CLIProxyAPI ve LiteLLM ile güncel olmayan bir özellik karşılaştırması. OmniRoute: 358 sağlayıcı, yerleşik 150’den fazla ücretsiz katman, 19 yönlendirme stratejisi, 12 motorlu token sıkıştırma, 110 araç içeren yerleşik MCP sunucusu, A2A ajan protokolü, kalıcı bellek, koruma kuralları, bulut ajanları, TLS parmak izi gizleme, Desktop/Termux/PWA ve 42 i18n arayüz yerel ayarı. OmniRoute MIT lisanslıdır ve kendi sunucunuzda barındırılabilir. Rakiplerin özellikleri ve sayıları değişebilir; bağlantıdaki metodolojiye bakın."/>
 
 <sub>📊 9router, OpenRouter, CLIProxyAPI ve LiteLLM ile tam metodoloji ve özellik bazında ayrıntılar → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
 
