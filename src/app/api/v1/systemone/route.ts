@@ -6,6 +6,8 @@ import { resolveSystemOneTarget } from "@omniroute/open-sse/config/systemOneRegi
 import { validateSystemOneBackendBody } from "@omniroute/open-sse/handlers/systemOneValidation.ts";
 import { resolveLocalSyncedEndpointRoute } from "@/lib/providerModels/syncedEndpointRouting";
 import { getSyncedAvailableModelsForConnection } from "@/lib/db/models";
+import { getProviderConnections } from "@/lib/db/providers";
+import { getModelLockoutInfo } from "@omniroute/open-sse/services/accountFallback.ts";
 import {
   getProviderCredentialsWithQuotaPreflight,
   clearRecoveredProviderState,
@@ -103,6 +105,32 @@ async function resolveAllowedConnections(
   return { ids: withVision };
 }
 
+/**
+ * The selector returns no credentials both when the backend has no usable connection and
+ * when every connection locked this one model after the upstream said it does not have it
+ * (Ollama 404 model_not_found). The second case is not a credentials problem: answer 404
+ * so the caller pulls the model instead of re-checking its keys. Retryable lockouts never
+ * get here, they come back as all-rate-limited (429).
+ */
+async function lockedModelResponse(
+  provider: string,
+  model: string,
+  allowed: string[] | null
+): Promise<Response | null> {
+  const active = (await getProviderConnections({ provider, isActive: true })).filter(
+    (row: { id: string }) => !allowed || allowed.includes(row.id)
+  );
+  if (!active.length) return null;
+  const locked = active.every((row: { id: string }) =>
+    Boolean(getModelLockoutInfo(provider, row.id, model))
+  );
+  if (!locked) return null;
+  return errorResponse(
+    HTTP_STATUS.NOT_FOUND,
+    `Model ${model} is not available on ${provider}: the upstream reported it missing`
+  );
+}
+
 async function postHandler(request: Request) {
   const parsed = await parseRequest(request);
   if ("error" in parsed) return parsed.error;
@@ -126,9 +154,9 @@ async function postHandler(request: Request) {
     canonicalModel
   );
   if (!credentials) {
-    return errorResponse(
-      HTTP_STATUS.BAD_REQUEST,
-      `No credentials for provider: ${target.provider}`
+    return (
+      (await lockedModelResponse(target.provider, canonicalModel, connections.ids)) ??
+      errorResponse(HTTP_STATUS.BAD_REQUEST, `No credentials for provider: ${target.provider}`)
     );
   }
   if (isAllRateLimitedCredentials(credentials)) {
