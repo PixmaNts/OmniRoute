@@ -37,45 +37,23 @@ function buildAuthorization(accessToken?: string, apiKey?: string): string {
   return apiKey ? `Bearer ${apiKey.trim()}` : "";
 }
 
-export async function getClinepassUsage(accessToken?: string, apiKey?: string) {
-  const authorization = buildAuthorization(accessToken, apiKey);
-  if (!authorization) {
-    return { message: "ClinePass credentials not available. Sign in again to view usage." };
-  }
-
-  let response: Response;
-  try {
-    response = await fetch(CLINEPASS_USAGE_LIMITS_URL, {
-      method: "GET",
-      headers: { Authorization: authorization, Accept: "application/json" },
-    });
-  } catch (error) {
-    return { message: `ClinePass connected. Unable to fetch usage: ${(error as Error).message}` };
-  }
-
+/** Message for a non-OK usage-limits response, or null when the response is OK. */
+function describeFailedStatus(response: Response): string | null {
   if (response.status === 401 || response.status === 403) {
-    return { message: "ClinePass connected. Cline rejected the credentials for usage limits." };
+    return "ClinePass connected. Cline rejected the credentials for usage limits.";
   }
   if (response.status === 404) {
     // Accounts without a ClinePass subscription have no plan to meter.
-    return { message: "ClinePass connected. No active ClinePass plan found for this account." };
+    return "ClinePass connected. No active ClinePass plan found for this account.";
   }
   if (!response.ok) {
-    return { message: `ClinePass connected. Usage limits returned HTTP ${response.status}.` };
+    return `ClinePass connected. Usage limits returned HTTP ${response.status}.`;
   }
+  return null;
+}
 
-  let payload: Record<string, unknown>;
-  try {
-    payload = toRecord(await response.json());
-  } catch {
-    return { message: "ClinePass connected. Unable to parse usage limits response." };
-  }
-
-  const limits = toRecord(payload.data).limits;
-  if (payload.success === false || !Array.isArray(limits) || limits.length === 0) {
-    return { message: "ClinePass connected. Cline did not report any usage limits." };
-  }
-
+/** Maps Cline's percentage-only limit windows onto 0–100 usage quotas. */
+function mapLimitsToQuotas(limits: unknown[]): Record<string, UsageQuota> {
   const quotas: Record<string, UsageQuota> = {};
   for (const entry of limits) {
     const limit = toRecord(entry);
@@ -95,7 +73,41 @@ export async function getClinepassUsage(accessToken?: string, apiKey?: string) {
       displayName: mapped.displayName,
     };
   }
+  return quotas;
+}
 
+export async function getClinepassUsage(accessToken?: string, apiKey?: string) {
+  const authorization = buildAuthorization(accessToken, apiKey);
+  if (!authorization) {
+    return { message: "ClinePass credentials not available. Sign in again to view usage." };
+  }
+
+  let response: Response;
+  try {
+    response = await fetch(CLINEPASS_USAGE_LIMITS_URL, {
+      method: "GET",
+      headers: { Authorization: authorization, Accept: "application/json" },
+    });
+  } catch (error) {
+    return { message: `ClinePass connected. Unable to fetch usage: ${(error as Error).message}` };
+  }
+
+  const statusMessage = describeFailedStatus(response);
+  if (statusMessage) return { message: statusMessage };
+
+  let payload: Record<string, unknown>;
+  try {
+    payload = toRecord(await response.json());
+  } catch {
+    return { message: "ClinePass connected. Unable to parse usage limits response." };
+  }
+
+  const limits = toRecord(payload.data).limits;
+  if (payload.success === false || !Array.isArray(limits) || limits.length === 0) {
+    return { message: "ClinePass connected. Cline did not report any usage limits." };
+  }
+
+  const quotas = mapLimitsToQuotas(limits);
   if (Object.keys(quotas).length === 0) {
     return { message: "ClinePass connected. Cline did not report any usage limits." };
   }
