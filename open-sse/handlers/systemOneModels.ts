@@ -1,3 +1,9 @@
+import { getCombos } from "@/lib/db/combos";
+import { resolveComboTargets } from "../services/combo/comboStructure.ts";
+import { getModelEndpointDecision } from "../services/modelEndpointPolicy.ts";
+import { resolveSystemOneTarget } from "../config/systemOneRegistry.ts";
+import { isNoAuthProviderBlockedBySettings } from "@/sse/services/noAuthProviderSettings";
+import { allowlistPermitsSyntheticNoAuth } from "@/sse/services/noAuthAllowlist";
 /**
  * System One model catalog (`GET /v1/systemone/models`).
  *
@@ -13,7 +19,11 @@ import { CORS_HEADERS } from "../utils/cors.ts";
 import { errorResponse } from "../utils/error.ts";
 import { sanitizeErrorMessage } from "../utils/errorSanitization.ts";
 import * as log from "@/sse/utils/logger";
-import { isSystemOneProvider, type SystemOneProvider } from "../config/systemOneRegistry.ts";
+import {
+  isSystemOneProvider,
+  staticSystemOneModels,
+  type SystemOneProvider,
+} from "../config/systemOneRegistry.ts";
 import {
   fetchSystemOne,
   systemOneHeaders,
@@ -98,6 +108,8 @@ async function fetchDecisionCatalog(
   credentials: SystemOneCredentials,
   signal?: AbortSignal
 ): Promise<Record<string, unknown>[]> {
+  const fixed = staticSystemOneModels(provider);
+  if (fixed.length) return withOperatorPricing(provider, fixed);
   if (provider === "ollama-local") {
     // The connection's live-synced /api/show capabilities are authoritative; never
     // synthesize a static local catalog or union another host's pulled models.
@@ -193,6 +205,12 @@ async function listConfiguredConnections(
   const rows = (await getProviderConnections({ isActive: true })) as unknown as Array<
     CatalogConnection & { provider?: unknown }
   >;
+  if (
+    allowlistPermitsSyntheticNoAuth(allowedIds) &&
+    !(await isNoAuthProviderBlockedBySettings("opencode-systemone"))
+  ) {
+    rows.push({ id: "noauth", provider: "opencode-systemone", testStatus: "active" });
+  }
   return rows.filter(
     (row) =>
       typeof row.provider === "string" &&
@@ -253,7 +271,13 @@ async function collectGroup(
   options: SystemOneModelsOptions,
   into: Map<string, Record<string, unknown>>
 ): Promise<void> {
-  const eligible = group.filter((connection) => canServe(connection, null));
+  const eligible = group.filter(
+    (connection) =>
+      canServe(connection, null) ||
+      (provider === "openrouter" &&
+        connection.testStatus === "credits_exhausted" &&
+        !isAccountUnavailable(connection.rateLimitedUntil))
+  );
   if (!eligible.length) throw new Error(`no eligible ${provider} connection`);
   let lastError: unknown = null;
   // OpenRouter's decision list is public, so another key cannot fix a failed read.
@@ -324,6 +348,52 @@ export async function handleSystemOneModels(
   if (options.signal?.aborted) return errorResponse(499, "Request aborted by caller");
   if (groups.length && !fetched) {
     return upstreamFailure("all configured decision backends unavailable", timedOut ? 504 : 502);
+  }
+  const combos = await getCombos();
+  for (const combo of combos) {
+    const name = combo.name;
+    const models = combo.models;
+    if (typeof name !== "string" || !Array.isArray(models)) continue;
+    if (!["fill-first", "priority"].includes(String(combo.strategy ?? "priority"))) continue;
+    const targets = resolveComboTargets(
+      {
+        name,
+        models,
+        strategy: typeof combo.strategy === "string" ? combo.strategy : null,
+        config:
+          combo.config && typeof combo.config === "object" && !Array.isArray(combo.config)
+            ? (combo.config as Record<string, unknown>)
+            : null,
+      },
+      combos
+    );
+    let decisions: ReturnType<typeof resolveSystemOneTarget>[];
+    try {
+      decisions = targets.map((target) => resolveSystemOneTarget(target.modelStr));
+    } catch {
+      continue;
+    }
+    if (
+      !decisions.length ||
+      !decisions.every(
+        (target) =>
+          listed.has(target.canonicalModel) ||
+          getModelEndpointDecision(target.provider, target.model).kind === "decision"
+      )
+    )
+      continue;
+    if (!decisions.some((target) => listed.has(target.canonicalModel))) continue;
+    if (options.isModelAllowed && !(await options.isModelAllowed(name))) continue;
+    listed.set(name, {
+      id: name,
+      object: "model",
+      owned_by: "omniroute",
+      type: "decision",
+      supported_endpoints: ["systemone"],
+      architecture: { input_modalities: ["text"], output_modalities: ["decisions"] },
+      strategy: typeof combo.strategy === "string" ? combo.strategy : "priority",
+      pricing_status: "depends-on-selected-provider",
+    });
   }
   return new Response(JSON.stringify({ object: "list", data: [...listed.values()] }), {
     status: 200,

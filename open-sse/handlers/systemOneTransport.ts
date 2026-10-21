@@ -16,8 +16,11 @@ export function systemOneUrl(
   credentials: SystemOneCredentials,
   catalog = false
 ): string {
-  if (provider !== "ollama-local")
-    return catalog ? SYSTEMONE_BACKENDS[provider].modelsUrl : SYSTEMONE_BACKENDS[provider].url;
+  if (provider !== "ollama-local") {
+    const url = catalog ? SYSTEMONE_BACKENDS[provider].modelsUrl : SYSTEMONE_BACKENDS[provider].url;
+    if (!url) throw new Error(`Provider ${provider} has a static System One catalog`);
+    return url;
+  }
   const configured = credentials.providerSpecificData?.baseUrl;
   const base = typeof configured === "string" ? configured : "http://localhost:11434/v1";
   const url = parseAndValidateNonMetadataUrl(base);

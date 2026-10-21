@@ -30,6 +30,18 @@ export const command_codeProvider: RegistryEntry = {
   defaultContextLength: 200000,
   models: [
     {
+      id: "typesafe/jev",
+      name: "Jev (CommandCode)",
+      targetFormat: "systemone",
+      contextLength: 32000,
+    },
+    {
+      id: "typesafe/jev-1.14.0",
+      name: "Jev 1.14.0 (CommandCode)",
+      targetFormat: "systemone",
+      contextLength: 32000,
+    },
+    {
       id: "claude-opus-4-7",
       name: "Claude Opus 4.7 (CC)",
       targetFormat: "claude",

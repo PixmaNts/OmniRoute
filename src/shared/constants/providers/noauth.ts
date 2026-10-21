@@ -3,6 +3,20 @@
  * Pure data literal; re-exported by the providers.ts barrel. No behavior change.
  */
 export const NOAUTH_PROVIDERS = {
+  "opencode-systemone": {
+    id: "opencode-systemone",
+    alias: "opencode-systemone",
+    name: "OpenCode Jev Free",
+    icon: "opencode",
+    color: "#6366f1",
+    textIcon: "JF",
+    website: "https://opencode.ai",
+    noAuth: true,
+    hasFree: true,
+    serviceKinds: ["decision"],
+    freeNote: "Free Jev 1.13. No API key and no OpenCode Go subscription.",
+    authHint: "No credentials. Serve Jev decisions through POST /v1/systemone.",
+  },
   "devin-cli-agentic": {
     id: "devin-cli-agentic",
     alias: "dva",
