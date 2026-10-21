@@ -522,12 +522,15 @@ POST /v1/classify    { "model": "jina-embeddings-v5-text-small", "input": ["..."
 POST /v1/segment     { "content": "...", "return_chunks": true }
 
 # Decision models (System One). The first model prefix picks the connection:
-#   typesafe/jev-latest              -> TypeSafe direct
-#   openrouter/typesafe/jev-1.13     -> through OpenRouter
-#   ollama-local/<model>             -> local Ollama >= 0.35
+#   typesafe/jev-latest                    -> TypeSafe direct
+#   openrouter/typesafe/jev-1.13           -> through OpenRouter
+#   opencode-systemone/jev-1.13-free       -> OpenCode Free, no key
+#   command-code/typesafe/jev              -> CommandCode Provider API
+#   ollama-local/<model>                   -> local Ollama >= 0.35
+# A fill-first or priority combo name is also a model id: targets are tried in order.
 # An unqualified id such as jev-latest keeps using OpenRouter. TypeSafe SDKs work with baseURL = OmniRoute.
 POST /v1/systemone   { "model": "typesafe/jev-latest", "state": "...", "questions": { "q": { "type": "noul", "instructions": "..." } } }
-GET  /v1/systemone/models   # models of the configured backends: { object: "list", data: [{ id, name, pricing, ... }] }
+GET  /v1/systemone/models   # configured backends plus decision combos: { object: "list", data: [{ id, name, pricing, ... }] }
 
 # Jina search (s.jina.ai; provider aliases: jina-search, jina-ai, jina)
 POST /v1/search      { "query": "...", "provider": "jina-search" }

@@ -289,7 +289,10 @@ import { syntxProvider } from "./registry/syntx/index.ts";
 
 import { typesafeProvider } from "./registry/typesafe/index.ts";
 
+import { opencodeSystemOneProvider } from "./registry/opencode-systemone/index.ts";
+
 export const REGISTRY: Record<string, RegistryEntry> = {
+  "opencode-systemone": opencodeSystemOneProvider,
   typesafe: typesafeProvider,
   aimlapi: aimlapiProvider,
   "mlx-gemma": mlxGemmaProvider,

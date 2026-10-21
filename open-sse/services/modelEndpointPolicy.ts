@@ -7,6 +7,8 @@
  * provider knowledge here so discovery, import, and catalog projection agree.
  */
 
+import { isCommandCodeJevModel } from "../config/systemOneRegistry.ts";
+
 export type ModelEndpointKind =
   "chat" | "image" | "video" | "embedding" | "rerank" | "decision" | "non-chat" | "unknown";
 
@@ -116,6 +118,12 @@ export function getModelEndpointDecision(
   supportedEndpoints?: readonly string[]
 ): ModelEndpointDecision {
   const explicit = classifyExplicitEndpoints(supportedEndpoints);
+  if (
+    provider === "opencode-systemone" ||
+    (provider === "command-code" && isCommandCodeJevModel(modelId))
+  ) {
+    return { kind: "decision", chatSelectable: false, reason: "provider-policy" };
+  }
   if (provider?.trim().toLowerCase() === "typesafe") {
     return { kind: "decision", chatSelectable: false, reason: "provider-policy" };
   }

@@ -143,7 +143,11 @@ async function recordSuccess(call: SystemOneCall, usage: SystemOneUsage, costUsd
   await saveRequestUsage({
     provider: call.provider,
     model: usage.model,
-    tokens: { prompt_tokens: usage.inputTokens, completion_tokens: usage.outputTokens },
+    tokens: {
+      prompt_tokens: usage.inputTokens,
+      completion_tokens: usage.outputTokens,
+      ...(costUsd !== null ? { cost_usd: costUsd } : {}),
+    },
     status: "200",
     success: true,
     latencyMs: Date.now() - call.startTime,
@@ -302,7 +306,7 @@ export async function systemOneCost(
   model: string,
   usage?: SystemOneUpstreamBody["usage"]
 ): Promise<number | null> {
-  if (provider === "ollama-local") return 0;
+  if (provider === "ollama-local" || provider === "opencode-systemone") return 0;
   if (provider !== "typesafe" && isNonNegative(usage?.cost)) return usage.cost;
   if (!isNonNegative(usage?.input_tokens)) return null;
   const outputTokens = nonNegativeCount(usage.output_tokens);

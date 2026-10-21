@@ -63,6 +63,19 @@ function chatModel(id: string) {
   return model;
 }
 
+const FREE_MODEL = "opencode-systemone/jev-1.13-free";
+
+/** The static free backend is always configured; block it to exercise a single remote catalog. */
+async function withoutFreeModel(run: () => Promise<void>) {
+  const { updateSettings } = await import("../../src/lib/db/settings.ts");
+  await updateSettings({ blockedProviders: ["opencode-systemone"] });
+  try {
+    await run();
+  } finally {
+    await updateSettings({ blockedProviders: [] });
+  }
+}
+
 const UPSTREAM_MODELS = [
   decisionModel("typesafe/jev-1.13", { prompt: "0.000000042", completion: "0" }),
   decisionModel("~typesafe/jev-latest", { prompt: "0.000000042", completion: "0" }),
@@ -124,6 +137,7 @@ test("GET /v1/systemone/models lists decisions models with upstream ids, names a
       "openrouter/~typesafe/jev-latest",
       "openrouter/inception/mercury-decide:free",
       "openrouter/liquid/d1",
+      FREE_MODEL,
     ]
   );
   const jev = body.data[0];
@@ -165,77 +179,116 @@ test("only decisions models are returned; chat and embedding models are dropped"
   const body = (await response.json()) as { data: Array<{ id: string }> };
   assert.deepEqual(
     body.data.map((m) => m.id),
-    ["openrouter/typesafe/jev-1.13", "openrouter/liquid/d1"]
+    ["openrouter/typesafe/jev-1.13", "openrouter/liquid/d1", FREE_MODEL]
+  );
+});
+
+test("a failed OpenRouter catalog still lists free Jev and does not leak the upstream body", async () => {
+  stubUpstream("<html>boom sk-or-leaked</html>");
+  const response = await route.GET(listRequest());
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("X-OmniRoute-Catalog-Status"), "partial");
+  const text = await response.text();
+  assert.ok(!text.includes("boom"));
+  assert.ok(!text.includes("sk-or-leaked"));
+  assert.deepEqual(
+    (JSON.parse(text) as { data: Array<{ id: string }> }).data.map((row) => row.id),
+    [FREE_MODEL]
   );
 });
 
 test("a malformed upstream body fails closed with a sanitized 502", async () => {
-  for (const payload of ["<html>boom</html>", { data: "nope" }, { models: [] }, [], "null"]) {
-    stubUpstream(payload);
-    const response = await route.GET(listRequest());
-    assert.equal(response.status, 502, JSON.stringify(payload));
-    const text = await response.text();
-    assert.ok(!text.includes("<html>"));
-    assert.ok(!text.includes("boom"));
-  }
+  await withoutFreeModel(async () => {
+    for (const payload of ["<html>boom</html>", { data: "nope" }, { models: [] }, [], "null"]) {
+      stubUpstream(payload);
+      const response = await route.GET(listRequest());
+      assert.equal(response.status, 502, JSON.stringify(payload));
+      const text = await response.text();
+      assert.ok(!text.includes("<html>"));
+      assert.ok(!text.includes("boom"));
+    }
+  });
 });
 
 test("an upstream list with no valid decisions model fails closed instead of returning an empty list", async () => {
-  stubUpstream({ data: [chatModel("openai/gpt-5")] });
-  const response = await route.GET(listRequest());
-  assert.equal(response.status, 502);
+  await withoutFreeModel(async () => {
+    stubUpstream({ data: [chatModel("openai/gpt-5")] });
+    const response = await route.GET(listRequest());
+    assert.equal(response.status, 502);
+  });
 });
 
 test("an empty upstream list is a valid empty list", async () => {
   stubUpstream({ data: [] });
-  const response = await route.GET(listRequest());
-  assert.equal(response.status, 200);
-  assert.deepEqual(await response.json(), { object: "list", data: [] });
+  const withFree = await route.GET(listRequest());
+  assert.equal(withFree.status, 200);
+  assert.deepEqual(
+    ((await withFree.json()) as { data: Array<{ id: string }> }).data.map((row) => row.id),
+    [FREE_MODEL]
+  );
+  await withoutFreeModel(async () => {
+    stubUpstream({ data: [] });
+    const response = await route.GET(listRequest());
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), { object: "list", data: [] });
+  });
 });
 
 test("non-2xx upstream responses become a sanitized 502 without leaking upstream details", async () => {
-  stubUpstream(
-    { error: { message: "internal at /srv/openrouter/app.ts:10 Bearer sk-or-leaked" } },
-    { status: 500 }
-  );
-  const response = await route.GET(listRequest());
-  assert.equal(response.status, 502);
-  const text = await response.text();
-  assert.ok(!text.includes("sk-or-leaked"));
-  assert.ok(!text.includes("at /"));
-  assert.ok(!text.includes("openrouter/app.ts"));
+  await withoutFreeModel(async () => {
+    stubUpstream(
+      { error: { message: "internal at /srv/openrouter/app.ts:10 Bearer sk-or-leaked" } },
+      { status: 500 }
+    );
+    const response = await route.GET(listRequest());
+    assert.equal(response.status, 502);
+    const text = await response.text();
+    assert.ok(!text.includes("sk-or-leaked"));
+    assert.ok(!text.includes("at /"));
+    assert.ok(!text.includes("openrouter/app.ts"));
+  });
 });
 
 test("network errors and timeouts become a sanitized 502", async () => {
-  globalThis.fetch = (async () => {
-    throw new Error("connect ECONNREFUSED at /home/user/app/secret.ts:10 Bearer sk-or-leaked");
-  }) as typeof fetch;
-  const failed = await route.GET(listRequest());
-  assert.equal(failed.status, 502);
-  const failedText = await failed.text();
-  assert.ok(!failedText.includes("sk-or-leaked"));
-  assert.ok(!failedText.includes("at /"));
+  await withoutFreeModel(async () => {
+    globalThis.fetch = (async () => {
+      throw new Error("connect ECONNREFUSED at /home/user/app/secret.ts:10 Bearer sk-or-leaked");
+    }) as typeof fetch;
+    const failed = await route.GET(listRequest());
+    assert.equal(failed.status, 502);
+    const failedText = await failed.text();
+    assert.ok(!failedText.includes("sk-or-leaked"));
+    assert.ok(!failedText.includes("at /"));
 
-  globalThis.fetch = (async () => {
-    throw new DOMException("The operation was aborted due to timeout", "TimeoutError");
-  }) as typeof fetch;
-  const timedOut = await route.GET(listRequest());
-  assert.equal(timedOut.status, 504);
+    globalThis.fetch = (async () => {
+      throw new DOMException("The operation was aborted due to timeout", "TimeoutError");
+    }) as typeof fetch;
+    const timedOut = await route.GET(listRequest());
+    assert.equal(timedOut.status, 504);
+  });
 });
 
 test("an oversized upstream body fails closed", async () => {
-  stubUpstream(`{"data":[],"pad":"${"x".repeat(3_000_000)}"}`);
-  const response = await route.GET(listRequest());
-  assert.equal(response.status, 502);
+  await withoutFreeModel(async () => {
+    stubUpstream(`{"data":[],"pad":"${"x".repeat(3_000_000)}"}`);
+    const response = await route.GET(listRequest());
+    assert.equal(response.status, 502);
+  });
 });
 
 test("the list reflects live upstream changes (no cache between calls)", async () => {
   stubUpstream({ data: [decisionModel("typesafe/jev-1.13")] });
-  const first = (await (await route.GET(listRequest())).json()) as { data: unknown[] };
+  const first = (await (await route.GET(listRequest())).json()) as { data: Array<{ id: string }> };
   stubUpstream({ data: [decisionModel("typesafe/jev-1.13"), decisionModel("liquid/d1")] });
-  const second = (await (await route.GET(listRequest())).json()) as { data: unknown[] };
-  assert.equal(first.data.length, 1);
-  assert.equal(second.data.length, 2);
+  const second = (await (await route.GET(listRequest())).json()) as { data: Array<{ id: string }> };
+  assert.deepEqual(
+    first.data.map((row) => row.id),
+    ["openrouter/typesafe/jev-1.13", FREE_MODEL]
+  );
+  assert.deepEqual(
+    second.data.map((row) => row.id),
+    ["openrouter/typesafe/jev-1.13", "openrouter/liquid/d1", FREE_MODEL]
+  );
 });
 
 test("handleSystemOneModels applies the supplied model filter", async () => {
@@ -321,6 +374,7 @@ test("model allow/deny rules narrow the list with the same canonical ids as POST
       "openrouter/typesafe/jev-1.13",
       "openrouter/inception/mercury-decide:free",
       "openrouter/liquid/d1",
+      FREE_MODEL,
     ]
   );
 });

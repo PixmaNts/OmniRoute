@@ -229,7 +229,12 @@ test("native catalog uses GET with native auth, list IDs round-trip and connecti
   const rows = (await response.json()).data;
   assert.deepEqual(
     new Set(rows.map((row: { id: string }) => row.id)),
-    new Set(["typesafe/jev-latest", "openrouter/typesafe/jev-latest", "ollama-local/clef-flash"])
+    new Set([
+      "typesafe/jev-latest",
+      "openrouter/typesafe/jev-latest",
+      "ollama-local/clef-flash",
+      "opencode-systemone/jev-1.13-free",
+    ])
   );
   assert.equal(calls.length, 2);
 });
@@ -309,6 +314,7 @@ test("native key validation reads catalog, never invokes inference", async () =>
   assert.equal(result.valid, true);
   assert.equal(ProviderSchema.safeParse(getProviderById("typesafe")).success, true);
   await assert.rejects(getExecutor("typesafe"), /systemone/);
+  await assert.rejects(getExecutor("opencode-systemone"), /systemone/);
 });
 
 test("decision discovery is typed; decision-only chat rejects while mixed capability stays selectable", async () => {
@@ -400,8 +406,22 @@ test("native absence never falls back to gateway credentials; unconfigured inven
   await providers.updateProviderConnection(localId, { isActive: false });
   const response = await GET(new Request("http://localhost/v1/systemone/models"));
   assert.equal(response.status, 200);
-  assert.equal(response.headers.get("X-OmniRoute-Catalog-Status"), "unconfigured");
-  assert.deepEqual(await response.json(), { object: "list", data: [] });
+  assert.equal(response.headers.get("X-OmniRoute-Catalog-Status"), "complete");
+  assert.deepEqual(
+    ((await response.json()) as { data: Array<{ id: string }> }).data.map((row) => row.id),
+    ["opencode-systemone/jev-1.13-free"]
+  );
+  assert.equal(calls, 0);
+  const { updateSettings } = await import("../../src/lib/db/settings.ts");
+  await updateSettings({ blockedProviders: ["opencode-systemone"] });
+  try {
+    const unconfigured = await GET(new Request("http://localhost/v1/systemone/models"));
+    assert.equal(unconfigured.status, 200);
+    assert.equal(unconfigured.headers.get("X-OmniRoute-Catalog-Status"), "unconfigured");
+    assert.deepEqual(await unconfigured.json(), { object: "list", data: [] });
+  } finally {
+    await updateSettings({ blockedProviders: [] });
+  }
   assert.equal(calls, 0);
 });
 
