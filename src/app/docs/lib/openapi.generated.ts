@@ -25,7 +25,7 @@ export interface OpenApiEndpoint {
   hasRequestBody: boolean;
 }
 
-export const OPENAPI_VERSION = "3.8.52";
+export const OPENAPI_VERSION = "3.8.53";
 export const OPENAPI_TITLE = "OmniRoute API";
 
 export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
@@ -608,7 +608,8 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     path: "/api/v1/management/proxy-subscriptions/{id}",
     method: "PATCH",
     summary: "Update a proxy subscription",
-    description: "Partial update — only fields present in the body are changed (name/url/mode/ruleProviders/localCoreEndpoint/coreConfigPath/coreBinaryPath/updateIntervalMinutes/enabled).",
+    description:
+      "Partial update — only fields present in the body are changed (name/url/mode/ruleProviders/localCoreEndpoint/coreConfigPath/coreBinaryPath/updateIntervalMinutes/enabled).",
     tag: "Proxy Subscriptions",
     tags: ["Proxy Subscriptions"],
     requiresAuth: true,
@@ -647,6 +648,17 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     hasRequestBody: false,
   },
   {
+    path: "/api/v1/media/{id}",
+    method: "GET",
+    summary: "GET media › <id>",
+    description:
+      "Serves media that a video job stored on this gateway because the provider's own result URL is auth-gated (OpenRouter `unsigned_urls`). The id is returned in the `url` of a `/api/v1/videos/generations` response. Readable by the API key that generated it, a manage-scope key or the dashboard session (same ownership rule as `/api/v1/files/{id}/content`); anything else, an unknown id or an expired file (call-log retention window) answers 404.",
+    tag: "V1 Media",
+    tags: ["V1 Media"],
+    requiresAuth: false,
+    hasRequestBody: false,
+  },
+  {
     path: "/api/v1/messages",
     method: "POST",
     summary: "Create message (Anthropic-compatible)",
@@ -670,7 +682,8 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     path: "/api/v1/models",
     method: "GET",
     summary: "List available models",
-    description: "Returns all models available across configured providers.",
+    description:
+      "Returns all models available across configured providers. The discovery filters (`capability`, `min_context`, `kind`, `q`) are opt-in: without them the response is unchanged. They narrow the caller's own (key-filtered) catalog and run before `limit`/`after` paging.",
     tag: "Models",
     tags: ["Models"],
     requiresAuth: true,
@@ -685,6 +698,17 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     tags: ["V1 Models"],
     requiresAuth: false,
     hasRequestBody: false,
+  },
+  {
+    path: "/api/v1/models/query",
+    method: "POST",
+    summary: "Query a model shortlist",
+    description:
+      "Filtered shortlist over the same catalog as `GET /v1/models` (same auth and per-key visibility). Results are ordered by `owned_by`, then `id`, and capped by `limit` (default 20, maximum 100).",
+    tag: "Models",
+    tags: ["Models"],
+    requiresAuth: true,
+    hasRequestBody: true,
   },
   {
     path: "/api/v1/moderations",
@@ -728,6 +752,39 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     hasRequestBody: false,
   },
   {
+    path: "/api/v1/music",
+    method: "POST",
+    summary: "Compose ElevenLabs music",
+    description:
+      "Proxies POST /v1/music using the stored ElevenLabs connection selected within the caller key's scope. Native response bytes and Content-Type are preserved without buffering, including multipart boundaries. Query parameters are forwarded unchanged. Endpoint, model, budget and connection restrictions apply. Upstream plan restrictions (402) are preserved; a credit balance does not override them.",
+    tag: "Audio",
+    tags: ["Audio"],
+    requiresAuth: true,
+    hasRequestBody: true,
+  },
+  {
+    path: "/api/v1/music/detailed",
+    method: "POST",
+    summary: "Compose ElevenLabs music with its composition plan",
+    description:
+      "Proxies POST /v1/music/detailed using the stored ElevenLabs connection selected within the caller key's scope. Native response bytes and Content-Type are preserved without buffering, including multipart boundaries. Query parameters are forwarded unchanged. Endpoint, model, budget and connection restrictions apply. Upstream plan restrictions (402) are preserved; a credit balance does not override them.",
+    tag: "Audio",
+    tags: ["Audio"],
+    requiresAuth: true,
+    hasRequestBody: true,
+  },
+  {
+    path: "/api/v1/music/detailed/stream",
+    method: "POST",
+    summary: "Stream ElevenLabs music and metadata as SSE",
+    description:
+      "Proxies POST /v1/music/detailed/stream using the stored ElevenLabs connection selected within the caller key's scope. Native response bytes and Content-Type are preserved without buffering, including multipart boundaries. Query parameters are forwarded unchanged. Endpoint, model, budget and connection restrictions apply. Upstream plan restrictions (402) are preserved; a credit balance does not override them.",
+    tag: "Audio",
+    tags: ["Audio"],
+    requiresAuth: true,
+    hasRequestBody: true,
+  },
+  {
     path: "/api/v1/music/generations",
     method: "GET",
     summary: "GET music › generations",
@@ -746,6 +803,28 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     tags: ["V1 Music"],
     requiresAuth: false,
     hasRequestBody: false,
+  },
+  {
+    path: "/api/v1/music/plan",
+    method: "POST",
+    summary: "Create an ElevenLabs music composition plan",
+    description:
+      "Proxies POST /v1/music/plan using the stored ElevenLabs connection selected within the caller key's scope. Native response bytes and Content-Type are preserved without buffering, including multipart boundaries. Query parameters are forwarded unchanged. Endpoint, model, budget and connection restrictions apply. Upstream plan restrictions (402) are preserved; a credit balance does not override them.",
+    tag: "Audio",
+    tags: ["Audio"],
+    requiresAuth: true,
+    hasRequestBody: true,
+  },
+  {
+    path: "/api/v1/music/stream",
+    method: "POST",
+    summary: "Stream ElevenLabs music",
+    description:
+      "Proxies POST /v1/music/stream using the stored ElevenLabs connection selected within the caller key's scope. Native response bytes and Content-Type are preserved without buffering, including multipart boundaries. Query parameters are forwarded unchanged. Endpoint, model, budget and connection restrictions apply. Upstream plan restrictions (402) are preserved; a credit balance does not override them.",
+    tag: "Audio",
+    tags: ["Audio"],
+    requiresAuth: true,
+    hasRequestBody: true,
   },
   {
     path: "/api/v1/ocr",
@@ -854,50 +933,55 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     path: "/api/v1/registered-keys",
     method: "GET",
     summary: "GET registered keys",
-    description: "",
+    description:
+      "Management-only, like `/api/keys`: a dashboard session, the local CLI token, or an API key with `manage`/`admin` scope. Inference-only API keys get 403.\n",
     tag: "V1 Registered-keys",
     tags: ["V1 Registered-keys"],
-    requiresAuth: false,
+    requiresAuth: true,
     hasRequestBody: false,
   },
   {
     path: "/api/v1/registered-keys",
     method: "POST",
     summary: "POST registered keys",
-    description: "",
+    description:
+      "Management-only, like `/api/keys`: a dashboard session, the local CLI token, or an API key with `manage`/`admin` scope. Inference-only API keys get 403.\n",
     tag: "V1 Registered-keys",
     tags: ["V1 Registered-keys"],
-    requiresAuth: false,
+    requiresAuth: true,
     hasRequestBody: false,
   },
   {
     path: "/api/v1/registered-keys/{id}",
     method: "DELETE",
     summary: "DELETE registered keys › <id>",
-    description: "",
+    description:
+      "Management-only, like `/api/keys`: a dashboard session, the local CLI token, or an API key with `manage`/`admin` scope. Inference-only API keys get 403.\n",
     tag: "V1 Registered-keys",
     tags: ["V1 Registered-keys"],
-    requiresAuth: false,
+    requiresAuth: true,
     hasRequestBody: false,
   },
   {
     path: "/api/v1/registered-keys/{id}",
     method: "GET",
     summary: "GET registered keys › <id>",
-    description: "",
+    description:
+      "Management-only, like `/api/keys`: a dashboard session, the local CLI token, or an API key with `manage`/`admin` scope. Inference-only API keys get 403.\n",
     tag: "V1 Registered-keys",
     tags: ["V1 Registered-keys"],
-    requiresAuth: false,
+    requiresAuth: true,
     hasRequestBody: false,
   },
   {
     path: "/api/v1/registered-keys/{id}/revoke",
     method: "POST",
     summary: "POST registered keys › <id> › revoke",
-    description: "",
+    description:
+      "Management-only, like `/api/keys`: a dashboard session, the local CLI token, or an API key with `manage`/`admin` scope. Inference-only API keys get 403.\n",
     tag: "V1 Registered-keys",
     tags: ["V1 Registered-keys"],
-    requiresAuth: false,
+    requiresAuth: true,
     hasRequestBody: false,
   },
   {
@@ -1003,6 +1087,17 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     hasRequestBody: true,
   },
   {
+    path: "/api/v1/sound-generation",
+    method: "POST",
+    summary: "Create an ElevenLabs sound effect",
+    description:
+      "Proxies POST /v1/sound-generation using the stored ElevenLabs connection selected within the caller key's scope. Native response bytes and Content-Type are preserved without buffering, including multipart boundaries. Query parameters are forwarded unchanged. Endpoint, model, budget and connection restrictions apply. Upstream plan restrictions (402) are preserved; a credit balance does not override them.",
+    tag: "Audio",
+    tags: ["Audio"],
+    requiresAuth: true,
+    hasRequestBody: true,
+  },
+  {
     path: "/api/v1/speech-to-text",
     method: "POST",
     summary: "ElevenLabs speech-to-text",
@@ -1012,28 +1107,6 @@ export const OPENAPI_ENDPOINTS: OpenApiEndpoint[] = [
     tags: ["Audio"],
     requiresAuth: true,
     hasRequestBody: true,
-  },
-  {
-    path: "/api/v1/systemone",
-    method: "POST",
-    summary: "POST systemone",
-    description:
-      "Typed decision models (`noul` / `choice` / `score` questions about a `state`). The first `model` prefix selects the connection that serves the request: `typesafe/jev-latest` calls TypeSafe directly, `openrouter/typesafe/jev-1.13` goes through OpenRouter, and `ollama-local/<model>` uses a configured local Ollama (0.35 or later). An unqualified id such as `jev-latest` keeps using OpenRouter. There is no fallback from a missing direct connection to a gateway.",
-    tag: "V1 SystemOne",
-    tags: ["V1 SystemOne"],
-    requiresAuth: true,
-    hasRequestBody: true,
-  },
-  {
-    path: "/api/v1/systemone/models",
-    method: "GET",
-    summary: "GET systemone models",
-    description:
-      'Decision models offered by the configured TypeSafe, OpenRouter and local Ollama connections, as `{ object: "list", data }`. Each `id` is the gateway-qualified model accepted by `POST /v1/systemone`. The `X-OmniRoute-Catalog-Status` header reports `complete`, `partial` or `unconfigured`. API-key endpoint category `systemone`, connection, budget, rate-limit and model rules apply.',
-    tag: "V1 SystemOne",
-    tags: ["V1 SystemOne"],
-    requiresAuth: true,
-    hasRequestBody: false,
   },
   {
     path: "/api/v1/text-to-speech/{voiceId}",
