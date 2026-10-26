@@ -127,6 +127,7 @@ const EXPECTED: Record<InventoryKind, Record<string, number>> = {
     "src/lib/services/quotaAutoPing.ts": 1,
   },
   connection: {
+    "src/app/api/v1/systemone/route.ts": 1,
     "open-sse/handlers/systemOneModels.ts": 1,
     // The read-only auto-candidate inspector no longer re-resolves connections one by one
     // (getProviderConnectionById, 1->0): it reads one narrow, credential-free state projection
@@ -345,6 +346,7 @@ const CLASSIFICATION: Record<InventoryKind, Record<string, BypassClass>> = {
     Object.keys(EXPECTED.connection).map((file) => [
       file,
       [
+        "src/app/api/v1/systemone/route.ts",
         "open-sse/handlers/systemOneModels.ts",
         "open-sse/handlers/chatCore.ts",
         "open-sse/handlers/chatCore/streamingResponse.ts",
