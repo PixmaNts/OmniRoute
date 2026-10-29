@@ -218,9 +218,11 @@ test("shared set size includes live REGISTRY and retired Designer + Felo + Qwen 
   // Measured on the merged tree: RESERVED_PROVIDER_PREFIXES.size = 431.
   // The current catalog removes the Free provider id and oc alias (432 -> 430).
   // ainetcafe (#13862) registers id "ainetcafe" with the same alias — one more (432 -> 433).
-  // Native TypeSafe decision credentials (#14667) register id "typesafe" with the same alias (433 -> 434).
-  assert.equal(RESERVED_PREFIX_COUNT, 434);
+  // Token Harbor (#16315) registers id "tokenharbor" with the same alias — one more (433 -> 434).
+  // Native TypeSafe decision credentials (#14667) register id "typesafe" with the same alias (434 -> 435).
+  assert.equal(RESERVED_PREFIX_COUNT, 435);
   assert.equal(RESERVED_PROVIDER_PREFIXES.has("ainetcafe"), true);
+  assert.equal(RESERVED_PROVIDER_PREFIXES.has("tokenharbor"), true);
 });
 
 test("notrack-web registry id and alias stay reserved", () => {
